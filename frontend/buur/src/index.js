@@ -4,7 +4,8 @@ import Root from './client/Root';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
-ReactDOM.render( 
+
+ReactDOM.render(
     <Root />,
   document.getElementById('root')
 );
