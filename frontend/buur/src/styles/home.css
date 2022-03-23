@@ -1,0 +1,47 @@
+.home .homeheader {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home .homeheader > div{
+  width: 70px;
+}
+
+
+.home .homeheader > img{
+  margin-right: 10px;
+}
+
+
+.carouselImage {
+  width: 100%;
+  height: 190px;
+}
+
+.carouselImage > img {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel .control-dots .dot {
+  background: #E9B940;
+  box-shadow: none;
+}
+
+
+/* beerlist page */
+.beerlist header {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px;
+}
+
+.beerlist header > p{
+  font-weight: 800;
+}
+
+.beerlist header > div{
+  width: 30px;
+}

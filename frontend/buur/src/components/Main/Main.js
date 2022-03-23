@@ -9,12 +9,14 @@ import Nav from '../Nav';
 class Main extends React.Component {
   render () {
     return (
-      <div>        
+      <div>
         <Switch>
+          <>
           <Route exact path="/" component={Home} />
-          <Route path="/recommend" component={ Recommend} />
-          <Route path="/search" component={ Search} />
-          <Route path="/mypage" component={MyPage} />
+          <Route path="/recommend" component={Recommend} />
+          <Route path="/search" component={Search} />
+          <Route path="/mypage" component={MyPage} />         
+          </>
         </Switch>
         <Nav />
     </div>
