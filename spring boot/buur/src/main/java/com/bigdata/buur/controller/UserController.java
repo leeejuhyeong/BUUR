@@ -1,5 +1,4 @@
 package com.bigdata.buur.controller;
 
-public class test {
-
+public class UserController {
 }
