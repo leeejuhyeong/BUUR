@@ -23,5 +23,6 @@ public class Review {
 
     private Integer reviewRank;
 
-    private Integer reviewContent;
+    @Lob
+    private String reviewContent;
 }
