@@ -19,6 +19,8 @@ public class Beer {
 
     private String beerName;
 
+    private String beerEngName;
+
     private Double beerAbv;
 
     private String beerOrigin;
