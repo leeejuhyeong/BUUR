@@ -1,4 +1,4 @@
 package com.bigdata.buur.config;
 
-public class test {
+public class SpringSecurityConfig {
 }
