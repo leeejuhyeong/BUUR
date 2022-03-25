@@ -14,12 +14,16 @@ public class Review {
     private Long reviewNo;
 
     @ManyToOne
+    @JoinColumn(name="user_no")
+    private User user;
+
+    @ManyToOne
     @JoinColumn(name="beer_no")
     private Beer beer;
 
-    @ManyToOne
-    @JoinColumn(name="user_no")
-    private User user;
+    private Double reviewTaste;
+
+    private Double reviewAroma;
 
     private Integer reviewRank;
 
