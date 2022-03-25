@@ -1,5 +1,5 @@
 package com.bigdata.buur.enums;
 
 public enum BeerCategory {
-    LAGER, ALE, BLACKBEER, PILSENER, WHEATBEER, ETC
+    LAGER, ALE, BLACK_BEER, PILSENER, WHEAT_BEER, ETC
 }
