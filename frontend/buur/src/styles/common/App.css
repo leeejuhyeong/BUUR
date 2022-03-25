@@ -1,8 +1,11 @@
 * {
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
+
+
 
 .app {
   width: 360px;
-  height: 640;
+  height: 640px;
 }

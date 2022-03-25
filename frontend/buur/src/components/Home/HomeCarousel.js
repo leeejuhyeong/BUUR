@@ -9,7 +9,7 @@ import { Carousel } from 'react-responsive-carousel';
 class HomeCarousel extends React.Component {
   render() {
     return (
-        <Carousel autoPlay showThumbs={false} showStatus={false} infiniteLoop>
+        <Carousel autoPlay showThumbs={false} showStatus={false} showArrows={false} infiniteLoop >
             <div className="carouselImage">
                 <img src={bannerImg1} alt="banner1" />
             </div>

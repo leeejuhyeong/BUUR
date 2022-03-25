@@ -30,18 +30,49 @@
   box-shadow: none;
 }
 
-
-/* beerlist page */
-.beerlist header {
+.home .show-all {
+  font-weight: 400;
+  font-size: 10px;
+  text-decoration: none;
+  color: #5A5A5A;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-right: 16px;
   display: flex;
-  justify-content: space-between;
-  border: solid 1px;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.beerlist header > p{
-  font-weight: 800;
+.home .beer-sortbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0 20px;
+  place-items: center;
+  gap: 13px;
 }
 
-.beerlist header > div{
-  width: 30px;
+.home .beer-sortbar .sort-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+
+.home .beer-sortbar .sort-btn > .sort-img {
+  display: flex;
+  border: solid 1px #E9B940;
+  border-radius: 70%;
+  width: 86px;
+  height: 86px;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .beer-sortbar .sort-btn > p {
+  margin: 10px 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+

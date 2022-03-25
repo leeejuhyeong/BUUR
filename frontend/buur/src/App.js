@@ -1,50 +1,67 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import Login from './components/User/Login';
 import Home from './pages/Home';
 import Recommend from './pages/Recommend';
 import Search from './pages/Search';
 import MyPage from './pages/MyPage';
-import BeerList from './pages/BeerList'
+import BeerList from './pages/Beer/BeerList'
+import BeerDetails from './pages/Beer/BeerDetails'
+import BeerReviews from './pages/Beer/BeerReviews'
 import Nav from './components/Nav';
 import './styles/common/App.css';
 
 
-class App extends React.Component {
-  render() {
-    return (
-      <Switch>
-        <>
-        <Route path="/" exact={true} component={Login} />
-        <Route path="/main/beerlist" component={BeerList} />
-        <div>
-          <Route exact path="/home" component={Home} />
-          <Route path="/recommend" component={Recommend} />
-          <Route path="/search" component={Search} />
-          <Route path="/mypage" component={MyPage} />
-          <Nav />
-        </div>
-        </>
-      </Switch>
-        
-    )
-    // jwt있을때 없을때
-    // const tmp = 1;
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <Switch>
+//       <Route path="/" exact={true} component={Login} />
+//       <Route path="/main/beerlist" component={BeerList} />
+//       <>
+//         <Route exact path="/home" component={Home} />
+//         <Route path="/recommend" component={Recommend} />
+//         <Route path="/search" component={Search} />
+//         <Route path="/mypage" component={MyPage} />
+//         <Nav />
+//       </>
+//     </Switch>
 
-    // if (tmp === 0) {
-    //   return (
-    //     <div className="App">
-    //       <Login />
-    //     </div>
-    //   )
-    // } else {
-    //   return (
-    //     <div className="App">
-    //       <Main />
-    //     </div>
-    //   )
-    // }
-  }
+    
+//     )
+//   }
+// }
+
+// export default App;
+
+const BaseRouter = withRouter(({ location} ) => {
+
+  return (
+    <div className="app">
+      <Route path="/" exact={true} component={Login} />
+      <Route path="/main/beerlist" exact={true} component={BeerList} />
+      <Route path="/main/beerlist/beerdetails" exact={true} component={BeerDetails} />
+      <Route path="/main/beerlist/beerdetails/reviews" component={BeerReviews} />
+       { location.pathname !== '/' &&
+       location.pathname !== '/main/beerlist' && 
+       location.pathname !== '/main/beerlist/beerdetails' &&
+       location.pathname !== '/main/beerlist/beerdetails/reviews'
+       && 
+       <Nav/>}
+       <Route exact path="/home" component={Home} />
+       <Route path="/recommend" component={Recommend} />
+       <Route path="/search" component={Search} />
+       <Route path="/mypage" component={MyPage} />
+    </div>
+
+  )
+})
+
+function App() {
+  
+  return (
+    <BaseRouter/>
+  );
 }
 
 export default App;

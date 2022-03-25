@@ -6,9 +6,9 @@ class HomeHeader extends React.Component {
   render () {
     return (
       <div className="homeheader">
-      <div> </div>
-      <img src={logo} art="logo"/>
-      <img src={bag} art="bag"/>
+      <div></div>
+      <img src={logo} alt="logo"/>
+      <img src={bag} alt="bag"/>
       </div>
     )
   }

@@ -5,13 +5,9 @@ nav {
   height: 60px;
   
   display: flex;
-  border: solid 2px;
-
+  box-shadow: 0 10px 40px rgba(159, 162, 177, .2);
 }
 
-nav > div {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+nav .Mui-selected {
+  color: black !important;
 }
