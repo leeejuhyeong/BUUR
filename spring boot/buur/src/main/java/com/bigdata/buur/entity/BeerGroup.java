@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter @Setter @ToString
 public class BeerGroup {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long groupNo;
 
     @ManyToOne(fetch = FetchType.LAZY)
