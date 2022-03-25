@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter @Setter @ToString
 public class Beer {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long beerNo;
 
     @Enumerated(EnumType.STRING)

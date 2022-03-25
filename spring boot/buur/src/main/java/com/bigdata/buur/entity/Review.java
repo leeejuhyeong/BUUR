@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter @Setter @ToString
 public class Review {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewNo;
 
     @ManyToOne

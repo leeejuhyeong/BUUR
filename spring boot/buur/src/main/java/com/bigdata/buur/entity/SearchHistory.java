@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter @Setter @ToString
 public class SearchHistory {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long searchNo;
 
     @OneToOne

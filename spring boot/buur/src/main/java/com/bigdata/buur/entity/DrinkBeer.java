@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Getter @Setter @ToString
 public class DrinkBeer {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long recordNo;
 
     @ManyToOne
