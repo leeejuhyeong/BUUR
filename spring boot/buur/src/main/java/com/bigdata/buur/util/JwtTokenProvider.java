@@ -15,6 +15,8 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Component
@@ -23,7 +25,7 @@ public class JwtTokenProvider {
     private String secretKey = "secret";
 
     // 토큰 유효시간 30분
-    private long tokenValidTime = 30 * 60 * 1000L;
+    private long tokenValidTime = 30 * 60 * 1000000L;
 
     private final UserDetailsService userDetailsService;
 
@@ -34,13 +36,20 @@ public class JwtTokenProvider {
     }
 
     // JWT 토큰 생성
-    public String createToken(String userPk, String roles) {
-        Claims claims = Jwts.claims().setSubject(userPk); // JWT payload 에 저장되는 정보단위
-        claims.setSubject(roles);
+    public String createToken(String userPk, String role) {
+//        Claims claims = Jwts.claims().setSubject("userToken");
+//        claims.setSubject("userToken");
 //        claims.put("roles", roles); // 정보는 key&value 쌍으로 저장
+        Map<String, Object> payLoads = new HashMap<>();
+
+        payLoads.put("sub", "userToken");
+        payLoads.put("userId", userPk);
+        payLoads.put("role", role);
+
+
         Date now = new Date();
         return Jwts.builder()
-                .setClaims(claims) // 정보 저장
+                .setClaims(payLoads) // 정보 저장
                 .setIssuedAt(now) // 토큰 발행 시간 정보
                 .setExpiration(new Date(now.getTime() + tokenValidTime)) // set Expire Time
                 .signWith(SignatureAlgorithm.HS256, secretKey)  // 사용할 암호화 알고리즘과
@@ -56,7 +65,7 @@ public class JwtTokenProvider {
 
     // 토큰에서 회원 정보 추출
     public String getUserPk(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+        return (String) Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get("userId");
     }
 
     // Request의 Header에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
