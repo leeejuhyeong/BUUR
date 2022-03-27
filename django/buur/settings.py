@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,16 +82,17 @@ WSGI_APPLICATION = 'buur.wsgi.application'
 #     }
 # }
 
-DATABASES = { 
-	'default': { 
-    	'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'db이름', 
-        'USER': 'root', 
-        'PASSWORD': '비밀번호', 
-        'HOST': 'localhost', 
-        'PORT': '3306', 
-     } 
-}
+# DATABASES = {
+# 	'default': {
+#     	'ENGINE': 'django.db.backends.mysql',
+#         'NAME': '',
+#         'USER': '',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#      }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
