@@ -14,11 +14,11 @@ public class Likes {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long likesNo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_no")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="beer_no")
     private Beer beer;
 
