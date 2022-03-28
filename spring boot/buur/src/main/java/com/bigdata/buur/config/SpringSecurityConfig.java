@@ -20,7 +20,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenProvider jwtTokenProvider;
 
     // 모두가 접근할 수 있는 URL 입력
-    private final String[] NO_ROLE_URLS = {"/user/signup", "/user/id-check/", "/user/name-check/", "/user/login", "user/findpassword"};
+    private final String[] NO_ROLE_URLS = {"/api-v1/user/signup",
+            "/api-v1/user/id-check/", "/api-v1/user/name-check/", "/api-v1/user/login", "/api-v1/user/findpassword"};
 
     // 암호화에 필요한 PasswordEncoder 를 Bean 등록
     @Bean

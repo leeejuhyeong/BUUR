@@ -42,7 +42,7 @@ public class JwtTokenProvider {
 //        claims.put("roles", roles); // 정보는 key&value 쌍으로 저장
         Map<String, Object> payLoads = new HashMap<>();
 
-        payLoads.put("sub", "userToken");
+//        payLoads.put("sub", "userToken");
         payLoads.put("userId", userPk);
         payLoads.put("role", role);
 
