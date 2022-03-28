@@ -83,12 +83,8 @@ def recommend_beers(df_svd_preds, user_no, ori_beer_df, ori_ratings_df, num_reco
     return user_history, recommendations
 
 
-def input_data(buur_db, predictions):
-    pass
 
-
-if __name__ == "__main__":
-
+def use_latent(user_no):
     # db 연결
     buur_db = connect()
 
@@ -99,11 +95,7 @@ if __name__ == "__main__":
     df_svd_preds = latent_factor_recommend(review)
 
     # 추천
-    start = time.time()
     alredady_rated, predictions = recommend_beers(
-        df_svd_preds, 15, beer, review, 10)
-    end = time.time()
-    print(f"{end - start:.5f} sec")
-    print(predictions.head())
+        df_svd_preds, user_no, beer, review, 10)
 
-    # input_data(buur_db, predictions)
+    return (predictions.to_dict('records'))
