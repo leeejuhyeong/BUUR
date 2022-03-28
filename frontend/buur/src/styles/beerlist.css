@@ -39,7 +39,7 @@
 }
 
 
-.beerlist .beeritem {
+.beeritem {
   width: 100px;
   height: 100px;
   padding: 10px;
@@ -49,22 +49,22 @@
 
 }
 
-.beerlist .beeritem .like-status {
+.beeritem .like-status {
   display: flex;
   justify-content: space-between;
 }
 
-.beerlist .beeritem .like-status > div {
+.beeritem .like-status > div {
   width: 15px;
 }
 
 
-.beerlist .beeritem .like-status > img {
+.beeritem .like-status > img {
   margin-top: 10px;
   height: 60px;
 }
 
-.beerlist .beeritem > p {
+.beeritem > p {
   font-size: 9px;
   font-weight: bold;
   margin: 2px 0;

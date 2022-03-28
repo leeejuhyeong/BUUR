@@ -6,12 +6,9 @@ import {useHistory} from "react-router";
 import BeerDetailsInfo from "../../components/Beer/BeerDetailsInfo";
 import BeerReviewBox from "../../components/Beer/BeerReviewBox";
 import BeerReviewStar from "../../components/Beer/BeerReviewStar";
-import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
-import EditIcon from '@mui/icons-material/Edit';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { makeStyles } from "@material-ui/styles";
+import BeerDetailsSimilar from "../../components/Beer/BeerDetailsSimilar";
 import '../../styles/beerdetails.css';
 
 
@@ -32,13 +29,6 @@ const BeerDetails = () => {
   const goBack = () => {
     history.goBack();
   };
-
-  const useStyles = makeStyles({
-    root: {
-      background: '#E9B940',
-      color: '#E5E5E5'
-    },
-  });
 
   return (
     <div className="beerdetails">
@@ -77,11 +67,10 @@ const BeerDetails = () => {
                 />
             ))}
         </div>
-        
-        <Box sx={{ display:'flex', justifyContent: 'flex-end'}}>
-          <Fab classes={useStyles()} aria-label="edit">
-            <EditIcon />
-          </Fab></Box>
+        {/* <hr/> */}
+        <BeerDetailsSimilar
+        beerRank={beerRank}
+        />
       </div>
   </div>
   )

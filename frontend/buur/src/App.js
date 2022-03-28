@@ -11,43 +11,23 @@ import BeerReviews from './pages/Beer/BeerReviews'
 import Nav from './components/Nav';
 import './styles/common/App.css';
 
-
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <Switch>
-//       <Route path="/" exact={true} component={Login} />
-//       <Route path="/main/beerlist" component={BeerList} />
-//       <>
-//         <Route exact path="/home" component={Home} />
-//         <Route path="/recommend" component={Recommend} />
-//         <Route path="/search" component={Search} />
-//         <Route path="/mypage" component={MyPage} />
-//         <Nav />
-//       </>
-//     </Switch>
-
-    
-//     )
-//   }
-// }
-
-// export default App;
-
 const BaseRouter = withRouter(({ location} ) => {
 
   return (
     <div className="app">
+      {/* nav 사용x  */}
       <Route path="/" exact={true} component={Login} />
       <Route path="/main/beerlist" exact={true} component={BeerList} />
       <Route path="/main/beerlist/beerdetails" exact={true} component={BeerDetails} />
       <Route path="/main/beerlist/beerdetails/reviews" component={BeerReviews} />
+      {/* 예외처리 */}
        { location.pathname !== '/' &&
        location.pathname !== '/main/beerlist' && 
        location.pathname !== '/main/beerlist/beerdetails' &&
        location.pathname !== '/main/beerlist/beerdetails/reviews'
        && 
        <Nav/>}
+       {/* nav 사용  */}
        <Route exact path="/home" component={Home} />
        <Route path="/recommend" component={Recommend} />
        <Route path="/search" component={Search} />
