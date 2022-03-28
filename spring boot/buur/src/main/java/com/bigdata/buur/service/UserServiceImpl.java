@@ -9,7 +9,6 @@ import com.bigdata.buur.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +47,7 @@ public class UserServiceImpl implements UserService {
                 .userEmail(user.getUserEmail())
                 .userStatus(UserStatus.valueOf("NEW_USER"))
                 .userRole(UserRole.valueOf("ROLE_USER"))
-                .build()).isPresent())
+                .build()) != null)
             return SUCCESS;
         else return FAIL;
     }
@@ -72,12 +71,6 @@ public class UserServiceImpl implements UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
         return user.getUserNo();
-    }
-
-    @Override
-    public User loadUserByUsername(String id) throws UsernameNotFoundException {
-        return userRepository.findByUserId(id)
-                .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
     }
 
 }
