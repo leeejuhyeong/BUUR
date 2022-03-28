@@ -6,9 +6,10 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter @ToString
 public class Beer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
