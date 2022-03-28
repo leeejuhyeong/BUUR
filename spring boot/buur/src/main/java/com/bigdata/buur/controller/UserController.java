@@ -1,5 +1,6 @@
 package com.bigdata.buur.controller;
 
+import com.bigdata.buur.enums.UserRole;
 import com.bigdata.buur.enums.UserStatus;
 import com.bigdata.buur.service.UserService;
 import com.bigdata.buur.util.JwtTokenProvider;
@@ -50,6 +51,7 @@ public class UserController {
                 .userNickname(user.getUserNickname())
                 .userEmail(user.getUserEmail())
                 .userStatus(UserStatus.valueOf("NEW_USER"))
+                .userRole(UserRole.valueOf("ROLE_USER"))
                 .build());
 
         if(signupUser != null)
@@ -68,6 +70,11 @@ public class UserController {
 
         // 토큰 return
         return jwtTokenProvider.createToken(findUser.getUserId(), findUser.getUserStatus().toString());
+    }
+
+    @GetMapping("/test")
+    public String testSecurity() {
+        return "test";
     }
 
 }
