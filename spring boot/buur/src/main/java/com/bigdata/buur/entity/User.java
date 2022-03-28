@@ -1,5 +1,6 @@
 package com.bigdata.buur.entity;
 
+import com.bigdata.buur.enums.UserRole;
 import com.bigdata.buur.enums.UserStatus;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -21,6 +23,7 @@ public class User implements UserDetails{
     @Column(name = "user_no")
     private Long userNo;
 
+    @Column(unique = true)
     private String userId;
 
     private String userNickname;
@@ -33,16 +36,22 @@ public class User implements UserDetails{
 
     private Integer userDrink;
 
+    @Enumerated(EnumType.STRING)
+    private UserStatus userStatus;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
+
     @OneToMany(mappedBy = "user")
     private List<BeerGroup> groupsList = new ArrayList<BeerGroup>();
 
 
-    @Enumerated(EnumType.STRING)
-    private UserStatus userStatus;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+        grantedAuthorities.add(userRole);
+
+        return grantedAuthorities;
     }
 
     @Override
@@ -52,7 +61,7 @@ public class User implements UserDetails{
 
     @Override
     public String getUsername() {
-        return userNickname;
+        return userId;
     }
 
     @Override
