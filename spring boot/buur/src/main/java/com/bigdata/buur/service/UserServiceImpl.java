@@ -1,18 +1,20 @@
 package com.bigdata.buur.service;
 
+import com.bigdata.buur.dto.SurveyDto;
 import com.bigdata.buur.dto.UserDto;
+import com.bigdata.buur.entity.Review;
 import com.bigdata.buur.entity.User;
 import com.bigdata.buur.enums.UserRole;
 import com.bigdata.buur.enums.UserStatus;
+import com.bigdata.buur.repository.ReviewRepository;
 import com.bigdata.buur.repository.UserRepository;
 import com.bigdata.buur.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
+    private final ReviewRepository reviewRepository;
 
     private final String SUCCESS = "success";
     private final String FAIL = "fail";
@@ -31,25 +34,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkNicknameDuplicate(String user_nickname) {
-        return userRepository.existsByUserNickname(user_nickname);
+    public boolean checkNicknameDuplicate(String userNickname) {
+        return userRepository.existsByUserNickname(userNickname);
     }
 
     @Override
-    public String addUser(UserDto user){
+    public String findUserStatus(String userId) {
 
-        if(user == null) return FAIL;
+        User user = userRepository.findByUserId(userId).get();
 
-        if(userRepository.save(User.builder()
+        if (user == null)
+            return FAIL;
+        else return user.getUserStatus().toString();
+    }
+
+
+    @Override
+    public User addUser(UserDto user){
+
+        return userRepository.save(User.builder()
                 .userId(user.getUserId())
                 .userPassword(passwordEncoder.encode(user.getUserPassword()))
                 .userNickname(user.getUserNickname())
                 .userEmail(user.getUserEmail())
                 .userStatus(UserStatus.valueOf("NEW_USER"))
                 .userRole(UserRole.valueOf("ROLE_USER"))
-                .build()) != null)
-            return SUCCESS;
-        else return FAIL;
+                .build());
     }
 
     @Override
@@ -62,15 +72,20 @@ public class UserServiceImpl implements UserService {
 
         // 토큰 return
         return jwtTokenProvider.createToken(findUser.getUserId(), findUser.getUserStatus().toString());
-
     }
 
     @Override
-    @Transactional
-    public Long currentUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = (User) authentication.getPrincipal();
-        return user.getUserNo();
+    public List<Review> surveyAdd(List<SurveyDto> surveyDtoList) {
+
+        List<Review> reviewList = new ArrayList<Review>();
+
+        for (SurveyDto surveyDto : surveyDtoList) {
+//            reviewList.add()
+        }
+
+
+        return null;
     }
+
 
 }

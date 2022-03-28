@@ -5,9 +5,10 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter @ToString
+@Getter
 public class Review {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

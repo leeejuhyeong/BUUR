@@ -1,19 +1,21 @@
 package com.bigdata.buur.service;
 
+import com.bigdata.buur.dto.SurveyDto;
 import com.bigdata.buur.dto.UserDto;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.bigdata.buur.entity.Review;
+import com.bigdata.buur.entity.User;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface UserService {
 
     public boolean checkIdDuplicate(String userId);
-    public boolean checkNicknameDuplicate(String user_nickname);
-    public String addUser(UserDto user);
+    public boolean checkNicknameDuplicate(String userNickname);
+    public String findUserStatus(String userId);
+    public User addUser(UserDto user);
     public String login(UserDto user);
-
-    public Long currentUser();
+    public List<Review> surveyAdd(List<SurveyDto> surveyDtoList);
 
 }
