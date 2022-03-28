@@ -1,0 +1,69 @@
+.recommend-beer-page {
+    padding-top: 5px;
+    padding-left: 20px; 
+}
+
+.most-favorite-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.most-favorite-list .most-favorite-item {
+    /* display: inline-block; */
+    position: relative;
+    margin: 6px 6px;
+}
+
+.most-favorite-item .favorite-item-index {
+    position: absolute;
+    top: 8px;
+    left: 13px;
+    color: #B15120;
+}
+
+.most-favorite-list {
+    display: flex;
+    overflow-x: scroll;
+    height: 100%;
+}
+
+.most-favorite-list::-webkit-scrollbar {
+    display: none;
+}
+
+.recommend-beer-div {
+    padding-top: 10px;
+}
+
+.recommend-beer-list .recommend-beer-item {
+    margin: 6px 6px;
+    position: relative;
+}
+
+.recommend-beer-item .recommend-beer-index {
+    position: absolute;
+    top: 8px;
+    left: 13px;
+    color: #B15120;
+}
+
+.recommend-beer-list {
+    display: flex;
+    overflow-x: scroll;
+    height: 100%;
+}
+
+.recommend-beer-list::-webkit-scrollbar {
+    display: none;
+}
+
+.show-all-recommend {
+    font-weight: 400;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    padding-bottom: 1.3px;
+}

@@ -68,7 +68,7 @@
 }
 
 .beerdetails .beer-details-info .beer-textinfo 
-> :nth-child(2), :nth-child(3), :nth-child(4) {
+> .beer-textinfo__catergory {
   display: flex;
   align-items: center;
   margin-left: 10px;
