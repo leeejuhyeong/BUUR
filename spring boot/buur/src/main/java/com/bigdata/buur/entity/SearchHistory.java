@@ -7,15 +7,14 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter @ToString
+@Getter
+@Builder
 public class SearchHistory {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long searchNo;
 
-    @OneToOne
-    @JoinColumn(name = "beer_no")
-    private Beer beer;
+    private String keyword;
 
     @ManyToOne
     @JoinColumn(name = "user_no")

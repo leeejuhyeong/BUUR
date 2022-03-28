@@ -17,5 +17,6 @@ public interface UserService {
     public User addUser(UserDto user);
     public String login(UserDto user);
     public List<Review> surveyAdd(List<SurveyDto> surveyDtoList);
+    public Long currentUser();
 
 }
