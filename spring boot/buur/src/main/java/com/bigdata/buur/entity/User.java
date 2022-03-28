@@ -3,6 +3,7 @@ package com.bigdata.buur.entity;
 import com.bigdata.buur.enums.UserRole;
 import com.bigdata.buur.enums.UserStatus;
 import lombok.*;
+import org.springframework.data.relational.core.sql.Like;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,13 +11,12 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Getter @Setter @ToString
+@Getter @Setter
 public class User implements UserDetails{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +34,7 @@ public class User implements UserDetails{
 
     private String userPassword;
 
+    // 주량
     private Integer userDrink;
 
     @Enumerated(EnumType.STRING)
@@ -45,6 +46,8 @@ public class User implements UserDetails{
     @OneToMany(mappedBy = "user")
     private List<BeerGroup> groupsList = new ArrayList<BeerGroup>();
 
+    @OneToMany(mappedBy = "user")
+    private List<Likes> likesList = new ArrayList<Likes>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
