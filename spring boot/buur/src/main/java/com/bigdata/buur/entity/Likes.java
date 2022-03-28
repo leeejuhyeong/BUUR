@@ -8,11 +8,20 @@ import javax.persistence.*;
 @Table(name = "Likes")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter @ToString
+@Getter
 public class Likes {
 
-    @EmbeddedId
-    private LikesID likesID;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long likesNo;
+
+    @ManyToOne
+    @JoinColumn(name="user_no")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name="beer_no")
+    private Beer beer;
+
 
 
 }

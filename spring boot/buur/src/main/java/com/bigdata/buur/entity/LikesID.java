@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
+@Deprecated
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

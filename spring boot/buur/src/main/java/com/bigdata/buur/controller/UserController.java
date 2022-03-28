@@ -1,5 +1,6 @@
 package com.bigdata.buur.controller;
 
+import com.bigdata.buur.dto.UserDto;
 import com.bigdata.buur.enums.UserRole;
 import com.bigdata.buur.enums.UserStatus;
 import com.bigdata.buur.service.UserService;
@@ -12,20 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-@RequiredArgsConstructor
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api-v1/user")
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserService userService;
-
-    private final PasswordEncoder passwordEncoder;
-    private final JwtTokenProvider jwtTokenProvider;
-    private final UserRepository userRepository;
-
-    private final String SUCCESS = "success";
-    private final String FAIL = "fail";
+    private final UserService userService;
 
     // 아이디 중복 체크
     @GetMapping("/id-check/{user_id}")
@@ -44,34 +38,24 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody User user) {
-        User signupUser = userRepository.save(User.builder()
-                .userId(user.getUserId())
-                .userPassword(passwordEncoder.encode(user.getUserPassword()))
-                .userNickname(user.getUserNickname())
-                .userEmail(user.getUserEmail())
-                .userStatus(UserStatus.valueOf("NEW_USER"))
-                .userRole(UserRole.valueOf("ROLE_USER"))
-                .build());
-
-        if(signupUser != null)
-            return ResponseEntity.ok().body(SUCCESS);
-        return ResponseEntity.ok().body(FAIL);
+    public ResponseEntity<String> signup(@RequestBody UserDto user) {
+        return ResponseEntity.ok().body(userService.addUser(user));
     }
 
     // 로그인
     @PostMapping("/login")
-    public String login(@RequestBody User user) {
-        User findUser = userRepository.findByUserId(user.getUserId())
-                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 사용자 입니다."));
-        if (!passwordEncoder.matches(user.getUserPassword(), findUser.getUserPassword())) {
-            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
-        }
-
-        // 토큰 return
-        return jwtTokenProvider.createToken(findUser.getUserId(), findUser.getUserStatus().toString());
+    public String login(@RequestBody UserDto user) {
+        return userService.login(user);
     }
 
+    // 신규회원 체크
+    @GetMapping("/user/status/{user_id}")
+    public String userStatusDetails(@PathVariable String user_id) {
+
+        return null;
+    }
+
+    @Deprecated
     @GetMapping("/test")
     public String testSecurity() {
         return "test";
