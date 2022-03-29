@@ -7,8 +7,8 @@ import lombok.Setter;
 public class SurveyDto {
     private Long userNo;
     private Long beerNo;
-    private Double reviewTaste;
-    private Double reviewAroma;
-    private Integer reviewRank;
-    private String reviewContent;
+    private Double taste;
+    private Double aroma;
+    private Integer rank;
+    private String content;
 }

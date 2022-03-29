@@ -1,11 +1,13 @@
 package com.bigdata.buur.user.controller;
 
+import com.bigdata.buur.user.dto.SafeUserDto;
 import com.bigdata.buur.user.dto.SurveyDto;
 import com.bigdata.buur.user.dto.UserDto;
 import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -62,20 +64,48 @@ public class UserController {
     }
 
     // 신규회원 체크
-    @GetMapping("/user/status/{user_id}")
-    public ResponseEntity<String> userStatusDetails(@PathVariable String user_id) {
-
-        if(user_id == null) return ResponseEntity.ok().body(FAIL);
-
-        return ResponseEntity.ok().body(userService.findUserStatus(user_id));
+    @GetMapping("/status")
+    public ResponseEntity<String> userStatusDetails() {
+        return ResponseEntity.ok().body(userService.findUserStatus());
     }
-
-    @PostMapping("/user/survey")
+    
+    // 설문조사 결과 저장
+    @PostMapping("/survey")
     public ResponseEntity<String> surveyAdd(@RequestBody List<SurveyDto> surveyDtoList) {
 
-//        if (surveyDtoList.isEmpty() || userService.) return ResponseEntity.ok().body(FAIL);
+        if (surveyDtoList.isEmpty() || userService.surveyAdd(surveyDtoList).isEmpty()) return ResponseEntity.ok().body(FAIL);
 
         return ResponseEntity.ok().body(SUCCESS);
+    }
+
+    @GetMapping("/info")
+    public ResponseEntity<SafeUserDto> userInfoDetail() {
+
+        try {
+            return ResponseEntity.ok().body(userService.findUserInfo());
+        } catch (Exception e) {
+            System.out.println("정보 가져오기 실패");
+            return ResponseEntity.ok().body(null);
+
+        }
+
+
+    }
+
+    @PutMapping("/profile")
+    public ResponseEntity<String> modifyProfile(@RequestPart MultipartFile userProfile) {
+        try {
+            userService.modifyUserProfile(userProfile);
+
+        } catch (Exception e) {
+            ResponseEntity.ok().body(FAIL);
+        }
+        return ResponseEntity.ok().body(SUCCESS);
+    }
+
+    @PutMapping("/password")
+    public ResponseEntity<String> modifyPassword(@RequestBody String password) {
+        return ResponseEntity.ok().body(userService.modifyPassword(password));
     }
 
     @Deprecated
