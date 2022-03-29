@@ -1,1 +1,1 @@
-export const ADD_ARTICLE = "ADD_ARTICLE";
+export const USER_SIGN_UP_RESULT = "USER_LOGIN_RESULT";
