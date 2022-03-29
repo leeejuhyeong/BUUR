@@ -1,5 +1,6 @@
 package com.bigdata.buur.search.repository;
 
+import com.bigdata.buur.entity.Beer;
 import com.bigdata.buur.entity.SearchHistory;
 import com.bigdata.buur.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +12,5 @@ import java.util.List;
 public interface SearchRepository extends JpaRepository<SearchHistory, Long> {
 
     List<SearchHistory> findTop5ByUserOrderByIdDesc(User user);
-    //findTop5ByOrderBySearchNoDesc
+    List<SearchHistory> findAllByKeyword(String keyword);
 }
