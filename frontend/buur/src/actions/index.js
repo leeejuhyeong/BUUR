@@ -1,6 +1,8 @@
 import fetch from "isomorphic-fetch";
 import { USER_SIGN_UP_RESULT } from "./action-types";
+import { ADD_BASKET } from "./action-types";
 
+// user
 export const userSignUp = (signUpInfo) => {
   return (dispatch) => {
     fetch("http://localhost:3002/users/signUp", {
@@ -24,3 +26,10 @@ export const userSignUpResult = (result) => {
     result,
   };
 };
+
+
+// basket
+export const addBasket = basket => ({ 
+  type: ADD_BASKET,
+  payload: basket
+});

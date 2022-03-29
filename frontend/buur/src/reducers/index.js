@@ -1,17 +1,27 @@
 import * as type from "../actions/action-types";
 
-const userStates = {
+const initialState = {
+  // user
   users: [],
   signUpResult: null,
+
+
+  // basket
+  basket: []
 };
 
-const userReducer = (state = userStates, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case type.USER_SIGN_UP_RESULT:
-      return { ...state, signUpResult: action.result };
     default:
       return state;
+    // user
+    case type.USER_SIGN_UP_RESULT:
+      return { ...state, signUpResult: action.result };
+
+    // basket
+    case type.ADD_BASKET:
+      return { ...state, basket: [...state.basket, action.data]};
   }
 };
 
-export default userReducer;
+export default rootReducer;
