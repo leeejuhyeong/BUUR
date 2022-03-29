@@ -6,20 +6,22 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter @ToString
 public class DrinkBeer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long recordNo;
+    @Column(name = "record_id")
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "beer_no")
+    @JoinColumn(name = "beer_id")
     private Beer beer;
 
     @ManyToOne
-    @JoinColumn(name = "user_no")
+    @JoinColumn(name = "id")
     private User user;
 
     private LocalDate recordDt;

@@ -5,29 +5,30 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 public class Review {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewNo;
+    @Column(name = "review_id")
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name="user_no")
+    @JoinColumn(name="id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="beer_no")
+    @JoinColumn(name="beer_id")
     private Beer beer;
 
-    private Double reviewTaste;
+    private Double taste;
 
-    private Double reviewAroma;
+    private Double aroma;
 
-    private Integer reviewRank;
+    private Integer totalScore;
 
     @Lob
-    private String reviewContent;
+    private String content;
 }
