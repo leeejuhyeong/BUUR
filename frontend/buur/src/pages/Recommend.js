@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import BeerHeader from "../components/Beer/BeerHeader";
 import BeerItem from "../components/Beer/BeerItem";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import '../styles/beerRecommend.css'
+import '../styles/beerrecommend.css'
 
 class Recommend extends React.Component {
   render () {
