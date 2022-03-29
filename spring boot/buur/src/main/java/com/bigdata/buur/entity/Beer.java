@@ -13,23 +13,24 @@ import javax.persistence.*;
 public class Beer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long beerNo;
+    @Column(name = "beer_id")
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     private BeerCategory beerCategory;
 
-    private String beerName;
+    private String name;
 
-    private String beerEngName;
+    private String engName;
 
-    private Double beerAbv;
+    private Double abv;
 
-    private String beerOrigin;
+    private String origin;
 
-    private String beerFood;
+    private String food;
 
-    private String beerImage;
+    private String image;
 
-    private Double beerIbu;
+    private Double ibu;
 
 }

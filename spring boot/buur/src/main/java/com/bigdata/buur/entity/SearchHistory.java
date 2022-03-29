@@ -5,19 +5,20 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SearchHistory {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long searchNo;
+    @Column(name = "search_id")
+    private Long id;
 
     private String keyword;
 
     @ManyToOne
-    @JoinColumn(name = "user_no")
+    @JoinColumn(name = "id")
     private User user;
 
 

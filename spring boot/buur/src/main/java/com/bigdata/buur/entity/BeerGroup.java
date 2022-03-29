@@ -5,15 +5,18 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Builder
 @NoArgsConstructor
-@Getter @Setter @ToString
+@AllArgsConstructor
 public class BeerGroup {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long groupNo;
+    @Column(name = "group_id")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_no")
+    @JoinColumn(name = "id")
     private User user;
 
 
