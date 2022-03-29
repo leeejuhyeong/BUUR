@@ -11,7 +11,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import BeerDetailsSimilar from "../../components/Beer/BeerDetailsSimilar";
 import '../../styles/beerdetails.css';
 
-
 const BeerDetails = () => {
   const location = useLocation();
   const beerInfo = location.state.beerInfo;
