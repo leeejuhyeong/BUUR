@@ -1,0 +1,72 @@
+/* beerlist page */
+.beerlist {
+  height: 100%;
+  width: 100%;
+}
+
+.beerlist header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  background-color: #FAFAFA;
+  box-shadow: 0 10px 40px rgba(159, 162, 177, .2);
+}
+
+.beerlist header > p{
+  font-weight: 800;
+}
+
+.beerlist header > div{
+  width: 30px;
+}
+
+.beerlist header button {
+  border: none;
+  background-color: transparent;
+}
+
+.beerlist .beerlist-body {
+  position: absolute;
+  top: 53px;
+  overflow-y: scroll;
+  background-color: #FAFAFA;
+  padding: 16px 16px;
+  height: 587px;
+}
+
+
+.beeritem {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+
+}
+
+.beeritem .like-status {
+  display: flex;
+  justify-content: space-between;
+}
+
+.beeritem .like-status > div {
+  width: 15px;
+}
+
+
+.beeritem .like-status > img {
+  margin-top: 10px;
+  height: 60px;
+}
+
+.beeritem > p {
+  font-size: 9px;
+  font-weight: bold;
+  margin: 2px 0;
+  text-align: center;
+}
