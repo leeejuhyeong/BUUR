@@ -1,0 +1,15 @@
+.beerheader {
+    height: 53px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.03);
+}
+
+.beerheader > div{
+    width: 65px;
+}
+
+.beerheader > img{
+    margin-right: 10px;
+}
