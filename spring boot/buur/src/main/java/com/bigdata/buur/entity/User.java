@@ -42,9 +42,11 @@ public class User implements UserDetails{
     private UserRole userRole;
 
     @OneToMany(mappedBy = "user")
+    @Builder.Default
     private List<BeerGroup> groupsList = new ArrayList<BeerGroup>();
 
     @OneToMany(mappedBy = "user")
+    @Builder.Default
     private List<Likes> likesList = new ArrayList<Likes>();
 
     @Override

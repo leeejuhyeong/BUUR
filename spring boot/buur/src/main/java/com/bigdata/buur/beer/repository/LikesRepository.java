@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface LikesRepository {
-    Set<Long> findBeerNoByUserId(Long userNo);
+    Set<Long> findBeerIdByUserId(Long id);
 }

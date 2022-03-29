@@ -4,14 +4,17 @@ import com.bigdata.buur.beer.repository.BeerRepository;
 import com.bigdata.buur.beer.dto.BeerDto;
 import com.bigdata.buur.entity.Beer;
 import com.bigdata.buur.beer.repository.LikesRepository;
+import com.bigdata.buur.enums.BeerCategory;
 import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,13 +27,11 @@ public class BeerServiceImpl implements BeerService {
     @Override
     @Transactional
     public List<BeerDto.LikeBeer> findBeerList(String type, int offset) {
-        Long user_no = userService.currentUser();
-
-        // user_no가 좋아요한 맥주 가져오기
-        Set<Long> beerLikesSet = likesRepository.findBeerNoByUserId(user_no);
+        Long user_id = userService.currentUser();
 
         List<BeerDto.LikeBeer> likeBeerList = new ArrayList<>();
-        List<Beer> beerList = beerRepository.findAllByTypeAndOffset(type, offset);
+        Set<Long> beerLikesSet = likesRepository.findBeerIdByUserId(user_id);
+        List<Beer> beerList = beerRepository.findAllByTypeAndOffset(BeerCategory.valueOf(type), offset);
 
         for (Beer beer : beerList) {
             likeBeerList.add(BeerDto.LikeBeer.builder()
