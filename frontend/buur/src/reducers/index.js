@@ -1,9 +1,17 @@
-// state, action 파라미터를 받는다
+import * as type from "../actions/action-types";
 
-const initialState = {
-  articles: []
+const userStates = {
+  users: [],
+  signUpResult: null,
 };
 
-const rootReducer = (state = initialState, action) => state;
+const userReducer = (state = userStates, action) => {
+  switch (action.type) {
+    case type.USER_SIGN_UP_RESULT:
+      return { ...state, signUpResult: action.result };
+    default:
+      return state;
+  }
+};
 
-export default rootReducer;
+export default userReducer;
