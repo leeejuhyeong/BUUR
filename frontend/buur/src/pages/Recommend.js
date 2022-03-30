@@ -37,9 +37,8 @@ class Recommend extends React.Component {
         </div>
         <div className="most-favorite-list">
           {beerList.map(( beer , index) => ( 
-            <div className="most-favorite-item">
+            <div key={index} className="most-favorite-item">
               <BeerItem
-              key={index}
               beer={beer}
               />
               <div className="favorite-item-index">{index+1}</div>
@@ -51,9 +50,8 @@ class Recommend extends React.Component {
         </div>
         <div className="recommend-beer-list">
           {beerList.map(( beer , index) => ( 
-            <div className="recommend-beer-item">
+            <div key={index} className="recommend-beer-item">
               <BeerItem
-              key={index}
               beer={beer}
               />
               <div className="recommend-beer-index">{index+1}</div>

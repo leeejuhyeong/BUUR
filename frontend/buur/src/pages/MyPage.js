@@ -3,7 +3,7 @@ import React from "react";
 class MyPage extends React.Component {
   render () {
     return (
-      <h1>MyPage</h1>
+      <h1>마이 페이지</h1>
     )
   }
 }

@@ -6,17 +6,18 @@
     margin-top: 10px;
     padding-top: 3px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: flex-end;
 }
 
-.search-bar-div > h5 {
+.search-bar-div > button {
     color: #E9B940;
-    margin-left: 3%;
+    border-color: #FFFFFF;
 }
 
 .search-bar input:focus{
     box-shadow: 0px 0px 5px #E9B940;
+    outline: none;
 }
 
 .search-bar {
@@ -36,4 +37,55 @@
     position: absolute;
     top: 10px;
     left: 8px;
+}
+
+.search-result-page{
+    padding-top: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.search-beer-item{
+    margin-bottom: 10px;
+    margin-right: 6px;
+}
+
+.history-container {
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 10px;
+}
+
+.history-title {
+    color: #787878;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.history-content {
+    font-weight: 400;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.history-delete-btn {
+    color: #A0A0A0;
+    border: 1px solid #A0A0A0;
+    padding: 2px 5px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+}
+
+.history-delete-btn:hover {
+    cursor: pointer;
+}
+
+.no-result-word{
+    padding-left: 80px;
+    padding-top: 10px;
+    color: #454545;
+    font-weight: 500;
+    font-size: 12px;
 }
