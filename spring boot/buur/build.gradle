@@ -34,10 +34,7 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 
 	// swagger
-	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
-	implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.6.2'
-	implementation group: 'io.swagger', name: 'swagger-models', version: '1.6.2'
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 
 	// mail
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
