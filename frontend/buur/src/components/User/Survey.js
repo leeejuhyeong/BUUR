@@ -2,32 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Heineken from "../../assets/Heineken.png";
 import BlankBeer from "../../assets/BlankBeer.png";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import BeerItem from "../../components/Beer/BeerItem";
 
 const Container = styled.div``;
 
-const LeftBox = styled.div`
-  position: absolute;
-  width: 153px;
-  height: 75px;
-  left: 18px;
-  top: 245px;
-
-  background: #ffffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-`;
-
-const RightBox = styled.div`
-  position: absolute;
-  width: 153px;
-  height: 75px;
-  left: 188px;
-  top: 245px;
-
-  background: #ffffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-`;
 const Title = styled.div`
   position: absolute;
   width: 192px;
@@ -103,6 +83,23 @@ const Blank3 = styled.div`
   background: url(${BlankBeer});
   background-size: cover;
 `;
+const BeerlistBody = styled.div`
+  position: absolute;
+  top: 245px;
+  overflow-y: scroll;
+  padding: 16px 16px;
+  height: 587px;
+`;
+const beerList = [
+  { name: "호가든", id: "a", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+  { name: "서머스비", id: "b", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+  { name: "서머스비", id: "c", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+  { name: "서머스비", id: "d", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+  { name: "서머스비", id: "e", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+  { name: "서머스비", id: "f", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+  { name: "곰표", id: "g", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+  { name: "서머스비", id: "h", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+];
 function Survey() {
   return (
     <Container>
@@ -112,8 +109,17 @@ function Survey() {
       <Blank1></Blank1>
       <Blank2></Blank2>
       <Blank3></Blank3>
-      <LeftBox></LeftBox>
-      <RightBox></RightBox>
+      <BeerlistBody>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={{ xs: 2 }}>
+            {beerList.map((beer, index) => (
+              <Grid item xs={6} sm={2} key={index}>
+                <BeerItem beer={beer} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </BeerlistBody>
     </Container>
   );
 }
