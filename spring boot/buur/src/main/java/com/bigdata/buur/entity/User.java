@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -48,6 +49,18 @@ public class User implements UserDetails{
     @OneToMany(mappedBy = "user")
     @Builder.Default
     private List<Likes> likesList = new ArrayList<Likes>();
+
+    @PrePersist
+    public void profile() {
+        this.profile = File.separator + "home" +
+                File.separator + "ubuntu" +
+                File.separator + "beer" +
+                File.separator + "image" +
+                File.separator + "profile"  +
+                File.separator + "images" +
+                File.separator + "profiles" +
+                File.separator + "default.png";
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
