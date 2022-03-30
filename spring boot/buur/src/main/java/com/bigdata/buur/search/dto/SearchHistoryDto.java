@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class SearchHistoryDto {
 
+    private Long searchId;
     private String keyword;
     private Long userNo;
 
