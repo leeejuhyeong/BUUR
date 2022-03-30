@@ -40,7 +40,7 @@ public class BeerController {
                 e.printStackTrace();
             }
         }
-        return ResponseEntity.ok(beerService.findBeerList(type, offset));
+        return ResponseEntity.ok(likeBeerList);
     }
 
     @GetMapping("/info/{beer_id}")
@@ -52,7 +52,10 @@ public class BeerController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ResponseEntity.ok(beerService.findBeer(id));
+        return ResponseEntity.ok(details);
     }
+
+//    @PostMapping("/like/{beer_id}")
+//    public ResponseEntity<String> likesAdd(@PathVariable("beer_id") Long )
 
 }

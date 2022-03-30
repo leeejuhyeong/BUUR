@@ -36,7 +36,6 @@ public class BeerDto {
         private Double abv;
         private String origin;
         private String food;
-        private String image;
         private Double ibu;
         private boolean like;
         private String imagePath;
