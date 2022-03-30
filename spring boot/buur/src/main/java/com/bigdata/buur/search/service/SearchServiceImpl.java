@@ -84,11 +84,11 @@ public class SearchServiceImpl implements SearchService {
         return FAIL;
     }
 
-    @Override
-    public List<BeerDto> findSearchBeerList(String beer_name) {
-
-
-
-        return null;
-    }
+//    @Override
+//    public List<BeerDto> findSearchBeerList(String beer_name) {
+//
+//
+//
+//        return null;
+//    }
 }

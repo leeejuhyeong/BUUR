@@ -25,6 +25,4 @@ public class DrinkBeer {
     private User user;
 
     private LocalDate recordDt;
-
-
 }
