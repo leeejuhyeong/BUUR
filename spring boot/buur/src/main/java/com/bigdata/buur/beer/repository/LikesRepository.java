@@ -11,7 +11,7 @@ public interface LikesRepository {
     // 맥주 좋아요 조회
     List<Likes> findByUserAndBeer(User user, Beer beer);
     // 맥주 좋아요 생성
-    void insertLikes(Likes likes);
+    void saveLikes(Likes likes);
     // 맥주 좋아요 삭제
     void deleteLikes(Likes likes);
     // 좋아요 맥주 조회

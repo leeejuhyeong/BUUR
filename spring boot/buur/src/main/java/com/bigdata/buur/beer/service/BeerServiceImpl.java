@@ -88,7 +88,7 @@ public class BeerServiceImpl implements BeerService {
     public void addLikes(Long id) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
         Beer beer = beerRepository.findById(id);
-        likesRepository.insertLikes(Likes.builder()
+        likesRepository.saveLikes(Likes.builder()
                 .user(user)
                 .beer(beer)
                 .build());

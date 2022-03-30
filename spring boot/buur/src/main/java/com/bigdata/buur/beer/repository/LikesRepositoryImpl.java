@@ -28,7 +28,7 @@ public class LikesRepositoryImpl implements LikesRepository {
 
     @Transactional
     @Override
-    public void insertLikes(Likes likes) {
+    public void saveLikes(Likes likes) {
         em.persist(likes);
     }
 
