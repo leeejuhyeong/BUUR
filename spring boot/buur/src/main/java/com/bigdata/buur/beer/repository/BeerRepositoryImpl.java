@@ -22,4 +22,19 @@ public class BeerRepositoryImpl implements BeerRepository {
                 .setMaxResults(12)
                 .getResultList();
     }
+
+    @Override
+    public List<Beer> findAllByOffset(int offset) {
+        return em.createQuery("select b from Beer b order by b.id", Beer.class)
+                .setFirstResult(offset)
+                .setMaxResults(12)
+                .getResultList();
+    }
+
+    @Override
+    public Beer findById(Long id) {
+        return em.createQuery("select b from Beer b where b.id = :id", Beer.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
 }
