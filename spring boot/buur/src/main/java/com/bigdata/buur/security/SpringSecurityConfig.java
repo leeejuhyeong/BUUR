@@ -20,7 +20,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // 모두가 접근할 수 있는 URL 입력
     private final String[] NO_ROLE_URLS = {"/api-v1/user/signup",
+<<<<<<< HEAD
             "/api-v1/user/id-check/**", "/api-v1/user/name-check/**", "/api-v1/user/login", "/api-v1/user/findpassword/**"};
+=======
+            "/api-v1/user/id-check/", "/api-v1/user/name-check/", "/api-v1/user/login", "/api-v1/user/findpassword", "/swagger-ui/index.html"};
+>>>>>>> develop
 
     // 암호화에 필요한 PasswordEncoder 를 Bean 등록
     @Bean
