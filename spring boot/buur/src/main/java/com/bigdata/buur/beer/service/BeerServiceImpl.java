@@ -5,7 +5,9 @@ import com.bigdata.buur.beer.dto.BeerDto;
 import com.bigdata.buur.entity.Beer;
 import com.bigdata.buur.beer.repository.LikesRepository;
 import com.bigdata.buur.entity.Likes;
+import com.bigdata.buur.entity.User;
 import com.bigdata.buur.enums.BeerCategory;
+import com.bigdata.buur.user.repository.UserRepository;
 import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.relational.core.sql.Like;
@@ -25,15 +27,16 @@ public class BeerServiceImpl implements BeerService {
 
     private final BeerRepository beerRepository;
     private final LikesRepository likesRepository;
+    private final UserRepository userRepository;
     private final UserService userService;
 
     @Override
     @Transactional
     public List<BeerDto.LikeBeer> findBeerList(String type, int offset) {
-        Long user_id = userService.currentUser();
+        User user = userRepository.findById(userService.currentUser()).orElse(null);
 
         List<BeerDto.LikeBeer> likeBeerList = new ArrayList<>();
-        Set<Long> beerLikesSet = likesRepository.findBeerIdByUserId(user_id);
+        Set<Beer> beerLikesSet = new HashSet<>(likesRepository.findBeerByUser(user));
 
         List<Beer> beerList;
         if(type.equals("ALL")) {
@@ -47,7 +50,7 @@ public class BeerServiceImpl implements BeerService {
                     .beerNo(beer.getId())
                     .beerName(beer.getName())
                     .imagePath(beer.getImage())
-                    .like(beerLikesSet.contains(beer.getId()))
+                    .like(beerLikesSet.contains(beer))
                     .build());
         }
 
@@ -58,10 +61,11 @@ public class BeerServiceImpl implements BeerService {
     @Transactional
     public BeerDto.Details findBeer(Long id) {
         Long user_id = userService.currentUser();
-
-        List<Likes> likesList = likesRepository.findByUserIdAndBeerId(user_id, id);
-
+        User user = userRepository.findById(userService.currentUser()).orElse(null);
         Beer beer = beerRepository.findById(id);
+
+        List<Likes> likesList = likesRepository.findByUserAndBeer(user, beer);
+
         BeerDto.Details details = BeerDto.Details.builder()
                 .beerNo(beer.getId())
                 .name(beer.getName())
@@ -78,5 +82,38 @@ public class BeerServiceImpl implements BeerService {
         }
 
         return details;
+    }
+
+    @Override
+    public void addLikes(Long id) {
+        User user = userRepository.findById(userService.currentUser()).orElse(null);
+        Beer beer = beerRepository.findById(id);
+        likesRepository.insertLikes(Likes.builder()
+                .user(user)
+                .beer(beer)
+                .build());
+    }
+
+    @Override
+    public void removeLikes(Long id) {
+        User user = userRepository.findById(userService.currentUser()).orElse(null);
+        Beer beer = beerRepository.findById(id);
+        List<Likes> findLikes = likesRepository.findByUserAndBeer(user, beer);
+        likesRepository.deleteLikes(findLikes.get(0));
+    }
+
+    @Override
+    public List<BeerDto.LikeBeer> findLikeBeerList() {
+        User user = userRepository.findById(userService.currentUser()).orElse(null);
+        List<Beer> likeBeerList = likesRepository.findBeerByUser(user);
+        List<BeerDto.LikeBeer> likeBeerDtoList = new ArrayList<>();
+        for (Beer beer : likeBeerList) {
+            likeBeerDtoList.add(BeerDto.LikeBeer.builder()
+                    .beerNo(beer.getId())
+                    .beerName(beer.getName())
+                    .like(true)
+                    .build());
+        }
+        return likeBeerDtoList;
     }
 }
