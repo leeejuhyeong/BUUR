@@ -1,6 +1,7 @@
 package com.bigdata.buur.entity;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,7 +23,7 @@ public class Review {
     @JoinColumn(name="id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="beer_id")
     private Beer beer;
 
