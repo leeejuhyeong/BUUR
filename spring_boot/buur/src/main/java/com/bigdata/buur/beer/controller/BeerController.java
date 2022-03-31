@@ -2,7 +2,6 @@ package com.bigdata.buur.beer.controller;
 
 import com.bigdata.buur.beer.dto.BeerDto;
 import com.bigdata.buur.beer.service.BeerService;
-import com.bigdata.buur.recommend.service.RecommendService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,6 @@ import java.util.List;
 public class BeerController {
 
     private final BeerService beerService;
-    private final RecommendService recommendService;
 
     private final String SUCCESS = "success";
     private final String FAIL = "fail";
