@@ -32,7 +32,7 @@ public class ReviewServiceImpl implements ReviewService{
         List<ReviewResDto> reviews = new ArrayList<ReviewResDto>();
         List<Review> slicedReviews;
 
-        slicedReviews = reviewRepository.findTop10ByBeerAndReviewDtAfterOrderByReviewDtDesc(beer, cursor);
+        slicedReviews = reviewRepository.findTop10ByBeerAndReviewDtBeforeOrderByReviewDtDesc(beer, cursor);
 
         for (Review review : slicedReviews) {
             reviews.add(ReviewResDto

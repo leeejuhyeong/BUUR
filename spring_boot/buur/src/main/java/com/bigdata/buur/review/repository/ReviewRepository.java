@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
-    List<Review> findTop10ByBeerAndReviewDtAfterOrderByReviewDtDesc(Beer beer, LocalDateTime reviewDt);
+    List<Review> findTop10ByBeerAndReviewDtBeforeOrderByReviewDtDesc(Beer beer, LocalDateTime reviewDt);
 
 
 }
