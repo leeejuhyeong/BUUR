@@ -25,7 +25,7 @@ public class RefrigeratorController {
 
     @ApiOperation(value = "맥주 조합 저장")
     @PostMapping()
-    public ResponseEntity<String> refrigeratorAdd(@RequestBody List<BasketDto> basketDtoList) {
+    public ResponseEntity<String> refrigeratorAdd(@RequestBody @ApiParam(value = "맥주 조합 정보") List<BasketDto> basketDtoList) {
         return ResponseEntity.ok().body(refrigeratorService.addRefrigerator(basketDtoList));
     }
 

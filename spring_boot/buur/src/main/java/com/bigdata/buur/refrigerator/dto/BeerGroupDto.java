@@ -1,5 +1,6 @@
 package com.bigdata.buur.refrigerator.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
@@ -8,6 +9,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel
 public class BeerGroupDto {
 
     @ApiModelProperty("맥주 그룹 번호")

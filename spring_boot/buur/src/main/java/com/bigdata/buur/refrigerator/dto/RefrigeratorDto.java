@@ -1,5 +1,6 @@
 package com.bigdata.buur.refrigerator.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import org.apache.commons.io.IOUtils;
@@ -13,6 +14,7 @@ import java.io.InputStream;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel
 public class RefrigeratorDto {
 
     @ApiModelProperty("사용자 번호")
