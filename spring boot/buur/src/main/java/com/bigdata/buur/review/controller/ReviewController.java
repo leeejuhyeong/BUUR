@@ -3,6 +3,8 @@ package com.bigdata.buur.review.controller;
 import com.bigdata.buur.review.dto.ReviewDto;
 import com.bigdata.buur.review.dto.ReviewResDto;
 import com.bigdata.buur.review.service.ReviewService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -20,14 +22,18 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
+    // 맥주 리스트를 10개씩 가져오기
+    @ApiOperation(value = "맥주 리스트 10개씩 가져오기")
     @GetMapping("/{beer_id}/{cursor}")
-    public ResponseEntity<List<ReviewResDto>> getReviewList(@PathVariable Long beer_id,
-                                                            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime cursor){
+    public ResponseEntity<List<ReviewResDto>> getReviewList(@PathVariable @ApiParam(value = "리뷰를 가져올 맥주 번호") Long beer_id,
+                                                            @PathVariable @ApiParam(value = "가져올 리뷰의 시간 기준값 (없을 시 현재 시간을 넣어야 함.)")
+                                                            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime cursor){
         return ResponseEntity.ok().body(reviewService.findReviews(beer_id, cursor));
     }
 
+    @ApiOperation(value = "리뷰 저장")
     @PostMapping()
-    public ResponseEntity<?> reviewAdd(@RequestBody ReviewDto reviewDto) {
+    public ResponseEntity<?> reviewAdd(@RequestBody @ApiParam(value = "저장할 리뷰 정보") ReviewDto reviewDto) {
 
         if (reviewService.addReview(reviewDto))
             return ResponseEntity.ok().body(null);
@@ -35,8 +41,9 @@ public class ReviewController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("데이터를 저장하지 못했습니다.");
     }
 
+    @ApiOperation(value = "리뷰 삭제")
     @DeleteMapping("/{review_id}")
-    public ResponseEntity<?> reviewRemove(@PathVariable Long review_id) {
+    public ResponseEntity<?> reviewRemove(@PathVariable @ApiParam(value = "삭제할 리뷰 번호") Long review_id) {
 
         if(reviewService.removeReview(review_id))
             return ResponseEntity.ok().body(null);
