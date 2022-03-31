@@ -15,11 +15,11 @@ public class Basket {
     @Column(name = "basket_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="beer_id")
     private Beer beer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
     private BeerGroup beerGroup;
 
