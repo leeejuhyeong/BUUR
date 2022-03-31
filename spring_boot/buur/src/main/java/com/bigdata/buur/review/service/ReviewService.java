@@ -11,7 +11,7 @@ import java.util.List;
 public interface ReviewService {
 
     public List<ReviewResDto> findReviews(Long beerId, LocalDateTime cursor);
-    public boolean addReview(ReviewDto reviewDto);
-    public boolean removeReview(Long reviewId);
+    public void addReview(ReviewDto reviewDto);
+    public void removeReview(Long reviewId);
 
 }
