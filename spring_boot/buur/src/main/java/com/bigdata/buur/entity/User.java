@@ -52,14 +52,8 @@ public class User implements UserDetails{
 
     @PrePersist
     public void profile() {
-        this.profile = File.separator + "home" +
-                File.separator + "ubuntu" +
-                File.separator + "beer" +
-                File.separator + "image" +
-                File.separator + "profile"  +
-                File.separator + "images" +
-                File.separator + "profiles" +
-                File.separator + "default.png";
+        this.profile = "/home/ubuntu/beer/image/profile/images/profiles/default.png"
+                .replaceAll("/", File.separator);
     }
 
     @Override
