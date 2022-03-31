@@ -40,6 +40,7 @@ function BeerList({ history, location }) {
           </Grid>
         </Box>
       </div>
+      
     </div>
 
   )

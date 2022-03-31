@@ -8,6 +8,8 @@ import MyPage from "./pages/MyPage";
 import BeerList from "./pages/Beer/BeerList";
 import BeerDetails from "./pages/Beer/BeerDetails";
 import BeerReviews from "./pages/Beer/BeerReviews";
+import Basket from "./pages/Basket/Basket";
+import BasketCombine from "./pages/Basket/BasketCombine";
 import Nav from "./components/Nav";
 import "./styles/common/App.css";
 
@@ -28,12 +30,16 @@ const BaseRouter = withRouter(({ location }) => {
         <Route path="/main/beerlist" exact={true} component={BeerList} />
         <Route path="/main/beerlist/beerdetails" exact={true} component={BeerDetails} />
         <Route path="/main/beerlist/beerdetails/reviews" component={BeerReviews} />
+        <Route path="/main/basket" exact={true} component={Basket} />
+        <Route path="/main/basket/combine" exact={true} component={BasketCombine} />
 
         {/* 예외처리 */}
         {location.pathname !== "/" &&
           location.pathname !== "/main/beerlist" &&
           location.pathname !== "/main/beerlist/beerdetails" &&
           location.pathname !== "/main/beerlist/beerdetails/reviews" &&
+          location.pathname !== "/main/basket" &&
+          location.pathname !== "/main/basket/combine" &&
           location.pathname !== "/SurveyInitialScreen" &&
           location.pathname !== "/Survey" && <Nav />}
 
