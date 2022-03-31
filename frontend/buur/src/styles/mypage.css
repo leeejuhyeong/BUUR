@@ -1,0 +1,49 @@
+.my-page-header{
+    height: 53px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.03);
+}
+
+/* .my-page{
+    background-size: cover;
+    background-color: #C5C5C5;
+} */
+
+.mypage .user-info-div {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.mypage .macbti-div {
+    background-color: #CD8C6A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 80px;
+    font-weight: 550;
+}
+
+.mypage .mypage-el-div {
+    display: flex;
+    align-items: center;
+    height: 58px;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid #F5F5F5;
+}
+
+.mypage .logout-div{
+    display: flex;
+    align-items: center;
+    height: 58px;
+    padding-left: 15px;
+    margin-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #F5F5F5;
+}
