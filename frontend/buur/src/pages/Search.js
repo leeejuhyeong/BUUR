@@ -52,7 +52,7 @@ function Search() {
       setRelatedWords([])
     }
 
-    function enterkey(searchTerm) {
+    function enterKey(searchTerm) {
       if (window.event.keyCode === 13 && searchTerm.trim()) {
         searchBeer(searchTerm)
       }
@@ -73,7 +73,7 @@ function Search() {
       console.log(searchHistory)
     }
 
-    function handlechange(value) {
+    function handleChange(value) {
       setSearchTerm(value)
       if (timer) {
         console.log('clear timer')
@@ -101,8 +101,8 @@ function Search() {
             <input type="text" placeholder="맥주를 검색하세요" className="search-input" 
             value={searchTerm}
             onClick={()=> showHistory()}
-            onChange={(e) => [setHistory(false), handlechange(e.target.value)]}
-            onKeyDown={() =>  enterkey(searchTerm)}
+            onChange={(e) => [setHistory(false), handleChange(e.target.value)]}
+            onKeyDown={() => enterKey(searchTerm)}
             />
             <SearchIcon sx={{ color: '#E9B940', fontSize: 22 }} className="search-icon"/>
           </div>
