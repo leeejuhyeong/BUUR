@@ -85,6 +85,7 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
+    @Transactional
     public void addLikes(Long id) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
         Beer beer = beerRepository.findById(id);
@@ -95,6 +96,7 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
+    @Transactional
     public void removeLikes(Long id) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
         Beer beer = beerRepository.findById(id);
@@ -103,6 +105,7 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
+    @Transactional
     public List<BeerDto.LikeBeer> findLikeBeerList() {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
         List<Beer> likeBeerList = likesRepository.findBeerByUser(user);
@@ -115,5 +118,24 @@ public class BeerServiceImpl implements BeerService {
                     .build());
         }
         return likeBeerDtoList;
+    }
+
+    @Override
+    @Transactional
+    public List<BeerDto.LikeBeer> findSearchBeerList(String keyword) {
+        User user = userRepository.findById(userService.currentUser()).orElse(null);
+        List<Beer> searchBeerList = beerRepository.findAllByNameContainingOrEngNameContaining(keyword);
+        Set<Beer> likeBeerSet = new HashSet<>(likesRepository.findBeerByUser(user));
+        List<BeerDto.LikeBeer> likeBeerList = new ArrayList<>();
+
+        for (Beer beer : searchBeerList) {
+            likeBeerList.add(BeerDto.LikeBeer.builder()
+                    .beerNo(beer.getId())
+                    .beerName(beer.getName())
+                    .imagePath(beer.getImage())
+                    .like(likeBeerSet.contains(beer))
+                    .build());
+        }
+        return likeBeerList;
     }
 }

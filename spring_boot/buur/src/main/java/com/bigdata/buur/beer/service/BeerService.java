@@ -16,4 +16,6 @@ public interface BeerService {
     void removeLikes(Long id);
     // 좋아요한 맥주 조회
     List<BeerDto.LikeBeer> findLikeBeerList();
+    // 맥주 자동완성 검색
+    List<BeerDto.LikeBeer> findSearchBeerList(String keyword);
 }
