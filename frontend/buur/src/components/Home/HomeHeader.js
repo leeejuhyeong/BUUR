@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/BUURLogo_sm.png"
-import bag from "../../assets/bag.png"
+import BasketBadge from "../Basket/BasketBadge"
 
 class HomeHeader extends React.Component {
   render () {
@@ -8,7 +9,9 @@ class HomeHeader extends React.Component {
       <div className="homeheader">
       <div></div>
       <img src={logo} alt="logo"/>
-      <img src={bag} alt="bag"/>
+      <Link to="main/basket">
+        <BasketBadge />
+      </Link>
       </div>
     )
   }
