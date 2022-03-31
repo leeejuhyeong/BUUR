@@ -16,7 +16,7 @@ public class DrinkBeer {
     @Column(name = "record_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "beer_id")
     private Beer beer;
 
