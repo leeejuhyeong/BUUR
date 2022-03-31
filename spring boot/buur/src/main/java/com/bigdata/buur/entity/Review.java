@@ -1,8 +1,12 @@
 package com.bigdata.buur.entity;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Getter
@@ -19,7 +23,7 @@ public class Review {
     @JoinColumn(name="id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="beer_id")
     private Beer beer;
 
@@ -27,8 +31,18 @@ public class Review {
 
     private Double aroma;
 
+    private LocalDateTime reviewDt;
+
     private Integer totalScore;
 
     @Lob
     private String content;
+
+    @PrePersist
+    public void reviewDt(){
+        this.reviewDt = LocalDateTime
+                .now(ZoneId.of("Asia/Seoul"));
+
+    }
+
 }
