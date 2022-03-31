@@ -4,7 +4,7 @@ import Login from "./components/User/Login";
 import Home from "./pages/Home";
 import Recommend from "./pages/Recommend";
 import Search from "./pages/Search";
-import MyPage from "./pages/MyPage";
+import MyPage from "./pages/MyPage/MyPage";
 import BeerList from "./pages/Beer/BeerList";
 import BeerDetails from "./pages/Beer/BeerDetails";
 import BeerReviews from "./pages/Beer/BeerReviews";

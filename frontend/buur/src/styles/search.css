@@ -1,0 +1,120 @@
+.search-page .search-bar-div {
+    margin-top: 10px;
+    padding-top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.search-page .search-bar-div > button {
+    color: #E9B940;
+    border-color: #FFFFFF;
+}
+
+.search-page .search-bar input:focus{
+    box-shadow: 0px 0px 5px #E9B940;
+    outline: none;
+}
+
+.search-page .search-bar {
+    position: relative;
+}
+
+.search-page .search-input{
+    padding: 20px 33px;
+    border: 1px solid #E9B940;
+    width: 250px;
+    height: 31px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.search-page .search-icon {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+}
+
+.search-result-page{
+    padding-top: 5px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.search-result-page .search-beer-item{
+    margin-bottom: 10px;
+    margin-right: 6px;
+}
+
+.history-container {
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 10px;
+}
+
+.history-container .history-title {
+    color: #787878;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.history-container .history-content {
+    font-weight: 400;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.history-container .history-delete-btn {
+    color: #A0A0A0;
+    border: 1px solid #A0A0A0;
+    padding: 2px 5px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+}
+
+.history-delete-btn:hover {
+    cursor: pointer;
+}
+
+.no-result-word{
+    padding-left: 80px;
+    padding-top: 10px;
+    padding-right: 10px;
+    color: #454545;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.related-result-container {
+    padding-left: 46px;
+    padding-right: 65px;
+    padding-top: 10px;
+	background: white;
+}
+
+.related-result-container .related-result-content {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    margin-bottom: 5px;
+    display: flex;
+    font-size: 12px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 7px;
+    padding-left: 13px;
+}
+
+
+.related-result-content > p{
+    padding-left: 8px;
+}
+
+.related-result-content:hover {
+    background-color: #F1F1F1;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
