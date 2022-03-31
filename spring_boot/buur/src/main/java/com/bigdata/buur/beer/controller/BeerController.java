@@ -31,7 +31,7 @@ public class BeerController {
     @ApiOperation(value = "종류별 맥주 조회")
     @GetMapping("/{type}/{offset}")
     public ResponseEntity<List<BeerDto.LikeBeer>> beerList(
-            @PathVariable("type") @ApiParam(value = "맥주 종류(ALL, LAGER, ALE, BLACK_BEER, PILSENER, WHEAT_BEER, ETC") String type,
+            @PathVariable("type") @ApiParam(value = "맥주 종류(ALL, LAGER, ALE, BLACK_BEER, PILSNER, WHEAT_BEER, ETC") String type,
             @PathVariable("offset") @ApiParam(value = "오프셋, 0부터 시작") int offset) {
         List<BeerDto.LikeBeer> likeBeerList = beerService.findBeerList(type, offset);
 
