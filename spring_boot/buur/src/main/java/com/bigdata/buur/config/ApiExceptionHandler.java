@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
@@ -33,6 +33,11 @@ public class ApiExceptionHandler {
         return ResponseEntity.ok().body(responseBody);
     }
 
+    @ExceptionHandler(value = ConnectException.class)
+    public ResponseEntity<ApiException> handlerConnectException(ConnectException e) {
 
+        ApiException responseBody = new ApiException("서버와의 연결에 실패했습니다.", LocalDateTime.now());
+        return ResponseEntity.internalServerError().body(responseBody);
+    }
 
 }
