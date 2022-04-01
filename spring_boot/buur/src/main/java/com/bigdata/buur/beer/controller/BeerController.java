@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -30,32 +31,25 @@ public class BeerController {
     @GetMapping("/{type}/{offset}")
     public ResponseEntity<List<BeerDto.LikeBeer>> beerList(
             @PathVariable("type") @ApiParam(value = "맥주 종류(ALL, LAGER, ALE, BLACK_BEER, PILSNER, WHEAT_BEER, ETC") String type,
-            @PathVariable("offset") @ApiParam(value = "오프셋, 0부터 시작") int offset) {
+            @PathVariable("offset") @ApiParam(value = "오프셋, 0부터 시작") int offset) throws IOException{
         List<BeerDto.LikeBeer> likeBeerList = beerService.findBeerList(type, offset);
 
         InputStream inputStream;
         for (BeerDto.LikeBeer likeBeer : likeBeerList) {
-            try {
-                inputStream = new FileInputStream(likeBeer.getImagePath());
-                likeBeer.addImage(inputStream);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            inputStream = new FileInputStream(likeBeer.getImagePath());
+            likeBeer.setBeerImage(IOUtils.toByteArray(inputStream));
         }
         return ResponseEntity.ok().body(likeBeerList);
     }
 
     @ApiOperation(value = "맥주 상세 조회")
     @GetMapping("/info/{beer_id}")
-    public ResponseEntity<BeerDto.Details> beerDetails(@PathVariable("beer_id") @ApiParam("맥주 번호") Long id) {
+    public ResponseEntity<BeerDto.Details> beerDetails(@PathVariable("beer_id") @ApiParam("맥주 번호") Long id) throws IOException {
         BeerDto.Details details = beerService.findBeer(id);
-        try {
-            InputStream inputStream = new FileInputStream(details.getImagePath());
-            details.setBeerImage(IOUtils.toByteArray(inputStream));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        InputStream inputStream = new FileInputStream(details.getImagePath());
+        details.setBeerImage(IOUtils.toByteArray(inputStream));
         return ResponseEntity.ok().body(details);
+
     }
 
     @ApiOperation(value = "맥주 좋아요 추가")
@@ -80,16 +74,12 @@ public class BeerController {
 
     @ApiOperation(value = "맥주 검색 자동완성")
     @GetMapping("/{beer_name}")
-    public ResponseEntity<List<BeerDto.LikeBeer>> searchBeerList(@PathVariable("beer_name") @ApiParam("검색 단어") String keyword) {
+    public ResponseEntity<List<BeerDto.LikeBeer>> searchBeerList(@PathVariable("beer_name") @ApiParam("검색 단어") String keyword) throws IOException{
         List<BeerDto.LikeBeer> searchBeerList = beerService.findSearchBeerList(keyword);
 
         for (BeerDto.LikeBeer likeBeer : searchBeerList) {
-            try {
                 InputStream inputStream = new FileInputStream(likeBeer.getImagePath());
-                likeBeer.addImage(inputStream);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                likeBeer.setBeerImage(IOUtils.toByteArray(inputStream));
         }
 
         return ResponseEntity.ok().body(searchBeerList);

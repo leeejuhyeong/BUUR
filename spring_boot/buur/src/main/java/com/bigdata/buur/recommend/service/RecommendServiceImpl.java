@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
+import java.net.ConnectException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Service
@@ -26,13 +28,13 @@ public class RecommendServiceImpl implements RecommendService{
 
     @Override
     @Transactional
-    public List<RecommendDto> findRecommendBeerList() {
+    public List<RecommendDto> findRecommendBeerList() throws ConnectException {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
         uri += user.getId();
         RestTemplate restTemplate = new RestTemplate();
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(new MediaType("application", "json", StandardCharsets.UTF_8));
 
         RecommendDto[] recommendBeerArray = restTemplate.getForObject(uri, RecommendDto[].class);
         Set<Long> likeBeerList = new HashSet<>(likesRepository.findBeerIdByUser(user));
