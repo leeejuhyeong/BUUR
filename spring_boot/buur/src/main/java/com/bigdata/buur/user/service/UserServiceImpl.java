@@ -1,5 +1,6 @@
 package com.bigdata.buur.user.service;
 
+import com.bigdata.buur.customException.UserAuthExpiredException;
 import com.bigdata.buur.customException.UserNotFoundException;
 import com.bigdata.buur.customException.UserPasswordMismatchException;
 import com.bigdata.buur.entity.Beer;
@@ -164,7 +165,7 @@ public class UserServiceImpl implements UserService {
     public Long currentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if(authentication == null ) throw new UserNotFoundException();
+        if(authentication == null ) throw new UserAuthExpiredException();
 
         User user = (User) authentication.getPrincipal();
         return user.getId();
