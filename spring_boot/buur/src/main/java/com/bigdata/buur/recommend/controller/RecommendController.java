@@ -28,7 +28,7 @@ public class RecommendController {
     public ResponseEntity<List<RecommendDto>> recommendBeerList() throws IOException {
         List<RecommendDto> recommendBeerList = recommendService.findRecommendBeerList();
         for (RecommendDto recommend : recommendBeerList) {
-            InputStream inputStream = new FileInputStream(recommend.getBeer_image());
+            InputStream inputStream = new FileInputStream(recommend.getImage());
             recommend.setBeerImage(IOUtils.toByteArray(inputStream));
         }
         return ResponseEntity.ok().body(recommendBeerList);
@@ -39,7 +39,7 @@ public class RecommendController {
     public ResponseEntity<List<RecommendDto>> similarBeerList(@PathVariable("beer_id") @ApiParam("맥주 번호") Long id) throws IOException {
         List<RecommendDto> similarBeerList = recommendService.findSimilarBeerList(id);
         for (RecommendDto recommend : similarBeerList) {
-            InputStream inputStream = new FileInputStream(recommend.getBeer_image());
+            InputStream inputStream = new FileInputStream(recommend.getImage());
             recommend.setBeerImage(IOUtils.toByteArray(inputStream));
         }
         return ResponseEntity.ok().body(similarBeerList);

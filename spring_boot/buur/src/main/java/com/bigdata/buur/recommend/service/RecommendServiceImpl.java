@@ -36,17 +36,21 @@ public class RecommendServiceImpl implements RecommendService {
     @Transactional
     public List<RecommendDto> findRecommendBeerList() throws ConnectException {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
-        uri += user.getId();
+        System.out.println(user.getId());
         RestTemplate restTemplate = new RestTemplate();
 
 //        HttpHeaders headers = new HttpHeaders();
 //        headers.setContentType(new MediaType("application", "json", StandardCharsets.UTF_8));
 
-        RecommendDto[] recommendBeerArray = restTemplate.getForObject(uri, RecommendDto[].class);
+        RecommendDto[] recommendBeerArray = restTemplate.getForObject(uri + user.getId(), RecommendDto[].class);
+        for (RecommendDto recommendDto : recommendBeerArray) {
+            System.out.println(recommendDto.getName());
+            System.out.println(recommendDto.getImage());
+        }
         Set<Long> likeBeerSet = new HashSet<>(likesRepository.findBeerIdByUser(user));
 
         for (RecommendDto recommend : recommendBeerArray) {
-            recommend.setLikes(likeBeerSet.contains(recommend.getBeer_no()));
+            recommend.setLikes(likeBeerSet.contains(recommend.getBeer_id()));
         }
 
         return new ArrayList<>(Arrays.asList(recommendBeerArray));
@@ -63,9 +67,9 @@ public class RecommendServiceImpl implements RecommendService {
 
         for (SimilarBeer similarBeer : similarBeerList) {
             similarBeerDtoList.add(RecommendDto.builder()
-                    .beer_no(similarBeer.getSimilar().getId())
-                    .beer_name(similarBeer.getSimilar().getName())
-                    .beer_image(similarBeer.getSimilar().getImage())
+                    .beer_id(similarBeer.getSimilar().getId())
+                    .name(similarBeer.getSimilar().getName())
+                    .image(similarBeer.getSimilar().getImage())
                     .likes(likeBeerSet.contains(similarBeer.getSimilar()))
                     .build());
         }
