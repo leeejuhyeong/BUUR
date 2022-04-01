@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
