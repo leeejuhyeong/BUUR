@@ -5,6 +5,10 @@ import Home from "./pages/Home";
 import Recommend from "./pages/Recommend";
 import Search from "./pages/Search";
 import MyPage from "./pages/MyPage/MyPage";
+import InfoPage from "./pages/MyPage/InfoPage";
+import LikeBeerPage from "./pages/MyPage/LikeBeerPage";
+import Macbti from "./pages/MyPage/Macbti";
+import Notice from "./pages/MyPage/Notice";
 import BeerList from "./pages/Beer/BeerList";
 import BeerDetails from "./pages/Beer/BeerDetails";
 import BeerReviews from "./pages/Beer/BeerReviews";
@@ -32,6 +36,12 @@ const BaseRouter = withRouter(({ location }) => {
         <Route path="/main/beerlist/beerdetails/reviews" component={BeerReviews} />
         <Route path="/main/basket" exact={true} component={Basket} />
         <Route path="/main/basket/combine" exact={true} component={BasketCombine} />
+        <Route path="/mypage/userinfo" exact={true} component={InfoPage} />
+        <Route path="/mypage/macbti" exact={true} component={Macbti} />
+        {/* <Route path="/mypage/refrigerator" exact={true} component={refrigerator} /> */}
+        <Route path="/mypage/likebeer" exact={true} component={LikeBeerPage} />
+        <Route path="/mypage/notice" exact={true} component={Notice} />
+
 
         {/* 예외처리 */}
         {location.pathname !== "/" &&
@@ -41,13 +51,17 @@ const BaseRouter = withRouter(({ location }) => {
           location.pathname !== "/main/basket" &&
           location.pathname !== "/main/basket/combine" &&
           location.pathname !== "/SurveyInitialScreen" &&
-          location.pathname !== "/Survey" && <Nav />}
+          location.pathname !== "/Survey" && 
+          location.pathname !== "/mypage/userinfo" && 
+          location.pathname !== "/mypage/macbti" && 
+          location.pathname !== "/mypage/likebeer" && 
+          location.pathname !== "/mypage/notice" && <Nav />}
 
         {/* nav 사용  */}
         <Route exact path="/home" component={Home} />
         <Route path="/recommend" component={Recommend} />
         <Route path="/search" component={Search} />
-        <Route path="/mypage" component={MyPage} />
+        <Route path="/mypage" exact={true} component={MyPage} />
       </UserContextProvider>
     </div>
   );
