@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -105,13 +106,9 @@ public class UserController {
     // 유저 프로필 수정
     @ApiOperation(value = "유저 프로필 수정")
     @PutMapping("/profile")
-    public ResponseEntity<String> modifyProfile(@RequestPart @ApiParam(value = "프로필 사진") MultipartFile userProfile) {
-        try {
-            userService.modifyUserProfile(userProfile);
+    public ResponseEntity<String> modifyProfile(@RequestPart @ApiParam(value = "프로필 사진") MultipartFile userProfile) throws IOException {
 
-        } catch (Exception e) {
-            ResponseEntity.ok().body(FAIL);
-        }
+        userService.modifyUserProfile(userProfile);
         return ResponseEntity.ok().body(SUCCESS);
     }
     

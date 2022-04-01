@@ -3,6 +3,7 @@ package com.bigdata.buur.security;
 import com.bigdata.buur.util.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -52,6 +53,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 토큰 기반 인증이므로 세션 역시 사용하지 않음
                 .and()
                 .authorizeRequests()
+                .mvcMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 //                .antMatchers("/user/signup", "/user/id-check/", "/user/name-check/", "/user/login", "user/findpassword")
                 .antMatchers(NO_ROLE_URLS)
                 .permitAll()

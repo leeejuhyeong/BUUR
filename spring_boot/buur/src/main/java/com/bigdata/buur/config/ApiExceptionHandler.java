@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
@@ -23,6 +24,12 @@ public class ApiExceptionHandler {
     public ResponseEntity<ApiException> handlerEntitySaveException(EntitySaveException e) {
 
         ApiException responseBody = new ApiException("저장에 실패했습니다.", LocalDateTime.now());
+        return ResponseEntity.ok().body(responseBody);
+    }
+    
+    @ExceptionHandler(value = IOException.class)
+    public ResponseEntity<ApiException> handlerIOException(IOException e) {
+        ApiException responseBody = new ApiException("사진 저장 실패", LocalDateTime.now());
         return ResponseEntity.ok().body(responseBody);
     }
 
