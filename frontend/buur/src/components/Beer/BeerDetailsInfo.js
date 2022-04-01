@@ -1,10 +1,10 @@
 import React from "react";
+import { connect } from 'react-redux';
 // import { useHistory } from "react-router-dom";
 import beerImg from "../../assets/beer_sample.png";
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import WorkOutlineRoundedIcon from '@mui/icons-material/WorkOutlineRounded';
-import store from '../../store'
-import { ADD_BASKET } from '../../actions/action-types'
+import { ADD_BASKET } from '../../actions/ActionTypes'
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -15,6 +15,18 @@ import addBasketIcon from '../../assets/add_basket_icon.png'
 import warnBasketIcon from '../../assets/warn_basket_icon.png'
 import '../../styles/beerbasket.css';
 
+const mapStateToProps = (state) => {
+  return {
+    basket: state.beer.basket,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addBeerBasket: (beerInfo) => dispatch({type:ADD_BASKET, data: beerInfo}),
+  }
+}
+
 class BeerDetailsInfo extends React.Component {
   state = {
     warnBasketOpen: false,
@@ -22,6 +34,9 @@ class BeerDetailsInfo extends React.Component {
   }
   render () {
     const beerInfo = this.props.beerInfo
+    const basket = this.props.basket
+    const addBeerBasket = this.props.addBeerBasket
+    
     // const history = useHistory()
     
     // function goBasket() {
@@ -31,15 +46,13 @@ class BeerDetailsInfo extends React.Component {
     // }
 
     function addBasket(beerInfo) {
-      // console.log(beerInfo)
-
-      if (store.getState().basket.length === 4) {
+      if (basket.length === 4) {
         handleClickOpenWarn()
-        console.log(store.getState().basket)
+        console.log(basket)
       } else {
-        store.dispatch({type:ADD_BASKET, data: beerInfo});
+        addBeerBasket(beerInfo)
         handleClickOpenSuccess()
-        console.log(store.getState().basket);
+        console.log(basket);
       }
     }
   
@@ -143,4 +156,5 @@ class BeerDetailsInfo extends React.Component {
   }
 }
 
-export default BeerDetailsInfo;
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeerDetailsInfo);

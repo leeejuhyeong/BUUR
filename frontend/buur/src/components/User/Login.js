@@ -170,7 +170,7 @@ function LoginForm() {
         placeholder="비밀번호를 입력해주세요"
         onChange={onChangeAccount}
       />
-      <Link text-decoration="none">
+      <Link textDecoration="none">
         <PwdFind>비밀번호를 잊어버리셨나요?</PwdFind>
       </Link>
       {/* <Link
