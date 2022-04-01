@@ -15,7 +15,7 @@ import java.io.InputStream;
 
 public class BeerDto {
     @Builder
-    @Getter
+    @Getter @Setter
     public static class LikeBeer {
         @ApiModelProperty("맥주 번호")
         private Long beerNo;
@@ -27,11 +27,6 @@ public class BeerDto {
         private String imagePath;
         @ApiModelProperty("맥주 사진")
         private byte[] beerImage;
-
-        @Transactional
-        public void addImage(InputStream inputStream) throws IOException {
-            this.beerImage = IOUtils.toByteArray(inputStream);
-        }
     }
 
     @Builder

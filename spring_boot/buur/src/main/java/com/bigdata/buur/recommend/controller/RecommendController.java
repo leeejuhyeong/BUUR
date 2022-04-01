@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -26,15 +27,11 @@ public class RecommendController {
 
     @ApiOperation(value = "맥주 추천")
     @GetMapping("/new")
-    public ResponseEntity<List<RecommendDto>> recommendBeerList() {
+    public ResponseEntity<List<RecommendDto>> recommendBeerList() throws IOException {
         List<RecommendDto> recommends = recommendService.findRecommendBeerList();
         for (RecommendDto recommend : recommends) {
-            try {
-                InputStream inputStream = new FileInputStream(recommend.getBeer_image());
-                recommend.setBeerImage(IOUtils.toByteArray(inputStream));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            InputStream inputStream = new FileInputStream(recommend.getBeer_image());
+            recommend.setBeerImage(IOUtils.toByteArray(inputStream));
         }
         return ResponseEntity.ok().body(recommends);
     }

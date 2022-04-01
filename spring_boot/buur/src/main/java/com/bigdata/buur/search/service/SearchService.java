@@ -1,6 +1,5 @@
 package com.bigdata.buur.search.service;
 
-import com.bigdata.buur.beer.dto.BeerDto;
 import com.bigdata.buur.search.dto.SearchHistoryDto;
 
 import java.util.List;

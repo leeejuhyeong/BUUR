@@ -1,9 +1,7 @@
 package com.bigdata.buur.refrigerator.service;
 
-import com.bigdata.buur.entity.Basket;
 import com.bigdata.buur.refrigerator.dto.BasketDto;
 import com.bigdata.buur.refrigerator.dto.RefrigeratorDto;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 
