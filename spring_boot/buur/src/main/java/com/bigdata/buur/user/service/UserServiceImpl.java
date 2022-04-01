@@ -1,5 +1,7 @@
 package com.bigdata.buur.user.service;
 
+import com.bigdata.buur.customException.UserNotFoundException;
+import com.bigdata.buur.customException.UserPasswordMismatchException;
 import com.bigdata.buur.entity.Beer;
 import com.bigdata.buur.user.dto.SafeUserDto;
 import com.bigdata.buur.user.dto.SurveyDto;
@@ -48,12 +50,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String findUserStatus() {
+        User user = userRepository.findById(currentUser())
+                .orElseThrow(() -> new UserNotFoundException());
 
-        User user = userRepository.findById(currentUser()).get();
-
-        if (user == null)
-            return FAIL;
-        else return user.getUserStatus().toString();
+        return user.getUserStatus().toString();
     }
 
 
@@ -73,9 +73,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(UserDto user) {
         User findUser = userRepository.findByUserId(user.getUserId())
-                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 사용자 입니다."));
+                .orElseThrow(() -> new UserNotFoundException());
         if (!passwordEncoder.matches(user.getUserPassword(), findUser.getPassword())) {
-            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+            throw new UserPasswordMismatchException();
         }
 
         // 토큰 return
@@ -88,7 +88,9 @@ public class UserServiceImpl implements UserService {
 
         List<Review> reviewList = new ArrayList<Review>();
 
-        User currentUser = userRepository.findById(currentUser()).get();
+        User currentUser = userRepository.findById(currentUser())
+                .orElseThrow(() -> new UserNotFoundException());
+
 
         for (SurveyDto surveyDto : surveyDtoList) {
             reviewList.add(Review.builder()
@@ -111,8 +113,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void modifyUserProfile(MultipartFile userProfile) throws IOException {
-
-        User user = userRepository.findById(currentUser()).get();
+        User user = userRepository.findById(currentUser())
+                .orElseThrow(() -> new UserNotFoundException());
 
         // 파일 처리 & DB에 경로 저장
         if(userProfile != null) {
@@ -147,10 +149,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String modifyPassword(String password) {
-        User user = userRepository.findById(currentUser()).get();
+        User user = userRepository.findById(currentUser())
+                .orElseThrow(() -> new UserNotFoundException());
         user.setPassword(passwordEncoder.encode(password));
 
-        if(userRepository.save(user) != null) return SUCCESS;
+        userRepository.save(user);
 
         return FAIL;
 
@@ -160,13 +163,18 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public Long currentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication == null ) throw new UserNotFoundException();
+
         User user = (User) authentication.getPrincipal();
         return user.getId();
     }
 
     @Override
     public SafeUserDto findUserInfo() throws IOException {
-        User user = userRepository.findById(currentUser()).get();
+        User user = userRepository.findById(currentUser())
+                .orElseThrow(() -> new UserNotFoundException());
+
 
         InputStream userProfileImage = new FileInputStream(user.getProfile());
 
