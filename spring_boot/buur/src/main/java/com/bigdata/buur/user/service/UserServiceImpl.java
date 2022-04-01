@@ -117,11 +117,12 @@ public class UserServiceImpl implements UserService {
         // 파일 처리 & DB에 경로 저장
         if(userProfile != null) {
             // 로컬 환경 기준
-            final String UPLOAD_PATH = System.getProperty("user.dir").concat("/images/profiles").replaceAll("/", File.separator);
-            
+            final String UPLOAD_PATH = System.getProperty("user.dir").concat("/images/profiles").replace("/", File.separator);
+
+//            System.out.println(UPLOAD_PATH);
             // Ubuntu Server 기준
 //            final String UPLOAD_PATH = "/home/ubuntu/buur/image/profile/"
-//                    .replaceAll("/", File.separator);
+//                    .replace("/", File.separator);
 
             File folder = new File(UPLOAD_PATH);
 
@@ -131,7 +132,7 @@ public class UserServiceImpl implements UserService {
 
             final String userProfileName = user.getUserId() + "." + fileExtension;
 
-            System.out.println(userProfileName);
+//            System.out.println(userProfileName);
 
             File profile = new File(folder, userProfileName);
 
