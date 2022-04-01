@@ -23,10 +23,10 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     // 맥주 리스트를 10개씩 가져오기
-    @ApiOperation(value = "맥주 리스트 10개씩 가져오기")
+    @ApiOperation(value = "맥주 리뷰 가져오기 (10개씩)")
     @GetMapping("/{beer_id}/{cursor}")
     public ResponseEntity<List<ReviewResDto>> getReviewList(@PathVariable @ApiParam(value = "리뷰를 가져올 맥주 번호") Long beer_id,
-                                                            @PathVariable @ApiParam(value = "가져올 리뷰의 시간 기준값 (없을 시 현재 시간을 넣어야 함.)")
+                                                            @PathVariable @ApiParam(value = "가져올 리뷰의 시간값 (없을 시 현재 시간을 넣어야 함.)")
                                                             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime cursor){
         return ResponseEntity.ok().body(reviewService.findReviews(beer_id, cursor));
     }
