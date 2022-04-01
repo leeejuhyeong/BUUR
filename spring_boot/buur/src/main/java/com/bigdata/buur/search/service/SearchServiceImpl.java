@@ -1,6 +1,5 @@
 package com.bigdata.buur.search.service;
 
-import com.bigdata.buur.beer.dto.BeerDto;
 import com.bigdata.buur.entity.SearchHistory;
 import com.bigdata.buur.entity.User;
 import com.bigdata.buur.search.repository.SearchRepository;
@@ -10,7 +9,6 @@ import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 

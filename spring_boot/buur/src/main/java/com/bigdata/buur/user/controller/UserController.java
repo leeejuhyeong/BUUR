@@ -1,5 +1,6 @@
 package com.bigdata.buur.user.controller;
 
+import com.bigdata.buur.customException.EntitySaveException;
 import com.bigdata.buur.user.dto.SafeUserDto;
 import com.bigdata.buur.user.dto.SurveyDto;
 import com.bigdata.buur.user.dto.UserDto;
@@ -29,7 +30,6 @@ public class UserController {
     @ApiOperation(value = "아이디 중복 체크")
     @GetMapping("/id-check/{user_id}")
     public ResponseEntity<Boolean> checkIdDuplicate (@PathVariable @ApiParam(value = "가입하고자 하는 id") String user_id){
-        if (user_id == null) ResponseEntity.ok().body(Boolean.FALSE);
         return ResponseEntity.ok(userService.checkIdDuplicate(user_id));
     }
 
@@ -37,7 +37,6 @@ public class UserController {
     @ApiOperation(value = "닉네임 중복 체크")
     @GetMapping("/name-check/{user_nickname}")
     public ResponseEntity<Boolean> checkNicknameDuplicate (@PathVariable @ApiParam(value = "가입하고자 하는 닉네임") String user_nickname){
-        if (user_nickname == null) return ResponseEntity.ok().body(Boolean.FALSE);
         return ResponseEntity.ok(userService.checkNicknameDuplicate(user_nickname));
     }
 
@@ -48,26 +47,14 @@ public class UserController {
     @ApiOperation(value = "회원 가입")
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody @ApiParam(value = "유저 정보") UserDto user) {
-        if(user == null || userService.addUser(user) == null)
-            return ResponseEntity.ok().body(FAIL);
-        else
-            return ResponseEntity.ok().body(SUCCESS);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 
     // 로그인
     @ApiOperation(value = "로그인")
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody @ApiParam(value = "로그인 유저 정보") UserDto user) {
-
-        if (user == null) return ResponseEntity.ok().body(FAIL);
-
-        try {
-            return ResponseEntity.ok().body(userService.login(user));
-        }
-        catch (Exception e){
-            return ResponseEntity.ok().body(FAIL);
-        }
-
+        return ResponseEntity.ok().body(userService.login(user));
     }
 
     // 신규회원 체크
@@ -82,25 +69,14 @@ public class UserController {
     @PostMapping("/survey")
     public ResponseEntity<String> surveyAdd(@RequestBody @ApiParam(value = "설문 리스트") List<SurveyDto> surveyDtoList) {
 
-        if (surveyDtoList.isEmpty() || userService.surveyAdd(surveyDtoList).isEmpty()) return ResponseEntity.ok().body(FAIL);
-
         return ResponseEntity.ok().body(SUCCESS);
     }
 
     // 유저 정보 반환
     @ApiOperation(value = "유저 정보 반환")
     @GetMapping("/info")
-    public ResponseEntity<SafeUserDto> userInfoDetail() {
-
-        try {
+    public ResponseEntity<SafeUserDto> userInfoDetail() throws IOException {
             return ResponseEntity.ok().body(userService.findUserInfo());
-        } catch (Exception e) {
-            System.out.println("정보 가져오기 실패");
-            return ResponseEntity.ok().body(null);
-
-        }
-
-
     }
 
     // 유저 프로필 수정
