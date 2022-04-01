@@ -1,6 +1,9 @@
 package com.bigdata.buur.config;
 
+import com.bigdata.buur.customException.EntityRemoveException;
 import com.bigdata.buur.customException.EntitySaveException;
+import com.bigdata.buur.customException.UserNotFoundException;
+import com.bigdata.buur.customException.UserPasswordMismatchException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
@@ -29,13 +33,36 @@ public class ApiExceptionHandler {
     
     @ExceptionHandler(value = IOException.class)
     public ResponseEntity<ApiException> handlerIOException(IOException e) {
-        ApiException responseBody = new ApiException("사진 저장 실패", LocalDateTime.now());
+        ApiException responseBody = new ApiException("사진 처리에 실패했습니다.", LocalDateTime.now());
+        return ResponseEntity.ok().body(responseBody);
+    }
+
+    @ExceptionHandler(value = UserNotFoundException.class)
+    public ResponseEntity<ApiException> handlerUserNotFoundException(UserNotFoundException e) {
+        ApiException responseBody = new ApiException("유저 정보가 존재하지 않습니다.", LocalDateTime.now());
+        return ResponseEntity.ok().body(responseBody);
+    }
+
+    @ExceptionHandler(value = UserPasswordMismatchException.class)
+    public ResponseEntity<ApiException> handlerUserPasswordMismatchException(UserPasswordMismatchException e) {
+        ApiException responseBody = new ApiException("비밀번호가 일치하지 않습니다.", LocalDateTime.now());
+        return ResponseEntity.ok().body(responseBody);
+    }
+
+    @ExceptionHandler(value = NoSuchElementException.class)
+    public ResponseEntity<ApiException> handlerNoSuchElementException(NoSuchElementException e) {
+        ApiException responseBody = new ApiException("조회정보가 존재하지 않습니다.", LocalDateTime.now());
+        return ResponseEntity.ok().body(responseBody);
+    }
+
+    @ExceptionHandler(value = EntityRemoveException.class)
+    public ResponseEntity<ApiException> handlerEntityRemoveException(EntityRemoveException e) {
+        ApiException responseBody = new ApiException("삭제에 실패했습니다.", LocalDateTime.now());
         return ResponseEntity.ok().body(responseBody);
     }
 
     @ExceptionHandler(value = ConnectException.class)
     public ResponseEntity<ApiException> handlerConnectException(ConnectException e) {
-
         ApiException responseBody = new ApiException("서버와의 연결에 실패했습니다.", LocalDateTime.now());
         return ResponseEntity.internalServerError().body(responseBody);
     }

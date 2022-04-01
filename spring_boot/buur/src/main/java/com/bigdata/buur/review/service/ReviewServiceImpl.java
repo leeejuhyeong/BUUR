@@ -1,6 +1,7 @@
 package com.bigdata.buur.review.service;
 
 import com.bigdata.buur.beer.repository.BeerRepository;
+import com.bigdata.buur.customException.EntityRemoveException;
 import com.bigdata.buur.customException.EntitySaveException;
 import com.bigdata.buur.entity.Beer;
 import com.bigdata.buur.entity.Review;
@@ -71,12 +72,12 @@ public class ReviewServiceImpl implements ReviewService{
                 .build();
 
 
-        if (reviewRepository.save(review) == null)
-            throw new EntitySaveException();
+        reviewRepository.save(review);
 
     }
 
     @Override
+    @Transactional
     public void removeReview(Long reviewId) {
         Review review = Review
                 .builder()
@@ -84,5 +85,9 @@ public class ReviewServiceImpl implements ReviewService{
                 .build();
 
         reviewRepository.delete(review);
+        reviewRepository.findById(reviewId).ifPresent(review1 -> {
+            throw new EntityRemoveException();
+        });
+
     }
 }
