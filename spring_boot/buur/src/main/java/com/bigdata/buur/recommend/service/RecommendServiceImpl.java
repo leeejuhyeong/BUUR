@@ -43,10 +43,6 @@ public class RecommendServiceImpl implements RecommendService {
 //        headers.setContentType(new MediaType("application", "json", StandardCharsets.UTF_8));
 
         RecommendDto[] recommendBeerArray = restTemplate.getForObject(uri + user.getId(), RecommendDto[].class);
-        for (RecommendDto recommendDto : recommendBeerArray) {
-            System.out.println(recommendDto.getName());
-            System.out.println(recommendDto.getImage());
-        }
         Set<Long> likeBeerSet = new HashSet<>(likesRepository.findBeerIdByUser(user));
 
         for (RecommendDto recommend : recommendBeerArray) {
