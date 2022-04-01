@@ -12,4 +12,6 @@ public interface BeerRepository {
     List<Beer> findAllByOffset(int offset);
     // 맥주 상세정보 조회
     Beer findById(Long id);
+    // 맥주 검색 자동완성
+    List<Beer> findAllByNameContainingOrEngNameContaining(String keyword);
 }

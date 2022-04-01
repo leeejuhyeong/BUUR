@@ -37,4 +37,11 @@ public class BeerRepositoryImpl implements BeerRepository {
                 .setParameter("id", id)
                 .getSingleResult();
     }
+
+    @Override
+    public List<Beer> findAllByNameContainingOrEngNameContaining(String keyword) {
+        return em.createQuery("select b from Beer b where b.name like :keyword or b.engName like :keyword", Beer.class)
+                .setParameter("keyword", "%" + keyword + "%")
+                .getResultList();
+    }
 }

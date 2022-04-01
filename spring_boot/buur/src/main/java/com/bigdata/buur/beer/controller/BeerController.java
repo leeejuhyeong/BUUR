@@ -31,7 +31,7 @@ public class BeerController {
     @ApiOperation(value = "종류별 맥주 조회")
     @GetMapping("/{type}/{offset}")
     public ResponseEntity<List<BeerDto.LikeBeer>> beerList(
-            @PathVariable("type") @ApiParam(value = "맥주 종류(ALL, LAGER, ALE, BLACK_BEER, PILSENER, WHEAT_BEER, ETC") String type,
+            @PathVariable("type") @ApiParam(value = "맥주 종류(ALL, LAGER, ALE, BLACK_BEER, PILSNER, WHEAT_BEER, ETC") String type,
             @PathVariable("offset") @ApiParam(value = "오프셋, 0부터 시작") int offset) {
         List<BeerDto.LikeBeer> likeBeerList = beerService.findBeerList(type, offset);
 
@@ -44,7 +44,7 @@ public class BeerController {
                 e.printStackTrace();
             }
         }
-        return ResponseEntity.ok(likeBeerList);
+        return ResponseEntity.ok().body(likeBeerList);
     }
 
     @ApiOperation(value = "맥주 상세 조회")
@@ -57,26 +57,44 @@ public class BeerController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ResponseEntity.ok(details);
+        return ResponseEntity.ok().body(details);
     }
 
     @ApiOperation(value = "맥주 좋아요 추가")
     @PostMapping("/like/{beer_id}")
     public ResponseEntity<String> likesAdd(@PathVariable("beer_id") @ApiParam("맥주 번호") Long id) {
         beerService.addLikes(id);
-        return ResponseEntity.ok(SUCCESS);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 
     @ApiOperation(value = "맥주 좋아요 취소")
     @DeleteMapping("/like/{beer_id}")
     public ResponseEntity<String> likesRemove(@PathVariable("beer_id") @ApiParam("맥주 번호") Long id) {
         beerService.removeLikes(id);
-        return ResponseEntity.ok(SUCCESS);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 
     @ApiOperation(value = "좋아요 맥주 조회")
     @GetMapping("/like")
     public ResponseEntity<List<BeerDto.LikeBeer>> likesList() {
-        return ResponseEntity.ok(beerService.findLikeBeerList());
+        return ResponseEntity.ok().body(beerService.findLikeBeerList());
     }
+
+    @ApiOperation(value = "맥주 검색 자동완성")
+    @GetMapping("/{beer_name}")
+    public ResponseEntity<List<BeerDto.LikeBeer>> searchBeerList(@PathVariable("beer_name") @ApiParam("검색 단어") String keyword) {
+        List<BeerDto.LikeBeer> searchBeerList = beerService.findSearchBeerList(keyword);
+
+        for (BeerDto.LikeBeer likeBeer : searchBeerList) {
+            try {
+                InputStream inputStream = new FileInputStream(likeBeer.getImagePath());
+                likeBeer.addImage(inputStream);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return ResponseEntity.ok().body(searchBeerList);
+    }
+
 }
