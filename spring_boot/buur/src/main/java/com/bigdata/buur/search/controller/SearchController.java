@@ -1,6 +1,5 @@
 package com.bigdata.buur.search.controller;
 
-import com.bigdata.buur.beer.dto.BeerDto;
 import com.bigdata.buur.search.dto.SearchHistoryDto;
 import com.bigdata.buur.search.service.SearchService;
 import io.swagger.annotations.ApiOperation;
