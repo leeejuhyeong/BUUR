@@ -16,4 +16,7 @@ public interface LikesRepository {
     void deleteLikes(Likes likes);
     // 좋아요 맥주 조회
     List<Beer> findBeerByUser(User user);
+    // 좋아요 맥주 번호 조회
+    List<Long> findBeerIdByUser(User user);
+
 }

@@ -11,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -96,5 +94,4 @@ public class BeerController {
 
         return ResponseEntity.ok().body(searchBeerList);
     }
-
 }

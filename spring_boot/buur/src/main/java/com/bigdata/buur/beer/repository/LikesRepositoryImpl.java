@@ -44,4 +44,11 @@ public class LikesRepositoryImpl implements LikesRepository {
                 .setParameter("user", user)
                 .getResultList();
     }
+
+    @Override
+    public List<Long> findBeerIdByUser(User user) {
+        return em.createQuery("select l.beer.id from Likes l where l.user = :user", Long.class)
+                .setParameter("user", user)
+                .getResultList();
+    }
 }
