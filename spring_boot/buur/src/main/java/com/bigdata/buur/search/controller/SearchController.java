@@ -21,7 +21,7 @@ public class SearchController {
 
     @ApiOperation(value = "검색 기록 저장")
     @PostMapping()
-    public ResponseEntity<String> searchHistorySave(@RequestBody SearchHistoryDto searchHistory) {
+    public ResponseEntity<String> searchHistorySave(@RequestBody @ApiParam(value = "검색 내역 정보") SearchHistoryDto searchHistory) {
         return ResponseEntity.ok().body(searchService.saveSearchHistory(searchHistory));
     }
 

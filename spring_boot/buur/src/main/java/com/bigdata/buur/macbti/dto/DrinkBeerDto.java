@@ -1,5 +1,6 @@
 package com.bigdata.buur.macbti.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
@@ -9,6 +10,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel
 public class DrinkBeerDto {
     @ApiModelProperty("맥주 번호")
     private Long beerId;
