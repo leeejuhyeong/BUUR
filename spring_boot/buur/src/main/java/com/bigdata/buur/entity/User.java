@@ -52,7 +52,7 @@ public class User implements UserDetails{
 
     @PrePersist
     public void profile() {
-        this.profile = "/home/ubuntu/beer/image/profile/images/profiles/default.png"
+        this.profile = "/home/ubuntu/buur/image/profile/default.png"
                 .replaceAll("/", File.separator);
     }
 

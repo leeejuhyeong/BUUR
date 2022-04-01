@@ -35,20 +35,18 @@ public class ReviewController {
     @PostMapping()
     public ResponseEntity<?> reviewAdd(@RequestBody @ApiParam(value = "저장할 리뷰 정보") ReviewDto reviewDto) {
 
-        if (reviewService.addReview(reviewDto))
-            return ResponseEntity.ok().body(null);
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("데이터를 저장하지 못했습니다.");
+        System.out.println("진입하기");
+        reviewService.addReview(reviewDto);
+        return ResponseEntity.ok().body("저장에 성공하였습니다.");
     }
 
     @ApiOperation(value = "리뷰 삭제")
     @DeleteMapping("/{review_id}")
     public ResponseEntity<?> reviewRemove(@PathVariable @ApiParam(value = "삭제할 리뷰 번호") Long review_id) {
 
-        if(reviewService.removeReview(review_id))
-            return ResponseEntity.ok().body(null);
+        reviewService.removeReview(review_id);
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("데이터를 삭제하지 못했습니다.");
+        return ResponseEntity.ok().body("삭제에 성공하였습니다.");
 
     }
 }

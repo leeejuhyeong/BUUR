@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
             final String UPLOAD_PATH = System.getProperty("user.dir").concat("/images/profiles").replaceAll("/", File.separator);
             
             // Ubuntu Server 기준
-//            final String UPLOAD_PATH = "/home/ubuntu/beer/image/profile/images/profiles/"
+//            final String UPLOAD_PATH = "/home/ubuntu/buur/image/profile/"
 //                    .replaceAll("/", File.separator);
 
             File folder = new File(UPLOAD_PATH);
