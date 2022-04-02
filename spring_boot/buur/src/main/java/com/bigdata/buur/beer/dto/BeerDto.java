@@ -1,17 +1,10 @@
 package com.bigdata.buur.beer.dto;
 
 
-import com.bigdata.buur.enums.BeerCategory;
+import com.bigdata.buur.review.dto.ReviewAvgInterface;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
-import org.apache.commons.io.IOUtils;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class BeerDto {
     @Builder
@@ -53,5 +46,20 @@ public class BeerDto {
         private String imagePath;
         @ApiModelProperty("맥주 이미지")
         private byte[] beerImage;
+        @ApiModelProperty("리뷰 전체 개수")
+        @Builder.Default
+        private Integer totalCnt = 0;
+        @ApiModelProperty("리뷰 전체 총합")
+        @Builder.Default
+        private Integer totalSum = 0;
+        @ApiModelProperty("리뷰 평균")
+        @Builder.Default
+        private Double reviewAvg = 0D;
+
+        public void addAvg(ReviewAvgInterface reviewAvgInterface) {
+            this.totalCnt = reviewAvgInterface.getCnt();
+            this.totalSum = reviewAvgInterface.getSumTotalScore();
+            this.reviewAvg = reviewAvgInterface.getAvg();
+        }
     }
 }

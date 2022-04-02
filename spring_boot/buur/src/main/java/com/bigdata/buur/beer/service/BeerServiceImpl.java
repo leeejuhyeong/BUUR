@@ -7,19 +7,18 @@ import com.bigdata.buur.beer.repository.LikesRepository;
 import com.bigdata.buur.entity.Likes;
 import com.bigdata.buur.entity.User;
 import com.bigdata.buur.enums.BeerCategory;
+import com.bigdata.buur.review.dto.ReviewAvgInterface;
+import com.bigdata.buur.review.repository.ReviewRepository;
 import com.bigdata.buur.user.repository.UserRepository;
 import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.relational.core.sql.Like;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +28,7 @@ public class BeerServiceImpl implements BeerService {
     private final LikesRepository likesRepository;
     private final UserRepository userRepository;
     private final UserService userService;
+    private final ReviewRepository reviewRepository;
 
     @Override
     @Transactional
@@ -60,10 +60,9 @@ public class BeerServiceImpl implements BeerService {
     @Override
     @Transactional
     public BeerDto.Details findBeer(Long id) {
-        Long user_id = userService.currentUser();
         User user = userRepository.findById(userService.currentUser()).orElse(null);
         Beer beer = beerRepository.findById(id);
-
+        ReviewAvgInterface reviewAvgInterface = reviewRepository.findOneByBeerId(id);
         List<Likes> likesList = likesRepository.findByUserAndBeer(user, beer);
 
         BeerDto.Details details = BeerDto.Details.builder()
@@ -76,6 +75,10 @@ public class BeerServiceImpl implements BeerService {
                 .food(beer.getFood())
                 .imagePath(beer.getImage())
                 .build();
+
+        if(reviewAvgInterface != null) {
+            details.addAvg(reviewAvgInterface);
+        }
 
         if(likesList.size() != 0) {
             details.setLike(true);
