@@ -1,11 +1,11 @@
 FROM openjdk:8 AS builder
-WORKDIR /spring_boot
+WORKDIR /spring_boot/buur
 COPY . .
 RUN chmod +x ./gradlew
 
-RUN rm -rf buur/src/test
-RUN ./gradlew :buur:clean build
-RUN ls buur/build/libs
+RUN rm -rf src/test
+RUN ./gradlew clean build
+RUN ls build/libs
 
 FROM adoptopenjdk:8-jdk
 COPY --from=builder /spring_boot/buur/build/libs/*.jar app.jar
