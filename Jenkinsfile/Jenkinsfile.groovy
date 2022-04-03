@@ -25,7 +25,7 @@ pipeline {
 
 				sh 'docker images -f dangling=true && docker rmi $(docker images -f dangling=true -q)' 	
 
-				sh 'docker run -d -p 8080:8080 --name spring'
+				sh 'docker run -d -p 8080:8080 --name spring spring'
 			}
 		}
 		
