@@ -8,7 +8,7 @@ RUN ./gradlew clean build
 RUN ls build/libs
 
 FROM adoptopenjdk:8-jdk
-COPY --from=builder /buur/build/libs/*.jar app.jar
+COPY --from=builder /buur/build/libs/*.jar ./
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "./app.jar"]
