@@ -11,7 +11,7 @@ pipeline {
 		stage('Docker build') {
 			agent any
 			steps {
-				sh 'docker build -t backend:latest /var/jenkins_home/workspace/gitlab-hook/spring_boot/buur' 
+				sh 'docker build -t backend:latest /var/jenkins_home/workspace/gitlab-hook/spring_boot' 
 			}
 		}
 	}
