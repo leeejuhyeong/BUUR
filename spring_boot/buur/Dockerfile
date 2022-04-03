@@ -11,4 +11,4 @@ FROM adoptopenjdk:8-jdk
 COPY --from=builder /buur/build/libs/*.jar ./
 
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "./app.jar"]
+ENTRYPOINT ["java", "-jar", "./buur-0.0.1-SNAPSHOT.jar"]
