@@ -23,8 +23,7 @@ pipeline {
 				sh 'docker container ls -a -f name=spring -q \
 		| xargs -r docker container rm'
 
-				sh 'docker images -f dangling=true && \ 		
-				docker rmi $(docker images -f dangling=true -q)' 	
+				sh 'docker images -f dangling=true && docker rmi $(docker images -f dangling=true -q)' 	
 
 				sh 'docker run -d --name spring \
 		--network jenkinsnetwork spring:latest'
