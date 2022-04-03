@@ -1,4 +1,5 @@
 FROM openjdk:8 AS builder
+WORKDIR /buur
 COPY . .
 RUN chmod +x ./gradlew
 
