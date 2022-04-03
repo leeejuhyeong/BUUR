@@ -1,5 +1,4 @@
 FROM openjdk:8 AS builder
-WORKDIR /spring_boot/buur
 COPY . .
 RUN chmod +x ./gradlew
 
