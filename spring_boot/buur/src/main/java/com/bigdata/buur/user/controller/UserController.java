@@ -47,6 +47,7 @@ public class UserController {
     @ApiOperation(value = "회원 가입")
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody @ApiParam(value = "유저 정보") UserDto user) {
+        userService.addUser(user);
         return ResponseEntity.ok().body(SUCCESS);
     }
 
@@ -68,7 +69,7 @@ public class UserController {
     @ApiOperation(value = "설문조사 결과 저장")
     @PostMapping("/survey")
     public ResponseEntity<String> surveyAdd(@RequestBody @ApiParam(value = "설문 리스트") List<SurveyDto> surveyDtoList) {
-
+        userService.surveyAdd(surveyDtoList);
         return ResponseEntity.ok().body(SUCCESS);
     }
 
@@ -83,7 +84,6 @@ public class UserController {
     @ApiOperation(value = "유저 프로필 수정")
     @PutMapping("/profile")
     public ResponseEntity<String> modifyProfile(@RequestPart @ApiParam(value = "프로필 사진") MultipartFile userProfile) throws IOException {
-
         userService.modifyUserProfile(userProfile);
         return ResponseEntity.ok().body(SUCCESS);
     }
