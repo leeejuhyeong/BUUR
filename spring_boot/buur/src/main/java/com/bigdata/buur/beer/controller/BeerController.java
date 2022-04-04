@@ -68,8 +68,14 @@ public class BeerController {
 
     @ApiOperation(value = "좋아요 맥주 조회")
     @GetMapping("/like")
-    public ResponseEntity<List<BeerDto.LikeBeer>> likesList() {
-        return ResponseEntity.ok().body(beerService.findLikeBeerList());
+    public ResponseEntity<List<BeerDto.LikeBeer>> likesList() throws IOException {
+        List<BeerDto.LikeBeer> likeBeerList = beerService.findLikeBeerList();
+        InputStream inputStream;
+        for (BeerDto.LikeBeer likeBeer : likeBeerList) {
+            inputStream = new FileInputStream(likeBeer.getImagePath());
+            likeBeer.setBeerImage(IOUtils.toByteArray(inputStream));
+        }
+        return ResponseEntity.ok().body(likeBeerList);
     }
 
     @ApiOperation(value = "맥주 검색 자동완성")

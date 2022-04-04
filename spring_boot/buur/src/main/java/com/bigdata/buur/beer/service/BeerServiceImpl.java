@@ -39,7 +39,7 @@ public class BeerServiceImpl implements BeerService {
         Set<Beer> beerLikesSet = new HashSet<>(likesRepository.findBeerByUser(user));
 
         List<Beer> beerList;
-        if(type.equals("ALL")) {
+        if (type.equals("ALL")) {
             beerList = beerRepository.findAllByOffset(offset);
         } else {
             beerList = beerRepository.findAllByTypeAndOffset(BeerCategory.valueOf(type), offset);
@@ -76,11 +76,11 @@ public class BeerServiceImpl implements BeerService {
                 .imagePath(beer.getImage())
                 .build();
 
-        if(reviewAvgInterface != null) {
+        if (reviewAvgInterface != null) {
             details.addAvg(reviewAvgInterface);
         }
 
-        if(likesList.size() != 0) {
+        if (likesList.size() != 0) {
             details.setLike(true);
         }
 
@@ -117,6 +117,7 @@ public class BeerServiceImpl implements BeerService {
             likeBeerDtoList.add(BeerDto.LikeBeer.builder()
                     .beerNo(beer.getId())
                     .beerName(beer.getName())
+                    .imagePath(beer.getImage())
                     .like(true)
                     .build());
         }
