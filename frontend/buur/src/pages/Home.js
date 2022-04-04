@@ -1,7 +1,7 @@
 import React from "react";
 import HomeHeader from "../components/Home/HomeHeader";
-import HomeCarousel from '../components/Home/HomeCarousel';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import HomeCarousel from "../components/Home/HomeCarousel";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link } from "react-router-dom";
 
 import lager from "../assets/beer_icon/lager_icon.png";
@@ -10,11 +10,11 @@ import darkbeer from "../assets/beer_icon/darkbeer_icon.png";
 import pilsner from "../assets/beer_icon/pilsner_icon.png";
 import wheatbeer from "../assets/beer_icon/wheatbeer_icon.png";
 import etcbeer from "../assets/beer_icon/etcbeer_icon.png";
-import '../styles/home.css';
-import '../styles/beerlist.css';
+import "../styles/home.css";
+import "../styles/beerlist.css";
 
 class Home extends React.Component {
-  render () {
+  render() {
     return (
       <div className="home">
         <HomeHeader />
@@ -32,7 +32,7 @@ class Home extends React.Component {
         </Link>
 
         <div className="beer-sortbar">
-          <div className="sort-btn" >
+          <div className="sort-btn">
             <Link
               className="sort-img"
               to={{
@@ -45,7 +45,7 @@ class Home extends React.Component {
             </Link>
             <p>라거</p>
           </div>
-          <div className="sort-btn" >
+          <div className="sort-btn">
             <Link
               className="sort-img"
               to={{
@@ -58,9 +58,9 @@ class Home extends React.Component {
             </Link>
             <p>에일</p>
           </div>
-          <div className="sort-btn" >
+          <div className="sort-btn">
             <Link
-            className="sort-img"
+              className="sort-img"
               to={{
               pathname: "/main/beerlist",
               state: {
@@ -71,9 +71,9 @@ class Home extends React.Component {
             </Link>
             <p>흑맥주</p>
           </div>
-          <div className="sort-btn" >
+          <div className="sort-btn">
             <Link
-            className="sort-img"
+              className="sort-img"
               to={{
               pathname: "/main/beerlist",
               state: {
@@ -84,9 +84,9 @@ class Home extends React.Component {
             </Link>
             <p>필스너</p>
           </div>
-          <div className="sort-btn" >
+          <div className="sort-btn">
             <Link
-            className="sort-img"
+              className="sort-img"
               to={{
               pathname: "/main/beerlist",
               state: {
@@ -97,9 +97,9 @@ class Home extends React.Component {
             </Link>
             <p>밀맥주</p>
           </div>
-          <div className="sort-btn" >
+          <div className="sort-btn">
             <Link
-            className="sort-img"
+              className="sort-img"
               to={{
               pathname: "/main/beerlist",
               state: {
@@ -112,7 +112,7 @@ class Home extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -42,8 +42,8 @@ const BeerItem = (props) => {
             {likeStatus()}
         </div>
         <p>{props.beer.beerName}</p>
-      </div>
-    )
-}
+    </div>
+  );
+};
 
 export default BeerItem;

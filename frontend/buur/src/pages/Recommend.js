@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BeerHeader from "../components/Beer/BeerHeader";
 import BeerItem from "../components/Beer/BeerItem";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import '../styles/beerrecommend.css'
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import "../styles/beerrecommend.css";
 
 class Recommend extends React.Component {
-  render () {
-  const beerList = [
-    { name : '호가든', id:'a', kind:'과일맥주', alcohol:'4.5', origin: '덴마크' },
-    { name : '서머스비', id:'b', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    { name : '서머스비', id:'c', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    { name : '서머스비', id:'d', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    { name : '서머스비', id:'e', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    { name : '서머스비', id:'f', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-  ]
+  render() {
+    const beerList = [
+      { name: "호가든", id: "a", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+      { name: "서머스비", id: "b", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+      { name: "서머스비", id: "c", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+      { name: "서머스비", id: "d", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+      { name: "서머스비", id: "e", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+      { name: "서머스비", id: "f", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
+    ];
 
   return (
     <div>
@@ -60,7 +60,7 @@ class Recommend extends React.Component {
         </div>
       </div>
     </div>
-  )
+    );
   }
 }
 

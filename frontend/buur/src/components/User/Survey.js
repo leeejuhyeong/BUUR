@@ -2,32 +2,56 @@ import React from "react";
 import styled from "styled-components";
 import Heineken from "../../assets/Heineken.png";
 import BlankBeer from "../../assets/BlankBeer.png";
+import Grid from "@mui/material/Grid";
+import SurveyBeerItem from "./SurveyBeerItem";
 
+
+
+const beerList = [
+  { name: "호가든", id: "a", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
+  { name: "서머스비", id: "b", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
+  { name: "서머스비", id: "c", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
+  { name: "서머스비", id: "d", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
+  { name: "서머스비", id: "e", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
+  { name: "서머스비", id: "f", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
+  { name: "곰표", id: "g", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
+  { name: "서머스비", id: "h", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
+];
+// const [review, setReview] = useState("");
+
+
+function Survey() {
+  // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
+  
+console.log(beerList[0].name)
+
+  return (
+    <Container>
+      <Title>평가할 맥주를 골라주세요</Title>
+      <Detail>최소 4개의 맥주를 선택해주세요</Detail>
+      <Beer></Beer>
+      <Blank1></Blank1>
+      <Blank2></Blank2>
+      <Blank3></Blank3>
+
+      <BeerlistBody>
+        <Grid container spacing={{ xs: 2 }}>
+          {beerList.map((beer, index) => (
+            <Grid item xs={6} sm={2} key={index}>
+              <SurveyBeerItem beer={beer} />
+            </Grid>
+          ))}
+        </Grid>
+      </BeerlistBody>
+    </Container>
+  );
+}
+
+export default Survey;
+
+/* css */
 const Container = styled.div``;
 
-const LeftBox = styled.div`
-  position: absolute;
-  width: 153px;
-  height: 75px;
-  left: 18px;
-  top: 245px;
-
-  background: #ffffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-`;
-
-const RightBox = styled.div`
-  position: absolute;
-  width: 153px;
-  height: 75px;
-  left: 188px;
-  top: 245px;
-
-  background: #ffffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-`;
 const Title = styled.div`
   position: absolute;
   width: 192px;
@@ -103,19 +127,10 @@ const Blank3 = styled.div`
   background: url(${BlankBeer});
   background-size: cover;
 `;
-function Survey() {
-  return (
-    <Container>
-      <Title>평가할 맥주를 골라주세요</Title>
-      <Detail>최소 4개의 맥주를 선택해주세요</Detail>
-      <Beer></Beer>
-      <Blank1></Blank1>
-      <Blank2></Blank2>
-      <Blank3></Blank3>
-      <LeftBox></LeftBox>
-      <RightBox></RightBox>
-    </Container>
-  );
-}
-
-export default Survey;
+const BeerlistBody = styled.div`
+  position: absolute;
+  top: 235px;
+  overflow-y: scroll;
+  padding: 16px 16px;
+  height: 587px;
+`;

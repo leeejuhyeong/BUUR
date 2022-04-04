@@ -8,8 +8,7 @@ export const fetchLogin = async ({ id, password }) => {
     body: JSON.stringify(data),
   }).then(async (res) => {
     const JWT = await res.text();
-    // localStorage.setItem("jwt", JWT)
-    localStorage.setItem("jwt", JWT)
+    // console.log(JWT);
     if ((await JWT) === "fail") throw new Error("아이디와 비밀번호를 확인해주세요.");
     else return JWT;
   });
