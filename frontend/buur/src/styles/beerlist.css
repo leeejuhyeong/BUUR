@@ -62,11 +62,20 @@
 .beeritem .like-status > img {
   margin-top: 10px;
   height: 60px;
+  /* width: 40px; */
+  overflow: hidden;
 }
 
 .beeritem > p {
   font-size: 9px;
   font-weight: bold;
   margin: 2px 0;
+  width: 80px;
+  height: 14px;
   text-align: center;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
 }

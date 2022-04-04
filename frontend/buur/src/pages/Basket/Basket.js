@@ -1,14 +1,13 @@
 import React from "react";
 import {useHistory} from "react-router";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-// import store from "../../store";
-import beerSample from "../../assets/beer_sample.png";
 import beerBalnk from "../../assets/beer_blank.png";
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import Dialog from '@mui/material/Dialog';
 import Toolbar from '@mui/material/Toolbar';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import Slide from '@mui/material/Slide';
+import store from '../../store'
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -39,14 +38,9 @@ function Basket() {
     setOpen(false);
   };
 
-  // const basketList = store.getState().basket
-  const basketList = [
-    { img: beerSample,  name : '호가든', id:'a', kind:'과일맥주', alcohol:'4.5', origin: '덴마크' },
-    { img: beerSample, name : '곰표', id:'g', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    { img: beerSample, name : '서머스비', id:'h', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    { img: beerSample, name : '서머스비', id:'h', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'}
-  ]
-  
+  const basketList = store.getState().beer.basket
+  console.log(basketList)
+
   const beerList = () => {
     let arr = JSON.parse(JSON.stringify(basketList));
     let blank = { img: beerBalnk, name: '' }
@@ -74,6 +68,18 @@ function Basket() {
     }
   }
 
+  const basketImage = (beer) => {
+    if (beer.name === '') {
+      return (
+        <img src={beer.img}  alt='blankBeer'/>
+      )
+    } else {
+      return (
+        <img src={`data:image/png; base64, ${beer.beerImage}`}  alt='basketBeer'/>
+      )
+    }
+  }
+
   return (
     <div className="basket">
       <div className="basket-header">
@@ -84,7 +90,7 @@ function Basket() {
       <div className="basket-body">
         { beerList().map((beer, index) => (
           <div className="basket-body-item" key={index}>
-            <img src={beer.img}  alt="beer"/>
+            {basketImage(beer)}
             <p>{beer.name}</p>
           </div>
         ))}
@@ -120,7 +126,9 @@ function Basket() {
           </div>
           <div className="small-basket-body">
         { beerList().map((beer, index) => (
-          <img src={beer.img}  key={index} alt="beer"/>
+          <div key={index}>
+            {basketImage(beer)}
+          </div>
         ))}
       </div>
         {combineBeerBtn()}

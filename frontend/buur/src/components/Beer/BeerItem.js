@@ -1,29 +1,47 @@
 import React from "react";
 import {useHistory} from "react-router";
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
-import beerImg from '../../assets/beer_sample.png'
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import axios from 'axios'
 
 
 const BeerItem = (props) => {
   const history = useHistory();
 
-  function beerDetails(beerInfo) {
-    // beerId에 맞는 맥주 상세정보 조회
-  
-    history.push({
-      pathname: "/main/beerlist/beerdetails",
-      state: {beerInfo : beerInfo}
+
+  const beerDetails = async(beerInfo) => {
+    await axios
+    .get(`https://j6b102.p.ssafy.io/api-v1/beer/info/${beerInfo.beerNo}`, {
+      headers: {"X-AUTH-TOKEN" : localStorage.getItem('jwt')}
     })
+    .then((res) => {
+      history.push({
+        pathname: "/main/beerlist/beerdetails",
+        state: { beerInfo : res.data }
+      })
+    }) 
+  }
+
+  const likeStatus = () => {
+    if (props.beer.like) {
+      return (
+        <FavoriteRoundedIcon sx={{ color: '#CB0000', fontSize: 15 }}/>
+      )
+    } else {
+      return (
+        <FavoriteBorderRoundedIcon sx={{ color: '#CB0000', fontSize: 15 }}/>
+      )
+    }
   }
 
   return (
       <div className="beeritem" onClick={() => beerDetails(props.beer)}>
         <div className="like-status">
           <div></div>
-          <img src={beerImg} alt="beerSample" />
-          <FavoriteBorderRoundedIcon sx={{ color: '#CB0000', fontSize: 15 }}/>
+            <img src={`data:image/png; base64, ${props.beer.beerImage}`} alt="beerImage" />
+            {likeStatus()}
         </div>
-        <p>{props.beer.name}</p>
+        <p>{props.beer.beerName}</p>
       </div>
     )
 }

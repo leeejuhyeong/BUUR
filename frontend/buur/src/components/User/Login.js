@@ -144,10 +144,11 @@ function LoginForm() {
   //동기식으로 로그인정보를 통신하여 출력
   const onSubmitAccount = async () => {
     try {
-      const user = await fetchLogin(account);
+      const JWT = await fetchLogin(account);
 
-      //성공하면 해당 user 아이디 패스워드값 셋팅
-      setUser(user);
+      console.log(JWT);
+      //성공하면 해당 JWT값 셋팅
+      setUser(JWT);
       //성공하면 해당 url로 이동(main페이지로)
       history.replace("/SurveyInitialScreen");
     } catch (error) {
@@ -170,7 +171,7 @@ function LoginForm() {
         placeholder="비밀번호를 입력해주세요"
         onChange={onChangeAccount}
       />
-      <Link textDecoration="none">
+      <Link text-decoration="none">
         <PwdFind>비밀번호를 잊어버리셨나요?</PwdFind>
       </Link>
       {/* <Link
