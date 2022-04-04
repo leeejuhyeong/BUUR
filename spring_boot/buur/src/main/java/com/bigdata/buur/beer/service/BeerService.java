@@ -6,6 +6,8 @@ import com.bigdata.buur.enums.BeerCategory;
 import java.util.List;
 
 public interface BeerService {
+    // 맥주 전체 조회
+    List<BeerDto.CommonBeer> findBearList();
     // 종류별 맥주 조회
     List<BeerDto.LikeBeer> findBeerList(String type, int offset);
     // 맥주 상세 조회

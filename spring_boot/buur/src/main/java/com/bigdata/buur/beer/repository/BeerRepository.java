@@ -6,6 +6,8 @@ import com.bigdata.buur.enums.BeerCategory;
 import java.util.List;
 
 public interface BeerRepository {
+    // 맥주 전체 조회
+    List<Beer> findAll();
     // 종류별 맥주 조회
     List<Beer> findAllByTypeAndOffset(BeerCategory beerCategory, int offset);
     // 맥주 조회

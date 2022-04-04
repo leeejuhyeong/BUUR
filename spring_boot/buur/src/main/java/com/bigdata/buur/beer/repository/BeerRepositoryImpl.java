@@ -15,6 +15,11 @@ public class BeerRepositoryImpl implements BeerRepository {
     private final EntityManager em;
 
     @Override
+    public List<Beer> findAll() {
+        return em.createQuery("select b from Beer b order by b.id", Beer.class).getResultList();
+    }
+
+    @Override
     public List<Beer> findAllByTypeAndOffset(BeerCategory beerCategory, int offset) {
         return em.createQuery("select b from Beer b where b.beerCategory = :beerCategory order by b.id", Beer.class)
                 .setParameter("beerCategory", beerCategory)
