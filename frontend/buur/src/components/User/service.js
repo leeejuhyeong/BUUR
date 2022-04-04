@@ -1,5 +1,3 @@
-
-
 export const fetchLogin = async ({ id, password }) => {
   const data = { userId: id, userPassword: password };
   return fetch("https://j6b102.p.ssafy.io/api-v1/user/login", {
@@ -86,4 +84,3 @@ export const fetchLogin = async ({ id, password }) => {
 //   }).then((response) => response.text()); // parses JSON response into native JavaScript objects
 // }
 // var awt;
-

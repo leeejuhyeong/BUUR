@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-// import { useHistory } from "react-router-dom";
-import beerImg from "../../assets/beer_sample.png";
-import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import { Link } from "react-router-dom";
 import WorkOutlineRoundedIcon from '@mui/icons-material/WorkOutlineRounded';
 import { ADD_BASKET } from '../../actions/ActionTypes'
 
@@ -14,6 +12,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import addBasketIcon from '../../assets/add_basket_icon.png'
 import warnBasketIcon from '../../assets/warn_basket_icon.png'
 import '../../styles/beerbasket.css';
+import BeerLike from "./BeerLike";
 
 const mapStateToProps = (state) => {
   return {
@@ -31,21 +30,15 @@ class BeerDetailsInfo extends React.Component {
   state = {
     warnBasketOpen: false,
     successBasketOpen: false,
+    likeStatus : this.props.beerInfo.like
   }
   render () {
     const beerInfo = this.props.beerInfo
     const basket = this.props.basket
     const addBeerBasket = this.props.addBeerBasket
-    
-    // const history = useHistory()
-    
-    // function goBasket() {
-    //   history.push({
-    //     pathname: "/main/basket"
-    //   })
-    // }
 
-    function addBasket(beerInfo) {
+
+    const addBasket = (beerInfo) => {
       if (basket.length === 4) {
         handleClickOpenWarn()
         console.log(basket)
@@ -69,16 +62,21 @@ class BeerDetailsInfo extends React.Component {
       this.setState({successBasketOpen : false});
     };
 
+
+
     return (
       <div className="beer-details-info">
-        <img src={beerImg} alt="beerImg"/>
+        <img src={`data:image/png; base64, ${beerInfo.beerImage}`} alt="beerImg"/>
         <div className="beer-textinfo">
           <div className="beer-textinfo__title">
-            <h3>{beerInfo.name}</h3>
-            <FavoriteBorderRoundedIcon sx={{ color: '#CB0000', fontSize: 22 }}/>
+            <p>{beerInfo.name}</p>
+            <BeerLike 
+            likeStatus = {this.state.likeStatus}
+            beerInfo = {beerInfo}
+            />
           </div>
-          <div className="beer-textinfo__catergory"><h5>알코올</h5> <span>{beerInfo.alcohol}</span></div>
-          <div className="beer-textinfo__catergory"><h5>종류 </h5> <span>{beerInfo.kind}</span></div>
+          <div className="beer-textinfo__catergory"><h5>도수</h5> <span>{beerInfo.abv} %</span></div>
+          <div className="beer-textinfo__catergory"><h5>IBU </h5> <span>{beerInfo.ibu}</span></div>
           <div className="beer-textinfo__catergory"><h5>원산지 </h5> <span>{beerInfo.origin}</span></div>
           <button 
           onClick={() => addBasket(beerInfo)}
@@ -145,8 +143,10 @@ class BeerDetailsInfo extends React.Component {
                 <span>맥주가</span>
               </div>
               <p>장바구니에 성공적으로 담겼습니다</p>
-              <Button onClick={handleClose} autoFocus>
-                확인하러 갈래요
+              <Button autoFocus>
+                <Link to="/main/basket">
+                  확인하러 갈래요
+                </Link>
               </Button>
             </DialogContent>
           </Dialog>

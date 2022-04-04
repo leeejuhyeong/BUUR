@@ -7,7 +7,7 @@ class BeerReviewStar extends React.Component {
     const star = <StarIcon sx={{fontSize: 9, color: '#616161'}}/>
     return (
       <div className="beerreview-star">
-        <p>{beerRank.avg}</p>
+        <p>{beerRank.rankAvg}</p>
         <div className="star-bar-5">
           <div>
             <div>{star}{star}{star}{star}{star}</div>

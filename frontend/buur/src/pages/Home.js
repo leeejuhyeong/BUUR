@@ -24,6 +24,7 @@ class Home extends React.Component {
         to={{
           pathname: "/main/beerlist",
           state: {
+            type: "ALL",
             keyword: "전체 상품"
           }
         }}>
@@ -37,9 +38,10 @@ class Home extends React.Component {
               to={{
               pathname: "/main/beerlist",
               state: {
+                type: "LAGER",
                 keyword: "라거"
               }}}>
-              <img src={lager} alt='lager'/>
+              <img src={lager} alt='LAGER'/>
             </Link>
             <p>라거</p>
           </div>
@@ -49,9 +51,10 @@ class Home extends React.Component {
               to={{
               pathname: "/main/beerlist",
               state: {
+                type: "ALE",
                 keyword: "에일"
               }}}>
-              <img src={ale} alt='lager'/>
+              <img src={ale} alt='ALE'/>
             </Link>
             <p>에일</p>
           </div>
@@ -61,9 +64,10 @@ class Home extends React.Component {
               to={{
               pathname: "/main/beerlist",
               state: {
+                type: "BLACK_BEER",
                 keyword: "흑맥주"
               }}}>
-              <img src={darkbeer} alt='lager'/>
+              <img src={darkbeer} alt='BLACK_BEER'/>
             </Link>
             <p>흑맥주</p>
           </div>
@@ -73,9 +77,10 @@ class Home extends React.Component {
               to={{
               pathname: "/main/beerlist",
               state: {
+                type: "PILSNER",
                 keyword: "필스너"
               }}}>
-              <img src={pilsner} alt='lager'/>
+              <img src={pilsner} alt='PILSNER'/>
             </Link>
             <p>필스너</p>
           </div>
@@ -85,9 +90,10 @@ class Home extends React.Component {
               to={{
               pathname: "/main/beerlist",
               state: {
+                type: "WHEAT_BEER",
                 keyword: "밀맥주"
               }}}>
-              <img src={wheatbeer} alt='lager'/>
+              <img src={wheatbeer} alt='WHEAT_BEER'/>
             </Link>
             <p>밀맥주</p>
           </div>
@@ -97,9 +103,10 @@ class Home extends React.Component {
               to={{
               pathname: "/main/beerlist",
               state: {
+                type: "ETC",
                 keyword: "기타"
               }}}>
-              <img src={etcbeer} alt='lager'/>
+              <img src={etcbeer} alt='ETC'/>
             </Link>
             <p>기타</p>
           </div>

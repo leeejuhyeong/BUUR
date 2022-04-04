@@ -14,9 +14,16 @@ import '../../styles/beerdetails.css';
 const BeerDetails = () => {
   const location = useLocation();
   const beerInfo = location.state.beerInfo;
+  console.log(beerInfo)
 
   // beerInfo.id를 가지고 맥주 리뷰 조회 (평점도 얻을 수 있음)
-  const beerRank = { avg: 4.7, 1: 0, 2: 2, 3: 3, 4: 5, 5: 6}
+  // const beerRank = { avg: 4.7, 1: 0, 2: 2, 3: 3, 4: 5, 5: 6}
+  const beerRank = {
+    rankAvg : beerInfo.reviewAvg,
+    totalCnt : beerInfo.totalCnt,
+    totalSum : beerInfo.totalSum,
+    1: 0, 2: 2, 3: 3, 4: 5, 5: 6
+  }
   const beerReviews = [
     { review_rank: 5, user: '싱글벙글', review_content: '자꾸자꾸 마시고 싶은 맥주!'},
     { review_rank: 5, user: '싱글벙글', review_content: '자꾸자꾸 마시고 싶은 맥주!'},
