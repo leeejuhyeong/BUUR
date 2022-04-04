@@ -7,6 +7,8 @@ const Context = createContext();
 export function UserContextProvider({ children }) {
   //글로벌하게 관리하고 싶은 상태값 지정
   const [JWT, setUser] = useState(null);
+  const [review, setReview] = useState("");
+
   return (
     //변수명.Provider 문법으로 그 범위 안에있는 컴포넌트한테 값을 공유할 수 있음
     //value값에 전송할 props 넣기 속성명(value)는 임의변경 불가
@@ -14,6 +16,8 @@ export function UserContextProvider({ children }) {
       value={{
         JWT,
         setUser,
+        review,setReview
+        
       }}
     >
       {children}
