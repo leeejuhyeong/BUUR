@@ -66,9 +66,7 @@ const BeerList = ({ history, location }) => {
   return (
     <div className="beerlist">
       <header>
-        <button onClick={goBack}>
-          <ChevronLeftIcon />
-        </button>
+        <button onClick={goBack}><ChevronLeftIcon/></button>
         <p># {keyword}</p>
         <div></div>
       </header>
