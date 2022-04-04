@@ -35,7 +35,6 @@ public class ReviewController {
     @PostMapping()
     public ResponseEntity<?> reviewAdd(@RequestBody @ApiParam(value = "저장할 리뷰 정보") ReviewDto reviewDto) {
 
-        System.out.println("진입하기");
         reviewService.addReview(reviewDto);
         return ResponseEntity.ok().body("저장에 성공하였습니다.");
     }

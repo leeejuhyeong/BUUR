@@ -22,4 +22,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
             "GROUP BY r.total_score " +
             "ORDER BY r.total_score", nativeQuery = true)
     List<ReviewScoreInterface> findByBeerId(@Param(value = "id") Long id);
+
+    Review findReviewByBeer_IdAndUser_Id(Long beer_id, Long id);
 }
