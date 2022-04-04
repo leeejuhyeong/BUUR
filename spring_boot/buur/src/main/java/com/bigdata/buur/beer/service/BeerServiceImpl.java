@@ -27,6 +27,24 @@ public class BeerServiceImpl implements BeerService {
     private final UserService userService;
     private final ReviewRepository reviewRepository;
 
+
+    @Override
+    public List<BeerDto.CommonBeer> findBearList() {
+        List<BeerDto.CommonBeer> commonBeerList = new ArrayList<>();
+        List<Beer> beerList = beerRepository.findAll();
+
+        for (Beer beer : beerList) {
+            commonBeerList.add(BeerDto.CommonBeer.builder()
+                    .beerNo(beer.getId())
+                    .beerName(beer.getName())
+                    .abv(beer.getAbv())
+                    .type(beer.getBeerCategory().name())
+                    .imagePath(beer.getImage())
+                    .build());
+        }
+        return commonBeerList;
+    }
+
     @Override
     @Transactional
     public List<BeerDto.LikeBeer> findBeerList(String type, int offset) {

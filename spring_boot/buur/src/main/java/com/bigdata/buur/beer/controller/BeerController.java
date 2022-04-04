@@ -27,9 +27,22 @@ public class BeerController {
     private final String SUCCESS = "success";
     private final String FAIL = "fail";
 
+    @ApiOperation(value = "맥주 전체 조회")
+    @GetMapping
+    public ResponseEntity<List<BeerDto.CommonBeer>> beerList() throws IOException{
+        List<BeerDto.CommonBeer> commonBeerList = beerService.findBearList();
+
+        InputStream inputStream;
+        for (BeerDto.CommonBeer commonBeer : commonBeerList) {
+            inputStream = new FileInputStream(commonBeer.getImagePath());
+            commonBeer.setBeerImage(IOUtils.toByteArray(inputStream));
+        }
+        return ResponseEntity.ok().body(commonBeerList);
+    }
+
     @ApiOperation(value = "종류별 맥주 조회")
     @GetMapping("/{type}/{offset}")
-    public ResponseEntity<List<BeerDto.LikeBeer>> beerList(
+    public ResponseEntity<List<BeerDto.LikeBeer>> beerTypeList(
             @PathVariable("type") @ApiParam(value = "맥주 종류(ALL, LAGER, ALE, BLACK_BEER, PILSNER, WHEAT_BEER, ETC") String type,
             @PathVariable("offset") @ApiParam(value = "오프셋, 0부터 시작") int offset) throws IOException{
         List<BeerDto.LikeBeer> likeBeerList = beerService.findBeerList(type, offset);

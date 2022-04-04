@@ -12,6 +12,25 @@ import java.util.List;
 import java.util.Map;
 
 public class BeerDto {
+
+    @Builder
+    @Getter @Setter
+    @ToString
+    public static class CommonBeer {
+        @ApiModelProperty("맥주 번호")
+        private Long beerNo;
+        @ApiModelProperty("맥주 이름")
+        private String beerName;
+        @ApiModelProperty("맥주 도수")
+        private Double abv;
+        @ApiModelProperty("맥주 종류")
+        private String type;
+        @ApiModelProperty("맥주 사진 경로")
+        private String imagePath;
+        @ApiModelProperty("맥주 사진")
+        private byte[] beerImage;
+    }
+
     @Builder
     @Getter @Setter
     public static class LikeBeer {
