@@ -1,10 +1,15 @@
 package com.bigdata.buur.beer.dto;
 
 
-import com.bigdata.buur.review.dto.ReviewAvgInterface;
+import com.bigdata.buur.review.dto.ReviewScore;
+import com.bigdata.buur.review.dto.ReviewScoreInterface;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class BeerDto {
     @Builder
@@ -46,20 +51,17 @@ public class BeerDto {
         private String imagePath;
         @ApiModelProperty("맥주 이미지")
         private byte[] beerImage;
-        @ApiModelProperty("리뷰 전체 개수")
+        @ApiModelProperty("맥주 리뷰 점수별 개수")
         @Builder.Default
-        private Integer totalCnt = 0;
-        @ApiModelProperty("리뷰 전체 총합")
-        @Builder.Default
-        private Integer totalSum = 0;
-        @ApiModelProperty("리뷰 평균")
-        @Builder.Default
-        private Double reviewAvg = 0D;
+        private List<ReviewScore> reviewScoreList = new ArrayList<>();
 
-        public void addAvg(ReviewAvgInterface reviewAvgInterface) {
-            this.totalCnt = reviewAvgInterface.getCnt();
-            this.totalSum = reviewAvgInterface.getSumTotalScore();
-            this.reviewAvg = reviewAvgInterface.getAvg();
+        public void addReviewScoreList(Map<Integer, Integer> reviewScoreMap) {
+            for (Map.Entry<Integer, Integer> entry : reviewScoreMap.entrySet()) {
+                this.reviewScoreList.add(ReviewScore.builder()
+                        .score(entry.getKey())
+                        .count(entry.getValue())
+                        .build());
+            }
         }
     }
 }
