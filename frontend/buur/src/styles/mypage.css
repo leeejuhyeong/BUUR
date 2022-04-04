@@ -86,6 +86,8 @@
 .macbti-page .macbti-header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 60px;
 }
 
 .macbti-page .macbti-header > p {
@@ -103,7 +105,7 @@
 }
 
 .macbti-page .macbti-user-info{
-    height: 13%;
+    height: 13.3%;
     display: flex;
     align-items: center;
     padding-left: 15px;
@@ -113,13 +115,13 @@
 }
 
 .macbti-page .macbti-content {
-    height: 78%;
+    height: 580px;
 }
 
 .macbti-page .macbti-graph-div{
-    height: 97%;
     background-color: #ffffff;
     border-radius: 20px 20px 0px 0px;
+    height: 83%;
 }
 
 .macbti-page .macbti-graph{
@@ -167,16 +169,17 @@
 .macbti-notice{
     display: flex;
     justify-content: flex-end;
-    padding-right: 15px;
+    padding-right: 25px;
     color: white;
-    padding-bottom: 5px;
+    padding-bottom: 4px;
     text-decoration: underline;
+    font-size: 13px;
 }
 
 .macbti-page .refrigerator-icon-div{
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .macbti-page .refrigerator-btn{
@@ -238,6 +241,7 @@
 .macbti-page .circle-list{
     display: flex;
     justify-content: center;
+    padding-top: 7px;
 }
 
 .macbti-page .beer-name {
@@ -256,4 +260,99 @@
     background-color: #FAFAFA;
     padding: 16px 16px;
     height: 587px;
+}
+
+.notice-page .notice-item{ 
+    position: absolute;
+    width: 272px;
+    height: 58px;
+    left: 38px;
+    top: 102px;
+    
+    background: #FFFFFF;
+    border: 1px solid rgba(185, 185, 185, 0.18);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notice-page .notice-arrow-icon {
+    margin-left: 28px;
+}
+
+.notice-page .notice-item-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.notice-page .notice-item-title {
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.notice-page .notice-item-day {
+    font-size: 10px;
+    font-weight: 500;
+    color:#00000080;
+}
+
+.notice-detail-page .notice-detail-header {
+    position: absolute;
+    width: 360px;
+    height: 92px;
+    left: 0px;
+    top: 54px;
+    border-bottom:3px solid #F1F1F1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 8%;
+}
+
+.notice-detail-page .notice-detail-title {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.notice-detail-page .notice-detail-day {
+    font-weight: 500;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.notice-detail-page .notice-detail-body{
+    position: absolute;
+    top: 130px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+}
+
+.notice-detail-body > p{
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.notice-detail-body > div {
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.notice-detail-body .notice-li-div{
+    font-weight: 600;
+    font-size: 13px;
+    padding-bottom: 5px;
+}
+
+.notice-detail-body .notice-li{
+    margin-bottom: 10px;
 }

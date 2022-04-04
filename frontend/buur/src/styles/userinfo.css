@@ -1,0 +1,72 @@
+.info-page .info-page-body {
+    position: absolute;
+    top: 53px;
+}
+
+.info-page .info-img-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 5px solid #f7f7f7;
+    position: relative;
+}
+
+.info-page .profile-img{
+    margin: 15px;
+    object-fit: cover;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border-color: #E9B940;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.info-page .profile-change-btn {
+    position: absolute;
+    bottom: 48px;
+    right: 145px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.info-page .info-input-first-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 18px;
+    padding-right: 79px;
+    padding-top: 30px;
+    padding-bottom: 14px;
+}
+
+.info-page .info-input-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5px 8px;
+}
+
+.info-page .password-change-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.info-page .password-change-btn{
+    width: 80%;
+    background-color: #E9B940;
+    font-weight: 500;
+}
+
+.info-page .password-change-btn:active{
+    background-color:#E9B940;
+}
+
+.info-page .password-change-btn:hover{
+    background-color:#E9B940;
+}

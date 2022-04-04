@@ -14,6 +14,7 @@ import BeerDetails from "./pages/Beer/BeerDetails";
 import BeerReviews from "./pages/Beer/BeerReviews";
 import Basket from "./pages/Basket/Basket";
 import BasketCombine from "./pages/Basket/BasketCombine";
+import NoticeDetail from "./pages/MyPage/NoticeDetail";
 import Nav from "./components/Nav";
 import "./styles/common/App.css";
 
@@ -38,6 +39,7 @@ const BaseRouter = withRouter(({ location }) => {
         <Route path="/main/basket/combine" exact={true} component={BasketCombine} />
         <Route path="/mypage/userinfo" exact={true} component={InfoPage} />
         <Route path="/mypage/macbti" exact={true} component={Macbti} />
+        <Route path="/mypage/notice/detail" exact={true} component={NoticeDetail} />
         {/* <Route path="/mypage/refrigerator" exact={true} component={refrigerator} /> */}
         <Route path="/mypage/likebeer" exact={true} component={LikeBeerPage} />
         <Route path="/mypage/notice" exact={true} component={Notice} />
@@ -55,7 +57,9 @@ const BaseRouter = withRouter(({ location }) => {
           location.pathname !== "/mypage/userinfo" && 
           location.pathname !== "/mypage/macbti" && 
           location.pathname !== "/mypage/likebeer" && 
-          location.pathname !== "/mypage/notice" && <Nav />}
+          location.pathname !== "/mypage/notice" && 
+          location.pathname !== "/mypage/notice/detail" && <Nav />}
+
 
         {/* nav 사용  */}
         <Route exact path="/home" component={Home} />

@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {RadialChart} from 'react-vis';
 import {useLocation, useHistory } from "react-router";
-import axios from 'axios'
+// import axios from 'axios'
 
 
 const Macbti = () => {
@@ -97,8 +97,8 @@ const Macbti = () => {
                     <div className='macbti-graph'>
                         <RadialChart
                         data={userMonthData}
-                        width={230}
-                        height={230} 
+                        width={210}
+                        height={210} 
                         colorType='literal'
                         />
                     </div>

@@ -6,10 +6,12 @@ import { Link } from "react-router-dom"
 
 function MyPage() {
     // 유저이미지, 이름 설정
-    const [image, setImage] = useState("https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0bf59e89-f4fd-46b8-956d-b6ab3bfea09c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220331%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220331T052849Z&X-Amz-Expires=86400&X-Amz-Signature=81c0e66ddd9fa0f9eb8e03f02a5358354a5336fbe31f4b567373efee44415b80&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject")
+    const [image, setImage] = useState("https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0bf59e89-f4fd-46b8-956d-b6ab3bfea09c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220403T113730Z&X-Amz-Expires=86400&X-Amz-Signature=ab9197b7eb7d5ea8ed16b038a9b03b106e125cf8f75b62e09fbe343f6059b026&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject")
     const [username, setUsername] = useState('김싸피')
-    console.log(setImage, setUsername)
 
+    function logout () {
+      localStorage.removeItem('jwt');
+    }
   
     return (
       <div className="mypage">
@@ -64,7 +66,7 @@ function MyPage() {
           >
             공지사항
           </Link>
-          <div className="logout-div">로그아웃</div>
+          <div className="logout-div" onClick={() => logout()}>로그아웃</div>
 
         </div>
       </div>

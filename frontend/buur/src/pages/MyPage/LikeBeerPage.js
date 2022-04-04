@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+import React from 'react';
 import MyPageBackHeader from '../../components/MyPage/MyPageBackHeader';
 import BeerItem from '../../components/Beer/BeerItem'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import '../../styles/mypage.css'
-import axios from 'axios'
+// import axios from 'axios'
 
 function LikeBeerPage(){
     const beerList = [
@@ -20,7 +21,9 @@ function LikeBeerPage(){
 
     // useEffect(() => {
     //     axios.get('https://j6b102.p.ssafy.io/api-v1/beer/like', {
-    //         'x-auth-token': ''
+    //         headers: {
+    //             'x-auth-token': ''
+    //         }
     //     })
     //     .then((res) => {
     //         console.log(res.data)
