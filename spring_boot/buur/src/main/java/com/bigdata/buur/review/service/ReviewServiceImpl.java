@@ -63,6 +63,12 @@ public class ReviewServiceImpl implements ReviewService{
                 .id(reviewDto.getBeerNo())
                 .build();
 
+        // 기존에 리뷰 데이터가 있는 경우 조회 후 삭제
+        Review existReview = reviewRepository.findReviewByBeer_IdAndUser_Id(currentBeer.getId(), currentUser.getId());
+        if(existReview != null) {
+            reviewRepository.delete(existReview);
+        }
+
         Review review = Review
                 .builder()
                 .user(currentUser)
@@ -70,6 +76,7 @@ public class ReviewServiceImpl implements ReviewService{
                 .totalScore(reviewDto.getRank())
                 .content(reviewDto.getContent())
                 .build();
+
 
 
         reviewRepository.save(review);

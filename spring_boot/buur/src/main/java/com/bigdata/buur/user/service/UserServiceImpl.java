@@ -97,8 +97,6 @@ public class UserServiceImpl implements UserService {
             reviewList.add(Review.builder()
                     .user(currentUser)
                     .beer(Beer.builder().id(surveyDto.getBeerNo()).build())
-                            .taste(surveyDto.getTaste())
-                            .aroma(surveyDto.getAroma())
                             .totalScore(surveyDto.getRank())
                             .content(surveyDto.getContent())
                     .build());
