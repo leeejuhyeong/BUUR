@@ -1,11 +1,10 @@
 import fetch from "isomorphic-fetch";
 import { USER_SIGN_UP_RESULT } from "./ActionTypes";
 
-
 // user
 export const userSignUp = (signUpInfo) => {
   return (dispatch) => {
-    fetch("http://localhost:3002/users/signUp", {
+    fetch("https://j6b102.p.ssafy.io/api-v1/user/signup", {
       method: "post",
       headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify(signUpInfo),
@@ -26,5 +25,3 @@ export const userSignUpResult = (result) => {
     result,
   };
 };
-
-

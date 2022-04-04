@@ -1,30 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Heineken from "../../assets/Heineken.png";
 import BlankBeer from "../../assets/BlankBeer.png";
 import Grid from "@mui/material/Grid";
 import SurveyBeerItem from "./SurveyBeerItem";
+import { fetchBeerList } from "./service";
 
-
-
-const beerList = [
-  { name: "호가든", id: "a", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
-  { name: "서머스비", id: "b", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
-  { name: "서머스비", id: "c", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
-  { name: "서머스비", id: "d", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
-  { name: "서머스비", id: "e", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
-  { name: "서머스비", id: "f", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
-  { name: "곰표", id: "g", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
-  { name: "서머스비", id: "h", kind: "과일맥주", alcohol: "4.5 %", origin: "덴마크", review: "" },
-];
 // const [review, setReview] = useState("");
-
+// sessionStorage.setItem("review", beerList.review);
 
 function Survey() {
+  // const beerList = await fetchBeerList();
+  // console.log(beerList);
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
-  
-console.log(beerList[0].name)
-
+  // const [beerList, setBeerList] = useState([]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const beerList = await fetchBeerList();
+  //     console.log(beerList);
+  //   }
+  // }, []);
+  const beerList = localStorage.getItem("beerList");
+  console.log(beerList);
   return (
     <Container>
       <Title>평가할 맥주를 골라주세요</Title>
@@ -33,7 +30,6 @@ console.log(beerList[0].name)
       <Blank1></Blank1>
       <Blank2></Blank2>
       <Blank3></Blank3>
-
       <BeerlistBody>
         <Grid container spacing={{ xs: 2 }}>
           {beerList.map((beer, index) => (

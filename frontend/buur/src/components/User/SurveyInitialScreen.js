@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { fetchBeerList } from "./service";
 
 const Container = styled.div`
   padding: 20px;
@@ -48,6 +49,13 @@ const SurveyStartButton = styled.button`
     background-color: #efefef;
   `}
 `;
+
+const moveSurvey = async () => {
+  const beerList = await fetchBeerList();
+  localStorage.setItem("beerList", beerList);
+  console.log(beerList);
+};
+
 function SurveyInitialScreen() {
   return (
     <Container>
@@ -66,7 +74,9 @@ function SurveyInitialScreen() {
           },
         }}
       >
-        <SurveyStartButton>제 취향을 알려드릴게요</SurveyStartButton>
+        <SurveyStartButton onClick={moveSurvey}>
+          제 취향을 알려드릴게요
+        </SurveyStartButton>
       </Link>
     </Container>
   );

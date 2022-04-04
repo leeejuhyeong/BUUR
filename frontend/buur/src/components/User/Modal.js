@@ -5,14 +5,21 @@ import SelectBar from "./SelectBar";
 
 const Modal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close} = props;
+  const { open, close } = props;
   const [review, setReview] = useState("");
-  const [footerBtnColor, setFooterBtnColor] = useState("rgba(160, 160, 160, 0.38)");
+  const [footerBtnColor, setFooterBtnColor] = useState(
+    "rgba(160, 160, 160, 0.38)"
+  );
 
   const onChangeReview = (e) => {
     setReview(e.target.value);
   };
+  // changeReivew = () => {
+  //   beerReview = review;
+  //   return beerReview;
+  // };
 
+  // console.log(props.review);
   useEffect(() => {
     console.log(review);
     if (review) {
@@ -22,9 +29,6 @@ const Modal = (props) => {
       // button = <FooterBtn color={footerBtnColor}>이렇게 평가 할래요!</FooterBtn>;
     }
   }, [review]);
-
-
-
 
   // const onChangeReview = (e) => {
   //   setReview({ [e.target.name]: e.target.value }, () => {

@@ -20,7 +20,7 @@ import "./styles/common/App.css";
 
 import SurveyInitialScreen from "./components/User/SurveyInitialScreen";
 import Survey from "./components/User/Survey";
-// import SignUp from "./components/User/SignUp";
+import SignUp from "./components/User/SignUp";
 import { UserContextProvider } from "./components/User/user-context";
 
 const BaseRouter = withRouter(({ location }) => {
@@ -29,37 +29,55 @@ const BaseRouter = withRouter(({ location }) => {
       <UserContextProvider>
         {/* nav 사용x  */}
         <Route path="/" exact={true} component={Login} />
-        {/* <Route path="/SignUp" exact={true} component={SignUp} /> */}
-        <Route path="/SurveyInitialScreen" exact={true} component={SurveyInitialScreen} />
+        <Route path="/SignUp" exact={true} component={SignUp} />
+        <Route
+          path="/SurveyInitialScreen"
+          exact={true}
+          component={SurveyInitialScreen}
+        />
         <Route path="/Survey" exact={true} component={Survey} />
         <Route path="/main/beerlist" exact={true} component={BeerList} />
-        <Route path="/main/beerlist/beerdetails" exact={true} component={BeerDetails} />
-        <Route path="/main/beerlist/beerdetails/reviews" component={BeerReviews} />
+        <Route
+          path="/main/beerlist/beerdetails"
+          exact={true}
+          component={BeerDetails}
+        />
+        <Route
+          path="/main/beerlist/beerdetails/reviews"
+          component={BeerReviews}
+        />
         <Route path="/main/basket" exact={true} component={Basket} />
-        <Route path="/main/basket/combine" exact={true} component={BasketCombine} />
+        <Route
+          path="/main/basket/combine"
+          exact={true}
+          component={BasketCombine}
+        />
         <Route path="/mypage/userinfo" exact={true} component={InfoPage} />
         <Route path="/mypage/macbti" exact={true} component={Macbti} />
-        <Route path="/mypage/notice/detail" exact={true} component={NoticeDetail} />
+        <Route
+          path="/mypage/notice/detail"
+          exact={true}
+          component={NoticeDetail}
+        />
         {/* <Route path="/mypage/refrigerator" exact={true} component={refrigerator} /> */}
         <Route path="/mypage/likebeer" exact={true} component={LikeBeerPage} />
         <Route path="/mypage/notice" exact={true} component={Notice} />
 
-
         {/* 예외처리 */}
         {location.pathname !== "/" &&
+          location.pathname !== "/SignUp" &&
           location.pathname !== "/main/beerlist" &&
           location.pathname !== "/main/beerlist/beerdetails" &&
           location.pathname !== "/main/beerlist/beerdetails/reviews" &&
           location.pathname !== "/main/basket" &&
           location.pathname !== "/main/basket/combine" &&
           location.pathname !== "/SurveyInitialScreen" &&
-          location.pathname !== "/Survey" && 
-          location.pathname !== "/mypage/userinfo" && 
-          location.pathname !== "/mypage/macbti" && 
-          location.pathname !== "/mypage/likebeer" && 
-          location.pathname !== "/mypage/notice" && 
+          location.pathname !== "/Survey" &&
+          location.pathname !== "/mypage/userinfo" &&
+          location.pathname !== "/mypage/macbti" &&
+          location.pathname !== "/mypage/likebeer" &&
+          location.pathname !== "/mypage/notice" &&
           location.pathname !== "/mypage/notice/detail" && <Nav />}
-
 
         {/* nav 사용  */}
         <Route exact path="/home" component={Home} />

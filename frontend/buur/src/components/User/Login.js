@@ -3,7 +3,7 @@ import BUURlogo from "../../assets/BUURLogo_sm.png";
 import GoogleLogo from "../../assets/GoogleLogo.png";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import { useUserContext } from "./user-context";
+// import { useUserContext } from "./user-context";
 import { fetchLogin } from "./service";
 import { useHistory } from "react-router-dom";
 
@@ -12,11 +12,10 @@ import { useHistory } from "react-router-dom";
 function LoginForm() {
   //글로벌 전역 상태값 setUser를 받아옴
   //로그인이 성공적으로 이루어지면 user에 상태값을 넣어줘야지 나중에 다른 컴포넌트에서도 user값을 이용하여 다른 것 들을 할 수 있음
-  const { setUser } = useUserContext();
+  // const { setUser } = useUserContext();
 
   //url 이동을 위한 useHistory
   const history = useHistory();
-
   //input에서 입력한 아이디와 비밀번호 정보를 담기위한 state
   const [account, setAccount] = useState({
     id: "",
@@ -38,8 +37,9 @@ function LoginForm() {
       localStorage.setItem("jwt", JWT);
 
       console.log(JWT);
+
       //성공하면 해당 JWT값 셋팅
-      setUser(JWT);
+      // setUser(JWT);
       //성공하면 해당 url로 이동(main페이지로)
       history.replace("/SurveyInitialScreen");
     } catch (error) {
@@ -48,13 +48,23 @@ function LoginForm() {
     }
   };
 
+  //회원가입 페이지 이동
+  const moveSignUp = () => {
+    history.replace("/SignUp");
+  };
+
   return (
     <Container>
       <Jumbotron>
         <Logo></Logo>
       </Jumbotron>
       <Text>아이디</Text>
-      <Input id="id" name="id" placeholder="아이디를 입력해주세요" onChange={onChangeAccount} />
+      <Input
+        id="id"
+        name="id"
+        placeholder="아이디를 입력해주세요"
+        onChange={onChangeAccount}
+      />
       <Text>비밀번호</Text>
       <Input
         id="password"
@@ -80,17 +90,7 @@ function LoginForm() {
         <GoogleLogoInsert></GoogleLogoInsert> Google 계정으로 계속
       </GoogleLoginButton>
       <JoinText>
-        회원이 아니신가요?{" "}
-        <Link
-          to={{
-            pathname: "/SignUp",
-            state: {
-              keyword: "회원가입",
-            },
-          }}
-        >
-          <Join>회원가입</Join>
-        </Link>
+        회원이 아니신가요? <Join onClick={moveSignUp}>회원가입</Join>
       </JoinText>
     </Container>
   );
