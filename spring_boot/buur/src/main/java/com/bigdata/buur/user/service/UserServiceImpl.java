@@ -4,6 +4,7 @@ import com.bigdata.buur.customException.UserAuthExpiredException;
 import com.bigdata.buur.customException.UserNotFoundException;
 import com.bigdata.buur.customException.UserPasswordMismatchException;
 import com.bigdata.buur.entity.Beer;
+import com.bigdata.buur.user.dto.ModifyUserDto;
 import com.bigdata.buur.user.dto.SafeUserDto;
 import com.bigdata.buur.user.dto.SurveyDto;
 import com.bigdata.buur.user.dto.UserDto;
@@ -52,7 +53,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String findUserStatus() {
         User user = userRepository.findById(currentUser())
-                .orElseThrow(() -> new UserNotFoundException());
+                .orElseThrow(UserNotFoundException::new);
 
         return user.getUserStatus().toString();
     }
@@ -74,7 +75,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(UserDto user) {
         User findUser = userRepository.findByUserId(user.getUserId())
-                .orElseThrow(() -> new UserNotFoundException());
+                .orElseThrow(UserNotFoundException::new);
         if (!passwordEncoder.matches(user.getUserPassword(), findUser.getPassword())) {
             throw new UserPasswordMismatchException();
         }
@@ -90,20 +91,20 @@ public class UserServiceImpl implements UserService {
         List<Review> reviewList = new ArrayList<Review>();
 
         User currentUser = userRepository.findById(currentUser())
-                .orElseThrow(() -> new UserNotFoundException());
+                .orElseThrow(UserNotFoundException::new);
 
 
         for (SurveyDto surveyDto : surveyDtoList) {
             reviewList.add(Review.builder()
                     .user(currentUser)
                     .beer(Beer.builder().id(surveyDto.getBeerNo()).build())
-                            .totalScore(surveyDto.getRank())
-                            .content(surveyDto.getContent())
+                    .totalScore(surveyDto.getRank())
+                    .content(surveyDto.getContent())
                     .build());
         }
-        
+
         // 신규회원이 설문을 마쳤으므로 기존 회원으로 상태를 변경
-        currentUser.setUserStatus(UserStatus.OLD_USER);
+        currentUser.changeUserStatus();
         userRepository.save(currentUser);
 
         return reviewRepository.saveAll(reviewList);
@@ -113,10 +114,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void modifyUserProfile(MultipartFile userProfile) throws IOException {
         User user = userRepository.findById(currentUser())
-                .orElseThrow(() -> new UserNotFoundException());
+                .orElseThrow(UserNotFoundException::new);
 
         // 파일 처리 & DB에 경로 저장
-        if(userProfile != null) {
+        if (userProfile != null) {
             // 로컬 환경 기준
             final String UPLOAD_PATH = System.getProperty("user.dir").concat("/images/profiles").replace("/", File.separator);
 
@@ -127,13 +128,12 @@ public class UserServiceImpl implements UserService {
 
             File folder = new File(UPLOAD_PATH);
 
-            if(!folder.exists()) folder.mkdirs();
+            if (!folder.exists()) folder.mkdirs();
 
             String fileExtension = userProfile.getOriginalFilename().split("\\.")[1];
 
             final String userProfileName = user.getUserId() + "." + fileExtension;
 
-//            System.out.println(userProfileName);
 
             File profile = new File(folder, userProfileName);
 
@@ -141,21 +141,24 @@ public class UserServiceImpl implements UserService {
 
             userProfile.transferTo(profile);
 
-            user.setProfile(folder + File.separator + userProfileName);
-
+            user.changeProfile(folder, userProfileName);
+            userRepository.save(user);
         }
     }
 
     @Override
-    public String modifyPassword(String password) {
+    @Transactional
+    public void modifyPassword(ModifyUserDto modifyUserDto) throws UserPasswordMismatchException {
         User user = userRepository.findById(currentUser())
-                .orElseThrow(() -> new UserNotFoundException());
-        user.setPassword(passwordEncoder.encode(password));
+                .orElseThrow(UserNotFoundException::new);
+
+        if (passwordEncoder.matches(modifyUserDto.getOriginPassword(), user.getPassword())) {
+            user.changePassword(passwordEncoder.encode(modifyUserDto.getNewPassword()));
+        } else {
+            throw new UserPasswordMismatchException();
+        }
 
         userRepository.save(user);
-
-        return FAIL;
-
     }
 
     @Override
@@ -163,7 +166,7 @@ public class UserServiceImpl implements UserService {
     public Long currentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if(authentication == null ) throw new UserAuthExpiredException();
+        if (authentication == null) throw new UserAuthExpiredException();
 
         User user = (User) authentication.getPrincipal();
         return user.getId();
@@ -172,7 +175,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public SafeUserDto findUserInfo() throws IOException {
         User user = userRepository.findById(currentUser())
-                .orElseThrow(() -> new UserNotFoundException());
+                .orElseThrow(UserNotFoundException::new);
 
 
         InputStream userProfileImage = new FileInputStream(user.getProfile());

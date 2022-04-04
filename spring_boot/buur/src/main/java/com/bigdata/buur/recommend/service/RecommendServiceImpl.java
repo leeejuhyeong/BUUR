@@ -46,7 +46,7 @@ public class RecommendServiceImpl implements RecommendService {
         Set<Long> likeBeerSet = new HashSet<>(likesRepository.findBeerIdByUser(user));
 
         for (RecommendDto recommend : recommendBeerArray) {
-            recommend.setLikes(likeBeerSet.contains(recommend.getBeer_id()));
+            recommend.setLike(likeBeerSet.contains(recommend.getBeerNo()));
         }
 
         return new ArrayList<>(Arrays.asList(recommendBeerArray));
@@ -63,10 +63,10 @@ public class RecommendServiceImpl implements RecommendService {
 
         for (SimilarBeer similarBeer : similarBeerList) {
             similarBeerDtoList.add(RecommendDto.builder()
-                    .beer_id(similarBeer.getSimilar().getId())
-                    .name(similarBeer.getSimilar().getName())
+                    .beerNo(similarBeer.getSimilar().getId())
+                    .beerName(similarBeer.getSimilar().getName())
                     .image(similarBeer.getSimilar().getImage())
-                    .likes(likeBeerSet.contains(similarBeer.getSimilar()))
+                    .like(likeBeerSet.contains(similarBeer.getSimilar()))
                     .build());
         }
         return similarBeerDtoList;

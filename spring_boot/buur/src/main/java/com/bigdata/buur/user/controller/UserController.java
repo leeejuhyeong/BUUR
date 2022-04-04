@@ -1,6 +1,7 @@
 package com.bigdata.buur.user.controller;
 
 import com.bigdata.buur.customException.EntitySaveException;
+import com.bigdata.buur.user.dto.ModifyUserDto;
 import com.bigdata.buur.user.dto.SafeUserDto;
 import com.bigdata.buur.user.dto.SurveyDto;
 import com.bigdata.buur.user.dto.UserDto;
@@ -29,14 +30,14 @@ public class UserController {
     // 아이디 중복 체크
     @ApiOperation(value = "아이디 중복 체크")
     @GetMapping("/id-check/{user_id}")
-    public ResponseEntity<Boolean> checkIdDuplicate (@PathVariable @ApiParam(value = "가입하고자 하는 id") String user_id){
+    public ResponseEntity<Boolean> checkIdDuplicate(@PathVariable @ApiParam(value = "가입하고자 하는 id") String user_id) {
         return ResponseEntity.ok(userService.checkIdDuplicate(user_id));
     }
 
     // 닉네임 중복 체크
     @ApiOperation(value = "닉네임 중복 체크")
     @GetMapping("/name-check/{user_nickname}")
-    public ResponseEntity<Boolean> checkNicknameDuplicate (@PathVariable @ApiParam(value = "가입하고자 하는 닉네임") String user_nickname){
+    public ResponseEntity<Boolean> checkNicknameDuplicate(@PathVariable @ApiParam(value = "가입하고자 하는 닉네임") String user_nickname) {
         return ResponseEntity.ok(userService.checkNicknameDuplicate(user_nickname));
     }
 
@@ -64,7 +65,7 @@ public class UserController {
     public ResponseEntity<String> userStatusDetails() {
         return ResponseEntity.ok().body(userService.findUserStatus());
     }
-    
+
     // 설문조사 결과 저장
     @ApiOperation(value = "설문조사 결과 저장")
     @PostMapping("/survey")
@@ -77,7 +78,7 @@ public class UserController {
     @ApiOperation(value = "유저 정보 반환")
     @GetMapping("/info")
     public ResponseEntity<SafeUserDto> userInfoDetail() throws IOException {
-            return ResponseEntity.ok().body(userService.findUserInfo());
+        return ResponseEntity.ok().body(userService.findUserInfo());
     }
 
     // 유저 프로필 수정
@@ -87,12 +88,13 @@ public class UserController {
         userService.modifyUserProfile(userProfile);
         return ResponseEntity.ok().body(SUCCESS);
     }
-    
+
     // 비밀번호 수정
     @ApiOperation(value = "비밀번호 수정")
     @PutMapping("/password")
-    public ResponseEntity<String> modifyPassword(@RequestBody @ApiParam(value = "변경할 비밀번호") String password) {
-        return ResponseEntity.ok().body(userService.modifyPassword(password));
+    public ResponseEntity<String> passwordModify(@RequestBody @ApiParam(value = "변경할 비밀번호") ModifyUserDto modifyUserDto) {
+        userService.modifyPassword(modifyUserDto);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 
 }
