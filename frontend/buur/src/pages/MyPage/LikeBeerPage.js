@@ -1,36 +1,36 @@
-// import React, { useEffect, useState } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+// import React from 'react';
 import MyPageBackHeader from '../../components/MyPage/MyPageBackHeader';
 import BeerItem from '../../components/Beer/BeerItem'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import '../../styles/mypage.css'
-// import axios from 'axios'
+import axios from 'axios'
 
 function LikeBeerPage(){
-    const beerList = [
-        { name : '호가든', id:'a', kind:'과일맥주', alcohol:'4.5', origin: '덴마크' },
-        { name : '서머스비', id:'b', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-        { name : '서머스비', id:'c', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-        { name : '서머스비', id:'d', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-        { name : '서머스비', id:'e', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-        { name : '서머스비', id:'f', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-        { name : '곰표', id:'g', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-        { name : '서머스비', id:'h', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},]
-    // const [beerList, setBeerList] = useState([])
+    // const beerList = [
+    //     { name : '호가든', id:'a', kind:'과일맥주', alcohol:'4.5', origin: '덴마크' },
+    //     { name : '서머스비', id:'b', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
+    //     { name : '서머스비', id:'c', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
+    //     { name : '서머스비', id:'d', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
+    //     { name : '서머스비', id:'e', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
+    //     { name : '서머스비', id:'f', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
+    //     { name : '곰표', id:'g', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
+    //     { name : '서머스비', id:'h', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},]
+    const [beerList, setBeerList] = useState([])
 
-    // useEffect(() => {
-    //     axios.get('https://j6b102.p.ssafy.io/api-v1/beer/like', {
-    //         headers: {
-    //             'x-auth-token': ''
-    //         }
-    //     })
-    //     .then((res) => {
-    //         console.log(res.data)
-    //         setBeerList(res.data)
-    //     })
-    //     .catch((err)=> console.log(err))
-    // },[]);
+    useEffect(() => {
+        axios.get('https://j6b102.p.ssafy.io/api-v1/beer/like', {
+            headers: {
+                'x-auth-token': localStorage.getItem('jwt')
+            }
+        })
+        .then((res) => {
+            console.log(res.data)
+            setBeerList(res.data)
+        })
+        .catch((err)=> console.log(err))
+    },[]);
 
     return (
         <div>

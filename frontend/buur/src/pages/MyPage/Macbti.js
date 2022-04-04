@@ -13,14 +13,19 @@ const Macbti = () => {
     const username = location.state.username.username;
     const macbti = '하밀블기'
     const [userMonthData, setUserMonthData] = useState([])
+    // const [datas, setDatas] = useState([])
     const monthBeerList = userMonthData.map((beer) => beer.label)
     
     useEffect(() => {
         // macbti 데이터 받기
         // axios.get('https://j6b102.p.ssafy.io/api-v1/beer/month', {
-        //     'x-auth-token': ''
+        //     headers: {
+        //         'x-auth-token': localStorage.getItem('jwt')
+        //     }
         // })
-        // .then((res) => console.log(res.data))
+        // .then((res) => 
+        //     setDatas(res.data)
+        // )
         // .catch((err)=> console.log(err))
         const datas = [
             {
@@ -50,16 +55,18 @@ const Macbti = () => {
         ]
         const graphColor = ['#EED56B','#E6A33A','#E48C34','#FFE578']
         const newMonthDatas = []
-        datas.forEach((value, index) => {
-            const newMonthData = {
-                angle: value.count,
-                label: value.beerName,
-                color: graphColor[index]
-            }
-            newMonthDatas.push(newMonthData)
-        })
-        setUserMonthData(newMonthDatas)
-        console.log(newMonthDatas)
+        if (datas) {
+            datas.forEach((value, index) => {
+                const newMonthData = {
+                    angle: value.count,
+                    label: value.beerName,
+                    color: graphColor[index]
+                }
+                newMonthDatas.push(newMonthData)
+            })
+            setUserMonthData(newMonthDatas)
+            console.log(newMonthDatas)
+        }
     },[]);
 
 

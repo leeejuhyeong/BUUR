@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MyPageHeader from "../../components/MyPage/MyPageHeader";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import "../../styles/mypage.css"
 import { Link } from "react-router-dom"
+import axios from 'axios'
 
 function MyPage() {
     // 유저이미지, 이름 설정
-    const [image, setImage] = useState("https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0bf59e89-f4fd-46b8-956d-b6ab3bfea09c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220403T113730Z&X-Amz-Expires=86400&X-Amz-Signature=ab9197b7eb7d5ea8ed16b038a9b03b106e125cf8f75b62e09fbe343f6059b026&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject")
-    const [username, setUsername] = useState('김싸피')
+    const [image, setImage] = useState("")
+    const [username, setUsername] = useState('')
+
+    useEffect(() => {
+        axios.get('https://j6b102.p.ssafy.io/api-v1/user/info', {
+            headers: {
+                'x-auth-token': localStorage.getItem('jwt')
+            }
+        })
+        .then((res) => {
+          setUsername(res.data.userNickname)
+          setImage(res.data.userProfile)
+        })
+        .catch((err)=> console.log(err))
+    },[image]);
 
     function logout () {
       localStorage.removeItem('jwt');
@@ -25,8 +39,7 @@ function MyPage() {
             pathname:"/mypage/userinfo",
           }}>
             <div className="user-info-div">
-              <img src={image} alt="프로필 사진" className="profile-img"/>
-              {/* <img :src="`data:{Image}/png;base64,${comment.userProfilePhoto}`" alt="프로필 사진" className="profile-img"/> */}
+              <img src={`data:image/png;base64,${image}`} alt="프로필 사진" className="profile-img"/>
               {username}님
             </div>
             <ArrowForwardIosIcon className="info-arrow-icon" sx={{ fontSize:16 }}/>

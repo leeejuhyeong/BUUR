@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import axios from 'axios'
+// import axios from 'axios'
 import MyPageBackHeader from '../../components/MyPage/MyPageBackHeader';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
@@ -106,7 +106,7 @@ const InfoPage = () => {
             
         // })
         // .catch((err)=> console.log(err))
-
+        console.log(setUsername)
     };
 
     const imageInput = useRef();
