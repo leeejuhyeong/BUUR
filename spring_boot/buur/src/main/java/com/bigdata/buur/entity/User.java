@@ -16,10 +16,11 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
-public class User implements UserDetails{
+@Getter
+public class User implements UserDetails {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -54,6 +55,19 @@ public class User implements UserDetails{
     public void profile() {
         this.profile = "/home/ubuntu/buur/image/profile/default.png"
                 .replace("/", File.separator);
+    }
+
+    public void changeUserStatus() {
+        this.userStatus = UserStatus.OLD_USER;
+    }
+
+    public void changeProfile(File folder, String userProfileName) {
+        this.profile = folder + File.separator + userProfileName;
+        System.out.println(profile);
+    }
+
+    public void changePassword(String encryptedNewPassword) {
+        this.password = encryptedNewPassword;
     }
 
     @Override

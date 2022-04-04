@@ -1,5 +1,6 @@
 package com.bigdata.buur.user.service;
 
+import com.bigdata.buur.user.dto.ModifyUserDto;
 import com.bigdata.buur.user.dto.SafeUserDto;
 import com.bigdata.buur.user.dto.SurveyDto;
 import com.bigdata.buur.user.dto.UserDto;
@@ -24,7 +25,7 @@ public interface UserService {
     public Long currentUser();
     public SafeUserDto findUserInfo() throws IOException;
     public void modifyUserProfile(MultipartFile userProfile) throws IOException;
-    public String modifyPassword(String password);
+    public void modifyPassword(ModifyUserDto modifyUserDto);
 
 
 }
