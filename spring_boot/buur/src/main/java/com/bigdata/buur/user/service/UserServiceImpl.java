@@ -158,7 +158,6 @@ public class UserServiceImpl implements UserService {
             throw new UserPasswordMismatchException();
         }
 
-        System.out.println("저장 성공");
         userRepository.save(user);
     }
 
