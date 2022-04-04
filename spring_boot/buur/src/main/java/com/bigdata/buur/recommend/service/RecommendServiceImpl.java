@@ -25,7 +25,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class RecommendServiceImpl implements RecommendService {
 
-    private static String uri = "http://j6b102.p.ssafy.io:8000/api-v2/new/";
+    private static String uri = "https://j6b102.p.ssafy.io:8080/api-v2/new/";
     private final UserRepository userRepository;
     private final UserService userService;
     private final LikesRepository likesRepository;
