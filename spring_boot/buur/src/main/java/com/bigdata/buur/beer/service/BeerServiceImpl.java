@@ -7,7 +7,7 @@ import com.bigdata.buur.beer.repository.LikesRepository;
 import com.bigdata.buur.entity.Likes;
 import com.bigdata.buur.entity.User;
 import com.bigdata.buur.enums.BeerCategory;
-import com.bigdata.buur.review.dto.ReviewAvgInterface;
+import com.bigdata.buur.review.dto.ReviewScoreInterface;
 import com.bigdata.buur.review.repository.ReviewRepository;
 import com.bigdata.buur.user.repository.UserRepository;
 import com.bigdata.buur.user.service.UserService;
@@ -15,10 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -62,7 +59,7 @@ public class BeerServiceImpl implements BeerService {
     public BeerDto.Details findBeer(Long id) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
         Beer beer = beerRepository.findById(id);
-        ReviewAvgInterface reviewAvgInterface = reviewRepository.findOneByBeerId(id);
+        List<ReviewScoreInterface> reviewScoreInterface = reviewRepository.findByBeerId(id);
         List<Likes> likesList = likesRepository.findByUserAndBeer(user, beer);
 
         BeerDto.Details details = BeerDto.Details.builder()
@@ -76,8 +73,17 @@ public class BeerServiceImpl implements BeerService {
                 .imagePath(beer.getImage())
                 .build();
 
-        if (reviewAvgInterface != null) {
-            details.addAvg(reviewAvgInterface);
+        // 점수별 개수 초기화
+        Map<Integer, Integer> reviewScoreMap = new HashMap<>();
+        for (int i = 1; i <= 5; i++) {
+            reviewScoreMap.put(i, 0);
+        }
+
+        if (reviewScoreInterface != null) {
+            for (ReviewScoreInterface scoreInterface : reviewScoreInterface) {
+                reviewScoreMap.put(scoreInterface.getScore(), scoreInterface.getCount());
+            }
+            details.addReviewScoreList(reviewScoreMap);
         }
 
         if (likesList.size() != 0) {
