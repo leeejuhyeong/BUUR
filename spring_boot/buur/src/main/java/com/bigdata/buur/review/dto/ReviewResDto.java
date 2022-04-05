@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 @ApiModel
 public class ReviewResDto {
 
+    @ApiModelProperty("리뷰 번호")
+    private Long reviewNo;
     @ApiModelProperty("유저 닉네임")
     private String userNickName;
     @ApiModelProperty("맥주 리뷰 점수")

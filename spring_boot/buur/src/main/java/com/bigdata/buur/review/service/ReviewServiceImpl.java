@@ -39,6 +39,7 @@ public class ReviewServiceImpl implements ReviewService{
         for (Review review : slicedReviews) {
             reviews.add(ReviewResDto
                     .builder()
+                    .reviewNo(review.getId())
                     .userNickName(review.getUser().getNickname())
                     .rank(review.getTotalScore())
                     .reviewDt(review.getReviewDt())
