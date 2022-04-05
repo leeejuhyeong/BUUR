@@ -186,9 +186,12 @@
 .beerreview-box .review-box__header {
   display: flex;
   align-items: center;
+  margin: 0;
+  font-size: small;
+  height: 24px;
 }
 
-.beerreview-box .review-box__header > p:nth-child(1) {
+.beerreview-box .review-box__header .review-box__user {
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -196,10 +199,32 @@
   margin-right: 5px;
 }
 
-.beerreview-box .review-box__header > p:nth-child(2) {
+.beerreview-box .review-box__rank {
   font-style: normal;
-  font-weight: 400;
-  font-size: 9px;
+  font-weight: 700;
+  font-size: 11px;
+  color: #E9B940;
+  margin-left: 2px;
+}
+
+.beerreview-box .review-box__trash {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+  margin-bottom: 5px;
+}
+
+.review-box__trash .review-header-left {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .beerreview-box .review-box__content {

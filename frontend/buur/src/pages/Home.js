@@ -12,8 +12,22 @@ import wheatbeer from "../assets/beer_icon/wheatbeer_icon.png";
 import etcbeer from "../assets/beer_icon/etcbeer_icon.png";
 import "../styles/home.css";
 import "../styles/beerlist.css";
+import store from "../store";
+import { ADD_USERINFO } from "../actions/ActionTypes";
+import axios from 'axios';
+
 
 class Home extends React.Component {
+  componentDidMount() {
+    axios.get(`https://j6b102.p.ssafy.io/api-v1/user/info`, {
+      headers: { 'X-AUTH-TOKEN': localStorage.getItem('jwt') }
+    })
+    .then(res => {
+      const userInfo = res.data
+      store.dispatch({ type : ADD_USERINFO, data : userInfo });
+    });
+  }
+  
   render() {
     return (
       <div className="home">

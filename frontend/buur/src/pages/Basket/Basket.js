@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {useHistory} from "react-router";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import beerBalnk from "../../assets/beer_blank.png";
@@ -8,7 +8,7 @@ import Toolbar from '@mui/material/Toolbar';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import Slide from '@mui/material/Slide';
 import store from '../../store'
-
+import { DELETE_BEER } from "../../actions/ActionTypes";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -16,6 +16,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function Basket() {
   const history = useHistory();
+  const [basketList, setBasketList] = useState([]);
 
   const goBack = () => {
     history.goBack();
@@ -29,29 +30,29 @@ function Basket() {
   }
 
   const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
 
-  const basketList = store.getState().beer.basket
-  console.log(basketList)
+  useEffect(() => {
+    beerList()
+  }, [])
+
 
   const beerList = () => {
-    let arr = JSON.parse(JSON.stringify(basketList));
+    let arr = JSON.parse(JSON.stringify(store.getState().beer.basket));
     let blank = { img: beerBalnk, name: '' }
-    for (let i=0; i < 4-basketList.length; i++) {
+    for (let i=0; i < 4-store.getState().beer.basket.length; i++) {
       arr.push(blank)
     }
-    return arr
+    setBasketList(basketList => arr)
   }
 
   const combineBeerBtn = () => {
-    if (basketList.length !== 4) {
+    if (store.getState().beer.basket.length !== 4) {
       return (
         <button className="combine-btn lack-beer-btn">
           맥주가 부족해요
@@ -60,7 +61,7 @@ function Basket() {
     } else {
       return (
         <button
-        onClick={() => goCombine(beerList())}
+        onClick={() => goCombine(basketList)}
         className="combine-btn full-beer-btn">
           조합하기
         </button>
@@ -80,6 +81,13 @@ function Basket() {
     }
   }
 
+  const deleteBeer = (beer, index) => {
+    if (beer.name !== '') {
+      store.dispatch({ type: DELETE_BEER, data: index })
+      beerList();
+    }
+  }
+
   return (
     <div className="basket">
       <div className="basket-header">
@@ -88,7 +96,7 @@ function Basket() {
         sx={{ fontSize: 30, m:1}}/>
       </div>
       <div className="basket-body">
-        { beerList().map((beer, index) => (
+        { basketList.map((beer, index) => (
           <div className="basket-body-item" key={index}>
             {basketImage(beer)}
             <p>{beer.name}</p>
@@ -125,8 +133,10 @@ function Basket() {
             />
           </div>
           <div className="small-basket-body">
-        { beerList().map((beer, index) => (
-          <div key={index}>
+        { basketList.map((beer, index) => (
+          <div key={index}
+            onClick={() => deleteBeer(beer, index) }
+          >
             {basketImage(beer)}
           </div>
         ))}

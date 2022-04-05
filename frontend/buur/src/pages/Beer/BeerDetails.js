@@ -1,35 +1,35 @@
-import React from "react";
-import {useLocation} from "react-router";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import {useHistory} from "react-router";
-
+import { useHistory } from "react-router";
+import axios from 'axios'
 import BeerDetailsInfo from "../../components/Beer/BeerDetailsInfo";
 import BeerReviewBox from "../../components/Beer/BeerReviewBox";
 import BeerReviewStar from "../../components/Beer/BeerReviewStar";
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import BeerDetailsSimilar from "../../components/Beer/BeerDetailsSimilar";
-import '../../styles/beerdetails.css';
+import "../../styles/beerdetails.css";
 
 const BeerDetails = () => {
   const location = useLocation();
   const beerInfo = location.state.beerInfo;
-  console.log(beerInfo)
+  const cursor = new Date(+new Date() + 3240 * 10000).toISOString().replace('T', ' ').substring(0, 19);
+  const [ beerReviews, setBeerReviews ] = React.useState([])
+  
 
-  // beerInfo.id를 가지고 맥주 리뷰 조회 (평점도 얻을 수 있음)
-  // const beerRank = { avg: 4.7, 1: 0, 2: 2, 3: 3, 4: 5, 5: 6}
-  const beerRank = {
-    rankAvg : beerInfo.reviewAvg,
-    totalCnt : beerInfo.totalCnt,
-    totalSum : beerInfo.totalSum,
-    1: 0, 2: 2, 3: 3, 4: 5, 5: 6
+  useEffect(() => {
+    getBeerReviews();
+  }, [beerInfo])
+
+  const getBeerReviews = async () => {
+    await axios
+    .get(`https://j6b102.p.ssafy.io/api-v1/beer/review/${beerInfo.beerNo}/${cursor}`,
+      { headers: { "X-AUTH-TOKEN": localStorage.getItem('jwt') } })
+    .then((res) => {
+      setBeerReviews(res.data)
+    })
   }
-  const beerReviews = [
-    { review_rank: 5, user: '싱글벙글', review_content: '자꾸자꾸 마시고 싶은 맥주!'},
-    { review_rank: 5, user: '싱글벙글', review_content: '자꾸자꾸 마시고 싶은 맥주!'},
-    { review_rank: 5, user: '싱글벙글', review_content: '자꾸자꾸 마시고 싶은 맥주!'},
-    { review_rank: 5, user: '싱글벙글', review_content: '자꾸자꾸 마시고 싶은 맥주!'},
-  ]
 
   const history = useHistory();
   const goBack = () => {
@@ -41,45 +41,40 @@ const BeerDetails = () => {
       <header>
         <div></div>
         <p># {beerInfo.name}</p>
-        <button onClick={goBack}><CloseRoundedIcon/></button>
+        <button onClick={goBack}>
+          <CloseRoundedIcon />
+        </button>
       </header>
       <div className="beerdetails-body">
         <div className="beerdetails-body-info">
-          <BeerDetailsInfo
-          beerInfo={beerInfo}
-          />
+          <BeerDetailsInfo beerInfo={beerInfo} />
         </div>
-        <hr/>
+        <hr />
         <h3>평가 및 리뷰</h3>
-        <BeerReviewStar 
-        beerRank={beerRank}
-        />
-        <Link to={{
-          pathname: "/main/beerlist/beerdetails/reviews",
-          state: {
-            beerName: `${beerInfo.name}`,
-            beerReviews : beerReviews
-          }
-        }}
-        className="show-all"
+        <BeerReviewStar
+          beerInfo = {beerInfo}
+          reviewScoreList={beerInfo.reviewScoreList} />
+        <Link
+          to={{
+            pathname: "/main/beerlist/beerdetails/reviews",
+            state: {
+              beerNo: `${beerInfo.beerNo}`,
+              beerName: `${beerInfo.name}`,
+            },
+          }}
+          className="show-all"
         >
-        전체 리뷰 보기 <ChevronRightIcon fontSize="small"/>
+          전체 리뷰 보기 <ChevronRightIcon fontSize="small" />
         </Link>
         <div className="show-little">
-          {beerReviews.slice(0,3).map(( review , index) => (
-                <BeerReviewBox
-                key={index}
-                review={review}
-                />
-            ))}
+          {beerReviews.slice(0, 3).map((review, index) => (
+            <BeerReviewBox key={index} review={review} />
+          ))}
         </div>
-        {/* <hr/> */}
-        <BeerDetailsSimilar
-        beerRank={beerRank}
-        />
+        <BeerDetailsSimilar beerNo={beerInfo.beerNo} />
       </div>
-  </div>
-  )
-}
+    </div>
+  );
+};
 
 export default BeerDetails;

@@ -21,7 +21,6 @@ const BeerItem = (props) => {
       })
     }) 
   }
-
   const likeStatus = () => {
     if (props.beer.like) {
       return (

@@ -14,9 +14,9 @@ function BasketCombine () {
   return (
     <div className="basket-combine">
       <div className="basket-combine-content">
-      <div>
+      <div className="basket-combine-beers">
         { combineBeer.map((beer, index)=> (
-          <img src={beer.img} key={index} alt="beer"/>
+          <img src={`data:image/png; base64, ${beer.beerImage}`} key={index} alt="beer"/>
         ))}
       </div>
       <Typography sx={{ fontSize: 30, color: 'white', display: 'flex', justifyContent: 'center', m: 4}}>에게~</Typography>

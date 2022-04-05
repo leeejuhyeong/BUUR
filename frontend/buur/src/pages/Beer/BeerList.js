@@ -13,41 +13,51 @@ const BeerList = ({ history, location }) => {
   const [ offset, setOffset ] = useState(0);
   const [ target, setTarget ] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [stop, setStop] = useState(false)
 
   useEffect(() => {
     let observer;
-    if (target) {
+    if (target && !stop) {
       observer = new IntersectionObserver(onIntersect, {
         threshold: 1,
       });
       observer.observe(target);
     }
     return () => observer && observer.disconnect();
-  }, [target]);
+
+  }, [target, isLoaded]);
 
 
-  useEffect(()=> {
-    console.log('변경')
-    console.log(beerList)
-    console.log(offset)
-  }, [beerList, offset])
-
-  const getMoreItem = async() => {
-    setIsLoaded(true);
-    await axios
+  useEffect(() => {
+    if (isLoaded && !stop) {
+      axios
       .get(`https://j6b102.p.ssafy.io/api-v1/beer/${type}/${offset}`, {
         headers: {"X-AUTH-TOKEN" : localStorage.getItem('jwt')}
       })
       .then((res) => {
-        console.log(res)
         setBeerList(beerList => beerList.concat(res.data));
         setOffset(offset => offset + res.data.length);
-        console.log(beerList);
-        console.log(offset);
         setIsLoaded(false);
       })
+    }
+  }, [isLoaded])
+
+
+  const getMoreItem = () => {
+    setIsLoaded(true);
   }
 
+  useEffect(() => {
+    if ((type === 'ALL' && beerList.length === 108) ||
+      (type === 'LAGER' && beerList.length === 33) ||
+      (type === 'ALE' && beerList.length === 27) ||
+      (type === 'BLACK_BEER' && beerList.length === 4) ||
+      (type === 'PILSNER' && beerList.length === 7) ||
+      (type === 'WHEAT_BEER' && beerList.length === 20) ||
+      (type === 'ETC' && beerList.length === 17)) {
+      setStop(true)
+    }
+  }, [beerList])
 
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoaded) {
