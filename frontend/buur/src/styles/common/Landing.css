@@ -1,0 +1,135 @@
+.landing-page {
+  height: 640px;
+  width: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 117px;
+  color: #FFFFFF;
+  text-shadow: 3px 4px 7px #B15120;
+  background-color: #E9B940;
+  overflow: hidden;
+  position: absolute;
+}
+
+
+.landing-page .content {
+  position: absolute;
+  bottom: 0;
+  top: 560px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+.landing-page .header {
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 470px;
+  height: 100%;
+  text-align:center;
+  color:white;
+  z-index: 2;
+}
+
+
+.landing-page .waves {
+  width: 100%;
+  height:7vh;
+}
+
+.landing-page .bubble {
+  position: absolute;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 3px 4px 7px #B15120;
+  border-radius: 50%;
+  opacity: .50;
+  animation: up 4s infinite;
+  z-index: 1;
+}
+
+.landing-page .beer-bubble1 {
+  width: 20px;
+  height: 20px;
+  left: 5px;
+  animation: up 2s infinite;
+}
+
+.landing-page .beer-bubble2 {
+  width: 20px;
+  height: 20px;
+  left: 50px;
+  animation: up 3s infinite;
+}
+
+.landing-page .beer-bubble3 {
+  width: 50px;
+  height: 50px;
+  left: 100px;
+  animation: up 6s infinite;
+}
+
+.landing-page .beer-bubble4 {
+  width: 30px;
+  height: 30px;
+  left: 200px;
+  animation: up 4s infinite;
+}
+
+.landing-page .beer-bubble5 {
+  width: 20px;
+  height: 20px;
+  left: 320px;
+  animation: up 1.5s infinite;
+}
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}

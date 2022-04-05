@@ -4,8 +4,8 @@
   width: 100%;
 }
 
-.beerlist header {
-  position: fixed;
+.beerlist .beerlist-header {
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -16,15 +16,15 @@
   box-shadow: 0 10px 40px rgba(159, 162, 177, 0.2);
 }
 
-.beerlist header > p {
+.beerlist .beerlist-header > p {
   font-weight: 800;
 }
 
-.beerlist header > div {
+.beerlist .beerlist-header > div {
   width: 30px;
 }
 
-.beerlist header button {
+.beerlist .beerlist-header button {
   border: none;
   background-color: transparent;
 }

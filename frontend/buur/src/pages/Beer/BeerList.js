@@ -4,6 +4,7 @@ import BeerItem from "../../components/Beer/BeerItem";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
+import Spinner from "../../components/Spinner";
 
 const BeerList = ({ history, location }) => {
   const keyword = location.state.keyword;
@@ -14,6 +15,13 @@ const BeerList = ({ history, location }) => {
   const [ target, setTarget ] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [stop, setStop] = useState(false)
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000)
+  }, []);
 
   useEffect(() => {
     let observer;
@@ -63,16 +71,22 @@ const BeerList = ({ history, location }) => {
     history.goBack();
   };
   
+  const showSpinner = () => {
+    if (loading) { 
+      return <Spinner />
+    }
+  }
 
   return (
     <div className="beerlist">
-      <header>
+      { showSpinner() }
+      <div className="beerlist-header">
         <button onClick={goBack}>
           <ChevronLeftIcon />
         </button>
         <p># {keyword}</p>
         <div></div>
-      </header>
+      </div>
       <div className="beerlist-body">
         <Box sx={{ flexGrow: 1 }} className="beerbox">
         <Grid container spacing={{ xs: 2 }}>
