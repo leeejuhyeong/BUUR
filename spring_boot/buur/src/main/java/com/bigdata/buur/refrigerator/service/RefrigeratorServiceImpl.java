@@ -70,10 +70,9 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
 
     @Override
     public List<BasketDto> findRefrigeratorList(int page) {
-        int currentPage = page - 1;
         int size = 16;
 
-        Pageable pageable = PageRequest.of(currentPage, size);
+        Pageable pageable = PageRequest.of(page, size);
         Page<Basket> findBasketList = basketRepository.findAll(pageable);
         List<BasketDto> findBasketDtoList = new ArrayList<>();
 
@@ -94,6 +93,18 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
             }
         }
         return findBasketDtoList;
+    }
+
+    @Override
+    public Integer findRefrigeratorTotalPage() {
+
+        Integer totalPage = 0;
+
+        Long id = userService.currentUser();
+        Integer groupCnt = beerGroupRepository.countByUser_Id(id);
+        totalPage = (groupCnt * 4) / 16;
+
+        return totalPage;
     }
 
     @Override
@@ -132,7 +143,16 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
                     .count(refrigerator.getCnt())
                     .build());
         }
-
         return refrigeratorDtoList;
+    }
+
+    @Override
+    public Integer findUserRefrigeratorTotalPage() {
+
+        Long id = userService.currentUser();
+        Integer totalPage = macbtiRepository.countByUser_Id(id);
+        totalPage /= 16;
+
+        return totalPage;
     }
 }

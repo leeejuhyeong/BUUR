@@ -5,7 +5,6 @@ import com.bigdata.buur.entity.Likes;
 import com.bigdata.buur.entity.User;
 
 import java.util.List;
-import java.util.Set;
 
 public interface LikesRepository {
     // 맥주 좋아요 조회

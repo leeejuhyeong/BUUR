@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface BeerGroupRepository extends JpaRepository<BeerGroup, Long> {
 
     BeerGroup findTopByUserOrderByIdDesc(User user);
+    Integer countByUser_Id(Long id);
 
 }
