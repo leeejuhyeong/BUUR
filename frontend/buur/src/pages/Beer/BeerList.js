@@ -38,6 +38,9 @@ const BeerList = ({ history, location }) => {
         setBeerList(beerList => beerList.concat(res.data));
         setOffset(offset => offset + res.data.length);
         setIsLoaded(false);
+        if (res.data.length < 12) {
+          setStop(true)
+        }
       })
     }
   }, [isLoaded])
@@ -46,18 +49,6 @@ const BeerList = ({ history, location }) => {
   const getMoreItem = () => {
     setIsLoaded(true);
   }
-
-  useEffect(() => {
-    if ((type === 'ALL' && beerList.length === 108) ||
-      (type === 'LAGER' && beerList.length === 33) ||
-      (type === 'ALE' && beerList.length === 27) ||
-      (type === 'BLACK_BEER' && beerList.length === 4) ||
-      (type === 'PILSNER' && beerList.length === 7) ||
-      (type === 'WHEAT_BEER' && beerList.length === 20) ||
-      (type === 'ETC' && beerList.length === 17)) {
-      setStop(true)
-    }
-  }, [beerList])
 
   const onIntersect = async ([entry], observer) => {
     if (entry.isIntersecting && !isLoaded) {
