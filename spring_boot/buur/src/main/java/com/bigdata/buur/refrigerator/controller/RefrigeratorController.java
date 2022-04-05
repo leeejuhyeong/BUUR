@@ -13,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin("*")
@@ -30,14 +31,9 @@ public class RefrigeratorController {
 
     @ApiOperation(value = "맥주 조합 조회")
     @GetMapping("/{page}")
-    public ResponseEntity<List<BasketDto>> refrigeratorList(@PathVariable @ApiParam(value = "페이지 번호, 0부터 시작") int page) throws IOException{
-        List<BasketDto> basketDtoList = refrigeratorService.findRefrigeratorList(page);
+    public ResponseEntity<Map<Long, List<BasketDto>>> refrigeratorList(@PathVariable @ApiParam(value = "페이지 번호, 0부터 시작") int page) throws IOException{
+        Map<Long, List<BasketDto>> basketDtoList = refrigeratorService.findRefrigeratorList(page);
 
-        InputStream inputStream;
-        for (BasketDto basketDto : basketDtoList) {
-            inputStream = new FileInputStream(basketDto.getImagePath());
-            basketDto.addImage(inputStream);
-        }
         return ResponseEntity.ok().body(basketDtoList);
     }
 

@@ -11,15 +11,22 @@ import com.bigdata.buur.refrigerator.repository.BasketRepository;
 import com.bigdata.buur.user.repository.UserRepository;
 import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.IOUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -68,31 +75,45 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
         return SUCCESS;
     }
 
+    public Map<Long, List<BasketDto>> groupingList(List<BasketDto> basket) {
+        return basket.stream().collect(Collectors.groupingBy(BasketDto::getBeerGroupId));
+    }
+
     @Override
-    public List<BasketDto> findRefrigeratorList(int page) {
+    public Map<Long, List<BasketDto>> findRefrigeratorList(int page) throws IOException {
         int size = 16;
+        Long id = userService.currentUser();
 
         Pageable pageable = PageRequest.of(page, size);
-        Page<Basket> findBasketList = basketRepository.findAll(pageable);
+        Page<Basket> findBasketList = basketRepository.findByBeerGroup_User_Id(pageable, id);
         List<BasketDto> findBasketDtoList = new ArrayList<>();
+        Map<Long, List<BasketDto>> groupList = new HashMap<>();
 
+        InputStream inputStream;
         for (Basket basket : findBasketList) {
 
-            User user = userRepository.findById(userService.currentUser()).orElseThrow(null);
             BeerGroup beerGroup = beerGroupRepository.findById(basket.getBeerGroup().getId()).orElseThrow(null);
             Beer findBeer = beerRepository.findById(basket.getBeer().getId());
 
-            if(beerGroup.getUser().getId() == user.getId()) {
+            inputStream = new FileInputStream(findBeer.getImage());
+
+            if(beerGroup.getUser().getId() == id) {
                 findBasketDtoList.add(BasketDto.builder()
                         .beerId(basket.getBeer().getId())
                         .beerName(findBeer.getName())
                         .beerGroupId(beerGroup.getId())
                         .imagePath(findBeer.getImage())
-                        .id(user.getId())
+                        .beerImage(IOUtils.toByteArray(inputStream))
+                        .id(id)
                         .build());
             }
         }
-        return findBasketDtoList;
+
+        for (int i = 0; i < findBasketDtoList.size(); i++) {
+            groupList = this.groupingList(findBasketDtoList);
+        }
+
+        return groupList;
     }
 
     @Override
@@ -129,6 +150,8 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
 
     @Override
     public List<RefrigeratorDto> findUserRefrigeratorList(int page) {
+        if(page != 0)
+            page += 12;
 
         Long id = userService.currentUser();
         List<RefrigeratorInterface> refrigeratorList = macbtiRepository.findGroupByBeerAndUserWithJPQL(id, page);
