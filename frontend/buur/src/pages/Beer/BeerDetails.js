@@ -31,6 +31,10 @@ const BeerDetails = () => {
     })
   }
 
+  const handleDelete = () => {
+    getBeerReviews();
+  }
+
   const history = useHistory();
   const goBack = () => {
     history.goBack();
@@ -53,7 +57,8 @@ const BeerDetails = () => {
         <h3>평가 및 리뷰</h3>
         <BeerReviewStar
           beerInfo = {beerInfo}
-          reviewScoreList={beerInfo.reviewScoreList} />
+          reviewScoreList={beerInfo.reviewScoreList}
+          />
         <Link
           to={{
             pathname: "/main/beerlist/beerdetails/reviews",
@@ -68,7 +73,10 @@ const BeerDetails = () => {
         </Link>
         <div className="show-little">
           {beerReviews.slice(0, 3).map((review, index) => (
-            <BeerReviewBox key={index} review={review} />
+            <BeerReviewBox key={index}
+              beerNo={ beerInfo.beerNo }
+              review={review}
+              handleDelete={ handleDelete }/>
           ))}
         </div>
         <BeerDetailsSimilar beerNo={beerInfo.beerNo} />

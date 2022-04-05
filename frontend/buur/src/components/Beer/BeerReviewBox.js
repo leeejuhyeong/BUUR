@@ -6,15 +6,15 @@ import axios from 'axios';
 
 const BeerReviewBox = (props) => {
   const review = props.review
+  const beerNo = props.beerNo
   const loginUser = store.getState().beer.userInfo.userNickname
 
   const deleteReview = async (reviewNo) => {
-    console.log('삭제하고싶은 리뷰:', reviewNo)
     await axios.delete(`https://j6b102.p.ssafy.io/api-v1/beer/review/${reviewNo}`, {
       headers: { 'X-AUTH-TOKEN' : localStorage.getItem('jwt')}
     })
       .then((res) => {
-        console.log(res.data)
+        return props.handleDelete()
     })
   }
   

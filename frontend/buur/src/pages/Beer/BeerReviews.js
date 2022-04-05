@@ -123,7 +123,6 @@ const BeerReviews = () => {
         headers: {"X-AUTH-TOKEN" : localStorage.getItem('jwt')}
       })
         .then((res) => {
-        console.log('??')
         setreviewList(reviewList => reviewList.concat(res.data));
         setIsLoaded(false);
         if (res.data.length < 10) {
@@ -151,6 +150,16 @@ const BeerReviews = () => {
     }
   };
 
+  const handleDelete = () => {
+    setTimeout(() => {
+      setCursor(cursor => null)
+      setreviewList(reviewList => [])
+    }, 1000)
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 2000)
+  }
+
   return (
     <div className="beerreview-all">
       <header>
@@ -162,7 +171,9 @@ const BeerReviews = () => {
       </header>
       <div className="beerreview-body">
         {reviewList.map((review, index) => (
-          <BeerReviewBox key={index} review={review} />
+          <BeerReviewBox key={index}
+            handleDelete={ handleDelete }
+            review={review} />
         ))}
         <div ref={setTarget}></div>
       </div>
