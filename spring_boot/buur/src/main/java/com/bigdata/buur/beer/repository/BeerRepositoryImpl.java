@@ -24,7 +24,7 @@ public class BeerRepositoryImpl implements BeerRepository {
         return em.createQuery("select b from Beer b where b.beerCategory = :beerCategory order by b.id", Beer.class)
                 .setParameter("beerCategory", beerCategory)
                 .setFirstResult(offset)
-                .setMaxResults(18)
+                .setMaxResults(12)
                 .getResultList();
     }
 
