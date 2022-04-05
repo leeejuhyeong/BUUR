@@ -13,12 +13,6 @@ const beer = (state = beerState, action = {}) => {
         basket: [...state.basket, action.data]
       };
     
-    case type.ADD_USERINFO:
-      return {
-        ...state,
-        userInfo: { ...action.data }
-      }
-    
     case type.DELETE_BEER:
       return {
         ...state,
@@ -26,6 +20,20 @@ const beer = (state = beerState, action = {}) => {
           return index !== action.data
         })
       };
+    
+    case type.VACATE_BASKET:
+      return {
+        ...state,
+        basket: []
+      };
+    
+    case type.ADD_USERINFO:
+      return {
+        ...state,
+        userInfo: { ...action.data }
+      }
+    
+
     
     default:
       return state;
