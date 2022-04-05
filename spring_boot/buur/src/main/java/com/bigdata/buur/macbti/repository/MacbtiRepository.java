@@ -35,7 +35,7 @@ public interface MacbtiRepository extends JpaRepository<DrinkBeer, Long> {
                     "WHERE d.id = :id " +
                     "AND b.beer_id = d.beer_id " +
                     "GROUP BY d.beer_id " +
-                    "ORDER BY count(d.beer_id) DESC " +
+                    "ORDER BY count(d.beer_id) DESC, b.name " +
                     "LIMIT 12 OFFSET :page", nativeQuery = true
     )
     List<RefrigeratorInterface> findGroupByBeerAndUserWithJPQL(@Param(value = "id") Long id,
