@@ -33,11 +33,11 @@ public class RefrigeratorController {
     public ResponseEntity<List<BasketDto>> refrigeratorList(@PathVariable @ApiParam(value = "페이지 번호, 0부터 시작") int page) throws IOException{
         List<BasketDto> basketDtoList = refrigeratorService.findRefrigeratorList(page);
 
-//        InputStream inputStream;
-//        for (BasketDto basketDto : basketDtoList) {
-//            inputStream = new FileInputStream(basketDto.getImagePath());
-//            basketDto.addImage(inputStream);
-//        }
+        InputStream inputStream;
+        for (BasketDto basketDto : basketDtoList) {
+            inputStream = new FileInputStream(basketDto.getImagePath());
+            basketDto.addImage(inputStream);
+        }
         return ResponseEntity.ok().body(basketDtoList);
     }
 
