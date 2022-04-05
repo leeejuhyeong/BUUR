@@ -20,4 +20,6 @@ public interface BeerService {
     List<BeerDto.LikeBeer> findLikeBeerList();
     // 맥주 자동완성 검색
     List<BeerDto.LikeBeer> findSearchBeerList(String keyword);
+    // 맥주 이름 자동완성
+    List<String> findBeerNameList(String keyword);
 }

@@ -103,4 +103,11 @@ public class BeerController {
 
         return ResponseEntity.ok().body(searchBeerList);
     }
+
+    @ApiOperation(value = "맥주 검색 자동완성")
+    @GetMapping("/name/{beer_name}")
+    public ResponseEntity<List<String>> searchBeerNameList(@PathVariable("beer_name") @ApiParam("검색 단어") String keyword) throws IOException{
+        List<String> searchBeerNameList = beerService.findBeerNameList(keyword);
+        return ResponseEntity.ok().body(searchBeerNameList);
+    }
 }

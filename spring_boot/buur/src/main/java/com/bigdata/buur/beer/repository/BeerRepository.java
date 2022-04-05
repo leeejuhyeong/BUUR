@@ -16,4 +16,6 @@ public interface BeerRepository {
     Beer findById(Long id);
     // 맥주 검색 자동완성
     List<Beer> findAllByNameContainingOrEngNameContaining(String keyword);
+    // 맥주 이름 자동완성
+    List<String> findNameByNameContainingOrEngNameContaining(String keyword);
 }
