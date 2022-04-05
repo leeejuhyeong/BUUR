@@ -11,15 +11,11 @@ import com.bigdata.buur.recommend.repository.RecommendRepository;
 import com.bigdata.buur.user.repository.UserRepository;
 import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
 import java.net.ConnectException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Service

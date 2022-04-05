@@ -1,12 +1,10 @@
 package com.bigdata.buur.entity;
 
 import lombok.*;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 
 @Entity
 @Getter

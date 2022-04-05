@@ -1,8 +1,6 @@
 package com.bigdata.buur.review.service;
 
-import com.bigdata.buur.beer.repository.BeerRepository;
 import com.bigdata.buur.customException.EntityRemoveException;
-import com.bigdata.buur.customException.EntitySaveException;
 import com.bigdata.buur.entity.Beer;
 import com.bigdata.buur.entity.Review;
 import com.bigdata.buur.entity.User;
@@ -14,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

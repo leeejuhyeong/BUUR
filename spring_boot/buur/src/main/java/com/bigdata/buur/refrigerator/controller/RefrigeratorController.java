@@ -30,15 +30,21 @@ public class RefrigeratorController {
 
     @ApiOperation(value = "맥주 조합 조회")
     @GetMapping("/{page}")
-    public ResponseEntity<List<BasketDto>> refrigeratorList(@PathVariable @ApiParam(value = "페이지 번호") int page) throws IOException {
+    public ResponseEntity<List<BasketDto>> refrigeratorList(@PathVariable @ApiParam(value = "페이지 번호, 0부터 시작") int page) throws IOException{
         List<BasketDto> basketDtoList = refrigeratorService.findRefrigeratorList(page);
 
-        InputStream inputStream;
-        for (BasketDto basketDto : basketDtoList) {
-            inputStream = new FileInputStream(basketDto.getImagePath());
-            basketDto.addImage(inputStream);
-        }
+//        InputStream inputStream;
+//        for (BasketDto basketDto : basketDtoList) {
+//            inputStream = new FileInputStream(basketDto.getImagePath());
+//            basketDto.addImage(inputStream);
+//        }
         return ResponseEntity.ok().body(basketDtoList);
+    }
+
+    @ApiOperation(value = "맥주 조합 전체 페이지 수 조회 (0부터 시작)")
+    @GetMapping()
+    public ResponseEntity<Integer> refrigeratorTotalPage() {
+        return ResponseEntity.ok().body(refrigeratorService.findRefrigeratorTotalPage());
     }
 
     @ApiOperation(value = "맥주 조합 삭제")
@@ -49,9 +55,8 @@ public class RefrigeratorController {
 
     @ApiOperation(value = "사용자가 많이 마신 맥주 순으로 조회")
     @GetMapping("/drink/{page}")
-    public ResponseEntity<List<RefrigeratorDto>> userRefrigeratorList(@PathVariable @ApiParam(value = "페이지 번호") int page) throws IOException {
-        int currentPage = page - 1;
-        List<RefrigeratorDto> refrigeratorDtoList = refrigeratorService.findUserRefrigeratorList(currentPage);
+    public ResponseEntity<List<RefrigeratorDto>> userRefrigeratorList(@PathVariable @ApiParam(value = "페이지 번호, 0부터 시작") int page) throws IOException {
+        List<RefrigeratorDto> refrigeratorDtoList = refrigeratorService.findUserRefrigeratorList(page);
 
         InputStream inputStream;
         for (RefrigeratorDto refrigeratorDto : refrigeratorDtoList) {
@@ -61,5 +66,9 @@ public class RefrigeratorController {
         return ResponseEntity.ok().body(refrigeratorDtoList);
     }
 
-
+    @ApiOperation(value = "사용자가 많이 마신 맥주 전체 페이지 수 조회 (0부터 시작)")
+    @GetMapping("/drink")
+    public ResponseEntity<Integer> userRefrigeratorTotalPage() {
+        return ResponseEntity.ok().body(refrigeratorService.findUserRefrigeratorTotalPage());
+    }
 }

@@ -11,5 +11,7 @@ public interface RefrigeratorService {
     public List<BasketDto> findRefrigeratorList(int page);
     public String removeRefrigerator(int group_id);
     public List<RefrigeratorDto> findUserRefrigeratorList(int page);
+    public Integer findRefrigeratorTotalPage();
+    public Integer findUserRefrigeratorTotalPage();
 
 }
