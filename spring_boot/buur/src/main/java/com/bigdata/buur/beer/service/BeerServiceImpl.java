@@ -166,4 +166,9 @@ public class BeerServiceImpl implements BeerService {
         }
         return likeBeerList;
     }
+
+    @Override
+    public List<String> findBeerNameList(String keyword) {
+        return beerRepository.findNameByNameContainingOrEngNameContaining(keyword);
+    }
 }
