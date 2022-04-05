@@ -11,6 +11,7 @@ def connect():
         user='buur',
         passwd='buur1014!',
         host='j6b102.p.ssafy.io',
+        port=3300,
         db='buur',
         charset='utf8'
     )

@@ -5,6 +5,7 @@ import com.bigdata.buur.beer.repository.LikesRepository;
 import com.bigdata.buur.entity.Beer;
 import com.bigdata.buur.entity.SimilarBeer;
 import com.bigdata.buur.entity.User;
+import com.bigdata.buur.recommend.dto.DjangoDto;
 import com.bigdata.buur.recommend.dto.RecommendDto;
 import com.bigdata.buur.recommend.repository.RecommendRepository;
 import com.bigdata.buur.user.repository.UserRepository;
@@ -42,14 +43,20 @@ public class RecommendServiceImpl implements RecommendService {
 //        HttpHeaders headers = new HttpHeaders();
 //        headers.setContentType(new MediaType("application", "json", StandardCharsets.UTF_8));
 
-        RecommendDto[] recommendBeerArray = restTemplate.getForObject(uri + user.getId(), RecommendDto[].class);
+        DjangoDto[] recommendBeerArray = restTemplate.getForObject(uri + user.getId(), DjangoDto[].class);
         Set<Long> likeBeerSet = new HashSet<>(likesRepository.findBeerIdByUser(user));
 
-        for (RecommendDto recommend : recommendBeerArray) {
-            recommend.setLike(likeBeerSet.contains(recommend.getBeerNo()));
+        List<RecommendDto> recommendDtoList = new ArrayList<>();
+        for (DjangoDto djangoDto : recommendBeerArray) {
+            recommendDtoList.add(RecommendDto.builder()
+                    .beerNo(djangoDto.getBeer_id())
+                    .beerName(djangoDto.getName())
+                    .image(djangoDto.getImage())
+                    .like(likeBeerSet.contains(djangoDto.getBeer_id()))
+                    .build());
         }
 
-        return new ArrayList<>(Arrays.asList(recommendBeerArray));
+        return recommendDtoList;
     }
 
     @Override
