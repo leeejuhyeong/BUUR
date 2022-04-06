@@ -3,27 +3,36 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import styled from "styled-components";
 
-const SelectBar = () => {
+const SelectBar = (props) => {
   const [percent, setPercent] = useState(0);
+
   const changePercent0 = () => {
     setPercent(0);
+    props.setReview({ ...props.review, rank: 1 });
   };
   const changePercent25 = () => {
     setPercent(25);
+    props.setReview({ ...props.review, rank: 2 });
   };
   const changePercent50 = () => {
     setPercent(50);
+    props.setReview({ ...props.review, rank: 3 });
   };
   const changePercent75 = () => {
     setPercent(75);
+    props.setReview({ ...props.review, rank: 4 });
   };
   const changePercent100 = () => {
     setPercent(100);
+    props.setReview({ ...props.review, rank: 5 });
   };
 
   return (
     <Container>
-      <ProgressBar percent={percent} filledBackground="linear-gradient(to right, #fefb72, #f0bb31)">
+      <ProgressBar
+        percent={percent}
+        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+      >
         <Step transition="scale">
           {({ accomplished }) => (
             <Icon
@@ -75,7 +84,7 @@ const Icon = styled.div`
   width: 25px;
   height: 26px;
 
-  background: rgba(177, 81, 32, 0.87);
+  background: rgb(177, 81, 32);
   border-radius: 100px;
 `;
 

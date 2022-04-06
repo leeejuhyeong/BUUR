@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import BUURlogo from "../../assets/BUURLogo_sm.png";
 import GoogleLogo from "../../assets/GoogleLogo.png";
-import { Link } from "react-router-dom";
 import React, { useState } from "react";
 // import { useUserContext } from "./user-context";
-import { fetchLogin } from "./service";
+import { fetchLogin, fetchUserInfo } from "./service";
 import { useHistory } from "react-router-dom";
 
 //아디 비번 값 받기
@@ -34,14 +33,14 @@ function LoginForm() {
   const onSubmitAccount = async () => {
     try {
       const JWT = await fetchLogin(account);
-      localStorage.setItem("jwt", JWT);
-
-      console.log(JWT);
-
       //성공하면 해당 JWT값 셋팅
       // setUser(JWT);
-      //성공하면 해당 url로 이동(main페이지로)
-      history.replace("/SurveyInitialScreen");
+      localStorage.setItem("jwt", JWT);
+
+      //성공하면 /home url로 이동
+      const userInfo = await fetchUserInfo();
+      if (userInfo === "NEW_USER") history.replace("/SurveyInitialScreen");
+      else if (userInfo === "OLD_USER") history.replace("/home");
     } catch (error) {
       //실패하면 throw new Error("") 값 출력
       window.alert(error);
@@ -73,9 +72,9 @@ function LoginForm() {
         placeholder="비밀번호를 입력해주세요"
         onChange={onChangeAccount}
       />
-      <Link text-decoration="none">
+      {/* <Link text-decoration="none">
         <PwdFind>비밀번호를 잊어버리셨나요?</PwdFind>
-      </Link>
+      </Link> */}
       {/* <Link
         to={{
           pathname: "/SurveyInitialScreen",
@@ -85,7 +84,6 @@ function LoginForm() {
         }}
       > */}
       <LoginButton onClick={onSubmitAccount}>로그인</LoginButton>
-      {/* </Link> */}
       <GoogleLoginButton>
         <GoogleLogoInsert></GoogleLogoInsert> Google 계정으로 계속
       </GoogleLoginButton>
@@ -113,7 +111,7 @@ const JoinText = styled.div`
 
 const Join = styled.a`
   font-weight: 600;
-  color: rgba(177, 81, 32, 0.87);
+  color: rgb(177, 81, 32);
   text-decoration: none;
 `;
 
@@ -149,7 +147,7 @@ const Jumbotron = styled.div`
   left: 0px;
   top: 0px;
 
-  background: #ecc259;
+  background: rgb(233, 185, 64);
 `;
 
 const Container = styled.div`
@@ -164,7 +162,8 @@ const Input = styled.input`
   height: 40px;
   padding: 20px;
 
-  margin: 0 0 10px;
+  // margin: 0 0 10px;
+  margin: 0 0 20px;
   border: solid 1px #dadada;
   background: #fff;
   box-sizing: border-box;
@@ -182,12 +181,12 @@ const LoginButton = styled.button`
   display: block;
   width: 100%;
   height: 49px;
-  margin: 70px 0 7px;
+  margin: 50px 0 7px;
   cursor: pointer;
   text-align: center;
   color: #fff;
   border: none;
-  background-color: rgba(233, 185, 64, 0.87);
+  background-color: rgb(233, 185, 64);
   border-radius: 10px;
 `;
 
@@ -204,7 +203,7 @@ const GoogleLoginButton = styled.button`
   color: #fff;
   border: none;
   border-radius: 0;
-  background-color: rgba(177, 81, 32, 0.87);
+  background-color: rgb(177, 81, 32);
   border-radius: 10px;
   ${({ disabled }) =>
     disabled &&
