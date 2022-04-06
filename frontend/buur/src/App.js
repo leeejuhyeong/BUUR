@@ -16,6 +16,7 @@ import Basket from "./pages/Basket/Basket";
 import BasketCombine from "./pages/Basket/BasketCombine";
 import NoticeDetail from "./pages/MyPage/NoticeDetail";
 import Nav from "./components/Nav";
+import Landing from "./pages/Landing";
 import "./styles/common/App.css";
 
 import SurveyInitialScreen from "./components/User/SurveyInitialScreen";
@@ -28,6 +29,7 @@ const BaseRouter = withRouter(({ location }) => {
     <div className="app">
       <UserContextProvider>
         {/* nav 사용x  */}
+        <Route path="/landing" exact={true} component={Landing} />
         <Route path="/" exact={true} component={Login} />
         <Route path="/SignUp" exact={true} component={SignUp} />
         <Route
@@ -66,6 +68,7 @@ const BaseRouter = withRouter(({ location }) => {
         {/* 예외처리 */}
         {location.pathname !== "/" &&
           location.pathname !== "/SignUp" &&
+          location.pathname !== "/landing" &&
           location.pathname !== "/main/beerlist" &&
           location.pathname !== "/main/beerlist/beerdetails" &&
           location.pathname !== "/main/beerlist/beerdetails/reviews" &&

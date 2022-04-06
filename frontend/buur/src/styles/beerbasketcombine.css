@@ -27,6 +27,15 @@
   align-items: center;
 }
 
+.basket-combine .basket-combine-content .basket-combine-beers {
+  display: flex;
+}
+
+.basket-combine .basket-combine-beers  > img{
+  height: 130px;
+  margin: 0 5px;
+}
+
 .basket-combine-background {
   top: 0;
   bottom: 0;

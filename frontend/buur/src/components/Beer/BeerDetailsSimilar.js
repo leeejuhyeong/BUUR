@@ -1,18 +1,26 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import BeerItem from "../../components/Beer/BeerItem";
 
-const beerList = [
-  { name: "호가든", id: "a", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
-  { name: "서머스비", id: "b", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
-  { name: "서머스비", id: "c", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
-  { name: "서머스비", id: "d", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
-  { name: "서머스비", id: "e", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
-  { name: "서머스비", id: "f", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
-  { name: "곰표", id: "g", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
-  { name: "서머스비", id: "h", kind: "과일맥주", alcohol: "4.5", origin: "덴마크" },
-];
+const BeerDetailsSimilar = ( props ) => {
+  const beerNo = props.beerNo;
+  const [beerList, setBeerList] = useState([])
 
-const BeerDetailsSimilar = () => {
+  const similarBeerList = async () => {
+    await axios
+    .get(`https://j6b102.p.ssafy.io/api-v1/beer/similar/${beerNo}`,
+    {
+      headers : {"X-AUTH-TOKEN" : localStorage.getItem('jwt')}
+      })
+      .then((res) => {
+        setBeerList(res.data)
+    })
+  }
+  
+  useEffect(() => {
+    similarBeerList();
+  },[]);
+
   return (
     <div className="beerdetails-similar">
       <h3>이 맥주와 비슷해요</h3>

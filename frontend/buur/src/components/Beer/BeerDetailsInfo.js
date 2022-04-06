@@ -41,11 +41,9 @@ class BeerDetailsInfo extends React.Component {
     const addBasket = (beerInfo) => {
       if (basket.length === 4) {
         handleClickOpenWarn()
-        console.log(basket)
       } else {
         addBeerBasket(beerInfo)
         handleClickOpenSuccess()
-        console.log(basket);
       }
     }
   
@@ -87,14 +85,13 @@ class BeerDetailsInfo extends React.Component {
         <div className="warn-basket-dialog">
           <Dialog
           open={this.state.warnBasketOpen}
-          // open={true}
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
           PaperProps={{ sx: { 
             borderRadius: 10,
             width: 274,
-            height: 166,
+            height: 210,
           } }}
         >
           <DialogTitle id="alert-dialog-title" sx={{ display: 'flex', justifyContent: 'flex-end', p: 1, pb: 0}}>
@@ -109,6 +106,11 @@ class BeerDetailsInfo extends React.Component {
             <div className="warn-dialog-content">
               <p>장바구니가 꽉 찼습니다</p>
               <p>장바구니를 비우고 담아주세요</p>
+              <Button autoFocus className="warn-check-btn">
+                <Link to="/main/basket">
+                  장바구니 비우러 갈래요
+                </Link>
+              </Button>
             </div>
           </DialogContent>
         </Dialog>
@@ -118,8 +120,7 @@ class BeerDetailsInfo extends React.Component {
         {/* success dialog */}
         <div className="success-basket-dialog">
           <Dialog
-          open={this.state.successBasketOpen}
-          // open={true}
+            open={this.state.successBasketOpen}
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
@@ -143,7 +144,7 @@ class BeerDetailsInfo extends React.Component {
                 <span>맥주가</span>
               </div>
               <p>장바구니에 성공적으로 담겼습니다</p>
-              <Button autoFocus>
+              <Button autoFocus className="success-check-btn">
                 <Link to="/main/basket">
                   확인하러 갈래요
                 </Link>

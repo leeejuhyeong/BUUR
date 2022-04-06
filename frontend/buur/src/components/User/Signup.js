@@ -21,7 +21,6 @@ const SignUp = () => {
   useEffect(() => {
     console.log(signUpAccount.userPassword);
     console.log(pwdIdentify.pwdIdentify);
-
     if (signUpAccount.userPassword !== pwdIdentify.pwdIdentify)
       setPwdBorderColor("solid 1px #DB2B2B");
     else if (signUpAccount.userPassword === pwdIdentify.pwdIdentify)
