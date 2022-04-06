@@ -9,7 +9,7 @@ function SurveyInitialScreen() {
   const moveSurvey = async () => {
     const beerList = await fetchBeerList();
     localStorage.setItem("beerList", beerList);
-    history.replace("/Survey");
+    history.replace("/survey");
   };
 
   return (

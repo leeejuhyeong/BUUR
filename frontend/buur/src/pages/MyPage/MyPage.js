@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import MyPageHeader from "../../components/MyPage/MyPageHeader";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import "../../styles/mypage.css";
@@ -10,6 +11,7 @@ function MyPage() {
   const [image, setImage] = useState("");
   const [username, setUsername] = useState("");
   const [useremail, setUseremail] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     axios
@@ -28,6 +30,9 @@ function MyPage() {
 
   function logout() {
     localStorage.removeItem("jwt");
+    history.push({
+      pathname: "/",
+    });
   }
 
   return (

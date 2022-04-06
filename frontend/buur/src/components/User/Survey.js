@@ -5,17 +5,29 @@ import Grid from "@mui/material/Grid";
 import SurveyBeerItem from "./SurveyBeerItem";
 import { fetchBeerList, fetchSurveyReview } from "./service";
 import { useHistory } from "react-router-dom";
+import Spinner from "../Spinner";
 
 function Survey() {
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [beerList, setBeerList] = useState([]);
   const [reviewList, setReviewList] = useState([]);
   const [beerImgList, setBeerImgList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const history = useHistory();
 
   useEffect(async () => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 8000);
+
     setBeerList(await fetchBeerList());
   }, []);
+
+  const isLoading = () => {
+    if (loading) {
+      return <Spinner />;
+    }
+  };
 
   const saveSurvey = async () => {
     const status = await fetchSurveyReview(reviewList);
@@ -26,6 +38,7 @@ function Survey() {
 
   return (
     <Container>
+      {isLoading()}
       <Title>평가할 맥주를 골라주세요</Title>
       <Detail>4개의 맥주를 선택해주세요</Detail>
       <BeerBasketListDiv>

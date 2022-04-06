@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import BUURlogo from "../../assets/BUURLogo_sm.png";
-import GoogleLogo from "../../assets/GoogleLogo.png";
 import React, { useState } from "react";
 // import { useUserContext } from "./user-context";
 import { fetchLogin, fetchUserInfo } from "./service";
@@ -39,7 +38,7 @@ function LoginForm() {
 
       //성공하면 /home url로 이동
       const userInfo = await fetchUserInfo();
-      if (userInfo === "NEW_USER") history.replace("/SurveyInitialScreen");
+      if (userInfo === "NEW_USER") history.replace("/surveyinitialscreen");
       else if (userInfo === "OLD_USER") history.replace("/home");
     } catch (error) {
       //실패하면 throw new Error("") 값 출력
@@ -49,7 +48,7 @@ function LoginForm() {
 
   //회원가입 페이지 이동
   const moveSignUp = () => {
-    history.replace("/SignUp");
+    history.replace("/signup");
   };
 
   return (
@@ -134,13 +133,6 @@ const Logo = styled.div`
   background-size: cover;
 `;
 
-const GoogleLogoInsert = styled.img`
-  padding: 9px 20px 9px 5px;
-
-  background: url(${GoogleLogo});
-  background-size: cover;
-`;
-
 const Jumbotron = styled.div`
   position: absolute;
   width: 360px;
@@ -189,26 +181,4 @@ const LoginButton = styled.button`
   border: none;
   background-color: rgb(233, 185, 64);
   border-radius: 10px;
-`;
-
-const GoogleLoginButton = styled.button`
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 49px;
-  display: block;
-  width: 100%;
-  height: 49px;
-  margin: 16px 0 7px;
-  cursor: pointer;
-  text-align: center;
-  color: #fff;
-  border: none;
-  border-radius: 0;
-  background-color: rgb(177, 81, 32);
-  border-radius: 10px;
-  ${({ disabled }) =>
-    disabled &&
-    `
-    background-color: #efefef;
-  `}
 `;

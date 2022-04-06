@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import beerImg from "../../assets/beer_sample.png";
 import styled from "styled-components";
 import Modal from "./Modal.js";
 
 const SurveyBeerItem = (props) => {
   const [color, setColor] = useState("#fff");
   const [modalOpen, setModalOpen] = useState(false);
+
   const click = () => {
     if (color === "#fff") {
       if (props.reviewList.length >= 4) {

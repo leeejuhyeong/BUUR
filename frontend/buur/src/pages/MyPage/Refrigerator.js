@@ -34,7 +34,9 @@ const Refrigerator = () => {
   const history = useHistory();
   const styleClasses = useStyles();
   const goBack = () => {
-    history.goBack();
+    history.push({
+      pathname: "/mypage",
+    });
   };
 
   const beerDetails = async (beerInfo) => {

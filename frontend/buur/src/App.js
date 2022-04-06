@@ -30,15 +30,15 @@ const BaseRouter = withRouter(({ location }) => {
     <div className="app">
       <UserContextProvider>
         {/* nav 사용x  */}
-        <Route path="/landing" exact={true} component={Landing} />
-        <Route path="/" exact={true} component={Login} />
-        <Route path="/SignUp" exact={true} component={SignUp} />
+        <Route path="/" exact={true} component={Landing} />
+        <Route path="/login" exact={true} component={Login} />
+        <Route path="/signup" exact={true} component={SignUp} />
         <Route
-          path="/SurveyInitialScreen"
+          path="/surveyinitialscreen"
           exact={true}
           component={SurveyInitialScreen}
         />
-        <Route path="/Survey" exact={true} component={Survey} />
+        <Route path="/survey" exact={true} component={Survey} />
         <Route path="/main/beerlist" exact={true} component={BeerList} />
         <Route
           path="/main/beerlist/beerdetails"
@@ -72,15 +72,15 @@ const BaseRouter = withRouter(({ location }) => {
 
         {/* 예외처리 */}
         {location.pathname !== "/" &&
-          location.pathname !== "/SignUp" &&
-          location.pathname !== "/landing" &&
+          location.pathname !== "/signup" &&
+          location.pathname !== "/login" &&
           location.pathname !== "/main/beerlist" &&
           location.pathname !== "/main/beerlist/beerdetails" &&
           location.pathname !== "/main/beerlist/beerdetails/reviews" &&
           location.pathname !== "/main/basket" &&
           location.pathname !== "/main/basket/combine" &&
-          location.pathname !== "/SurveyInitialScreen" &&
-          location.pathname !== "/Survey" &&
+          location.pathname !== "/surveyinitialscreen" &&
+          location.pathname !== "/survey" &&
           location.pathname !== "/mypage/userinfo" &&
           location.pathname !== "/mypage/macbti" &&
           location.pathname !== "/mypage/likebeer" &&
