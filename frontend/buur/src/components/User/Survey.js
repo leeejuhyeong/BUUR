@@ -39,20 +39,22 @@ function Survey() {
   return (
     <Container>
       {isLoading()}
-      <Title>평가할 맥주를 골라주세요</Title>
-      <Detail>4개의 맥주를 선택해주세요</Detail>
-      <BeerBasketListDiv>
-        {beerImgList.map((beer, index) => (
-          <Beer
-            key={index}
-            src={`data:image/png; base64, ${beer}`}
-            alt="beerImg"
-          />
-        ))}
-        {beerBlankImgList.slice(beerImgList.length).map((beer, index) => (
-          <BlankBeer key={index} />
-        ))}
-      </BeerBasketListDiv>
+      <ContainerHeader>
+        <Title>평가할 맥주를 골라주세요</Title>
+        <Detail>4개의 맥주를 선택해주세요</Detail>
+        <BeerBasketListDiv>
+          {beerImgList.map((beer, index) => (
+            <Beer
+              key={index}
+              src={`data:image/png; base64, ${beer}`}
+              alt="beerImg"
+            />
+          ))}
+          {beerBlankImgList.slice(beerImgList.length).map((beer, index) => (
+            <BlankBeer key={index} />
+          ))}
+        </BeerBasketListDiv>
+      </ContainerHeader>
       <BeerlistBody>
         <Grid container spacing={{ xs: 2 }}>
           {beerList.map((beer, index) => (
@@ -78,13 +80,20 @@ function Survey() {
 export default Survey;
 
 /* css */
-const Container = styled.div``;
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+`;
+
+const ContainerHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 const Title = styled.div`
-  position: absolute;
-  width: 192px;
-  height: 20px;
-  margin: 54px 0px 0px 84px;
+  margin-top: 50px;
   text-align: center;
   font-weight: 900;
   font-size: 18px;
@@ -96,29 +105,23 @@ const Title = styled.div`
 `;
 
 const Detail = styled.div`
-  position: absolute;
   width: 133px;
-  height: 20px;
-  left: 113px;
-  top: 79px;
-
   font-weight: 900;
   font-size: 10px;
   line-height: 20px;
-  text-align: center;
-
   align-items: center;
 
   color: rgba(177, 81, 32, 0.8);
 `;
 
 const BeerBasketListDiv = styled.div`
-  padding: 75px;
+  width: 210px;
 `;
+
 const BlankBeer = styled.div`
   display: inline-block;
 
-  margin: 50px 5px 0px 5px;
+  margin: 25px 5px 0px 5px;
   width: 42px;
   height: 97px;
   background: url(${BlankBeerImg});
@@ -127,7 +130,7 @@ const BlankBeer = styled.div`
 const Beer = styled.img`
   display: inline-block;
 
-  margin: 50px 5px 0px 5px;
+  margin: 0px 5px 0px 5px;
   width: 42px;
   height: 97px;
 

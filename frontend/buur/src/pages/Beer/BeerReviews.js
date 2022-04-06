@@ -28,7 +28,7 @@ const BeerReviews = () => {
   const [rankValue, setValue] = useState(1);
   const [content, setContent] = useState('');
 
-  const [ reviewList, setreviewList ] = useState([]);
+  const [ reviewList, setReviewList ] = useState([]);
   const [ cursor, setCursor] = useState(null);
   const [target, setTarget] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -77,7 +77,8 @@ const BeerReviews = () => {
         handleClose();
         setTimeout(() => {
           setCursor(cursor => null)
-          setreviewList(reviewList => [])
+          setStop(stop => false)
+          setReviewList([])
         }, 1000)
         setTimeout(() => {
           setIsLoaded(true);
@@ -100,8 +101,6 @@ const BeerReviews = () => {
       });
       observer.observe(target);
     }
-    return () => observer && observer.disconnect();
-
   }, [target, isLoaded]);
 
 
@@ -123,7 +122,8 @@ const BeerReviews = () => {
         headers: {"X-AUTH-TOKEN" : localStorage.getItem('jwt')}
       })
         .then((res) => {
-        setreviewList(reviewList => reviewList.concat(res.data));
+          setReviewList((reviewList) => [...reviewList, ...res.data]);
+          console.log('review:', reviewList, '응답:', res.data)
         setIsLoaded(false);
         if (res.data.length < 10) {
           setStop(true)
@@ -136,7 +136,7 @@ const BeerReviews = () => {
 
   useEffect(() => {
     getReviews();
-  }, [isLoaded])
+  }, [isLoaded,stop])
 
   const getMoreReviews = () => {
     setIsLoaded(true);
@@ -153,7 +153,8 @@ const BeerReviews = () => {
   const handleDelete = () => {
     setTimeout(() => {
       setCursor(cursor => null)
-      setreviewList(reviewList => [])
+      setStop(stop => false)
+      setReviewList(reviewList => [])
     }, 1000)
     setTimeout(() => {
       setIsLoaded(true);

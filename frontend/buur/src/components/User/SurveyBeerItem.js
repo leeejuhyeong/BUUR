@@ -72,7 +72,7 @@ const BeerBox = styled.div`
 
 const BeerImg = styled.img`
   position: absolute;
-  margin: 0px 0px 0px 12px;
+  margin: 0px 0px 0px 6px;
   width: 23px;
   height: 53px;
 
@@ -82,15 +82,21 @@ const BeerImg = styled.img`
 const BeerName = styled.div`
   position: absolute;
 
-  margin: 0px 0px 0px 57px;
+  margin: 0px 0px 0px 40px;
+  width: 98px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 20px;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
 `;
 const Alcohol = styled.div`
   position: absolute;
 
-  margin: 25px 0px 0px 57px;
+  margin: 25px 0px 0px 40px;
   font-weight: 700;
   font-size: 10px;
   line-height: 10px;
@@ -98,7 +104,7 @@ const Alcohol = styled.div`
 const AlcoholInfo = styled.div`
   position: absolute;
 
-  margin: 25px 0px 0px 88px;
+  margin: 25px 0px 0px 75px;
   font-weight: 600;
   font-size: 10px;
   line-height: 10px;
@@ -106,7 +112,7 @@ const AlcoholInfo = styled.div`
 const Kind = styled.div`
   position: absolute;
 
-  margin: 39px 0px 0px 57px;
+  margin: 39px 0px 0px 40px;
   font-weight: 700;
   font-size: 10px;
   line-height: 10px;
@@ -114,7 +120,7 @@ const Kind = styled.div`
 const KindInfo = styled.div`
   position: absolute;
 
-  margin: 39px 0px 0px 88px;
+  margin: 39px 0px 0px 65px;
   font-weight: 600;
   font-size: 9px;
   line-height: 10px;

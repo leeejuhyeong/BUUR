@@ -17,6 +17,9 @@
   position: absolute;
 }
 
+.landing-page .landing-logo {
+  margin-left: -15px;
+}
 
 .landing-page .content {
   position: absolute;

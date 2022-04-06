@@ -53,13 +53,15 @@ const Modal = (props) => {
           <CloseBtn id="close" onClick={closeModal}>
             &times;
           </CloseBtn>
-          <Main>총점을 평가해주세요</Main>
+          <BeerName>{ props.beer.beerName }</BeerName>
+          <Main><MainTotal>총점</MainTotal>을 평가해주세요</Main>
           <SelectBar setReview={setReview} review={review} />
           <Review
             id="content"
             name="content"
             placeholder="이 맥주는 어떠셨는지 적어주세요."
             onChange={onChangeContent}
+            autoFocus
           ></Review>
           {footerBtnColor === "rgb(160, 160, 160)" && (
             <FooterBtn color={footerBtnColor}>이렇게 평가 할래요!</FooterBtn>
@@ -103,15 +105,30 @@ const CloseBtn = styled.div`
   background-color: transparent;
 `;
 
-const Main = styled.div`
+
+const BeerName = styled.p`
   font-weight: 700;
   font-size: 14px;
   text-align: center;
+  margin: 30px 0px 0px 0px;
+`;
 
-  margin: 40px 0px 30px 0px;
+const Main = styled.div`
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+
+  margin: 0px 0px 30px 0px;
   // border-bottom: px solid #dee2e6;
   // border-top: 1px solid #dee2e6;
 `;
+
+const MainTotal = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+  color: #B15120;
+`;
+
 const Review = styled.textarea`
   padding: 15px 15px 45px 15px;
   vertical-align: middle;
@@ -142,3 +159,4 @@ const FooterBtn = styled.div`
   background: ${(props) => props.color};
   border-radius: 10px;
 `;
+

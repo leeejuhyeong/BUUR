@@ -41,7 +41,7 @@ const SignUp = () => {
       if (signUpAccount.userPassword === pwdIdentify.pwdIdentify) {
         signUpStatus = await fetchSignUp(signUpAccount);
       } else throw new Error("비밀번호를 확인해주세요.");
-      if (signUpStatus === 200) history.replace("/");
+      if (signUpStatus === 200) history.replace("/login");
     } catch (error) {
       window.alert(error);
     }

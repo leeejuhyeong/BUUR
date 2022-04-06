@@ -8,4 +8,6 @@
 .app {
   width: 360px;
   height: 640px;
+  min-width: 360px;
+  min-height: 640px;
 }

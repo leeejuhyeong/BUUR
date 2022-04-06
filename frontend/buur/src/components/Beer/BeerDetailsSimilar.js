@@ -19,7 +19,7 @@ const BeerDetailsSimilar = ( props ) => {
   
   useEffect(() => {
     similarBeerList();
-  },[]);
+  },[beerNo]);
 
   return (
     <div className="beerdetails-similar">

@@ -7,8 +7,8 @@ import Welcome from "../../assets/Welcome.png";
 function SurveyInitialScreen() {
   const history = useHistory();
   const moveSurvey = async () => {
-    const beerList = await fetchBeerList();
-    localStorage.setItem("beerList", beerList);
+    // const beerList = await fetchBeerList();
+    // localStorage.setItem("beerList", beerList);
     history.replace("/survey");
   };
 
@@ -40,7 +40,7 @@ const Container = styled.div`
 const WelcomeImg = styled.div`
   height: 180px;
   overflow: hidden;
-  margin: 120px auto 0px;
+  margin: 90px auto 0px;
   background: url(${Welcome});
   background-size: cover;
 `;

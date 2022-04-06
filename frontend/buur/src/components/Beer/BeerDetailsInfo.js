@@ -30,13 +30,11 @@ class BeerDetailsInfo extends React.Component {
   state = {
     warnBasketOpen: false,
     successBasketOpen: false,
-    likeStatus : this.props.beerInfo.like
   }
   render () {
     const beerInfo = this.props.beerInfo
     const basket = this.props.basket
     const addBeerBasket = this.props.addBeerBasket
-
 
     const addBasket = (beerInfo) => {
       if (basket.length === 4) {
@@ -61,16 +59,14 @@ class BeerDetailsInfo extends React.Component {
     };
 
 
-
     return (
       <div className="beer-details-info">
         <img src={`data:image/png; base64, ${beerInfo.beerImage}`} alt="beerImg"/>
         <div className="beer-textinfo">
           <div className="beer-textinfo__title">
             <p>{beerInfo.name}</p>
-            <BeerLike 
-            likeStatus = {this.state.likeStatus}
-            beerInfo = {beerInfo}
+            <BeerLike
+              beerInfo={beerInfo}
             />
           </div>
           <div className="beer-textinfo__catergory"><h5>도수</h5> <span>{beerInfo.abv} %</span></div>
