@@ -5,73 +5,70 @@ import SelectBar from "./SelectBar";
 
 const Modal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close} = props;
-  const [review, setReview] = useState("");
-  const [footerBtnColor, setFooterBtnColor] = useState("rgba(160, 160, 160, 0.38)");
+  const { open } = props;
+  const [review, setReview] = useState({
+    beerNo: "",
+    content: "",
+    rank: 1,
+  });
 
-  const onChangeReview = (e) => {
-    setReview(e.target.value);
+  // 닫기
+  const closeModal = (e) => {
+    if (e.target.id === "close") props.setColor("#fff");
+    setReview({ ...review, content: "" });
+    props.setModalOpen(false);
+  };
+
+  // 저장 후 닫기
+  const saveModal = (e) => {
+    const reviewArray = [...props.reviewList];
+    reviewArray.push({ ...review, beerNo: props.beer.beerNo });
+    props.setReviewList(reviewArray);
+
+    const beerImageArray = [...props.beerImgList];
+    beerImageArray.push(props.beer.beerImage);
+    props.setBeerImgList(beerImageArray);
+    closeModal(e);
+  };
+
+  const [footerBtnColor, setFooterBtnColor] = useState("rgb(160, 160, 160)");
+
+  const onChangeContent = (e) => {
+    setReview({ ...review, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    console.log(review);
-    if (review) {
-      setFooterBtnColor("rgba(177, 81, 32, 0.87)");
+    if (review.content) {
+      setFooterBtnColor("rgb(177, 81, 32)");
     } else {
-      setFooterBtnColor("rgba(160, 160, 160, 0.38)");
-      // button = <FooterBtn color={footerBtnColor}>이렇게 평가 할래요!</FooterBtn>;
+      setFooterBtnColor("rgb(160, 160, 160)");
     }
   }, [review]);
-
-
-
-
-  // const onChangeReview = (e) => {
-  //   setReview({ [e.target.name]: e.target.value }, () => {
-  //     console.log(review);
-  //     if (review) {
-  //       setFooterBtnColor("rgba(177, 81, 32, 0.87)");
-  //     } else {
-  //       setFooterBtnColor("rgba(160, 160, 160, 0.38)");
-  //     }
-  //   });
-  // };
-
-  // const onChangeReview = (e) => {
-  //   setReview(e.target.value);
-  //   if (review) {
-  //     setFooterBtnColor("rgba(177, 81, 32, 0.87)");
-  //   } else {
-  //     setFooterBtnColor("rgba(160, 160, 160, 0.38)");
-  //   }
-  //   console.log(review);
-  // };
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
         <Section>
-          <CloseBtn onClick={close}>&times;</CloseBtn>
+          <CloseBtn id="close" onClick={closeModal}>
+            &times;
+          </CloseBtn>
           <Main>총점을 평가해주세요</Main>
-          <SelectBar />
+          <SelectBar setReview={setReview} review={review} />
           <Review
-            id="review"
-            name="review"
+            id="content"
+            name="content"
             placeholder="이 맥주는 어떠셨는지 적어주세요."
-            onChange={onChangeReview}
+            onChange={onChangeContent}
           ></Review>
-          {footerBtnColor === "rgba(160, 160, 160, 0.38)" && (
+          {footerBtnColor === "rgb(160, 160, 160)" && (
             <FooterBtn color={footerBtnColor}>이렇게 평가 할래요!</FooterBtn>
           )}
-          {footerBtnColor === "rgba(177, 81, 32, 0.87)" && (
-            <FooterBtn color={footerBtnColor} onClick={close}>
+          {footerBtnColor === "rgb(177, 81, 32)" && (
+            <FooterBtn id="save" color={footerBtnColor} onClick={saveModal}>
               이렇게 평가 할래요!
             </FooterBtn>
           )}
-          {/* <FooterBtn color={footerBtnColor} onClick={close}>
-            이렇게 평가 할래요!
-          </FooterBtn> */}
         </Section>
       ) : null}
     </div>
@@ -126,7 +123,7 @@ const Review = styled.textarea`
   margin: 0px 0px 25px 0px;
 
   background: rgba(236, 194, 89, 0.3);
-  border: 1px solid rgba(236, 194, 89, 0.3);
+  border: 1px solid rgba(236, 194, 89, 0 3);
   &:focus {
     border: none;
     outline: 1px solid #e9b940;

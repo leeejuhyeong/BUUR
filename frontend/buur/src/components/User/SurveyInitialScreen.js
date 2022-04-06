@@ -1,29 +1,67 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { fetchBeerList } from "./service";
+import { useHistory } from "react-router-dom";
+import Welcome from "../../assets/Welcome.png";
 
+function SurveyInitialScreen() {
+  const history = useHistory();
+  const moveSurvey = async () => {
+    const beerList = await fetchBeerList();
+    localStorage.setItem("beerList", beerList);
+    history.replace("/Survey");
+  };
+
+  return (
+    <Container>
+      <WelcomeImg></WelcomeImg>
+      <Title>처음 방문 하셨나요?</Title>
+      <Detail>
+        'BUUR'는 편의점에서 판매중인
+        <br />
+        맥주를 추천해주는 서비스 입니다.
+        <br />
+        당신의 취향을 저격 할 맥주를 추천해드릴게요.
+      </Detail>
+      <SurveyStartButton onClick={moveSurvey}>
+        제 취향을 알려드릴게요
+      </SurveyStartButton>
+    </Container>
+  );
+}
+
+export default SurveyInitialScreen;
+
+/* CSS */
 const Container = styled.div`
   padding: 20px;
 `;
-const Title = styled.div`
-  font-weight: 900;
-  font-size: 22px;
 
-  margin: 158px 0 0px;
+const WelcomeImg = styled.div`
+  height: 180px;
+  overflow: hidden;
+  margin: 120px auto 0px;
+  background: url(${Welcome});
+  background-size: cover;
+`;
+const Title = styled.div`
+  font-weight: 800;
+  font-size: 27px;
+
+  margin: 90px 0 0px;
   text-align: center;
 
-  color: #e9b940;
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 const Detail = styled.div`
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.5;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.8;
 
-  margin: 50px 0 0px;
+  margin: 15px 0 0px;
   text-align: center;
-
-  color: rgba(177, 81, 32, 0.6);
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 const SurveyStartButton = styled.button`
@@ -33,43 +71,13 @@ const SurveyStartButton = styled.button`
   display: block;
   width: 100%;
   height: 49px;
-  margin: 60px 0 7px;
+  margin: 20px 0 0px;
   cursor: pointer;
   text-align: center;
   color: #fff;
   border: none;
   border-radius: 0;
-  background-color: rgba(233, 185, 64, 0.87);
+
+  background-color: rgb(177, 81, 32);
   border-radius: 10px;
-
-  ${({ disabled }) =>
-    disabled &&
-    `
-    background-color: #efefef;
-  `}
 `;
-function SurveyInitialScreen() {
-  return (
-    <Container>
-      <Title>당신의 취향을 알려주세요</Title>
-      <Detail>
-        총 네번의 맥주 평가가 있습니다.
-        <br /> 맥주의 맛 향 총점 을 평가해주세요.
-        <br />
-        당신의 취향을 저격 할 맥주를 추천해드릴게요.
-      </Detail>
-      <Link
-        to={{
-          pathname: "/Survey",
-          state: {
-            keyword: "설문조사",
-          },
-        }}
-      >
-        <SurveyStartButton>제 취향을 알려드릴게요</SurveyStartButton>
-      </Link>
-    </Container>
-  );
-}
-
-export default SurveyInitialScreen;

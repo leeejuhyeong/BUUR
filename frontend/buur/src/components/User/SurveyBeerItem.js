@@ -1,42 +1,59 @@
 import React, { useState } from "react";
-import beerImg from "../../assets/beer_sample.png";
+// import beerImg from "../../assets/beer_sample.png";
 import styled from "styled-components";
 import Modal from "./Modal.js";
 
 const SurveyBeerItem = (props) => {
-
-  //   const onClick = () => {
-  //     color === "#fff" ? setColor("#ECC259") : setColor("#fff");
-  //   };
-  
   const [color, setColor] = useState("#fff");
   const [modalOpen, setModalOpen] = useState(false);
   const click = () => {
     if (color === "#fff") {
+      if (props.reviewList.length >= 4) {
+        return;
+      }
       setColor("#ECC259");
       setModalOpen(true);
     } else {
-      setColor("#fff");
-      return;
-    }
-  };
-  // const setReview=()=>{
-  //   props.beer.review;
-  // }
+      let removeIndex;
+      for (let i = 0; i < props.beerImgList.length; i++) {
+        if (props.beerImgList[i] === props.beer.beerImage) {
+          removeIndex = i;
+        }
+      }
 
-  const closeModal = () => {
-    setModalOpen(false);
+      const beerImgListArr = [...props.beerImgList];
+      beerImgListArr.splice(removeIndex, 1);
+      props.setBeerImgList(beerImgListArr);
+
+      const reviewListArr = [...props.reviewList];
+      reviewListArr.splice(removeIndex, 1);
+      props.setReviewList(reviewListArr);
+
+      setColor("#fff");
+    }
   };
 
   return (
     <>
       <BeerBox color={color} onClick={click}>
-        <BeerImg />
-        <BeerName>{props.beer.name}</BeerName>
-        <Alcohol>알코올</Alcohol> <AlcoholInfo>{props.beer.alcohol}</AlcoholInfo>
-        <Kind>종류</Kind> <KindInfo>{props.beer.kind}</KindInfo>
+        <BeerImg
+          src={`data:image/png; base64, ${props.beer.beerImage}`}
+          alt="beerImg"
+        />
+        <BeerName>{props.beer.beerName}</BeerName>
+        <Alcohol>알코올</Alcohol> <AlcoholInfo>{props.beer.abv}</AlcoholInfo>
+        <Kind>종류</Kind> <KindInfo>{props.beer.type}</KindInfo>
       </BeerBox>
-      <Modal open={modalOpen} close={closeModal}> name={props.beer.name}</Modal>
+      <Modal
+        setReviewList={props.setReviewList}
+        setBeerImgList={props.setBeerImgList}
+        reviewList={props.reviewList}
+        beerImgList={props.beerImgList}
+        open={modalOpen}
+        beer={props.beer}
+        setModalOpen={setModalOpen}
+        setColor={setColor}
+      ></Modal>
     </>
   );
 };
@@ -52,13 +69,13 @@ const BeerBox = styled.div`
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 `;
-const BeerImg = styled.div`
+
+const BeerImg = styled.img`
   position: absolute;
   margin: 0px 0px 0px 12px;
   width: 23px;
   height: 53px;
 
-  background: url(${beerImg});
   background-size: cover;
 `;
 
@@ -82,7 +99,7 @@ const AlcoholInfo = styled.div`
   position: absolute;
 
   margin: 25px 0px 0px 88px;
-  font-weight: 100;
+  font-weight: 600;
   font-size: 10px;
   line-height: 10px;
 `;
@@ -98,7 +115,7 @@ const KindInfo = styled.div`
   position: absolute;
 
   margin: 39px 0px 0px 88px;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 9px;
   line-height: 10px;
 `;
