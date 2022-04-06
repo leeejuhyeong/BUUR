@@ -12,4 +12,5 @@ public interface SearchRepository extends JpaRepository<SearchHistory, Long> {
 
     List<SearchHistory> findTop5ByUserOrderByIdDesc(User user);
     List<SearchHistory> findAllByKeyword(String keyword);
+    List<SearchHistory> findSearchHistoryByUser(User user);
 }

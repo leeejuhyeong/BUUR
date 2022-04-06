@@ -12,13 +12,9 @@ import lombok.*;
 @ApiModel
 public class SearchHistoryDto {
 
-    @Deprecated
     private Long searchId;
-
     @ApiModelProperty("검색어")
     private String keyword;
-
-    @Deprecated
     private Long userNo;
 
 }

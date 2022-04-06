@@ -9,6 +9,7 @@ import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
+    @Transactional
     public List<SearchHistoryDto> findSearchHistoryList() {
 
         Long id = userService.currentUser();
@@ -57,13 +59,11 @@ public class SearchServiceImpl implements SearchService {
         List<SearchHistoryDto> searchHistoryDtoList = new ArrayList<>();
 
         for (SearchHistory searchHistory : searchHistoryList) {
-            if(searchHistory.getUser().getId() == id) {
                 searchHistoryDtoList.add(SearchHistoryDto.builder()
                         .searchId(searchHistory.getId())
                         .userNo(id)
                         .keyword(searchHistory.getKeyword())
                         .build());
-            }
         }
 
         return searchHistoryDtoList;
