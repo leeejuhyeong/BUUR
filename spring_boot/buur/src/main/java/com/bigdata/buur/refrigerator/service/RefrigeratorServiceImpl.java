@@ -1,6 +1,7 @@
 package com.bigdata.buur.refrigerator.service;
 
 import com.bigdata.buur.beer.repository.BeerRepository;
+import com.bigdata.buur.customException.UserNotFoundException;
 import com.bigdata.buur.entity.*;
 import com.bigdata.buur.macbti.repository.MacbtiRepository;
 import com.bigdata.buur.refrigerator.dto.BasketDto;
@@ -44,7 +45,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     @Override
     public void addRefrigerator(List<BasketDto> basketDtoList) {
 
-        User user = userRepository.findById(userService.currentUser()).orElseThrow(null);
+        User user = userRepository.findById(userService.currentUser()).orElseThrow(UserNotFoundException::new);
 
         BeerGroup beerGroup = BeerGroup.builder()
                 .user(user).build();
