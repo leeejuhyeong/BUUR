@@ -23,10 +23,14 @@ public class RefrigeratorController {
 
     private final RefrigeratorService refrigeratorService;
 
+    private final String SUCCESS = "success";
+    private final String FAIL = "fail";
+
     @ApiOperation(value = "맥주 조합 저장")
     @PostMapping()
     public ResponseEntity<String> refrigeratorAdd(@RequestBody @ApiParam(value = "맥주 조합 정보") List<BasketDto> basketDtoList) {
-        return ResponseEntity.ok().body(refrigeratorService.addRefrigerator(basketDtoList));
+        refrigeratorService.addRefrigerator(basketDtoList);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 
     @ApiOperation(value = "맥주 조합 조회")
@@ -45,8 +49,9 @@ public class RefrigeratorController {
 
     @ApiOperation(value = "맥주 조합 삭제")
     @DeleteMapping("/{group_id}")
-    public ResponseEntity<String> refrigeratorRemove(@PathVariable @ApiParam(value = "그룹 번호") int group_id) {
-        return ResponseEntity.ok().body(refrigeratorService.removeRefrigerator(group_id));
+    public ResponseEntity<String> refrigeratorRemove(@PathVariable @ApiParam(value = "그룹 번호") Long group_id) {
+        refrigeratorService.removeRefrigerator(group_id);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 
     @ApiOperation(value = "사용자가 많이 마신 맥주 순으로 조회")

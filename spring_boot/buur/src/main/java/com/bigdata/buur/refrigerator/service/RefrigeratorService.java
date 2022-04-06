@@ -9,9 +9,9 @@ import java.util.Map;
 
 public interface RefrigeratorService {
 
-    public String addRefrigerator(List<BasketDto> basketDtoList);
+    public void addRefrigerator(List<BasketDto> basketDtoList);
     public Map<Long, List<BasketDto>> findRefrigeratorList(int page) throws IOException;
-    public String removeRefrigerator(int group_id);
+    public void removeRefrigerator(Long group_id);
     public List<RefrigeratorDto> findUserRefrigeratorList(int page);
     public Integer findRefrigeratorTotalPage();
     public Integer findUserRefrigeratorTotalPage();
