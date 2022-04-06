@@ -1,5 +1,6 @@
 package com.bigdata.buur.search.service;
 
+import com.bigdata.buur.customException.UserNotFoundException;
 import com.bigdata.buur.entity.SearchHistory;
 import com.bigdata.buur.entity.User;
 import com.bigdata.buur.search.repository.SearchRepository;
@@ -25,9 +26,10 @@ public class SearchServiceImpl implements SearchService {
     private final String FAIL = "fail";
 
     @Override
+    @Transactional
     public String saveSearchHistory(SearchHistoryDto searchHistoryDto) {
 
-        User user = userRepository.findById(userService.currentUser()).orElseThrow(null);
+        User user = userRepository.findById(userService.currentUser()).orElseThrow(UserNotFoundException::new);
 
         // 기존에 동일한 검색 내역이 있는 경우 조회 후 삭제
         List<SearchHistory> existSearchHistory = searchRepository.findAllByKeyword(searchHistoryDto.getKeyword());
@@ -54,7 +56,7 @@ public class SearchServiceImpl implements SearchService {
     public List<SearchHistoryDto> findSearchHistoryList() {
 
         Long id = userService.currentUser();
-        User user = userRepository.findById(id).orElseThrow(null);
+        User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
         List<SearchHistory> searchHistoryList = searchRepository.findTop5ByUserOrderByIdDesc(user);
         List<SearchHistoryDto> searchHistoryDtoList = new ArrayList<>();
 
@@ -70,6 +72,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
+    @Transactional
     public String removeSearchHistory(Long search_id) {
 
         Long id = userService.currentUser();

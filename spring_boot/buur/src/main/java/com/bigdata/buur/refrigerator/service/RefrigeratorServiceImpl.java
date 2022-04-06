@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,6 +44,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     private final UserService userService;
 
     @Override
+    @Transactional
     public void addRefrigerator(List<BasketDto> basketDtoList) {
 
         User user = userRepository.findById(userService.currentUser()).orElseThrow(UserNotFoundException::new);
@@ -72,6 +74,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     }
 
     @Override
+    @Transactional
     public Map<Long, List<BasketDto>> findRefrigeratorList(int page) throws IOException {
         int size = 16;
         Long id = userService.currentUser();
@@ -109,6 +112,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     }
 
     @Override
+    @Transactional
     public Integer findRefrigeratorTotalPage() {
 
         Integer totalPage = 0;
@@ -121,6 +125,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     }
 
     @Override
+    @Transactional
     public void removeRefrigerator(Long group_id) {
 
         BeerGroup beerGroup = beerGroupRepository.findById(group_id).orElseThrow(null);
@@ -128,6 +133,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     }
 
     @Override
+    @Transactional
     public List<RefrigeratorDto> findUserRefrigeratorList(int page) {
         if(page != 0)
             page += 12;
@@ -149,6 +155,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     }
 
     @Override
+    @Transactional
     public Integer findUserRefrigeratorTotalPage() {
 
         Long id = userService.currentUser();
