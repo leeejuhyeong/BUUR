@@ -41,6 +41,11 @@ public interface MacbtiRepository extends JpaRepository<DrinkBeer, Long> {
     List<RefrigeratorInterface> findGroupByBeerAndUserWithJPQL(@Param(value = "id") Long id,
                                                                @Param(value = "page") int page);
 
-    Integer countByUser_Id(Long id);
-
+    @Query(
+            value = "SELECT count(beer_id) " +
+                    "FROM drink_beer " +
+                    "WHERE id = :id " +
+                    "GROUP BY beer_id ", nativeQuery = true
+    )
+    List<RefrigeratorInterface> countGroupByBeerAndUserWithJQPL(@Param(value = "id") Long id);
 }
