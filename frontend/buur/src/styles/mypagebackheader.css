@@ -1,6 +1,7 @@
 
 .my-page-back-header header {
     position: fixed;
+    height: 50px;
     top: 0;
     left: 0;
     right: 0;
@@ -26,6 +27,7 @@
 
 .notice-detail-header header {
     position: fixed;
+    height: 50px;
     top: 0;
     left: 0;
     right: 0;

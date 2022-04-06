@@ -9,6 +9,7 @@ function MyPage() {
   // 유저이미지, 이름 설정
   const [image, setImage] = useState("");
   const [username, setUsername] = useState("");
+  const [useremail, setUseremail] = useState("");
 
   useEffect(() => {
     axios
@@ -20,6 +21,7 @@ function MyPage() {
       .then((res) => {
         setUsername(res.data.userNickname);
         setImage(res.data.userProfile);
+        setUseremail(res.data.userEmail);
       })
       .catch((err) => console.log(err));
   }, [image]);
@@ -39,6 +41,7 @@ function MyPage() {
             state: {
               image: { image },
               username: { username },
+              useremail: { useremail },
             },
           }}
         >

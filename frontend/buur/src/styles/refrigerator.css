@@ -1,0 +1,96 @@
+.refrigerator-page {
+    width: 100%;
+    height: 100%;
+    background: url(../assets/refrigerator.png);
+    position: relative;
+}
+
+.refrigerator-page .move-next-btn {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+}
+
+.refrigerator-page .move-prev-btn {
+    position: absolute;
+    top: 50%;
+    left: 3%;
+}
+
+.refrigerator-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.refrigerator-page .refrigerator-header > button{
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    left: 313px;
+    top: 12px;
+}
+
+.refrigerator-header .refrigerator-nav {
+    background-color: #E9B940;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+.refrigerator-header .refrigerator-header-div{
+    display: flex;
+    justify-content: center;
+}
+
+.refrigerator-page .drankbeer-img-div {
+    height: 120px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding: 28px;
+    position: relative;
+}
+
+.refrigerator-page .drankbeer-img{
+    height: 100px;
+}
+
+.refrigerator-page .drankbeer-body{
+    margin-left: 40px;
+    margin-top: 12px;
+}
+
+.refrigerator-page .drankbeer-index {
+    position: absolute;
+    color: #B15120;
+    font-weight: 700;
+    top: 18px;
+    left: 8px;
+}
+
+.refrigerator-page .fourbeer-img {
+    height: 90px;
+}
+
+.refrigerator-page .fourbeer-img-div {
+    height: 100px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 18px;
+}
+
+.refrigerator-page .fourbeer-list-div {
+    position: relative;
+    margin-left: 50px;
+    margin-top: 28px;
+}
+
+.refrigerator-page .fourbeer-list-div > button{
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 30px;
+}

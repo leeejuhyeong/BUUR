@@ -1,5 +1,5 @@
 .my-page-header{
-    height: 53px;
+    height: 50px;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -267,20 +267,28 @@
     height: 587px;
 }
 
+.notice-page .notice-body {
+    padding-top: 95px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .notice-page .notice-item{ 
-    position: absolute;
     width: 272px;
     height: 58px;
-    left: 38px;
-    top: 102px;
-    
+    margin: 8px 0px;
     background: #FFFFFF;
     border: 1px solid rgba(185, 185, 185, 0.18);
     box-sizing: border-box;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
     border-radius: 16px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0px 15px;
     align-items: center;
 }
 
