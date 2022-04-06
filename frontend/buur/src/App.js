@@ -9,6 +9,7 @@ import InfoPage from "./pages/MyPage/InfoPage";
 import LikeBeerPage from "./pages/MyPage/LikeBeerPage";
 import Macbti from "./pages/MyPage/Macbti";
 import Notice from "./pages/MyPage/Notice";
+import Refrigerator from "./pages/MyPage/Refrigerator";
 import BeerList from "./pages/Beer/BeerList";
 import BeerDetails from "./pages/Beer/BeerDetails";
 import BeerReviews from "./pages/Beer/BeerReviews";
@@ -61,7 +62,11 @@ const BaseRouter = withRouter(({ location }) => {
           exact={true}
           component={NoticeDetail}
         />
-        {/* <Route path="/mypage/refrigerator" exact={true} component={refrigerator} /> */}
+        <Route
+          path="/mypage/refrigerator"
+          exact={true}
+          component={Refrigerator}
+        />
         <Route path="/mypage/likebeer" exact={true} component={LikeBeerPage} />
         <Route path="/mypage/notice" exact={true} component={Notice} />
 
@@ -80,7 +85,8 @@ const BaseRouter = withRouter(({ location }) => {
           location.pathname !== "/mypage/macbti" &&
           location.pathname !== "/mypage/likebeer" &&
           location.pathname !== "/mypage/notice" &&
-          location.pathname !== "/mypage/notice/detail" && <Nav />}
+          location.pathname !== "/mypage/notice/detail" &&
+          location.pathname !== "/mypage/refrigerator" && <Nav />}
 
         {/* nav 사용  */}
         <Route exact path="/home" component={Home} />

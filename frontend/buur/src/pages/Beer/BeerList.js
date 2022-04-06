@@ -79,11 +79,16 @@ const BeerList = ({ history, location }) => {
 
   return (
     <div className="beerlist">
+<<<<<<< HEAD
       { showSpinner() }
       <div className="beerlist-header">
         <button onClick={goBack}>
           <ChevronLeftIcon />
         </button>
+=======
+      <header>
+        <button onClick={goBack}><ChevronLeftIcon/></button>
+>>>>>>> feature/FE_notice
         <p># {keyword}</p>
         <div></div>
       </div>

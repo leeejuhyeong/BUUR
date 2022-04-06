@@ -37,18 +37,20 @@
 .info-page .info-input-first-div{
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding-left: 18px;
-    padding-right: 79px;
     padding-top: 30px;
     padding-bottom: 14px;
 }
 
+.info-page .info-email {
+    margin-right: 87px;
+}
+
 .info-page .info-input-div{
     display: flex;
-    align-items: center;
     justify-content: space-around;
-    padding: 5px 8px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .info-page .password-change-div {
@@ -69,4 +71,8 @@
 
 .info-page .password-change-btn:hover{
     background-color:#E9B940;
+}
+
+.info-page .info-input-text{
+    padding-top: 12px;
 }

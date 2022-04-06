@@ -8,15 +8,6 @@ import '../../styles/mypage.css'
 import axios from 'axios'
 
 function LikeBeerPage(){
-    // const beerList = [
-    //     { name : '호가든', id:'a', kind:'과일맥주', alcohol:'4.5', origin: '덴마크' },
-    //     { name : '서머스비', id:'b', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    //     { name : '서머스비', id:'c', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    //     { name : '서머스비', id:'d', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    //     { name : '서머스비', id:'e', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    //     { name : '서머스비', id:'f', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    //     { name : '곰표', id:'g', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},
-    //     { name : '서머스비', id:'h', kind:'과일맥주', alcohol:'4.5', origin: '덴마크'},]
     const [beerList, setBeerList] = useState([])
 
     useEffect(() => {
@@ -33,7 +24,7 @@ function LikeBeerPage(){
     },[]);
 
     return (
-        <div>
+        <div className='like-beer-page'>
             <MyPageBackHeader
             pageInfo="찜한 맥주"
             />
