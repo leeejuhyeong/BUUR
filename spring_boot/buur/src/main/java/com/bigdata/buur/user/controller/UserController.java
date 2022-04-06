@@ -1,6 +1,6 @@
 package com.bigdata.buur.user.controller;
 
-import com.bigdata.buur.customException.EntitySaveException;
+import com.bigdata.buur.customException.UserValidateException;
 import com.bigdata.buur.user.dto.ModifyUserDto;
 import com.bigdata.buur.user.dto.SafeUserDto;
 import com.bigdata.buur.user.dto.SurveyDto;
@@ -10,9 +10,12 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -47,15 +50,24 @@ public class UserController {
     // 회원가입
     @ApiOperation(value = "회원 가입")
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody @ApiParam(value = "유저 정보") UserDto user) {
+    public ResponseEntity<String> signup(@Valid @RequestBody @ApiParam(value = "유저 정보") UserDto user, BindingResult bindingResult) {
+
+        if(bindingResult.hasErrors()) {
+            List<ObjectError> errorList = bindingResult.getAllErrors();
+            for (ObjectError error : errorList)
+                throw new UserValidateException(error.getDefaultMessage());
+        }
+
         userService.addUser(user);
         return ResponseEntity.ok().body(SUCCESS);
+
     }
 
     // 로그인
     @ApiOperation(value = "로그인")
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody @ApiParam(value = "로그인 유저 정보") UserDto user) {
+    public ResponseEntity<String> login( @RequestBody @ApiParam(value = "로그인 유저 정보") UserDto user) {
+
         return ResponseEntity.ok().body(userService.login(user));
     }
 

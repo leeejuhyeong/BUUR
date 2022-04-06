@@ -68,4 +68,10 @@ public class ApiExceptionHandler {
         return ResponseEntity.internalServerError().body(responseBody);
     }
 
+    @ExceptionHandler(value = UserValidateException.class)
+    public ResponseEntity<ApiException> handlerUserValidateException(UserValidateException e) {
+        ApiException responseBody = new ApiException(e.getMessage(), LocalDateTime.now());
+        return ResponseEntity.badRequest().body(responseBody);
+    }
+
 }
