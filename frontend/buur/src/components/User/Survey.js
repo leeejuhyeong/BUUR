@@ -79,7 +79,7 @@ const Title = styled.div`
 
   align-items: center;
 
-  color: rgb(233, 185, 64);
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 const Detail = styled.div`

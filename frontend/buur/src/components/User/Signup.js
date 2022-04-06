@@ -1,26 +1,47 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import BUURlogo from "../../assets/BUURLogo_sm.png";
 import { fetchSignUp } from "./service";
 
 const SignUp = () => {
   const history = useHistory();
-
+  const [pwdBorderColor, setPwdBorderColor] = useState("solid 1px #dadada");
   const [signUpAccount, setSignUpAccount] = useState({
     userEmail: "",
     userId: "",
     userNickname: "",
     userPassword: "",
   });
+  // const [pwdIdentify, setPwdIdentify] = useState("");
+  const [pwdIdentify, setPwdIdentify] = useState({
+    pwdIdentify: "",
+  });
+
+  useEffect(() => {
+    console.log(signUpAccount.userPassword);
+    console.log(pwdIdentify.pwdIdentify);
+
+    if (signUpAccount.userPassword !== pwdIdentify.pwdIdentify)
+      setPwdBorderColor("solid 1px #DB2B2B");
+    else if (signUpAccount.userPassword === pwdIdentify.pwdIdentify)
+      setPwdBorderColor("solid 1px #dadada");
+  }, [pwdIdentify, signUpAccount]);
 
   const onChangeSignUpAccount = (e) => {
     setSignUpAccount({ ...signUpAccount, [e.target.name]: e.target.value });
   };
 
+  const pwdInspect = (e) => {
+    setPwdIdentify({ ...pwdIdentify, [e.target.name]: e.target.value });
+  };
+
   const onSubmit = async () => {
     try {
-      const signUpStatus = await fetchSignUp(signUpAccount);
+      let signUpStatus;
+      if (signUpAccount.userPassword === pwdIdentify.pwdIdentify) {
+        signUpStatus = await fetchSignUp(signUpAccount);
+      } else throw new Error("비밀번호를 확인해주세요.");
       if (signUpStatus === 200) history.replace("/");
     } catch (error) {
       window.alert(error);
@@ -59,13 +80,19 @@ const SignUp = () => {
         onChange={onChangeSignUpAccount}
       />
       <Text>비밀번호</Text>
-      <Input name="pwd" type="password" placeholder="비밀번호를 입력해주세요" />
-      <Text>비밀번호 확인</Text>
       <Input
-        name="pwd"
+        name="userPassword"
         type="password"
         placeholder="비밀번호를 입력해주세요"
         onChange={onChangeSignUpAccount}
+      />
+      <Text>비밀번호 확인</Text>
+      <PwdInput
+        pwdBorderColor={pwdBorderColor}
+        name="pwdIdentify"
+        type="password"
+        placeholder="비밀번호를 입력해주세요"
+        onChange={pwdInspect}
       />
       <SignUpButton onClick={onSubmit}>회원가입</SignUpButton>
       <JoinText>
@@ -121,9 +148,25 @@ const Input = styled.input`
     outline: 1px solid #e9b940;
   }
 `;
+const PwdInput = styled.input`
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 40px;
+  padding: 20px;
 
+  margin: 0 0 20px;
+  border: ${(props) => props.pwdBorderColor};
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  &:focus {
+    border: none;
+    outline: 1px solid #e9b940;
+  }
+`;
 const Text = styled.div`
-  font-weight: 600;
+  font-weight: 500;
   height: 30px;
   margin: 0px 0 0px;
 `;

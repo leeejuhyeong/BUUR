@@ -84,9 +84,9 @@ function LoginForm() {
         }}
       > */}
       <LoginButton onClick={onSubmitAccount}>로그인</LoginButton>
-      <GoogleLoginButton>
+      {/* <GoogleLoginButton>
         <GoogleLogoInsert></GoogleLogoInsert> Google 계정으로 계속
-      </GoogleLoginButton>
+      </GoogleLoginButton> */}
       <JoinText>
         회원이 아니신가요? <Join onClick={moveSignUp}>회원가입</Join>
       </JoinText>
@@ -104,6 +104,7 @@ const Text = styled.div`
 `;
 
 const JoinText = styled.div`
+  font-weight: 500;
   height: 30px;
   margin: 20px 0 0px;
   text-align: center;
@@ -181,7 +182,7 @@ const LoginButton = styled.button`
   display: block;
   width: 100%;
   height: 49px;
-  margin: 50px 0 7px;
+  margin: 40px 0 7px;
   cursor: pointer;
   text-align: center;
   color: #fff;

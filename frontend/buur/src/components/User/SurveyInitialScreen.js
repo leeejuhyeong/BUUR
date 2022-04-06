@@ -15,11 +15,11 @@ function SurveyInitialScreen() {
   return (
     <Container>
       <WelcomeImg></WelcomeImg>
-      {/* <Title>당신의 취향을 알려주세요</Title> */}
+      <Title>처음 방문 하셨나요?</Title>
       <Detail>
-        'BUUR'는
+        'BUUR'는 편의점에서 판매중인
         <br />
-        편의점에서 판매중인 맥주를 추천해주는 서비스 입니다.
+        맥주를 추천해주는 서비스 입니다.
         <br />
         당신의 취향을 저격 할 맥주를 추천해드릴게요.
       </Detail>
@@ -40,27 +40,28 @@ const Container = styled.div`
 const WelcomeImg = styled.div`
   height: 180px;
   overflow: hidden;
-  margin: 140px auto 0px;
+  margin: 120px auto 0px;
   background: url(${Welcome});
   background-size: cover;
 `;
 const Title = styled.div`
-  font-weight: 900;
-  font-size: 26px;
+  font-weight: 800;
+  font-size: 27px;
 
-  margin: 158px 0 0px;
+  margin: 90px 0 0px;
   text-align: center;
 
-  color: rgb(233, 185, 64);
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 const Detail = styled.div`
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.8;
 
-  margin: 100px 0 0px;
+  margin: 15px 0 0px;
   text-align: center;
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 const SurveyStartButton = styled.button`
@@ -70,12 +71,13 @@ const SurveyStartButton = styled.button`
   display: block;
   width: 100%;
   height: 49px;
-  margin: 30px 0 7px;
+  margin: 20px 0 0px;
   cursor: pointer;
   text-align: center;
   color: #fff;
   border: none;
   border-radius: 0;
-  background-color: rgb(233, 185, 64);
+
+  background-color: rgb(177, 81, 32);
   border-radius: 10px;
 `;
