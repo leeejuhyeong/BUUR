@@ -25,7 +25,7 @@ const BeerReviews = () => {
   const location = useLocation();
   const beerNo = location.state.beerNo;
   const beerName = location.state.beerName;
-  const [rankValue, setValue] = useState(0);
+  const [rankValue, setValue] = useState(1);
   const [content, setContent] = useState('');
 
   const [ reviewList, setreviewList ] = useState([]);
@@ -81,7 +81,7 @@ const BeerReviews = () => {
         }, 1000)
         setTimeout(() => {
           setIsLoaded(true);
-        }, 2000)
+        }, 3000)
       })
       .catch(() => {
         alert('리뷰 등록 실패')
@@ -160,6 +160,22 @@ const BeerReviews = () => {
     }, 2000)
   }
 
+  const addCommentBtn = () => {
+    if (content === '') {
+      return (
+        <button
+        disabled={ true }
+        className="disabled-comment__dialogbtn">평가를 입력해주세요!</button>
+      )
+    } else {
+      return (
+        <button
+          onClick={handleSubmit}
+        className="add-comment__dialogbtn">이렇게 평가할래요!</button>
+      )
+    }
+  }
+
   return (
     <div className="beerreview-all">
       <header>
@@ -231,10 +247,9 @@ const BeerReviews = () => {
             className="add-comment__dialogcontent"
             placeholder="자유롭게 이야기해주세요"
             onChange={(e) => setContent(e.target.value)}
+            autoFocus
           ></textarea>
-          <button
-          onClick={handleSubmit}
-          className="add-comment__dialogbtn">이렇게 평가할래요!</button>
+          { addCommentBtn() }
         </Toolbar>
       </Dialog>
     </div>

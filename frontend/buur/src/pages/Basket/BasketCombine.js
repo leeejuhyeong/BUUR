@@ -2,7 +2,6 @@ import React from "react";
 import BasketCombineBack from "../../components/Basket/BasketCombineBack";
 import { useLocation } from "react-router";
 import "../../styles/beerbasketcombine.css";
-import { Typography } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import store from "../../store";
 import axios from "axios";
@@ -31,6 +30,23 @@ function BasketCombine() {
       });
   };
 
+  const BasketContext = () => {
+    const BasketText = require('../../components/Basket/BasketText.json');
+    const num = Math.floor(Math.random() * 21);
+    console.log(num)
+    const res = BasketText[num].content.split('\n').map((line, index) => {
+      return (<p className="basket-text-content" key={ index }>{ line }<br/></p>)
+    })
+    
+    return (
+      <div className="basket-text-box">
+        { res }
+        <p className="basket-text-talker">- { BasketText[num].talker} -</p>
+      </div>
+    )
+  }
+
+
   return (
     <div className="basket-combine">
       <div className="basket-combine-content">
@@ -43,17 +59,7 @@ function BasketCombine() {
             />
           ))}
         </div>
-        <Typography
-          sx={{
-            fontSize: 30,
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            m: 4,
-          }}
-        >
-          에게~
-        </Typography>
+        { BasketContext() }
         <button onClick={addRefrigerator}>냉장고에 담을래요</button>
         <button onClick={() => history.goBack()}>다시 조합할래요</button>
       </div>

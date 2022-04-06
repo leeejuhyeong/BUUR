@@ -49,7 +49,7 @@ const SignUp = () => {
 
   //로그인 페이지 이동
   const moveLogin = () => {
-    history.replace("/");
+    history.replace("/login");
   };
 
   return (
