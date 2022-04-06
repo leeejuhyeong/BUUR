@@ -54,9 +54,18 @@ public class UserController {
 
         if(bindingResult.hasErrors()) {
             List<ObjectError> errorList = bindingResult.getAllErrors();
-            for (ObjectError error : errorList)
-                throw new UserValidateException(error.getDefaultMessage());
+            StringBuilder errorMsg = new StringBuilder("");
+            for (ObjectError error : errorList){
+                errorMsg.append(error.getDefaultMessage() + "\n");
+            }
+            throw new UserValidateException(errorMsg.toString());
         }
+
+        if (userService.checkIdDuplicate(user.getUserId()))
+            throw new UserValidateException("이미 존재하는 유저 아이디입니다.");
+
+        if (userService.checkNicknameDuplicate(user.getUserNickname()))
+            throw new UserValidateException("이미 존재하는 유저 닉네임입니다.");
 
         userService.addUser(user);
         return ResponseEntity.ok().body(SUCCESS);
