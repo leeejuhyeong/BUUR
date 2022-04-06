@@ -33,7 +33,7 @@ function LoginForm() {
     try {
       const JWT = await fetchLogin(account);
       //성공하면 해당 JWT값 셋팅
-      // setUser(JWT);
+
       localStorage.setItem("jwt", JWT);
 
       //성공하면 /home url로 이동
