@@ -152,8 +152,9 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     public Integer findUserRefrigeratorTotalPage() {
 
         Long id = userService.currentUser();
-        Integer totalPage = macbtiRepository.countByUser_Id(id);
-        totalPage /= 16;
+        List<RefrigeratorInterface> totalList = macbtiRepository.countGroupByBeerAndUserWithJQPL(id);
+        Integer totalPage = totalList.size();
+        totalPage /= 17;
 
         return totalPage;
     }
