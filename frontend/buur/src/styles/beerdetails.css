@@ -2,6 +2,11 @@
   height: 100%;
   width: 100%;
   overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 360px;
 }
 
 .beerdetails header {
@@ -37,18 +42,26 @@
   padding: 16px 16px;
   height: fit-content;
   width: 100%;
+  min-width: 360px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .beerdetails .beerdetails-body .beerdetails-body-info {
   display: flex;
+  align-items: center;
   justify-content: center;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .beerdetails .beer-details-info {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .beerdetails .beer-details-info > img {
@@ -109,16 +122,29 @@
   height: 170px;
   overflow-y: scroll;
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 
 .beerdetails .beerdetails-body > hr {
-  width: 300px;
+  min-width: 300px;
+  max-width: 400px;
+  width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.beerdetails .beerdetails-body > h3 {
-  margin: 18px;
+.beerdetails .beerdetails-body .rating-text {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 450px;
+}
+
+.beerdetails .beerdetails-body h3 {
+  margin: 15px 24px;
 }
 
 .beerdetails .beerreview-star {
@@ -170,6 +196,8 @@
 }
 
 .beerreview-box {
+  display: flex;
+  width: 100%;
   margin-bottom: 10px;
   margin-left: 30px;
   margin-right: 30px;
@@ -178,10 +206,23 @@
   border: 1px solid rgba(236, 194, 89, 0.15);
   box-sizing: border-box;
   border-radius: 11px;
+  max-width: 400px;
+}
+
+.beerreview-box > img {
+  width: 48px;
+  height: 48px;
+  border-radius: 70%;
+  background-color: #e9b9403e;
+  margin-right: 15px;
+}
+
+.beerreview-box-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
 
 .beerreview-box .review-box__header {
   display: flex;
@@ -234,6 +275,14 @@
 }
 
 .beerdetails .show-all {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.beerdetails .show-all-text {
   font-weight: 400;
   font-size: 10px;
   text-decoration: none;
@@ -348,6 +397,10 @@
   font-weight: bold;
   font-size: 15px;
   color: #FAFAFA;
+}
+
+.beerdetails .beerdetails-similar {
+  max-width: 450px;
 }
 
 .beerdetails .beerdetails-similar > h3 {

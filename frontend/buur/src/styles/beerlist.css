@@ -5,7 +5,7 @@
 }
 
 .beerlist .beerlist-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -35,7 +35,7 @@
   overflow-y: scroll;
   background-color: #fafafa;
   padding: 16px 16px;
-  height: 587px;
+  height: 100%;
 }
 
 .beeritem {

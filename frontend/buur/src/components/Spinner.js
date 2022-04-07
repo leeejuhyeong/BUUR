@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import '../styles/spinner.css';
+import '../styles/common/spinner.css';
 
 
 const Spinner = () => {
