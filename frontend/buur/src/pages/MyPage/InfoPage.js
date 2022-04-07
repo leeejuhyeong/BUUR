@@ -10,6 +10,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import FormHelperText from "@mui/material/FormHelperText";
+import store from "../../store";
+import { ADD_USERINFO } from "../../actions/ActionTypes";
 import "../../styles/userinfo.css";
 
 const InfoPage = ({ location }) => {
@@ -92,6 +94,7 @@ const InfoPage = ({ location }) => {
           })
           .then((res) => {
             setImage(res.data.userProfile);
+            store.dispatch({ type: ADD_USERINFO, data: res.data });
           })
           .catch((err) => console.log(err));
       })

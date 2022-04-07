@@ -17,7 +17,6 @@ function Search() {
   const [searchHistory, setSearchHistory] = useState([]);
 
   function searchBeer(searchTargetBeer) {
-    setSearchTerm("");
     setRelatedWords([]);
     axios
       .get(`https://j6b102.p.ssafy.io/api-v1/beer/${searchTargetBeer}`, {
@@ -39,13 +38,15 @@ function Search() {
         .post(
           `https://j6b102.p.ssafy.io/api-v1/search`,
           {
-            keyword: searchTargetBeer,
+            keyword: searchTerm,
           },
           {
             headers: { "X-AUTH-TOKEN": localStorage.getItem("jwt") },
           }
         )
         .then(() => {
+          console.log(searchTerm);
+          setSearchTerm("");
           console.log("히스토리 저장");
         })
         .catch((err) => {
@@ -71,6 +72,7 @@ function Search() {
           },
         })
         .then((res) => {
+          console.log("검색어 불러오기");
           console.log(res.data);
           setSearchHistory(res.data);
           setHistory(true);

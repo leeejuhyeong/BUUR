@@ -84,8 +84,8 @@
 
 .refrigerator-page .fourbeer-list-div {
     position: relative;
-    margin-left: 50px;
-    margin-top: 28px;
+    margin-left: 53px;
+    margin-top: 21px;
 }
 
 .refrigerator-page .fourbeer-list-div > button{
@@ -93,4 +93,8 @@
     background-color: transparent;
     position: absolute;
     right: 30px;
+}
+
+.refrigerator-page .fourbeer-div {
+    padding-top: 10px;
 }

@@ -9,10 +9,11 @@ import axios from "axios";
 const Macbti = ({ history, location }) => {
   const image = location.state.image.image;
   const username = location.state.username.username;
+  const beerdata = location.state.beerdata.beerdata;
   const [macbti, setMacbti] = useState("");
   const [userMonthData, setUserMonthData] = useState([]);
   const monthBeerList = userMonthData.map((beer) => beer.label);
-  const [beerdata, setBeerdata] = useState([]);
+  // const [beerdata, setBeerdata] = useState([]);
   const [open, setOpen] = React.useState(false);
 
   const handleTooltipClose = () => {
@@ -24,17 +25,6 @@ const Macbti = ({ history, location }) => {
   };
 
   useEffect(() => {
-    axios
-      .get("https://j6b102.p.ssafy.io/api-v1/beer/month", {
-        headers: {
-          "x-auth-token": localStorage.getItem("jwt"),
-        },
-      })
-      .then((res) => {
-        setBeerdata(res.data);
-      })
-      .catch((err) => console.log(err));
-
     const graphColor = ["#EED56B", "#E6A33A", "#E48C34", "#FFE578"];
     const newMonthDatas = [];
     const macbtiWord = [];
