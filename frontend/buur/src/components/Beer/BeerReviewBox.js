@@ -45,9 +45,12 @@ const BeerReviewBox = (props) => {
 
   return (
     <div className="beerreview-box">
-      { reviewHeader() }
-      <div className="review-box__content">
-        {review.content}
+      <img src={`data:image/png; base64, ${review.userProfile}`} alt="beerImg"/>
+      <div className="beerreview-box-content">
+        { reviewHeader() }
+        <div className="review-box__content">
+          {review.content}
+        </div>
       </div>
     </div>
   )

@@ -4,19 +4,21 @@
   background-color: #e6ad02;
   z-index: 2;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .spinner {
-  z-index: 3;
+  margin-top: 100px;
+  z-index: 2;
   height: 400px;
-  position: absolute;
-  left: -160px;
+  position: relative;
 }
 
 .spinner-text {
-  position: absolute;
-  top: 400px;
-  left: 150px;
+  margin-top: 170px;
   color: #FFFFFF;
 }
 
@@ -35,8 +37,6 @@
       #777 70px,
       #555 70px
   );
-  bottom: 0;
-  left: 310px;
 }
 
 .spinner .keg .pipe {
@@ -140,21 +140,21 @@
   position: absolute;
   width: 70px;
   height: 100px;
+  top: 100px;
   color: rgba(65, 65, 65, 0.3);
   background-color: currentColor;
-  bottom: 0;
   border-radius: 5px;
   animation: slide 3s ease infinite;
 }
 
 @keyframes slide {
   0% {
-      left: 0;
+      left: -600;
       filter: opacity(0);
   }
 
   20%, 80% {
-      left: 300px;
+      left: 0px;
       filter: opacity(1);
   }
 

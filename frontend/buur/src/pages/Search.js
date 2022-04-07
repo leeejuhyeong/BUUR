@@ -148,45 +148,47 @@ function Search() {
   }
 
   return (
-    <div className="search-page">
+    <div className="search-page-box">
       <BeerHeader pageInfo="검색" />
-      <div className="search-bar-div">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="맥주를 검색하세요"
-            className="search-input"
-            value={searchTerm}
-            onClick={() => showHistory()}
-            onChange={(e) => [
-              setSearchTerm(e.target.value),
-              setHistory(false),
-              handleChange(e.target.value),
-            ]}
-            onKeyDown={() => enterKey(searchTerm)}
-          />
-          <SearchIcon
-            sx={{ color: "#E9B940", fontSize: 22 }}
-            className="search-icon"
-          />
+      <div className="search-page">
+        <div className="search-bar-div">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="맥주를 검색하세요"
+              className="search-input"
+              value={searchTerm}
+              onClick={() => showHistory()}
+              onChange={(e) => [
+                setSearchTerm(e.target.value),
+                setHistory(false),
+                handleChange(e.target.value),
+              ]}
+              onKeyDown={() => enterKey(searchTerm)}
+            />
+            <SearchIcon
+              sx={{ color: "#E9B940", fontSize: 22 }}
+              className="search-icon"
+            />
+          </div>
+          <Button
+            onClick={() => [searchBeer(searchTerm)]}
+            sx={{ color: "#E9B940" }}
+            size="small"
+          >
+            검색
+          </Button>
         </div>
-        <Button
-          onClick={() => [searchBeer(searchTerm)]}
-          sx={{ color: "#E9B940" }}
-          size="small"
-        >
-          검색
-        </Button>
+        {isHistory && (
+          <History
+            searchHistory={searchHistory}
+            removeHistory={removeHistory}
+            searchBeer={searchBeer}
+          />
+        )}
+        {relatedResult()}
+        <div>{isBeer && <SearchResult resultBeers={resultBeers} />}</div>
       </div>
-      {isHistory && (
-        <History
-          searchHistory={searchHistory}
-          removeHistory={removeHistory}
-          searchBeer={searchBeer}
-        />
-      )}
-      {relatedResult()}
-      <div>{isBeer && <SearchResult resultBeers={resultBeers} />}</div>
     </div>
   );
 }

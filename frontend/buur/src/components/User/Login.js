@@ -60,7 +60,8 @@ function LoginForm() {
       <Text>아이디</Text>
       <Input
         id="id"
-        name="id"
+          name="id"
+          autoFocus
         placeholder="아이디를 입력해주세요"
         onChange={onChangeAccount}
       />
@@ -97,7 +98,7 @@ function LoginForm() {
 
 export default LoginForm;
 
-/* CSS */
+
 const Text = styled.div`
   font-weight: 600;
   height: 30px;
@@ -106,6 +107,7 @@ const Text = styled.div`
 
 const JoinText = styled.div`
   font-weight: 500;
+  font-size: 13px;
   height: 30px;
   margin: 20px 0 0px;
   text-align: center;
@@ -115,6 +117,7 @@ const Join = styled.a`
   font-weight: 600;
   color: rgb(177, 81, 32);
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const Logo = styled.img`
@@ -125,7 +128,7 @@ const Logo = styled.img`
 const Jumbotron = styled.div`
   position: fixed;
   width: 100%;
-  height: 140px;
+  height: 130px;
   left: 0px;
   top: 0px;
   display: flex;
@@ -137,26 +140,25 @@ const Jumbotron = styled.div`
 `;
 
 const Container = styled.div`
-  padding-top: 180px;
-  height: 640px;
-  width: 360px;
-  overflow: hidden;
+  padding-top: 155px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ContentBox = styled.div`
   height: 100%;
   width: 100%;
   padding: 0 30px;
+  max-width: 400px;
 `;
 
 const Input = styled.input`
-  position: relative;
   overflow: hidden;
   width: 100%;
   height: 40px;
   padding: 20px;
 
-  // margin: 0 0 10px;
   margin: 0 0 20px;
   border: solid 1px #dadada;
   background: #fff;

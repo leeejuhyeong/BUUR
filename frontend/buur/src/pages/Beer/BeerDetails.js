@@ -55,23 +55,27 @@ const BeerDetails = () => {
             beerInfo={beerInfo}/>
         </div>
         <hr />
-        <h3>평가 및 리뷰</h3>
+        <div className="rating-text">
+          <h3>평가 및 리뷰</h3>
+        </div>
         <BeerReviewStar
           beerInfo = {beerInfo}
           reviewScoreList={beerInfo.reviewScoreList}
-          />
-        <Link
-          to={{
-            pathname: "/main/beerlist/beerdetails/reviews",
-            state: {
-              beerNo: `${beerInfo.beerNo}`,
-              beerName: `${beerInfo.name}`,
-            },
-          }}
-          className="show-all"
-        >
-          전체 리뷰 보기 <ChevronRightIcon fontSize="small" />
-        </Link>
+        />
+        <div className="show-all">
+          <Link
+            to={{
+              pathname: "/main/beerlist/beerdetails/reviews",
+              state: {
+                beerNo: `${beerInfo.beerNo}`,
+                beerName: `${beerInfo.name}`,
+              },
+            }}
+            className="show-all-text"
+          >
+            전체 리뷰 보기 <ChevronRightIcon fontSize="small" />
+          </Link>
+        </div>
         <div className="show-little">
           {beerReviews.slice(0, 3).map((review, index) => (
             <BeerReviewBox key={index}

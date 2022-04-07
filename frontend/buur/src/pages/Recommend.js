@@ -82,25 +82,28 @@ const Recommend = () => {
   }
 
   return (
-    <div>
+    <div className="recommend-page-box">
       {isLoading()}
-      <BeerHeader pageInfo="추천" />
-      <div>
-        <div className="recommend-beer-body">
-          {checkBeer()}
-          <div className="recommend-beer-div">
-            <h4>이런 맥주는 어떠세요?</h4>
-          </div>
-          <div className="recommend-beer-list">
-            {newBeerList.map((beer, index) => (
-              <div key={index} className="recommend-beer-item">
-                <BeerItem beer={beer} />
-                <div className="recommend-beer-index">{index + 1}</div>
-              </div>
-            ))}
+      <div className="recommend-page">
+        <BeerHeader pageInfo="추천" />
+        <div className="recommend-beer-body__box">
+          <div className="recommend-beer-body">
+            {checkBeer()}
+            <div className="recommend-beer-div">
+              <h4>이런 맥주는 어떠세요?</h4>
+            </div>
+            <div className="recommend-beer-list">
+              {newBeerList.map((beer, index) => (
+                <div key={index} className="recommend-beer-item">
+                  <BeerItem beer={beer} />
+                  <div className="recommend-beer-index">{index + 1}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 };
