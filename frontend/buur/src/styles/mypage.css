@@ -30,8 +30,8 @@
     object-fit: cover;
     width: 60px;
     height: 60px;
-    border-radius: 100px;
-    border-color: #E9B940;
+    border-radius: 50%;
+    border: solid 1.7px #e9b940;
 }
 
 .mypage .info-arrow-icon{

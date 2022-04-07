@@ -18,12 +18,10 @@
 .info-page .profile-img{
     margin: 15px;
     object-fit: cover;
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    border-color: #E9B940;
-    font-size: 24px;
-    font-weight: 500;
+    border: solid 1.7px #e9b940;
 }
 
 .info-page .profile-change-btn {

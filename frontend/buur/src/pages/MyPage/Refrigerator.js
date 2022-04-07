@@ -21,7 +21,6 @@ const useStyles = makeStyles({
   },
   selected: {},
 });
-
 const Refrigerator = () => {
   const [value, setValue] = React.useState(0);
   const [fourBeer, setFourBeer] = useState([]);
@@ -67,12 +66,8 @@ const Refrigerator = () => {
           tempId.push(key);
           tempBeer.push(value);
         }
-        console.log(tempId);
-        console.log(tempBeer);
         setBeerId(tempId);
         setFourBeer(tempBeer);
-        console.log(fourBeer);
-        console.log(beerId);
       });
   }, []);
 
@@ -85,7 +80,6 @@ const Refrigerator = () => {
       })
       .then((res) => {
         setDrankBeer(res.data);
-        console.log(res.data);
       });
   }, []);
 
@@ -98,7 +92,6 @@ const Refrigerator = () => {
       })
       .then((res) => {
         setDrankTotal(res.data);
-        console.log(drankTotal);
       });
   }, []);
 
@@ -111,7 +104,6 @@ const Refrigerator = () => {
       })
       .then((res) => {
         setFourTotal(res.data);
-        console.log(fourTotal);
       });
   }, []);
 
@@ -185,7 +177,7 @@ const Refrigerator = () => {
   const onFourPrev = () => {
     console.log("이전 요청");
     axios
-      .get(`https://j6b102.p.ssafy.io/api-v1/basket/drink/${fourPage - 1}`, {
+      .get(`https://j6b102.p.ssafy.io/api-v1/basket/${fourPage - 1}`, {
         headers: {
           "X-AUTH-TOKEN": localStorage.getItem("jwt"),
         },
@@ -210,7 +202,7 @@ const Refrigerator = () => {
   const onFourNext = () => {
     console.log("다음 요청");
     axios
-      .get(`https://j6b102.p.ssafy.io/api-v1/basket/drink/${fourPage}`, {
+      .get(`https://j6b102.p.ssafy.io/api-v1/basket/${fourPage + 1}`, {
         headers: {
           "X-AUTH-TOKEN": localStorage.getItem("jwt"),
         },
@@ -265,7 +257,6 @@ const Refrigerator = () => {
   };
 
   function deleteFour(groupId) {
-    console.log(groupId);
     axios
       .delete(`https://j6b102.p.ssafy.io/api-v1/basket/${groupId}`, {
         headers: {
@@ -273,7 +264,23 @@ const Refrigerator = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        axios
+          .get("https://j6b102.p.ssafy.io/api-v1/basket/0", {
+            headers: {
+              "X-AUTH-TOKEN": localStorage.getItem("jwt"),
+            },
+          })
+          .then((res) => {
+            const tempBeer = [];
+            const tempId = [];
+            console.log(res.data);
+            for (let [key, value] of Object.entries(res.data)) {
+              tempId.push(key);
+              tempBeer.push(value);
+            }
+            setBeerId(tempId);
+            setFourBeer(tempBeer);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -305,7 +312,7 @@ const Refrigerator = () => {
     } else {
       return (
         <div>
-          <div>
+          <div className="fourbeer-div">
             {fourBeer.map((beerList, index) => (
               <div className="fourbeer-list-div" key={index}>
                 {beerList.map((beer, idx) => (
@@ -342,7 +349,6 @@ const Refrigerator = () => {
               className="refrigerator-nav"
               showLabels
               value={value}
-              classes={styleClasses}
               onChange={(event, newValue) => {
                 setValue(newValue);
               }}

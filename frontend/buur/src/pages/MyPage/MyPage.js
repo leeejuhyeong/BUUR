@@ -2,31 +2,36 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import MyPageHeader from "../../components/MyPage/MyPageHeader";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import store from "../../store";
 import "../../styles/mypage.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 function MyPage() {
-  // 유저이미지, 이름 설정
-  const [image, setImage] = useState("");
-  const [username, setUsername] = useState("");
-  const [useremail, setUseremail] = useState("");
+  const image = JSON.parse(
+    JSON.stringify(store.getState().beer.userInfo.userProfile)
+  );
+  const username = JSON.parse(
+    JSON.stringify(store.getState().beer.userInfo.userNickname)
+  );
+  const useremail = JSON.parse(
+    JSON.stringify(store.getState().beer.userInfo.userEmail)
+  );
+  const [beerdata, setBeerdata] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
     axios
-      .get("https://j6b102.p.ssafy.io/api-v1/user/info", {
+      .get("https://j6b102.p.ssafy.io/api-v1/beer/month", {
         headers: {
           "x-auth-token": localStorage.getItem("jwt"),
         },
       })
       .then((res) => {
-        setUsername(res.data.userNickname);
-        setImage(res.data.userProfile);
-        setUseremail(res.data.userEmail);
+        setBeerdata(res.data);
       })
       .catch((err) => console.log(err));
-  }, [image]);
+  }, []);
 
   function logout() {
     localStorage.removeItem("jwt");
@@ -51,11 +56,13 @@ function MyPage() {
           }}
         >
           <div className="user-info-div">
-            <img
-              src={`data:image/png;base64,${image}`}
-              alt="프로필 사진"
-              className="profile-img"
-            />
+            <div>
+              <img
+                src={`data:image/png;base64,${image}`}
+                alt="프로필 사진"
+                className="profile-img"
+              />
+            </div>
             {username}님
           </div>
           <ArrowForwardIosIcon
@@ -70,6 +77,7 @@ function MyPage() {
             state: {
               image: { image },
               username: { username },
+              beerdata: { beerdata },
             },
           }}
         >
