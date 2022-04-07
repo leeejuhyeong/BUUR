@@ -92,7 +92,6 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
 
             inputStream = new FileInputStream(findBeer.getImage());
 
-            if(beerGroup.getUser().getId() == id) {
                 findBasketDtoList.add(BasketDto.builder()
                         .beerId(basket.getBeer().getId())
                         .beerName(findBeer.getName())
@@ -101,7 +100,6 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
                         .beerImage(IOUtils.toByteArray(inputStream))
                         .id(id)
                         .build());
-            }
         }
 
         for (int i = 0; i < findBasketDtoList.size(); i++) {
