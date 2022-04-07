@@ -8,5 +8,5 @@ public interface SearchService {
 
     public String saveSearchHistory(SearchHistoryDto searchHistoryDto);
     public List<SearchHistoryDto> findSearchHistoryList();
-    public String removeSearchHistory(Long search_id);
+    public void removeSearchHistory(Long search_id);
 }
