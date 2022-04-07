@@ -73,15 +73,10 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     @Transactional
-    public String removeSearchHistory(Long search_id) {
+    public void removeSearchHistory(Long search_id) {
 
-        Long id = userService.currentUser();
         SearchHistory searchHistory = searchRepository.findById(search_id).orElseThrow(null);
 
-        if(searchHistory.getUser().getId() == id) {
-            searchRepository.delete(searchHistory);
-            return SUCCESS;
-        }
-        return FAIL;
+        searchRepository.delete(searchHistory);
     }
 }

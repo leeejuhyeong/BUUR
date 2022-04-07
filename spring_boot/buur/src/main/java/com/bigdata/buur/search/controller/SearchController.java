@@ -18,6 +18,9 @@ public class SearchController {
 
     private final SearchService searchService;
 
+    private final String SUCCESS = "success";
+    private final String FAIL = "fail";
+
     @ApiOperation(value = "검색 기록 저장")
     @PostMapping()
     public ResponseEntity<String> searchHistorySave(@RequestBody @ApiParam(value = "검색 내역 정보") SearchHistoryDto searchHistory) {
@@ -33,6 +36,7 @@ public class SearchController {
     @ApiOperation(value = "검색 기록 삭제")
     @DeleteMapping("/{search_id}")
     public ResponseEntity<String> searchHistoryRemove(@PathVariable @ApiParam(value = "검색 번호") Long search_id) {
-        return ResponseEntity.ok().body(searchService.removeSearchHistory(search_id));
+        searchService.removeSearchHistory(search_id);
+        return ResponseEntity.ok().body(SUCCESS);
     }
 }
