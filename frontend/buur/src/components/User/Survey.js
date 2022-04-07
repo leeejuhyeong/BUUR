@@ -37,45 +37,47 @@ function Survey() {
   const beerBlankImgList = [BlankBeer, BlankBeer, BlankBeer, BlankBeer];
 
   return (
-    <Container className="survey">
+    <div>
       {isLoading()}
-      <ContainerHeader>
-        <Title>평가할 맥주를 골라주세요</Title>
-        <Detail>4개의 맥주를 선택해주세요</Detail>
-        <BeerBasketListDiv>
-          {beerImgList.map((beer, index) => (
-            <Beer
-              key={index}
-              src={`data:image/png; base64, ${beer}`}
-              alt="beerImg"
-            />
-          ))}
-          {beerBlankImgList.slice(beerImgList.length).map((beer, index) => (
-            // <BlankBeerBox>
-            <BlankBeer src={ BlankBeerImg } key={index} />
-            // </BlankBeerBox>
-          ))}
-        </BeerBasketListDiv>
-      </ContainerHeader>
-      <BeerlistBody>
-        <Grid container spacing={{ xs: 2 }}>
-          {beerList.map((beer, index) => (
-            <Grid item xs={6} sm={2} key={index}>
-              <SurveyBeerItem
-                setReviewList={setReviewList}
-                setBeerImgList={setBeerImgList}
-                reviewList={reviewList}
-                beerImgList={beerImgList}
-                beer={beer}
+      <Container className="survey">
+        <ContainerHeader>
+          <Title>평가할 맥주를 골라주세요</Title>
+          <Detail>4개의 맥주를 선택해주세요</Detail>
+          <BeerBasketListDiv>
+            {beerImgList.map((beer, index) => (
+              <Beer
+                key={index}
+                src={`data:image/png; base64, ${beer}`}
+                alt="beerImg"
               />
-            </Grid>
-          ))}
-        </Grid>
-      </BeerlistBody>
-      {reviewList.length === 4 ? (
-        <ChoiceButton onClick={saveSurvey}>평가 완료할래요!</ChoiceButton>
-      ) : null}
-    </Container>
+            ))}
+            {beerBlankImgList.slice(beerImgList.length).map((beer, index) => (
+              // <BlankBeerBox>
+              <BlankBeer src={ BlankBeerImg } key={index} />
+              // </BlankBeerBox>
+            ))}
+          </BeerBasketListDiv>
+        </ContainerHeader>
+        <BeerlistBody>
+          <Grid container spacing={{ xs: 2 }}>
+            {beerList.map((beer, index) => (
+              <Grid item xs={6} sm={2} key={index}>
+                <SurveyBeerItem
+                  setReviewList={setReviewList}
+                  setBeerImgList={setBeerImgList}
+                  reviewList={reviewList}
+                  beerImgList={beerImgList}
+                  beer={beer}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </BeerlistBody>
+        {reviewList.length === 4 ? (
+          <ChoiceButton onClick={saveSurvey}>평가 완료할래요!</ChoiceButton>
+        ) : null}
+      </Container>
+  </div>
   );
 }
 

@@ -1,6 +1,6 @@
 .refrigerator-page {
-    width: 100%;
-    height: 100%;
+    width: 360px;
+    height: 640px;
     background: url(../assets/refrigerator.png);
     position: relative;
 }
@@ -97,6 +97,8 @@
 
 .refrigerator-page .fourbeer-div {
     padding-top: 10px;
+    width: 100%;
+    height: 100%;
 }
 
 .refrigerator-page .refrigerator-nav-btn {
@@ -107,4 +109,14 @@
 
 .refrigerator-page .refrigerator-nav-btn.Mui-selected {
     color: #ffffff !important;
+}
+
+.fourbeer-group {
+    width: 100%;
+    height: 640px;
+}
+
+.drankbeer-box {
+    width: 100%;
+    height: 640px;
 }

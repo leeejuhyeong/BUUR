@@ -291,7 +291,7 @@ const Refrigerator = () => {
   const showBeers = () => {
     if (value) {
       return (
-        <div>
+        <div className="drankbeer-box">
           <div className="drankbeer-body">
             {drankBeer.map((beer, index) => (
               <div className="drankbeer-img-div" key={index}>
@@ -312,7 +312,7 @@ const Refrigerator = () => {
       );
     } else {
       return (
-        <div>
+        <div className="fourbeer-group">
           <div className="fourbeer-div">
             {fourBeer.map((beerList, index) => (
               <div className="fourbeer-list-div" key={index}>

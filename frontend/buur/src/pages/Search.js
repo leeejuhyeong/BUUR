@@ -187,7 +187,7 @@ function Search() {
           />
         )}
         {relatedResult()}
-        <div>{isBeer && <SearchResult resultBeers={resultBeers} />}</div>
+        {isBeer && <SearchResult resultBeers={resultBeers} />}
       </div>
     </div>
   );
