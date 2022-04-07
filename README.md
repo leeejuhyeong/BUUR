@@ -42,41 +42,41 @@
 
 ### 로그인 & 설문 페이지
 - 로그인  
-<img src="./assets/로그인.gif" width="300px">
+<img src="./assets/login.gif" width="300px">
 
 - 설문 페이지  
-<img src="./assets/설문조사.gif" width="300px">
+<img src="./assets/survey.gif" width="300px">
 
 ### 메인 페이지
 
 - 전체 상품 보기  
-<img src="./assets/전체상품.gif" width="300px">
+<img src="./assets/allBeer.gif" width="300px">
 
 - 맥주 분류 별 보기  
-<img src="./assets/맥주분류.gif" width="300px">
+<img src="./assets/beercategory.gif" width="300px">
 
 ### 🌟추천 기능
 
 - 맥주 추천  
-<img src="./assets/맥주추천.gif" width="300px">
+<img src="./assets/recommend.gif" width="300px">
 
 - 맥주 상세 페이지의 비슷한 맥주 추천  
-<img src="./assets/비슷한맥주.gif" width="300px">
+<img src="./assets/similar.gif" width="300px">
 
 ### 장바구니
 
 - 맥주 장바구니 담기  
-<img src="./assets/장바구니담기.gif" width="300px">
+<img src="./assets/basket.gif" width="300px">
 
 ### 검색 기능
 
 - 찾고 싶은 맥주를 검색  
-<img src="./assets/검색.gif" width="300px">
+<img src="./assets/search.gif" width="300px">
 
 ### 마이페이지
 
 - 냉장고 둘러보기  
-<img src="./assets/냉장고.gif" width="300px">
+<img src="./assets/refrigerator.gif" width="300px">
 
 - MacBTI  
 <img src="./assets/MacBTI.gif" width="300px">
