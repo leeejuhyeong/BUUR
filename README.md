@@ -1,4 +1,29 @@
+<style>
+.content {
+    background-color: #E0E0E0;
+    border-radius: 3px;
+}
 
+.front-end {
+    color: #7F00FF;
+}
+
+.back-end {
+    color: #009900;
+}
+
+.django {
+    color: #3399FF;
+}
+
+.presentation {
+    color: #FF0000;
+}
+
+.ucc {
+    color: #FF007F;
+}
+</style>
 <div style="text-align: center">
     
 </div>
@@ -130,32 +155,3 @@
 | 오은진 | <span class="content back-end">Backend</span> | <span class="content back-end">냉장고</span> <span class="content back-end">장바구니</span> <span class="content back-end">Macbti</span> <span class="content back-end">검색</span>|
 | 이주형 | <span class="content back-end">Backend</span> <span class="content django">Django</span> | <span class="content back-end">맥주</span> <span class="content back-end">검색</span> <span class="content django">맥주 추천</span> |
 | 조용구 | <span class="content back-end">Backend</span> <span class="content front-end">Frontend</span> | <span class="content back-end">유저</span> <span class="content back-end">리뷰</span> <span class="content front-end">로그인</span> <span class="content front-end">회원가입</span> <span class="content front-end">설문</span> |
-
-
-
-<style>
-.content {
-    background-color: #E0E0E0;
-    border-radius: 3px;
-}
-
-.front-end {
-    color: #7F00FF;
-}
-
-.back-end {
-    color: #009900;
-}
-
-.django {
-    color: #3399FF;
-}
-
-.presentation {
-    color: #FF0000;
-}
-
-.ucc {
-    color: #FF007F;
-}
-</style>
