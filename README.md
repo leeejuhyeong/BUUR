@@ -109,12 +109,14 @@
 
 ---
 
-
-| Name | 장성태 | 김유정 | 오수경 | 오은진 | 이주형 | 조용구 |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Role** | 팀장 / 발표 | React 노력왕 / Model / 추천 | Director / Front 고수 | DB Robort / Back 고수 | 추천/ Back 왕고수 (Project Manager)  | Full Stack 고수 |
-| **Position** | Frontend | Frontend, Django | Frontend | Backend | Backend, Django | Frontend Backend |
-| **Git** |  |  | @Oh-Su | @Oh-EinJin | @leeejuhyeong | @younygo1004 |
+| Name | Role | Position | Git |
+| --- | --- | --- | --- |
+| 장성태 | 팀장 / 발표 | Frontend |  |
+| 김유정 | React 노력왕 / Model / 추천 | Frontend Django |  |
+| 오수경 | Director / Front 고수 | Frontend | @Oh-Su |
+| 오은진 | DB Robort / Back 고수 | Backend | @Oh-EinJin |
+| 이주형 | 추천/ Back 왕고수 (PM) | Backend Django | @leeejuhyeong |
+| 조용구 | Full Stack 고수 | Frontend Backend | @younygo1004 |
 
 ## 👨‍👨‍👧‍👦 역할 분담
 
@@ -129,16 +131,7 @@
 | 이주형 | <span class="content back-end">Backend</span> <span class="content django">Django</span> | <span class="content back-end">맥주</span> <span class="content back-end">검색</span> <span class="content django">맥주 추천</span> |
 | 조용구 | <span class="content back-end">Backend</span> <span class="content front-end">Frontend</span> | <span class="content back-end">유저</span> <span class="content back-end">리뷰</span> <span class="content front-end">로그인</span> <span class="content front-end">회원가입</span> <span class="content front-end">설문</span> |
 
-<span class="content front-end"></span>
-<span class="content back-end">Backend</span>
-<span class="content django">Django</span>
-<span class=""></span>
-
 <style type='text/css'>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-    @font-face {
-        font-family: 'Roboto', sans-serif;
-    }
     .content {
         background-color: #E0E0E0;
         border-radius: 3px;
