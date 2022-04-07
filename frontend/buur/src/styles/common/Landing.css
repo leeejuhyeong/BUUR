@@ -1,6 +1,12 @@
 .landing-page {
-  height: 640px;
-  width: 360px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  min-width: 360px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,11 +28,10 @@
 }
 
 .landing-page .content {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  top: 560px;
-  left: 0;
-  right: 0;
+  width: 100%;
+  height: 70px;
   background-color: white;
   z-index: 2;
 }
@@ -36,7 +41,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  top: 470px;
   height: 100%;
   text-align:center;
   color:white;
@@ -45,8 +49,11 @@
 
 
 .landing-page .waves {
+  position: fixed;
+  bottom: 70px;
+  left: 0;
+  right: 0;
   width: 100%;
-  height:7vh;
 }
 
 .landing-page .bubble {
@@ -124,7 +131,7 @@
   }
 }
 /*Shrinking for mobile*/
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .waves {
     height:40px;
     min-height:40px;
@@ -134,5 +141,29 @@
   }
   h1 {
     font-size:24px;
+  }
+  .landing-page .beer-bubble1 {
+    left: 100px;
+    animation: up 2s infinite;
+  }
+  
+  .landing-page .beer-bubble2 {
+    left: 350px;
+    animation: up 3s infinite;
+  }
+  
+  .landing-page .beer-bubble3 {
+    left: 500px;
+    animation: up 6s infinite;
+  }
+  
+  .landing-page .beer-bubble4 {
+    left: 600px;
+    animation: up 4s infinite;
+  }
+  
+  .landing-page .beer-bubble5 {
+    left: 700px;
+    animation: up 1.5s infinite;
   }
 }

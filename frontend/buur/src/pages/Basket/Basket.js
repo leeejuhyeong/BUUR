@@ -103,6 +103,7 @@ function Basket() {
           </div>
         ))}
       </div>
+      
       <div>
       <button onClick={handleClickOpen} className="small-basket-btn">
         <KeyboardArrowUpRoundedIcon />

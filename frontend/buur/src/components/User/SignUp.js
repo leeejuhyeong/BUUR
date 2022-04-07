@@ -213,11 +213,13 @@ const SignUp = () => {
       <Jumbotron>
         <Logo src={ BUURlogo }></Logo>
       </Jumbotron>
+      <ContentBox>
       <Text>아이디</Text>
       <InputDiv>
         <Input
           type="text"
-          name="userId"
+            name="userId"
+            autoFocus
           placeholder="아이디를 입력해주세요"
           onChange={(e) => [
             onChangeSignUpAccount(e),
@@ -267,7 +269,8 @@ const SignUp = () => {
       {validButton()}
       <JoinText>
         이미 BUUR 회원이신가요? <Login onClick={moveLogin}>로그인</Login>
-      </JoinText>
+        </JoinText>
+        </ContentBox>
     </Container>
   );
 };
@@ -276,14 +279,24 @@ export default SignUp;
 
 /* CSS */
 const Container = styled.div`
-  margin-top: 120px;
-  padding: 20px;
+  display:flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
+const ContentBox = styled.div`
+  width: 100%;
+  max-width: 450px;
+  padding: 15px 28px 0px;
+
+`
+
 const Jumbotron = styled.div`
-  position: absolute;
-  width: 360px;
-  height: 116px;
+  width: 100%;
+  height: 90px;
   left: 0px;
   top: 0px;
   display:flex;
@@ -293,7 +306,7 @@ const Jumbotron = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 180px;
+  width: 150px;
   margin-left: 15px;
 `;
 
@@ -301,7 +314,7 @@ const Input = styled.input`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 40px;
+  height: 38px;
   padding: 20px;
 
   border: solid 1px #dadada;
@@ -319,7 +332,7 @@ const WarnText = styled.div`
   color: #db2b2b;
   display: flex;
   justify-content: flex-end;
-  font-size: 13px;
+  font-size: 12px;
 `;
 
 const SuccessText = styled.div`
@@ -327,7 +340,7 @@ const SuccessText = styled.div`
   color: #008d06;
   display: flex;
   justify-content: flex-end;
-  font-size: 13px;
+  font-size: 12px;
 `;
 
 const NameInput = styled.input`
@@ -398,9 +411,10 @@ const PwdInput = styled.input`
   }
 `;
 const Text = styled.div`
-  font-weight: 500;
-  height: 30px;
-  margin: 0px 0 0px;
+  font-weight: 600;
+  font-size: 14px;
+  height: 20px;
+  margin-bottom: 5px;
 `;
 
 const SignUpButton = styled.button`
@@ -421,15 +435,17 @@ const SignUpButton = styled.button`
 
 const JoinText = styled.div`
   height: 30px;
-  margin: 20px 0 0px;
+  margin: 10px 0 0px;
   text-align: center;
+  font-size: 13px;
 `;
 
 const Login = styled.a`
   font-weight: 600;
   color: rgb(233, 185, 64);
   text-decoration: none;
-`;
+  cursor: pointer;
+  `;
 
 const InputDiv = styled.div`
   display: flex;
