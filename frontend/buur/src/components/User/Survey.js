@@ -147,13 +147,15 @@ const BeerlistBody = styled.div`
 
 const ChoiceButton = styled.button`
   position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   font-size: 16px;
   font-weight: 600;
   line-height: 49px;
   display: block;
   width: 100%;
   height: 50px;
-  margin: 290px 0px 7px;
   cursor: pointer;
   text-align: center;
   color: #fff;
