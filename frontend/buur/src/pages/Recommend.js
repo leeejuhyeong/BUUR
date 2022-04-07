@@ -4,11 +4,25 @@ import BeerHeader from "../components/Beer/BeerHeader";
 import BeerItem from "../components/Beer/BeerItem";
 // import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import "../styles/beerrecommend.css";
-import axios from "axios";
+import axios from "axios"
+import Spinner from "../components/Spinner";
 
 const Recommend = () => {
   const [originBeerList, setOriginBeerList] = useState([]);
   const [newBeerList, setNewBeerList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  });
+
+  const isLoading = () => {
+    if (loading) {
+      return <Spinner />;
+    }
+  };
 
   useEffect(() => {
     axios
@@ -69,6 +83,7 @@ const Recommend = () => {
 
   return (
     <div>
+      {isLoading()}
       <BeerHeader pageInfo="추천" />
       <div className="recommend-beer-page">
         {checkBeer()}

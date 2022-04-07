@@ -52,7 +52,7 @@ const BeerDetails = () => {
       <div className="beerdetails-body">
         <div className="beerdetails-body-info">
           <BeerDetailsInfo
-            beerInfo={beerInfo} />
+            beerInfo={beerInfo}/>
         </div>
         <hr />
         <h3>평가 및 리뷰</h3>

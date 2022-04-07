@@ -8,9 +8,18 @@ const BeerLike = props => {
   const [like, setLike] = useState()
   
   useEffect(() => {
-    setLike(like => props.beerInfo.like)
-  },[beerInfo])
+    updateLike()
+  },[beerInfo, like])
   
+  const updateLike = async() => {
+    await axios
+    .get(`https://j6b102.p.ssafy.io/api-v1/beer/info/${beerInfo.beerNo}`, {
+      headers: {"X-AUTH-TOKEN" : localStorage.getItem('jwt')}
+    })
+    .then((res) => {
+      setLike(like => res.data.like)
+    }) 
+  }
 
   const heart = () => {
     if (like) {

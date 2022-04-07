@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import BUURlogo from "../../assets/BUURLogo_sm.png";
+import BUURlogo from "../../assets/BUUR_logo.svg";
 import { fetchSignUp } from "./service";
 
 const SignUp = () => {
@@ -55,7 +55,7 @@ const SignUp = () => {
   return (
     <Container>
       <Jumbotron>
-        <Logo></Logo>
+        <Logo src={ BUURlogo }></Logo>
       </Jumbotron>
       <Text>아이디</Text>
       <Input
@@ -115,19 +115,15 @@ const Jumbotron = styled.div`
   height: 116px;
   left: 0px;
   top: 0px;
-
+  display:flex;
+  justify-content: center;
+  align-items: center;
   background: rgb(233, 185, 64);
 `;
 
-const Logo = styled.div`
-  position: absolute;
-  width: 169px;
-  height: 66px;
-  left: 96px;
-  top: 22px;
-
-  background: url(${BUURlogo});
-  background-size: cover;
+const Logo = styled.img`
+  width: 180px;
+  margin-left: 15px;
 `;
 
 const Input = styled.input`

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {useHistory} from "react-router";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import beerBalnk from "../../assets/beer_blank.png";
+import beerBalnk from "../../assets/beer_blank.svg";
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import Dialog from '@mui/material/Dialog';
 import Toolbar from '@mui/material/Toolbar';

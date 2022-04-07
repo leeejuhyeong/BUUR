@@ -123,7 +123,6 @@ const BeerReviews = () => {
       })
         .then((res) => {
           setReviewList((reviewList) => [...reviewList, ...res.data]);
-          console.log('review:', reviewList, '응답:', res.data)
         setIsLoaded(false);
         if (res.data.length < 10) {
           setStop(true)
@@ -227,7 +226,12 @@ const BeerReviews = () => {
               <CloseIcon />
             </IconButton>
           </div>
-          <Box sx={{ height: 60 }}>
+          <Box sx={{
+            height: 60,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}>
             <Typography
               component="legend"
               sx={{ fontSize: 20, fontWeight: "bold", textAlign: "center" }}

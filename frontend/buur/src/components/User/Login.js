@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BUURlogo from "../../assets/BUURLogo_sm.png";
+import BUURlogo from "../../assets/BUUR_logo.svg";
 import React, { useState } from "react";
 // import { useUserContext } from "./user-context";
 import { fetchLogin, fetchUserInfo } from "./service";
@@ -54,7 +54,7 @@ function LoginForm() {
   return (
     <Container>
       <Jumbotron>
-        <Logo></Logo>
+        <Logo src={ BUURlogo }></Logo>
       </Jumbotron>
       <ContentBox>
       <Text>아이디</Text>
@@ -117,30 +117,27 @@ const Join = styled.a`
   text-decoration: none;
 `;
 
-const Logo = styled.div`
-  position: absolute;
-  width: 169px;
+const Logo = styled.img`
   height: 66px;
-  left: 96px;
-  top: 40px;
-
-  background: url(${BUURlogo});
-  background-size: cover;
+  margin-left: 15px;
 `;
 
 const Jumbotron = styled.div`
   position: fixed;
-  width: 360px;
+  width: 100%;
   height: 140px;
   left: 0px;
   top: 0px;
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // border-bottom-left-radius: 50%;
+  // border-bottom-right-radius: 50%;
   background: rgb(233, 185, 64);
 `;
 
 const Container = styled.div`
-  padding-top: 160px;
+  padding-top: 180px;
   height: 640px;
   width: 360px;
   overflow: hidden;
