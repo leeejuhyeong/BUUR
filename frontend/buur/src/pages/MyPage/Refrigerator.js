@@ -263,7 +263,7 @@ const Refrigerator = () => {
           "X-AUTH-TOKEN": localStorage.getItem("jwt"),
         },
       })
-      .then((res) => {
+      .then(() => {
         axios
           .get("https://j6b102.p.ssafy.io/api-v1/basket/0", {
             headers: {
@@ -281,6 +281,7 @@ const Refrigerator = () => {
             setBeerId(tempId);
             setFourBeer(tempBeer);
           });
+        setFourPage(0);
       })
       .catch((err) => {
         console.log(err);
@@ -354,15 +355,13 @@ const Refrigerator = () => {
               }}
             >
               <BottomNavigationAction
-              className="refrigerator-nav-btn"
+                className="refrigerator-nav-btn"
                 label="맥주 조합"
-                // classes={styleClasses}
                 onClick={() => setValue(0)}
               />
               <BottomNavigationAction
                 className="refrigerator-nav-btn"
                 label="내가 마신 맥주"
-                // classes={styleClasses}
                 onClick={() => setValue(1)}
               />
             </BottomNavigation>

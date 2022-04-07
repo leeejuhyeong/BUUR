@@ -58,7 +58,7 @@ const Macbti = ({ history, location }) => {
     if (userMonthData.length) {
       return (
         <div>
-          <span className="macbti-month-first">
+          <span className="macbti-month">
             <p className="macbti-black-word">이번 달&nbsp;</p>
             <p className="macbti-brown-word">MacBTI&nbsp;</p>
             <p className="macbti-black-word">는</p>
@@ -101,15 +101,15 @@ const Macbti = ({ history, location }) => {
       );
     } else {
       return (
-        <div>
-          {/* <span className="macbti-month-first">
+        <div className="no-macbti-body">
+          <span className="macbti-month-first">
             <p className="macbti-black-word">이번 달&nbsp;</p>
             <p className="macbti-brown-word">MacBTI&nbsp;</p>
             <p className="macbti-black-word">는</p>
           </span>
           <span className="macbti-month-second">
             <p className="macbti-black-word">아직 없습니다.</p>
-          </span> */}
+          </span>
           <span className="macbti-month-first">
             <span className="macbti-brown-word">냉장고</span>
             <span className="macbti-black-word">에서</span>
