@@ -53,7 +53,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
                 .user(user).build();
 
         for (BasketDto basketDto : basketDtoList) {
-            Beer findBeer = beerRepository.findById(basketDto.getBeerId());
+            Beer findBeer = beerRepository.findOneById(basketDto.getBeerId());
             Basket basket = Basket.builder()
                     .beer(findBeer)
                     .beerGroup(beerGroup)
@@ -88,7 +88,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
         for (Basket basket : findBasketList) {
 
             BeerGroup beerGroup = beerGroupRepository.findById(basket.getBeerGroup().getId()).orElseThrow(null);
-            Beer findBeer = beerRepository.findById(basket.getBeer().getId());
+            Beer findBeer = beerRepository.findOneById(basket.getBeer().getId());
 
             inputStream = new FileInputStream(findBeer.getImage());
 
