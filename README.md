@@ -1,12 +1,10 @@
 <div style="text-align: center">
-<div>
+<div style="text-align: center">
 <img src="./assets/BUUR%20Logo.png" style="width: 350px">
 </div>
   <img src="https://img.shields.io/badge/Java-open--jdk--8-007396?style=flat&logo=Java&logoColor=white"/> <img src="https://img.shields.io/badge/Spring%20Boot-2.6.4-6DB33F?style=flat&logo=Spring%20Boot&logoColor=white"/> <img src="https://img.shields.io/badge/Spring%20Security-6DB33F?style=flat&logo=Spring%20Security&logoColor=white"/> <img src="https://img.shields.io/badge/JPA-59666C?style=flat&logo=Hibernate&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-8.0.28-4479A1?style=flat&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/Swagger-3.0.0-green?logo=Swagger"/> <img src="https://img.shields.io/badge/Tomcat-red?logo=Apache Tomcat"/> </br> <img src="https://img.shields.io/badge/React-17.0.2-4FC08D?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Redux-4.1.2-764ABC?style=flat&logo=Redux&logoColor=white"></img> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/MUI-5.52-007FFF?style=flat&logo=MUI&logoColor=white"></img> <img src="https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=flat&logo=JavaScript&logoColor=white"> <img src="https://img.shields.io/badge/Node.js-4.1.2-339933?style=flat&logo=Node.js&logoColor=white"></img> <img src="https://img.shields.io/badge/npm-4.1.2-CB3837?style=flat&logo=npm&logoColor=white"></img> </br> <img src="https://img.shields.io/badge/Python-3.9.5-3776AB?style=flat&logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/NumPy-1.22.3-013243?style=flat&logo=NumPy&logoColor=white"> <img src="https://img.shields.io/badge/Django-4.0.3-092E20?style=flat&logo=Django&logoColor=white"/> <img src="https://img.shields.io/badge/Pandas-1.4.1-150458?style=flat&logo=Pandas&logoColor=white"> <img src="https://img.shields.io/badge/Gunicorn-499848?style=flat&logo=Gunicorn&logoColor=white"/> </br> <img src="https://img.shields.io/badge/Ubuntu-20.04.3%20LTS-E95420?style=flat&logo=Ubuntu&logoColor=white"/> <img src="https://img.shields.io/badge/NGINX-1.18.0(ubuntu)-009639?style=flat&logo=NGINX&logoColor=white"/> <img src="https://img.shields.io/badge/MatterMost-295092?style=flat&logo=MatterMost&logoColor=white"/> <img src="https://img.shields.io/badge/GitLab-FCA121?style=flat&logo=GitLab&logoColor=white"/> <img src="https://img.shields.io/badge/Jira-0052CC?style=flat&logo=Jira%20Software&logoColor=white"/> <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white"/> 
 
 </div>
-
-<img src=""></img>
 
 # 🍻 BUUR - 편의점 맥주 추천 서비스
 
@@ -119,13 +117,9 @@
 
 | Name | Position | Role |
 | --- | --- | --- |
-| 장성태 | <span class="content front-end">Frontend</span> | <span class="content front-end">로그인</span> <span class="content front-end">회원가입</span> <span class="content front-end">설문</span> <span class="content front-end">UCC 촬영</span>  <span class="content front-end">발표</span> |
-| 김유정 | <span class="content front-end">Frontend</span> <span class="content django">Django</span> | <span class="content front-end">맥주</span> <span class="content front-end">냉장고</span> <span class="content django">맥주 추천</span> <span class="content front-end">UCC 촬영</span> |
-| 오수경 | <span class="content front-end">Frontend</span> | <span class="content front-end">맥주</span> <span class="content front-end">리스트</span> <span class="content django">장바구니</span> <span class="content front-end">리뷰</span> <span class="content front-end">UCC 감독</span> |
-| 오은진 | <span class="content back-end">Backend</span> | <span class="content back-end">냉장고</span> <span class="content back-end">장바구니</span> <span class="content back-end">Macbti</span> <span class="content back-end">검색</span>|
-| 이주형 | <span class="content back-end">Backend</span> <span class="content django">Django</span> | <span class="content back-end">맥주</span> <span class="content back-end">검색</span> <span class="content django">맥주 추천</span> |
-| 조용구 | <span class="content back-end">Backend</span> <span class="content front-end">Frontend</span> | <span class="content back-end">유저</span> <span class="content back-end">리뷰</span> <span class="content front-end">로그인</span> <span class="content front-end">회원가입</span> <span class="content front-end">설문</span> |
-
-test {: .django}
-
-<link rel="stylesheet" type="text/css" href="./style.css" />
+| 장성태 | Frontend | 로그인 회원가입 설문 UCC 촬영 발표 |
+| 김유정 | Frontend Django | 맥주 냉장고 맥주 추천 UCC 촬영 |
+| 오수경 | Frontend | 맥주 리스트 장바구니 리뷰 UCC 감독 |
+| 오은진 | Backend | 냉장고 장바구니 Macbti 검색|
+| 이주형 | Backend Django | 맥주 검색 맥주 추천 |
+| 조용구 | Backend Frontend | 유저 리뷰 로그인 회원가입 설문 |
