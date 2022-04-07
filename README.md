@@ -126,6 +126,4 @@
 | 이주형 | <span class="content back-end">Backend</span> <span class="content django">Django</span> | <span class="content back-end">맥주</span> <span class="content back-end">검색</span> <span class="content django">맥주 추천</span> |
 | 조용구 | <span class="content back-end">Backend</span> <span class="content front-end">Frontend</span> | <span class="content back-end">유저</span> <span class="content back-end">리뷰</span> <span class="content front-end">로그인</span> <span class="content front-end">회원가입</span> <span class="content front-end">설문</span> |
 
-
-
-<link rel="stylesheet" type="text/css" media="all" href="./style.css" />
+<link rel="stylesheet" type="text/css" href="./style.css" />
