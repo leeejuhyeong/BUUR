@@ -1,0 +1,53 @@
+-- MySQL dump 10.13  Distrib 8.0.25, for macos11 (x86_64)
+--
+-- Host: j6b102.p.ssafy.io    Database: buur
+-- ------------------------------------------------------
+-- Server version	8.0.28
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `beer_group`
+--
+
+DROP TABLE IF EXISTS `beer_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `beer_group` (
+  `group_id` bigint NOT NULL AUTO_INCREMENT,
+  `id` bigint DEFAULT NULL,
+  PRIMARY KEY (`group_id`),
+  KEY `FKqr2c0a4bj2j94ly85nb7mt7om` (`id`),
+  CONSTRAINT `FKqr2c0a4bj2j94ly85nb7mt7om` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `beer_group`
+--
+
+LOCK TABLES `beer_group` WRITE;
+/*!40000 ALTER TABLE `beer_group` DISABLE KEYS */;
+INSERT INTO `beer_group` VALUES (74,1),(75,1),(76,1),(77,1),(78,1),(80,1),(82,1),(83,1),(4,179),(8,179),(9,179),(29,425),(30,425),(31,425),(32,425),(33,425),(34,425),(35,425),(36,425),(37,425),(38,425),(39,425),(40,425),(52,427),(48,432),(49,432),(50,432),(51,432),(54,434),(55,434),(56,434),(57,434),(58,434),(59,434),(60,434),(61,434),(62,434),(63,434),(88,434);
+/*!40000 ALTER TABLE `beer_group` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-04-07 22:52:35
