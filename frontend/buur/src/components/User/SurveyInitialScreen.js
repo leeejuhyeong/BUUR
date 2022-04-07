@@ -7,8 +7,6 @@ import Welcome from "../../assets/Welcome.png";
 function SurveyInitialScreen() {
   const history = useHistory();
   const moveSurvey = async () => {
-    // const beerList = await fetchBeerList();
-    // localStorage.setItem("beerList", beerList);
     history.replace("/survey");
   };
 
