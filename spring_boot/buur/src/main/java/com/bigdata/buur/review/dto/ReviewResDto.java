@@ -17,6 +17,8 @@ public class ReviewResDto {
     private Long reviewNo;
     @ApiModelProperty("유저 닉네임")
     private String userNickName;
+    @ApiModelProperty("유저 프로필 사진")
+    private byte[] userProfile;
     @ApiModelProperty("맥주 리뷰 점수")
     private Integer rank;
     @ApiModelProperty("리뷰 날짜")

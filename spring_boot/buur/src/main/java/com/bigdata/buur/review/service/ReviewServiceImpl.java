@@ -9,9 +9,13 @@ import com.bigdata.buur.review.dto.ReviewResDto;
 import com.bigdata.buur.review.repository.ReviewRepository;
 import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +28,8 @@ public class ReviewServiceImpl implements ReviewService{
     private final UserService userService;
 
     @Override
-    public List<ReviewResDto> findReviews(Long beerId, LocalDateTime cursor) {
+    @Transactional
+    public List<ReviewResDto> findReviews(Long beerId, LocalDateTime cursor) throws IOException {
 
         Beer beer = Beer.builder().id(beerId).build();
 
@@ -34,10 +39,13 @@ public class ReviewServiceImpl implements ReviewService{
         slicedReviews = reviewRepository.findTop10ByBeerAndReviewDtBeforeOrderByReviewDtDesc(beer, cursor);
 
         for (Review review : slicedReviews) {
+            InputStream userProfileImage = new FileInputStream(review.getUser().getProfile());
+
             reviews.add(ReviewResDto
                     .builder()
                     .reviewNo(review.getId())
                     .userNickName(review.getUser().getNickname())
+                    .userProfile(IOUtils.toByteArray(userProfileImage))
                     .rank(review.getTotalScore())
                     .reviewDt(review.getReviewDt())
                     .content(review.getContent())
