@@ -4,7 +4,6 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { RadialChart } from "react-vis";
 import Tooltip from "@mui/material/Tooltip";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
-import axios from "axios";
 
 const Macbti = ({ history, location }) => {
   const image = location.state.image.image;

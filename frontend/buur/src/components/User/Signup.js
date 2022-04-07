@@ -23,7 +23,7 @@ const SignUp = () => {
     userNickname: "",
     userPassword: "",
   });
-  // const [pwdIdentify, setPwdIdentify] = useState("");
+
   const [pwdIdentify, setPwdIdentify] = useState({
     pwdIdentify: "",
   });
@@ -31,14 +31,12 @@ const SignUp = () => {
   useEffect(() => {
     var re =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    console.log(signUpAccount.userPassword);
-    console.log(pwdIdentify.pwdIdentify);
-    if (
-      re.test(signUpAccount.userEmail) ||
-      signUpAccount.userEmail.length === 0
-    ) {
+    if (re.test(signUpAccount.userEmail)) {
       setEmailBorderColor("solid 1px #dadada");
       setValidEmail(true);
+    } else if (signUpAccount.userEmail.length === 0) {
+      setValidEmail("");
+      setEmailBorderColor("solid 1px #dadada");
     } else {
       setEmailBorderColor("solid 1px #DB2B2B");
       setValidEmail(false);
@@ -50,20 +48,22 @@ const SignUp = () => {
     ) {
       setPwBorderColor("solid 1px #DB2B2B");
       setValidPw(false);
+    } else if (signUpAccount.userPassword.length === 0) {
+      setValidPw("");
+      setPwBorderColor("solid 1px #dadada");
     } else {
       setPwBorderColor("solid 1px #dadada");
       setValidPw(true);
     }
 
-    if (
-      signUpAccount.userPassword === pwdIdentify.pwdIdentify &&
-      pwdIdentify.pwdIdentify.length === 0
-    ) {
+    if (signUpAccount.userPassword === pwdIdentify.pwdIdentify) {
       setValidPwConfirm(true);
       setPwdBorderColor("solid 1px #dadada");
     } else if (signUpAccount.userPassword !== pwdIdentify.pwdIdentify) {
       setValidPwConfirm(false);
       setPwdBorderColor("solid 1px #DB2B2B");
+    } else if (pwdIdentify.pwdIdentify.length === 0) {
+      setValidPwConfirm("");
     }
   }, [pwdIdentify, signUpAccount]);
 
@@ -139,7 +139,6 @@ const SignUp = () => {
   function handleIdChange(id) {
     if (id.trim().length > 0) {
       if (timer) {
-        console.log("clear timer");
         clearTimeout(timer);
       }
       const newTimer = setTimeout(async () => {
@@ -165,7 +164,6 @@ const SignUp = () => {
   function handleNameChange(name) {
     if (name) {
       if (nameTimer) {
-        console.log("clear timer");
         clearTimeout(nameTimer);
       }
       const newTimer = setTimeout(async () => {
@@ -178,18 +176,15 @@ const SignUp = () => {
             .then((res) => {
               if (res.data === true) {
                 setValidName(false);
-                console.log(validName);
               } else {
                 setValidName(true);
-                console.log(validName);
               }
-              console.log(res);
             });
         } catch (e) {
           setValidName(false);
           console.error("error", e);
         }
-      }, 500);
+      }, 800);
       setNameTimer(newTimer);
     }
   }
@@ -211,7 +206,7 @@ const SignUp = () => {
   return (
     <Container>
       <Jumbotron>
-        <Logo src={ BUURlogo }></Logo>
+        <Logo src={BUURlogo}></Logo>
       </Jumbotron>
       <Text>아이디</Text>
       <InputDiv>
@@ -243,7 +238,7 @@ const SignUp = () => {
         type="email"
         name="userEmail"
         placeholder="이메일을 입력해주세요"
-        onChange={onChangeSignUpAccount}
+        onChange={(e) => onChangeSignUpAccount(e)}
       />
       {showEmailCheck()}
       <Text>비밀번호</Text>
@@ -252,7 +247,7 @@ const SignUp = () => {
         name="userPassword"
         type="password"
         placeholder="비밀번호를 입력해주세요"
-        onChange={onChangeSignUpAccount}
+        onChange={(e) => onChangeSignUpAccount(e)}
       />
       {showPwCheck()}
       <Text>비밀번호 확인</Text>
@@ -286,7 +281,7 @@ const Jumbotron = styled.div`
   height: 116px;
   left: 0px;
   top: 0px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   background: rgb(233, 185, 64);
