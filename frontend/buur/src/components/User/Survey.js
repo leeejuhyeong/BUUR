@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import BlankBeerImg from "../../assets/BlankBeer.png";
+import BlankBeerImg from "../../assets/beer_blank.svg";
 import Grid from "@mui/material/Grid";
 import SurveyBeerItem from "./SurveyBeerItem";
 import { fetchBeerList, fetchSurveyReview } from "./service";
@@ -37,7 +37,7 @@ function Survey() {
   const beerBlankImgList = [BlankBeer, BlankBeer, BlankBeer, BlankBeer];
 
   return (
-    <Container>
+    <Container className="survey">
       {isLoading()}
       <ContainerHeader>
         <Title>평가할 맥주를 골라주세요</Title>
@@ -51,7 +51,9 @@ function Survey() {
             />
           ))}
           {beerBlankImgList.slice(beerImgList.length).map((beer, index) => (
-            <BlankBeer key={index} />
+            // <BlankBeerBox>
+            <BlankBeer src={ BlankBeerImg } key={index} />
+            // </BlankBeerBox>
           ))}
         </BeerBasketListDiv>
       </ContainerHeader>
@@ -118,15 +120,13 @@ const BeerBasketListDiv = styled.div`
   width: 210px;
 `;
 
-const BlankBeer = styled.div`
+const BlankBeer = styled.img`
   display: inline-block;
-
   margin: 25px 5px 0px 5px;
   width: 42px;
   height: 97px;
-  background: url(${BlankBeerImg});
-  background-size: cover;
 `;
+
 const Beer = styled.img`
   display: inline-block;
 

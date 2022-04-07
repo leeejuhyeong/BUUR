@@ -4,12 +4,12 @@ import HomeCarousel from "../components/Home/HomeCarousel";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link } from "react-router-dom";
 
-import lager from "../assets/beer_icon/lager_icon.png";
-import ale from "../assets/beer_icon/ale_icon.png";
-import darkbeer from "../assets/beer_icon/darkbeer_icon.png";
-import pilsner from "../assets/beer_icon/pilsner_icon.png";
-import wheatbeer from "../assets/beer_icon/wheatbeer_icon.png";
-import etcbeer from "../assets/beer_icon/etcbeer_icon.png";
+import lager from "../assets/beer_icon/lager_icon.svg";
+import ale from "../assets/beer_icon/ale_icon.svg";
+import darkbeer from "../assets/beer_icon/darkbeer_icon.svg";
+import pilsner from "../assets/beer_icon/pilsner_icon.svg";
+import wheatbeer from "../assets/beer_icon/wheatbeer_icon.svg";
+import etcbeer from "../assets/beer_icon/etcbeer_icon.svg";
 import "../styles/home.css";
 import "../styles/beerlist.css";
 import store from "../store";
