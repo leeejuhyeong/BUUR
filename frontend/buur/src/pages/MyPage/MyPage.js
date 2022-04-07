@@ -30,7 +30,6 @@ function MyPage() {
       .then((res) => {
         setBeerdata(res.data);
       })
-      .catch((err) => console.log(err));
   }, []);
 
   function logout() {

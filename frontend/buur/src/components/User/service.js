@@ -22,7 +22,6 @@ const fetchSignUp = async (signUpAccount) => {
     },
     body: JSON.stringify(signUpAccount),
   }).then(async (res) => {
-    await console.log(res.status);
     if (res.status === 200) return res.status;
     else throw new Error("입력하신 내용을 확인해주세요.");
   });

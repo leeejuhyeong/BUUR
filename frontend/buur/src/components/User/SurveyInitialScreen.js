@@ -12,7 +12,7 @@ function SurveyInitialScreen() {
 
   return (
     <Container>
-      <WelcomeImg></WelcomeImg>
+      <WelcomeImg src={ Welcome }></WelcomeImg>
       <Title>처음 방문 하셨나요?</Title>
       <Detail>
         'BUUR'는 편의점에서 판매중인
@@ -33,22 +33,23 @@ export default SurveyInitialScreen;
 /* CSS */
 const Container = styled.div`
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
-const WelcomeImg = styled.div`
+const WelcomeImg = styled.img`
   height: 180px;
   overflow: hidden;
   margin: 90px auto 0px;
-  background: url(${Welcome});
   background-size: cover;
 `;
 const Title = styled.div`
   font-weight: 800;
   font-size: 27px;
-
-  margin: 90px 0 0px;
+  margin: 70px 0 0px;
   text-align: center;
-
   color: rgba(0, 0, 0, 0.8);
 `;
 
@@ -66,7 +67,6 @@ const SurveyStartButton = styled.button`
   font-size: 18px;
   font-weight: 600;
   line-height: 49px;
-  display: block;
   width: 100%;
   height: 49px;
   margin: 20px 0 0px;
@@ -75,7 +75,7 @@ const SurveyStartButton = styled.button`
   color: #fff;
   border: none;
   border-radius: 0;
-
+  max-width: 400px;
   background-color: rgb(177, 81, 32);
   border-radius: 10px;
 `;

@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 import Spinner from "../Spinner";
 
 function Survey() {
-  // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
   const [beerList, setBeerList] = useState([]);
   const [reviewList, setReviewList] = useState([]);
   const [beerImgList, setBeerImgList] = useState([]);
@@ -52,9 +51,7 @@ function Survey() {
               />
             ))}
             {beerBlankImgList.slice(beerImgList.length).map((beer, index) => (
-              // <BlankBeerBox>
               <BlankBeer src={ BlankBeerImg } key={index} />
-              // </BlankBeerBox>
             ))}
           </BeerBasketListDiv>
         </ContainerHeader>

@@ -61,7 +61,6 @@ const Refrigerator = () => {
       .then((res) => {
         const tempBeer = [];
         const tempId = [];
-        console.log(res.data);
         for (let [key, value] of Object.entries(res.data)) {
           tempId.push(key);
           tempBeer.push(value);
@@ -116,10 +115,8 @@ const Refrigerator = () => {
       })
       .then((res) => {
         setDrankBeer(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err);
         alert("첫번째 페이지입니다");
       });
   };
@@ -133,10 +130,8 @@ const Refrigerator = () => {
       })
       .then((res) => {
         setDrankBeer(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err);
         alert("마지막 페이지입니다");
       });
   };
@@ -175,7 +170,6 @@ const Refrigerator = () => {
   };
 
   const onFourPrev = () => {
-    console.log("이전 요청");
     axios
       .get(`https://j6b102.p.ssafy.io/api-v1/basket/${fourPage - 1}`, {
         headers: {
@@ -185,7 +179,6 @@ const Refrigerator = () => {
       .then((res) => {
         const tempBeer = [];
         const tempId = [];
-        console.log(res.data);
         for (let [key, value] of Object.entries(res.data)) {
           tempId.push(key);
           tempBeer.push(value);
@@ -194,13 +187,11 @@ const Refrigerator = () => {
         setFourBeer(tempBeer);
       })
       .catch((err) => {
-        console.log(err);
         alert("첫번째 페이지입니다");
       });
   };
 
   const onFourNext = () => {
-    console.log("다음 요청");
     axios
       .get(`https://j6b102.p.ssafy.io/api-v1/basket/${fourPage + 1}`, {
         headers: {
@@ -218,7 +209,6 @@ const Refrigerator = () => {
         setFourBeer(tempBeer);
       })
       .catch((err) => {
-        console.log(err);
         alert("마지막 페이지입니다");
       });
   };
@@ -273,7 +263,6 @@ const Refrigerator = () => {
           .then((res) => {
             const tempBeer = [];
             const tempId = [];
-            console.log(res.data);
             for (let [key, value] of Object.entries(res.data)) {
               tempId.push(key);
               tempBeer.push(value);
@@ -283,9 +272,6 @@ const Refrigerator = () => {
           });
         setFourPage(0);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   const showBeers = () => {
@@ -341,9 +327,7 @@ const Refrigerator = () => {
   return (
     <div className="refrigerator-page">
       <div className="refrigerator-header">
-        <button onClick={goBack}>
-          <ClearIcon />
-        </button>
+        <div></div>
         <div className="refrigerator-header-div">
           <Box sx={{ width: 250 }}>
             <BottomNavigation
@@ -367,8 +351,13 @@ const Refrigerator = () => {
             </BottomNavigation>
           </Box>
         </div>
+        <button onClick={goBack}>
+          <ClearIcon />
+        </button>
       </div>
-      {showBeers()}
+      <div className="show-beers">
+        {showBeers()}
+      </div>
     </div>
   );
 };

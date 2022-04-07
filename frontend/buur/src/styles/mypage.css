@@ -93,6 +93,10 @@
     height: 60px;
 }
 
+.macbti-page .macbti-header > div {
+    width: 64px;
+}
+
 .macbti-page .macbti-header > p {
     color: #ffffff;
     font-size: 20px;
@@ -101,10 +105,6 @@
 .macbti-page .macbti-header > Button {
     margin-right: 6%;
     border-radius: 100px;
-}
-
-.macbti-page .macbti-header > div {
-    width: 18%;
 }
 
 .macbti-page .macbti-user-info{
@@ -173,8 +173,8 @@
     object-fit: cover;
     width: 60px;
     height: 60px;
-    border-radius: 100px;
-    border-color: #E9B940;
+    border-radius: 70%;
+    background-color: #e9b94056;
     margin-left: 10px;
 }
 
@@ -196,6 +196,7 @@
 
 .macbti-page .refrigerator-btn{
     width: 80%;
+    max-width: 500px;
     background-color: #E9B940;
 }
 
@@ -275,12 +276,9 @@
     position: absolute;
     top: 50px;
     width: 100%;
-    overflow-y: scroll;
-    background-color: #FAFAFA;
     padding-top: 10%;
     padding-left: 6%;
     padding-right: 6%;
-    height: 587px;
 }
 
 .notice-page .notice-body {

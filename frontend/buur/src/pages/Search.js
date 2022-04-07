@@ -17,21 +17,18 @@ function Search() {
   const [searchHistory, setSearchHistory] = useState([]);
 
   function searchBeer(searchTargetBeer) {
+    setHistory(false);
     setRelatedWords([]);
     axios
       .get(`https://j6b102.p.ssafy.io/api-v1/beer/${searchTargetBeer}`, {
         headers: { "X-AUTH-TOKEN": localStorage.getItem("jwt") },
       })
       .then((res) => {
-        console.log("검색어 불러오기");
         if (res.data.length) {
           setBeer(true);
           setResultBeers(res.data);
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
 
     if (searchTerm.trim()) {
       axios
@@ -45,24 +42,18 @@ function Search() {
           }
         )
         .then(() => {
-          console.log(searchTerm);
           setSearchTerm("");
-          console.log("히스토리 저장");
         })
-        .catch((err) => {
-          console.log(err);
-        });
+      }
     }
-  }
 
-  // 엔터키로 검색
+  
   function enterKey(searchTerm) {
     if (window.event.keyCode === 13 && searchTerm.trim()) {
       searchBeer(searchTerm);
     }
   }
 
-  // 검색기록 불러오기
   function showHistory() {
     if (searchTerm === "") {
       axios
@@ -72,16 +63,12 @@ function Search() {
           },
         })
         .then((res) => {
-          console.log("검색어 불러오기");
-          console.log(res.data);
           setSearchHistory(res.data);
           setHistory(true);
         })
-        .catch((err) => console.log(err));
     }
   }
 
-  // 검색어 삭제
   function removeHistory(id) {
     const newHistory = searchHistory.filter((history) => {
       return history.searchId !== id;
@@ -91,36 +78,21 @@ function Search() {
       .delete(`https://j6b102.p.ssafy.io/api-v1/search/${id}`, {
         headers: { "X-AUTH-TOKEN": localStorage.getItem("jwt") },
       })
-      .then(() => {
-        console.log("히스토리 삭제");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   function handleChange(keyword) {
     if (timer) {
-      console.log("clear timer");
       clearTimeout(timer);
     }
     const newTimer = setTimeout(async () => {
       try {
-        // 연관 검색어 api 요청
-        console.log("연관검색어 요청");
         await axios
           .get(`https://j6b102.p.ssafy.io/api-v1/beer/name/${keyword}`, {
             headers: { "X-AUTH-TOKEN": localStorage.getItem("jwt") },
           })
           .then((res) => {
-            console.log("연관 검색어 확인");
-            console.log(res.data);
             setRelatedWords(res.data);
-            console.log(relatedWords);
           })
-          .catch((err) => {
-            console.log(err);
-          });
       } catch (e) {
         console.error("error", e);
       }

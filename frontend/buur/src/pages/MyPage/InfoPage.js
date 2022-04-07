@@ -36,7 +36,6 @@ const InfoPage = ({ location }) => {
       ...values,
       showPassword: !values.showPassword,
     });
-    console.log(values);
   };
 
   const handleClickShowNewPassword = () => {
@@ -44,7 +43,6 @@ const InfoPage = ({ location }) => {
       ...values,
       showNewPassword: !values.showNewPassword,
     });
-    console.log(values);
   };
 
   const handleClickShowConfirmPassword = () => {
@@ -52,7 +50,6 @@ const InfoPage = ({ location }) => {
       ...values,
       showConfirmPassword: !values.showConfirmPassword,
     });
-    console.log(values);
   };
 
   const handleMouseDownPassword = (event) => {
@@ -66,14 +63,6 @@ const InfoPage = ({ location }) => {
   const onLoadFile = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
-    // 이미지 미리보기
-    // const reader = new FileReader();
-    // reader.readAsDataURL(file);
-    // reader.onload = () => {
-    //   setImage(reader.result);
-    // };
-
-    // db에 저장
     const formdata = new FormData();
     formdata.append("userProfile", file);
     axios({
@@ -96,9 +85,7 @@ const InfoPage = ({ location }) => {
             setImage(res.data.userProfile);
             store.dispatch({ type: ADD_USERINFO, data: res.data });
           })
-          .catch((err) => console.log(err));
       })
-      .catch((err) => console.log(err));
   };
 
   const imageInput = useRef();
@@ -120,11 +107,9 @@ const InfoPage = ({ location }) => {
       },
     })
       .then((res) => {
-        console.log(res.data);
         alert("비밀번호가 변경되었습니다.");
       })
       .catch((err) => {
-        console.log(err);
         alert("현재 비밀번호가 다릅니다.");
       });
   };
@@ -141,13 +126,13 @@ const InfoPage = ({ location }) => {
           className="password-change-btn"
           onClick={() => changePw()}
         >
-          변경하기
+          비밀번호 변경하기
         </Button>
       );
     } else {
       return (
         <Button variant="contained" className="password-change-btn" disabled>
-          변경하기
+          비밀번호 변경하기
         </Button>
       );
     }
@@ -241,93 +226,94 @@ const InfoPage = ({ location }) => {
             ref={imageInput}
           />
         </div>
-        <div className="info-input-first-div">
-          <span className="info-email">이메일</span>
-          <span>{useremail}</span>
-        </div>
-        <div className="info-input-div">
-          <span className="info-input-text">현재 비밀번호</span>
-          <FormControl sx={{ m: 1, width: "190px" }} variant="outlined">
-            <OutlinedInput
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              onChange={handleChange("password")}
-              error={validation()}
-              size="small"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-            <MyHelperText />
-          </FormControl>
-        </div>
-        <div className="info-input-div">
-          <span className="info-input-text">신규 비밀번호</span>
-          <FormControl sx={{ m: 1, width: "190px" }} variant="outlined">
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={values.showNewPassword ? "text" : "password"}
-              size="small"
-              value={values.newPassword}
-              onChange={handleChange("newPassword")}
-              error={newValidation()}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle newpassword visibility"
-                    onClick={handleClickShowNewPassword}
-                    onMouseDown={handleMouseDownNewPassword}
-                    edge="end"
-                  >
-                    {values.showNewPassword ? (
-                      <VisibilityOff />
-                    ) : (
-                      <Visibility />
-                    )}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-            <NewPasswordHelperText />
-          </FormControl>
-        </div>
-        <div className="info-input-div">
-          <span className="info-input-text">비밀번호 확인</span>
-          <FormControl sx={{ m: 1, width: "190px" }} variant="outlined">
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={values.showConfirmPassword ? "text" : "password"}
-              value={values.confirmPassword}
-              onChange={handleChange("confirmPassword")}
-              error={confirmValidation()}
-              size="small"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowConfirmPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showConfirmPassword ? (
-                      <VisibilityOff />
-                    ) : (
-                      <Visibility />
-                    )}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-            <ConfirmPasswordHelperText />
-          </FormControl>
+        <div className="input-list-container">
+          <div className="info-input-first-div">
+            <span className="info-email">이메일</span>
+            <span>{useremail}</span>
+          </div>
+          <div className="info-input-div">
+            <span className="info-input-text">현재 비밀번호</span>
+            <FormControl sx={{ m: 1, width: "190px" }} variant="outlined">
+              <OutlinedInput
+                type={values.showPassword ? "text" : "password"}
+                value={values.password}
+                onChange={handleChange("password")}
+                error={validation()}
+                size="small"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+              <MyHelperText />
+            </FormControl>
+          </div>
+          <div className="info-input-div">
+            <span className="info-input-text">신규 비밀번호</span>
+            <FormControl sx={{ m: 1, width: "190px" }} variant="outlined">
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={values.showNewPassword ? "text" : "password"}
+                size="small"
+                value={values.newPassword}
+                onChange={handleChange("newPassword")}
+                error={newValidation()}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle newpassword visibility"
+                      onClick={handleClickShowNewPassword}
+                      onMouseDown={handleMouseDownNewPassword}
+                      edge="end"
+                    >
+                      {values.showNewPassword ? (
+                        <VisibilityOff />
+                      ) : (
+                        <Visibility />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+              <NewPasswordHelperText />
+            </FormControl>
+          </div>
+          <div className="info-input-div">
+            <span className="info-input-text">비밀번호 확인</span>
+            <FormControl sx={{ m: 1, width: "190px" }} variant="outlined">
+              <OutlinedInput
+                type={values.showConfirmPassword ? "text" : "password"}
+                value={values.confirmPassword}
+                onChange={handleChange("confirmPassword")}
+                error={confirmValidation()}
+                size="small"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowConfirmPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {values.showConfirmPassword ? (
+                        <VisibilityOff />
+                      ) : (
+                        <Visibility />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+              <ConfirmPasswordHelperText />
+            </FormControl>
+          </div>
         </div>
         <div className="password-change-div">{canChange()}</div>
       </div>
