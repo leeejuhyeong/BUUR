@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +26,16 @@ SECRET_KEY = 'django-insecure-=8!myevfcftik%6(53sn02o9omz1%q=-m5dhh3**omibte_)jr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["j6b102.p.ssafy.io"]
 
-
+CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
 INSTALLED_APPS = [
     'beers',
+    'rest_framework',
+    'corsheaders',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +45,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,16 +88,17 @@ WSGI_APPLICATION = 'buur.wsgi.application'
 #     }
 # }
 
-DATABASES = { 
-	'default': { 
-    	'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'db이름', 
-        'USER': 'root', 
-        'PASSWORD': '비밀번호', 
-        'HOST': 'localhost', 
-        'PORT': '3306', 
-     } 
-}
+# DATABASES = {
+# 	'default': {
+#     	'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'buurtest',
+#         'USER': 'buur',
+#         'PASSWORD': 'buur1014!',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#      }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

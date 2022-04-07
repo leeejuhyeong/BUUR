@@ -1,0 +1,387 @@
+.my-page-header{
+    width: 100%;
+    height: 50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.03);
+    background-color: white;
+}
+
+.mypage{
+    width: 100%;
+    height: 100%;
+    background: #f7f7f7;
+    max-width: 510px;
+}
+
+.mypage .user-info-div {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.mypage .profile-img{
+    margin: 15px;
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: solid 1.7px #e9b940;
+}
+
+.mypage .info-arrow-icon{
+    margin-right: 6%;
+}
+
+.mypage .macbti-div {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background-color: #CD8C6A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 80px;
+    font-weight: 550;
+    text-decoration: none;
+}
+
+.mypage .mypage-el-div {
+    display: flex;
+    align-items: center;
+    height: 58px;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 550;
+    border: 1px solid #F5F5F5;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+
+.mypage .logout-div{
+    display: flex;
+    align-items: center;
+    height: 58px;
+    padding-left: 15px;
+    margin-top: 3px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #F5F5F5;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+
+.macbti-page {
+    height: 100%;
+    background-color: #B36035;
+    width: 100%;
+}
+
+.macbti-page .macbti-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.macbti-page .macbti-header > p {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.macbti-page .macbti-header > Button {
+    margin-right: 6%;
+    border-radius: 100px;
+}
+
+.macbti-page .macbti-header > div {
+    width: 18%;
+}
+
+.macbti-page .macbti-user-info{
+    height: 13.3%;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.macbti-page .macbti-content {
+    height: 580px;
+}
+
+.macbti-page .macbti-graph-div{
+    background-color: #ffffff;
+    border-radius: 20px 20px 0px 0px;
+    height: 83%;
+    width:100%;
+}
+
+.macbti-page .macbti-graph{
+    display:flex;
+    justify-content: center;
+}
+.no-macbti-body {
+    padding-top: 20%;
+}
+.macbti-month {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.macbti-month-first{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.macbti-graph-div .macbti-black-word{
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.macbti-graph-div .macbti-brown-word{
+    font-weight: 550;
+    color: #B36035;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.macbti-month-second{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px; 
+}
+
+.macbti-user-info .profile-img{
+    margin: 15px;
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    border-color: #E9B940;
+    margin-left: 10px;
+}
+
+.macbti-notice{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 25px;
+    color: white;
+    padding-bottom: 4px;
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+.macbti-page .refrigerator-icon-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.macbti-page .refrigerator-btn{
+    width: 80%;
+    background-color: #E9B940;
+}
+
+.macbti-page .refrigerator-btn:active{
+    background-color:#E9B940;
+}
+
+.macbti-page .refrigerator-btn:hover{
+    background-color:#E9B940;
+}
+
+.four-beer-div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 30px;
+}
+
+.macbti-page .circle1 {
+    background-color: #EED56B;
+    display: inline-block;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+}
+
+.macbti-page .circle2 {
+    background-color: #EED56B;
+    display: inline-block;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+}
+
+.macbti-page .circle3 {
+    background-color: #E6A33A;
+    display: inline-block;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+}
+
+.macbti-page .circle4 {
+    background-color: #FFE578;
+    display: inline-block;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+}
+
+.macbti-page .circle-list{
+    display: flex;
+    justify-content: center;
+    padding-top: 7px;
+}
+
+.macbti-page .beer-name {
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    word-wrap:normal;
+    width: 200px;
+    overflow:hidden;
+    font-size: 15px;
+}
+.like-beer-page {
+    width: 100%;
+    height: 100%;
+    background-color: #FAFAFA;
+    position: relative;
+}
+
+.like-beer-body {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: #FAFAFA;
+    padding-top: 10%;
+    padding-left: 6%;
+    padding-right: 6%;
+    height: 587px;
+}
+
+.notice-page .notice-body {
+    padding-top: 95px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notice-page .notice-item{ 
+    width: 272px;
+    height: 58px;
+    margin: 8px 0px;
+    background: #FFFFFF;
+    border: 1px solid rgba(185, 185, 185, 0.18);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 15px;
+    align-items: center;
+}
+
+.notice-page .notice-arrow-icon {
+    margin-left: 28px;
+}
+
+.notice-page .notice-item-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.notice-page .notice-item-title {
+    font-size: 13px;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.notice-page .notice-item-day {
+    font-size: 10px;
+    font-weight: 500;
+    color:#00000080;
+}
+
+.notice-detail-page .notice-detail-header {
+    position: absolute;
+    width: 360px;
+    height: 92px;
+    left: 0px;
+    top: 54px;
+    border-bottom:3px solid #F1F1F1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 8%;
+}
+
+.notice-detail-page .notice-detail-title {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.notice-detail-page .notice-detail-day {
+    font-weight: 500;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.notice-detail-page .notice-detail-body{
+    position: absolute;
+    top: 130px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+}
+
+.notice-detail-body > p{
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.notice-detail-body > div {
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.notice-detail-body .notice-li-div{
+    font-weight: 600;
+    font-size: 13px;
+    padding-bottom: 5px;
+}
+
+.notice-detail-body .notice-li{
+    margin-bottom: 10px;
+}

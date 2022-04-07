@@ -1,9 +1,21 @@
-// state, action 파라미터를 받는다
+import { combineReducers } from "redux";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage/session"
 
-const initialState = {
-  articles: []
-};
+import beer from "./beer"
+import user from "./user"
 
-const rootReducer = (state = initialState, action) => state;
 
-export default rootReducer;
+const persistConfig = {
+  key: 'basket',
+  storage,
+  whitelist: ["beer"]
+}
+
+const rootReducer = combineReducers({
+  beer : beer,
+  user : user,
+
+})
+
+export default persistReducer(persistConfig, rootReducer);

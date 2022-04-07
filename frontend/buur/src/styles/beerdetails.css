@@ -1,0 +1,427 @@
+.beerdetails {
+  height: 100%;
+  width: 100%;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 360px;
+}
+
+.beerdetails header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  background-color: #FAFAFA;
+  box-shadow: 0 10px 40px rgba(159, 162, 177, .2);
+}
+
+.beerdetails header > p{
+  font-weight: 800;
+}
+
+.beerdetails header > div{
+  width: 30px;
+}
+
+.beerdetails header button {
+  border: none;
+  background-color: transparent;
+}
+
+
+.beerdetails .beerdetails-body {
+  position: absolute;
+  top: 53px;
+  background-color: #FAFAFA;
+  padding: 16px 16px;
+  height: fit-content;
+  width: 100%;
+  min-width: 360px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.beerdetails .beerdetails-body .beerdetails-body-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.beerdetails .beer-details-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.beerdetails .beer-details-info > img {
+  height: 177px;
+}
+
+.beerdetails .beer-details-info .beer-textinfo {
+  margin: 10px;
+}
+
+.beerdetails .beer-details-info .beer-textinfo .beer-textinfo__title {
+  display: flex;
+  align-items: center;
+}
+
+.beerdetails .beer-details-info .beer-textinfo .beer-textinfo__title > p {
+  margin: 7px 13px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 13px;
+  margin-right: 5px;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.beerdetails .beer-details-info .beer-textinfo 
+> .beer-textinfo__catergory {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.beerdetails .beer-details-info .beer-textinfo > button {
+  width: 190px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 13px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #FFFFFF;
+  background: rgba(233, 185, 64, 0.87);
+  border: none;
+  border-radius: 15.8333px;
+  display: flex;
+  align-items: center;
+}
+
+
+.beerdetails .beer-details-info .beer-textinfo > div > h5 {
+  margin: 3px 5px;
+}
+
+.beerdetails .beer-details-info .beer-textinfo > div > span {
+  font-size: 14px;
+}
+
+.beerdetails .beerdetails-body .show-little{
+  height: 170px;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 18px;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.beerdetails .beerdetails-body > hr {
+  min-width: 300px;
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.beerdetails .beerdetails-body .rating-text {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 450px;
+}
+
+.beerdetails .beerdetails-body h3 {
+  margin: 15px 24px;
+}
+
+.beerdetails .beerreview-star {
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.beerdetails .beerreview-star > p {
+  color: #B15120;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  margin-right: 50px;
+  margin-left: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.beerdetails .star-bar-5 > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10px;
+}
+
+.beerdetails .star-bar-5 > div > div {
+  width: 50px;
+}
+
+.beerdetails progress {
+  margin-top: 10px;
+  -webkit-appearance: none;
+}
+
+.beerdetails ::-webkit-progress-bar {
+  background-color: rgba(213, 213, 213, 0.3);
+  height: 6px;
+  width: 130px;
+  border-radius: 30px;
+}
+
+.beerdetails ::-webkit-progress-value {
+  background-color: rgba(177, 81, 32, 0.87);
+  height: 6px;
+  border-radius: 30px;
+}
+
+.beerreview-box {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: rgba(236, 194, 89, 0.15);
+  border: 1px solid rgba(236, 194, 89, 0.15);
+  box-sizing: border-box;
+  border-radius: 11px;
+  max-width: 400px;
+}
+
+.beerreview-box > img {
+  width: 48px;
+  height: 48px;
+  border-radius: 70%;
+  background-color: #e9b9403e;
+  margin-right: 15px;
+}
+
+.beerreview-box-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.beerreview-box .review-box__header {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: small;
+  height: 24px;
+}
+
+.beerreview-box .review-box__header .review-box__user {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.beerreview-box .review-box__rank {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  color: #E9B940;
+  margin-left: 2px;
+}
+
+.beerreview-box .review-box__trash {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+  margin-bottom: 5px;
+}
+
+.review-box__trash .review-header-left {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 0;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.beerreview-box .review-box__content {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.beerdetails .show-all {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.beerdetails .show-all-text {
+  font-weight: 400;
+  font-size: 10px;
+  text-decoration: none;
+  color: #5A5A5A;
+  margin-bottom: 10px;
+  margin-right: 16px;
+  margin-left: 220px;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.beerreview-all header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  background-color: #FAFAFA;
+  box-shadow: 0 10px 40px rgba(159, 162, 177, .2);
+}
+
+.beerreview-all header > p{
+  font-weight: 800;
+}
+
+.beerreview-all header > div{
+  width: 30px;
+}
+
+.beerreview-all header button {
+  border: none;
+  background-color: transparent;
+}
+
+.beerreview-all .beerreview-body {
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  position: absolute;
+  top: 53px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 360px;
+}
+
+.beerreview-all .add-comment__btn{
+  background-color:#E9B940 ;
+  color: #FFFFFF;
+  border: none;
+  width: 55px;
+  height: 55px;
+  border-radius: 70%;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-comment__dialogtitle {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-comment__dialogtitle > div {
+  font-size: large;
+  font-weight: bold;
+}
+
+.add-comment__dialogcontent {
+  width: 255px;
+  height: 70px;
+  margin-top: 20px;
+  padding:10px;
+  /* background: rgba(236, 194, 89, 0.3); */
+  border: 2px solid rgba(236, 194, 89, 0.3);
+  border-radius: 11px;
+}
+
+.add-comment__dialogcontent:focus {
+  box-shadow: 0px 0px 4px #E9B940;
+  outline: none;
+}
+
+.add-comment__dialogbtn {
+  width: 260px;
+  height: 45px;
+  margin-top: 15px;
+  padding:10px;
+  background: #E9B940;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #FAFAFA;
+}
+
+.disabled-comment__dialogbtn {
+  background-color:rgba(0, 0, 0, 0.38);
+  width: 260px;
+  height: 45px;
+  margin-top: 15px;
+  padding:10px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #FAFAFA;
+}
+
+.beerdetails .beerdetails-similar {
+  max-width: 450px;
+}
+
+.beerdetails .beerdetails-similar > h3 {
+  margin: 15px 18px;
+}
+
+.beerdetails .similar-beerlist {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  padding: 10px 18px;
+}
+
+.beerdetails .similar-beerlist > .similar-beeritem {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}

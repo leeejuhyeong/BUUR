@@ -1,0 +1,52 @@
+
+.my-page-back-header header {
+    position: fixed;
+    height: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FAFAFA;
+    box-shadow: 0 10px 40px rgba(159, 162, 177, .2);
+}
+
+.my-page-back-header header > p{
+    font-weight: 800;
+}
+
+.my-page-back-header header > div{
+    width: 33px;
+}
+
+.my-page-back-header header button {
+    border: none;
+    background-color: transparent;
+}
+
+.notice-detail-header header {
+    position: fixed;
+    height: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FAFAFA;
+    box-shadow: 0 10px 40px rgba(159, 162, 177, .2);
+}
+    
+.notice-detail-header header > p{
+    font-weight: 800;
+}
+    
+.notice-detail-header header > div{
+    width: 33px;
+}
+    
+.notice-detail-header header button {
+    border: none;
+    background-color: transparent;
+}
