@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
@@ -15,12 +15,12 @@ const BeerDetails = () => {
   const location = useLocation();
   const beerInfo = location.state.beerInfo;
   const cursor = new Date(+new Date() + 3240 * 10000).toISOString().replace('T', ' ').substring(0, 19);
-  const [ beerReviews, setBeerReviews ] = React.useState([])
-  
+  const [ beerReviews, setBeerReviews ] = useState([])
 
   useEffect(() => {
     getBeerReviews();
   }, [beerInfo])
+
 
   const getBeerReviews = async () => {
     await axios
@@ -51,7 +51,8 @@ const BeerDetails = () => {
       </header>
       <div className="beerdetails-body">
         <div className="beerdetails-body-info">
-          <BeerDetailsInfo beerInfo={beerInfo} />
+          <BeerDetailsInfo
+            beerInfo={beerInfo} />
         </div>
         <hr />
         <h3>평가 및 리뷰</h3>
@@ -79,7 +80,8 @@ const BeerDetails = () => {
               handleDelete={ handleDelete }/>
           ))}
         </div>
-        <BeerDetailsSimilar beerNo={beerInfo.beerNo} />
+        <BeerDetailsSimilar
+          beerNo={beerInfo.beerNo} />
       </div>
     </div>
   );

@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
 const BeerLike = props => {
-  const [like, setLike] = useState(props.likeStatus)
+  const beerInfo = props.beerInfo
+  const [like, setLike] = useState()
   
+  useEffect(() => {
+    setLike(like => props.beerInfo.like)
+  },[beerInfo])
+  
+
   const heart = () => {
     if (like) {
       return (

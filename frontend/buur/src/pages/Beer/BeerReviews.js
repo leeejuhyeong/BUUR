@@ -25,10 +25,10 @@ const BeerReviews = () => {
   const location = useLocation();
   const beerNo = location.state.beerNo;
   const beerName = location.state.beerName;
-  const [rankValue, setValue] = useState(0);
+  const [rankValue, setValue] = useState(1);
   const [content, setContent] = useState('');
 
-  const [ reviewList, setreviewList ] = useState([]);
+  const [ reviewList, setReviewList ] = useState([]);
   const [ cursor, setCursor] = useState(null);
   const [target, setTarget] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -77,11 +77,12 @@ const BeerReviews = () => {
         handleClose();
         setTimeout(() => {
           setCursor(cursor => null)
-          setreviewList(reviewList => [])
+          setStop(stop => false)
+          setReviewList([])
         }, 1000)
         setTimeout(() => {
           setIsLoaded(true);
-        }, 2000)
+        }, 3000)
       })
       .catch(() => {
         alert('리뷰 등록 실패')
@@ -100,8 +101,6 @@ const BeerReviews = () => {
       });
       observer.observe(target);
     }
-    return () => observer && observer.disconnect();
-
   }, [target, isLoaded]);
 
 
@@ -123,7 +122,8 @@ const BeerReviews = () => {
         headers: {"X-AUTH-TOKEN" : localStorage.getItem('jwt')}
       })
         .then((res) => {
-        setreviewList(reviewList => reviewList.concat(res.data));
+          setReviewList((reviewList) => [...reviewList, ...res.data]);
+          console.log('review:', reviewList, '응답:', res.data)
         setIsLoaded(false);
         if (res.data.length < 10) {
           setStop(true)
@@ -136,7 +136,7 @@ const BeerReviews = () => {
 
   useEffect(() => {
     getReviews();
-  }, [isLoaded])
+  }, [isLoaded,stop])
 
   const getMoreReviews = () => {
     setIsLoaded(true);
@@ -153,11 +153,28 @@ const BeerReviews = () => {
   const handleDelete = () => {
     setTimeout(() => {
       setCursor(cursor => null)
-      setreviewList(reviewList => [])
+      setStop(stop => false)
+      setReviewList(reviewList => [])
     }, 1000)
     setTimeout(() => {
       setIsLoaded(true);
     }, 2000)
+  }
+
+  const addCommentBtn = () => {
+    if (content === '') {
+      return (
+        <button
+        disabled={ true }
+        className="disabled-comment__dialogbtn">평가를 입력해주세요!</button>
+      )
+    } else {
+      return (
+        <button
+          onClick={handleSubmit}
+        className="add-comment__dialogbtn">이렇게 평가할래요!</button>
+      )
+    }
   }
 
   return (
@@ -231,10 +248,9 @@ const BeerReviews = () => {
             className="add-comment__dialogcontent"
             placeholder="자유롭게 이야기해주세요"
             onChange={(e) => setContent(e.target.value)}
+            autoFocus
           ></textarea>
-          <button
-          onClick={handleSubmit}
-          className="add-comment__dialogbtn">이렇게 평가할래요!</button>
+          { addCommentBtn() }
         </Toolbar>
       </Dialog>
     </div>

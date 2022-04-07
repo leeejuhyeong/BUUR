@@ -337,6 +337,18 @@
   color: #FAFAFA;
 }
 
+.disabled-comment__dialogbtn {
+  background-color:rgba(0, 0, 0, 0.38);
+  width: 260px;
+  height: 45px;
+  margin-top: 15px;
+  padding:10px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #FAFAFA;
+}
 
 .beerdetails .beerdetails-similar > h3 {
   margin: 15px 18px;

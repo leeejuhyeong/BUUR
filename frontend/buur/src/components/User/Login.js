@@ -56,6 +56,7 @@ function LoginForm() {
       <Jumbotron>
         <Logo></Logo>
       </Jumbotron>
+      <ContentBox>
       <Text>아이디</Text>
       <Input
         id="id"
@@ -89,6 +90,7 @@ function LoginForm() {
       <JoinText>
         회원이 아니신가요? <Join onClick={moveSignUp}>회원가입</Join>
       </JoinText>
+      </ContentBox>
     </Container>
   );
 }
@@ -115,37 +117,39 @@ const Join = styled.a`
   text-decoration: none;
 `;
 
-const PwdFind = styled.div`
-  text-align: right;
-  font-size: 11px;
-  color: #000000;
-  text-decoration: none;
-`;
-
 const Logo = styled.div`
   position: absolute;
   width: 169px;
   height: 66px;
   left: 96px;
-  top: 22px;
+  top: 40px;
 
   background: url(${BUURlogo});
   background-size: cover;
 `;
 
 const Jumbotron = styled.div`
-  position: absolute;
+  position: fixed;
   width: 360px;
-  height: 116px;
+  height: 140px;
   left: 0px;
   top: 0px;
-
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
   background: rgb(233, 185, 64);
 `;
 
 const Container = styled.div`
-  margin-top: 120px;
-  padding: 20px;
+  padding-top: 160px;
+  height: 640px;
+  width: 360px;
+  overflow: hidden;
+`;
+
+const ContentBox = styled.div`
+  height: 100%;
+  width: 100%;
+  padding: 0 30px;
 `;
 
 const Input = styled.input`

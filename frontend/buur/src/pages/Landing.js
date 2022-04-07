@@ -14,7 +14,7 @@ const Landing = () => {
 
   return (
     <div className="landing-page">
-      <div>BUUR</div>
+      <div className="landing-logo">BUUR</div>
       <div className="header">
         <svg
           className="waves"

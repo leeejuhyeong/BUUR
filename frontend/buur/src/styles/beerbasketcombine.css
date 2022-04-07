@@ -27,6 +27,25 @@
   align-items: center;
 }
 
+.basket-combine .basket-text-box {
+  overflow-x: visible;
+  padding: 24px 10px;
+}
+
+.basket-combine .basket-text-box > p {
+  font-family: 'Gowun Dodum', sans-serif;
+  margin: 0;
+  font-size: 15px;
+  text-align: center;
+  overflow-x: visible;
+  font-weight: 600;
+}
+
+.basket-combine .basket-text-box .basket-text-talker {
+  margin-top: 15px;
+}
+
+
 .basket-combine .basket-combine-content .basket-combine-beers {
   display: flex;
 }
