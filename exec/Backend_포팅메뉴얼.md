@@ -96,23 +96,25 @@ sudo service mysql restart
 
 ubuntu apt install list
 
-| Python             | 3.9.5  |
-| ------------------ | ------ |
-| Django             | 4.0.3  |
-| libmysqlclinet-dev | 8.0.28 |
-| gcc                | 9.3.0  |
-| python3-dev        | 3.8.2  |
-| mysqlclient        | 2.1.0  |
-| numpy              | 1.22.3 |
-| pandas             | 1.4.1  |
-| scipy              | 1.8.0  |
-| scikit             | 1.0.2  |
-| gunicorn           | 20.0.4 |
-| nginx              | 1.18.0 |
+| Project            | Version |
+| ------------------ | ------- |
+| Python             | 3.9.5   |
+| Django             | 4.0.3   |
+| libmysqlclinet-dev | 8.0.28  |
+| gcc                | 9.3.0   |
+| python3-dev        | 3.8.2   |
+| mysqlclient        | 2.1.0   |
+| numpy              | 1.22.3  |
+| pandas             | 1.4.1   |
+| scipy              | 1.8.0   |
+| scikit             | 1.0.2   |
+| gunicorn           | 20.0.4  |
+| nginx              | 1.18.0  |
 
 ubuntu pip install list
-| mysqlclient | 2.1.0 |
+| Project | Version |
 | --- | --- |
+| mysqlclient | 2.1.0 |
 | numpy | 1.22.3 |
 | pandas | 1.4.1 |
 | scipy | 1.8.0 |
