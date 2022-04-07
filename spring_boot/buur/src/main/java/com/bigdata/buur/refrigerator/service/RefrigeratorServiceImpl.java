@@ -134,7 +134,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
     @Transactional
     public List<RefrigeratorDto> findUserRefrigeratorList(int page) {
         if(page != 0)
-            page += 12;
+            page *= 12;
 
         Long id = userService.currentUser();
         List<RefrigeratorInterface> refrigeratorList = macbtiRepository.findGroupByBeerAndUserWithJPQL(id, page);
@@ -159,7 +159,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService {
         Long id = userService.currentUser();
         List<RefrigeratorInterface> totalList = macbtiRepository.countGroupByBeerAndUserWithJQPL(id);
         Integer totalPage = totalList.size();
-        totalPage /= 17;
+        totalPage /= 13;
 
         return totalPage;
     }
