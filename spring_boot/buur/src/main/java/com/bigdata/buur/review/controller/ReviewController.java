@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ReviewController {
     @GetMapping("/{beer_id}/{cursor}")
     public ResponseEntity<List<ReviewResDto>> getReviewList(@PathVariable @ApiParam(value = "리뷰를 가져올 맥주 번호") Long beer_id,
                                                             @PathVariable @ApiParam(value = "가져올 리뷰의 시간값 (없을 시 현재 시간을 넣어야 함.)")
-                                                            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime cursor){
+                                                            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime cursor) throws IOException {
         return ResponseEntity.ok().body(reviewService.findReviews(beer_id, cursor));
     }
 
