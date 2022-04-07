@@ -7,16 +7,13 @@
   <img src="https://img.shields.io/badge/Java-open--jdk--8-007396?style=flat&logo=Java&logoColor=white"/> <img src="https://img.shields.io/badge/Spring%20Boot-2.6.4-6DB33F?style=flat&logo=Spring%20Boot&logoColor=white"/> <img src="https://img.shields.io/badge/Spring%20Security-6DB33F?style=flat&logo=Spring%20Security&logoColor=white"/> <img src="https://img.shields.io/badge/JPA-59666C?style=flat&logo=Hibernate&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-8.0.28-4479A1?style=flat&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/Swagger-3.0.0-green?logo=Swagger"/> <img src="https://img.shields.io/badge/Tomcat-red?logo=Apache Tomcat"/>
   
    <img src="https://img.shields.io/badge/React-17.0.2-4FC08D?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Redux-4.1.2-764ABC?style=flat&logo=Redux&logoColor=white"></img> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/MUI-5.52-007FFF?style=flat&logo=MUI&logoColor=white"></img> <img src="https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=flat&logo=JavaScript&logoColor=white"> <img src="https://img.shields.io/badge/Node.js-4.1.2-339933?style=flat&logo=Node.js&logoColor=white"></img> <img src="https://img.shields.io/badge/npm-4.1.2-CB3837?style=flat&logo=npm&logoColor=white"></img>
-   
    <img src="https://img.shields.io/badge/Python-3.9.5-3776AB?style=flat&logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/NumPy-1.22.3-013243?style=flat&logo=NumPy&logoColor=white"> <img src="https://img.shields.io/badge/Django-4.0.3-092E20?style=flat&logo=Django&logoColor=white"/> <img src="https://img.shields.io/badge/Pandas-1.4.1-150458?style=flat&logo=Pandas&logoColor=white"> <img src="https://img.shields.io/badge/Gunicorn-499848?style=flat&logo=Gunicorn&logoColor=white"/>
-   
    <img src="https://img.shields.io/badge/Ubuntu-20.04.3%20LTS-E95420?style=flat&logo=Ubuntu&logoColor=white"/> <img src="https://img.shields.io/badge/NGINX-1.18.0(ubuntu)-009639?style=flat&logo=NGINX&logoColor=white"/> <img src="https://img.shields.io/badge/MatterMost-295092?style=flat&logo=MatterMost&logoColor=white"/> <img src="https://img.shields.io/badge/GitLab-FCA121?style=flat&logo=GitLab&logoColor=white"/> <img src="https://img.shields.io/badge/Jira-0052CC?style=flat&logo=Jira%20Software&logoColor=white"/> <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white"/> 
 
 </div>
 
 ## 📜 서비스 소개
 
----
 
 사용자의 취향을 분석해 4캔 맥주를 쉽게 고를 수 있도록 추천하는 서비스입니다.
 
@@ -26,26 +23,22 @@
 
 ## 📝 기획 의도
 
----
 
 편의점에서 4가지에 만원인 세계 맥주를 고를 때 고민을 덜어주기 위하여 기획하였습니다.
 
 ## 🎯 타겟
 
----
 
 - 새로운 맥주에 도전해보고 싶은 사람들
 - 편의점 4캔 맥주 선택에 어려움을 겪는 사람들
 
 ## 📅 개발 기간
 
----
 
 **22.02.28 ~ 22.04.08 (6주)**
 
 ## 🔍 주요 기능
 
----
 
 ### 메인 페이지
 
@@ -75,13 +68,11 @@
 
 ## 📊 Gantt Chart
 
----
 
 ![Gantt Chart](./assets/Gantt%20Chart.png)
 
 ## 📌 개발 약속
 
----
 
 - Git
     - Commit : feat, fix, docs, test
@@ -94,19 +85,16 @@
 
 ## 🛠️ 프로젝트 구조
 
----
 
 ![pjt_struct](./assets/pjt_struct.png)
 
 ## 🌐 ERD
 
----
 
 ![erd](./assets/erd.png)
 
 ## 👨‍👨‍👧‍👦 팀원 소개
 
----
 
 | Name | Role | Position | Git |
 | --- | --- | --- | --- |
@@ -119,7 +107,6 @@
 
 ## 👨‍👨‍👧‍👦 역할 분담
 
----
 
 | Name | Position | Role |
 | --- | --- | --- |
