@@ -21,7 +21,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // 모두가 접근할 수 있는 URL 입력
     private final String[] NO_ROLE_URLS = {"/api-v1/user/signup",
-            "/api-v1/user/id-check/", "/api-v1/user/name-check/", "/api-v1/user/login", "/api-v1/user/findpassword",
+            "/api-v1/user/id-check/**", "/api-v1/user/name-check/**", "/api-v1/user/login", "/api-v1/user/findpassword",
             /* swagger v2 */
             "/v2/api-docs",
             "/swagger-resources/**",
