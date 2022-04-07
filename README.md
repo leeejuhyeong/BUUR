@@ -1,9 +1,4 @@
 <div style="text-align: center">
-    
-</div>
-
-
-<div style="text-align: center">
 <div>
 <img src="./assets/BUUR%20Logo.png" style="width: 350px">
 </div>
