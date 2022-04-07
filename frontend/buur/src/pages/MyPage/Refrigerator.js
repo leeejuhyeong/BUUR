@@ -354,13 +354,15 @@ const Refrigerator = () => {
               }}
             >
               <BottomNavigationAction
+              className="refrigerator-nav-btn"
                 label="맥주 조합"
-                classes={styleClasses}
+                // classes={styleClasses}
                 onClick={() => setValue(0)}
               />
               <BottomNavigationAction
+                className="refrigerator-nav-btn"
                 label="내가 마신 맥주"
-                classes={styleClasses}
+                // classes={styleClasses}
                 onClick={() => setValue(1)}
               />
             </BottomNavigation>

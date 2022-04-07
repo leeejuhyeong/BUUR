@@ -98,3 +98,13 @@
 .refrigerator-page .fourbeer-div {
     padding-top: 10px;
 }
+
+.refrigerator-page .refrigerator-nav-btn {
+    color: #B15120;
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.refrigerator-page .refrigerator-nav-btn.Mui-selected {
+    color: #ffffff !important;
+}
