@@ -34,7 +34,6 @@ const Recommend = () => {
       .then((res) => {
         setNewBeerList(res.data);
       })
-      .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
@@ -47,7 +46,6 @@ const Recommend = () => {
       .then((res) => {
         setOriginBeerList(res.data);
       })
-      .catch((err) => console.log(err));
   }, []);
 
   function checkBeer() {

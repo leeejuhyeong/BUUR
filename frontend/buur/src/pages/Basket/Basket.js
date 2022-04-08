@@ -95,14 +95,18 @@ function Basket() {
         onClick={goBack}
         sx={{ fontSize: 30, m:1}}/>
       </div>
-      <div className="basket-body">
-        { basketList.map((beer, index) => (
-          <div className="basket-body-item" key={index}>
-            {basketImage(beer)}
-            <p>{beer.name}</p>
-          </div>
-        ))}
+      <div className="basket-body-box">
+        <div className="basket-body">
+          { basketList.map((beer, index) => (
+            <div className="basket-body-item" key={index}>
+              {basketImage(beer)}
+              <p>{beer.name}</p>
+            </div>
+          ))}
       </div>
+
+      </div>
+
       
       <div>
       <button onClick={handleClickOpen} className="small-basket-btn">
@@ -132,7 +136,7 @@ function Basket() {
               aria-label="close"
               sx={{ m: 1}}
             />
-          </div>
+            </div>
           <div className="small-basket-body">
         { basketList.map((beer, index) => (
           <div key={index}

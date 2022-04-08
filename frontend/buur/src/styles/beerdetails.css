@@ -219,6 +219,7 @@
 }
 
 .beerreview-box-content {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -406,6 +407,7 @@
 }
 
 .beerdetails .beerdetails-similar {
+  width: 100%;
   max-width: 450px;
 }
 

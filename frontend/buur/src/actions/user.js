@@ -1,7 +1,6 @@
 import fetch from "isomorphic-fetch";
 import { USER_SIGN_UP_RESULT } from "./ActionTypes";
 
-// user
 export const userSignUp = (signUpInfo) => {
   return (dispatch) => {
     fetch("https://j6b102.p.ssafy.io/api-v1/user/signup", {

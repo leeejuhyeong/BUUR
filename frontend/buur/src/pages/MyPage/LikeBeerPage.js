@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import React from 'react';
 import MyPageBackHeader from "../../components/MyPage/MyPageBackHeader";
 import BeerItem from "../../components/Beer/BeerItem";
 import Box from "@mui/material/Box";
@@ -18,10 +17,8 @@ function LikeBeerPage() {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setBeerList(res.data);
       })
-      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -31,7 +28,7 @@ function LikeBeerPage() {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={{ xs: 2 }}>
             {beerList.map((beer, index) => (
-              <Grid item xs={4} key={index}>
+              <Grid item xs={4} sm={3} md={ 2} key={index}>
                 <BeerItem beer={beer} />
               </Grid>
             ))}

@@ -17,7 +17,7 @@ function BasketCombine() {
     const sendBeers = basketList.map((beer) => {
       return { beerId: beer.beerNo };
     });
-    console.log(sendBeers);
+
     await axios
       .post(`https://j6b102.p.ssafy.io/api-v1/basket`, sendBeers, {
         headers: { "X-AUTH-TOKEN": localStorage.getItem("jwt") },
@@ -33,7 +33,6 @@ function BasketCombine() {
   const BasketContext = () => {
     const BasketText = require('../../components/Basket/BasketText.json');
     const num = Math.floor(Math.random() * 21);
-    console.log(num)
     const res = BasketText[num].content.split('\n').map((line, index) => {
       return (<p className="basket-text-content" key={ index }>{ line }<br/></p>)
     })

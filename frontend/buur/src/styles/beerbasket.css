@@ -62,10 +62,14 @@
 
 /* Basket Page */
 .basket {
+  position: absolute;
+  top: 0;
   background-color: #E9B940;
   width: 100%;
   height: 100%;
   overflow-x: scroll;
+  min-width: 360px;
+  min-height: 640px;
 }
 
 .basket .basket-header {
@@ -75,9 +79,18 @@
   right: 0;
 }
 
+.basket .basket-body-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .basket .basket-body {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding: 70px 50px;
   overflow-x: scroll;
 }
@@ -86,7 +99,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   margin-right: 50px;
   margin-left: 30px;
 }

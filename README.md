@@ -40,39 +40,53 @@
 ## 🔍 주요 기능
 
 
+### 로그인 & 설문 페이지
+- 로그인  
+<img src="./assets/login.gif" width="300px">
+
+- 설문 페이지  
+<img src="./assets/survey.gif" width="300px">
+
 ### 메인 페이지
 
-- 전체 상품 보기
-- 맥주 분류 별 보기
+- 전체 상품 보기  
+<img src="./assets/allBeer.gif" width="300px">
+
+- 맥주 분류 별 보기  
+<img src="./assets/beercategory.gif" width="300px">
 
 ### 🌟추천 기능
 
-- 즐겨 찾는 맥주
-- 맥주 추천
-- 맥주 상세 페이지의 비슷한 맥주 추천
+- 맥주 추천  
+<img src="./assets/recommend.gif" width="300px">
+
+- 맥주 상세 페이지의 비슷한 맥주 추천  
+<img src="./assets/similar.gif" width="300px">
 
 ### 장바구니
 
-- 맥주 장바구니 담기
+- 맥주 장바구니 담기  
+<img src="./assets/basket.gif" width="300px">
 
 ### 검색 기능
 
-- 찾고 싶은 맥주를 검색
+- 찾고 싶은 맥주를 검색  
+<img src="./assets/search.gif" width="300px">
 
 ### 마이페이지
 
-- 내 정보 수정
-- 프로필 사진 설정
-- 냉장고 둘러보기
-- MacBTI
+- 냉장고 둘러보기  
+<img src="./assets/refrigerator.gif" width="300px">
+
+- MacBTI  
+<img src="./assets/MacBTI.gif" width="300px">
 
 ## 📊 Gantt Chart
 
-
 ![Gantt Chart](./assets/Gantt%20Chart.png)
 
-## 📌 개발 약속
 
+## 📌 개발 약속
 
 - Git
     - Commit : feat, fix, docs, test

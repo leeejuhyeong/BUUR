@@ -44,6 +44,8 @@
 }
 
 .search-result-page{
+    width: 100%;
+    max-width: 480px;
     padding-top: 5px;
     padding-right: 20px;
     padding-left: 20px;
@@ -89,7 +91,6 @@
 }
 
 .no-result-word{
-    padding-left: 80px;
     padding-top: 10px;
     padding-right: 10px;
     color: #454545;
@@ -107,6 +108,7 @@
 .related-result-container .related-result-content {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     font-weight: 400;
     margin-bottom: 5px;
     display: flex;
@@ -115,6 +117,7 @@
     padding-bottom: 1px;
     padding-right: 7px;
     padding-left: 13px;
+    width: 300px;
 }
 
 

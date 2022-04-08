@@ -1,8 +1,12 @@
 .refrigerator-page {
-    width: 100%;
-    height: 100%;
+    top: 0;
     background: url(../assets/refrigerator.png);
-    position: relative;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-color: #E9B940;
+    background-position: center;
+    max-height: 640px;
+    min-height: 640px;
 }
 
 .refrigerator-page .move-next-btn {
@@ -19,16 +23,15 @@
 
 .refrigerator-header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+
 }
 
 .refrigerator-page .refrigerator-header > button{
     border: none;
     background-color: transparent;
-    position: absolute;
-    left: 313px;
-    top: 12px;
+    margin-top: 20px;
 }
 
 .refrigerator-header .refrigerator-nav {
@@ -97,6 +100,8 @@
 
 .refrigerator-page .fourbeer-div {
     padding-top: 10px;
+    width: 100%;
+    height: 100%;
 }
 
 .refrigerator-page .refrigerator-nav-btn {
@@ -107,4 +112,22 @@
 
 .refrigerator-page .refrigerator-nav-btn.Mui-selected {
     color: #ffffff !important;
+}
+
+.refrigerator-page .fourbeer-group {
+    width: 360px;
+    height: 640px;
+}
+
+.refrigerator-page .drankbeer-box {
+    width: 360px;
+    height: 640px;
+}
+
+.refrigerator-page .show-beers {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

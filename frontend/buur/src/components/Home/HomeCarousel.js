@@ -1,5 +1,4 @@
 import React from "react";
-// import Carousel from 'react-material-ui-carousel';
 import bannerImg1 from "../../assets/banner/banner_chicken.svg";
 import bannerImg2 from "../../assets/banner/banner_pizza.svg";
 import "react-responsive-carousel/lib/styles/carousel.min.css";

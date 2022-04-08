@@ -12,7 +12,6 @@ const Macbti = ({ history, location }) => {
   const [macbti, setMacbti] = useState("");
   const [userMonthData, setUserMonthData] = useState([]);
   const monthBeerList = userMonthData.map((beer) => beer.label);
-  // const [beerdata, setBeerdata] = useState([]);
   const [open, setOpen] = React.useState(false);
 
   const handleTooltipClose = () => {

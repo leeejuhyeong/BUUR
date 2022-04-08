@@ -87,7 +87,7 @@ const SignUp = () => {
     }
   };
 
-  //로그인 페이지 이동
+
   const moveLogin = () => {
     history.replace("/login");
   };
@@ -272,7 +272,7 @@ const SignUp = () => {
 
 export default SignUp;
 
-/* CSS */
+
 const Container = styled.div`
   display:flex;
   flex-direction: column;
