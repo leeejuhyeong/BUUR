@@ -325,7 +325,9 @@ const Refrigerator = () => {
   };
 
   return (
+    <div className="refrigerator-background">
     <div className="refrigerator-page">
+      
       <div className="refrigerator-header">
         <div></div>
         <div className="refrigerator-header-div">
@@ -358,7 +360,8 @@ const Refrigerator = () => {
       <div className="show-beers">
         {showBeers()}
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 
