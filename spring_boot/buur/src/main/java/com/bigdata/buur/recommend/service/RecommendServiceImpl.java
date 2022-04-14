@@ -59,7 +59,7 @@ public class RecommendServiceImpl implements RecommendService {
     @Transactional
     public List<RecommendDto> findSimilarBeerList(Long id) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
-        Beer beer = beerRepository.findById(id);
+        Beer beer = beerRepository.findOneById(id);
         Set<Beer> likeBeerSet = new HashSet<>(likesRepository.findBeerByUser(user));
         List<SimilarBeer> similarBeerList = recommendRepository.findTop7ByOriginOrderByIdAsc(beer);
         List<RecommendDto> similarBeerDtoList = new ArrayList<>();

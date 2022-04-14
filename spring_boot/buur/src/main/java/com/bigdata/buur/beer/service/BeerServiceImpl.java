@@ -12,6 +12,9 @@ import com.bigdata.buur.review.repository.ReviewRepository;
 import com.bigdata.buur.user.repository.UserRepository;
 import com.bigdata.buur.user.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -31,7 +34,7 @@ public class BeerServiceImpl implements BeerService {
     @Override
     public List<BeerDto.CommonBeer> findBearList() {
         List<BeerDto.CommonBeer> commonBeerList = new ArrayList<>();
-        List<Beer> beerList = beerRepository.findAll();
+        List<Beer> beerList = beerRepository.findByOrderById();
 
         for (Beer beer : beerList) {
             commonBeerList.add(BeerDto.CommonBeer.builder()
@@ -49,15 +52,15 @@ public class BeerServiceImpl implements BeerService {
     @Transactional
     public List<BeerDto.LikeBeer> findBeerList(String type, int offset) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
-
+        Pageable pageable = PageRequest.of(offset, 12);
         List<BeerDto.LikeBeer> likeBeerList = new ArrayList<>();
         Set<Beer> beerLikesSet = new HashSet<>(likesRepository.findBeerByUser(user));
 
-        List<Beer> beerList;
+        Page<Beer> beerList;
         if (type.equals("ALL")) {
-            beerList = beerRepository.findAllByOffset(offset);
+            beerList = beerRepository.findAll(pageable);
         } else {
-            beerList = beerRepository.findAllByTypeAndOffset(BeerCategory.valueOf(type), offset);
+            beerList = beerRepository.findByBeerCategory(BeerCategory.valueOf(type), pageable);
         }
 
         for (Beer beer : beerList) {
@@ -76,9 +79,9 @@ public class BeerServiceImpl implements BeerService {
     @Transactional
     public BeerDto.Details findBeer(Long id) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
-        Beer beer = beerRepository.findById(id);
+        Beer beer = beerRepository.findOneById(id);
         List<ReviewScoreInterface> reviewScoreInterface = reviewRepository.findByBeerId(id);
-        List<Likes> likesList = likesRepository.findByUserAndBeer(user, beer);
+        Likes likes = likesRepository.findByUserAndBeer(user, beer);
 
         BeerDto.Details details = BeerDto.Details.builder()
                 .beerNo(beer.getId())
@@ -104,7 +107,7 @@ public class BeerServiceImpl implements BeerService {
             details.addReviewScoreList(reviewScoreMap);
         }
 
-        if (likesList.size() != 0) {
+        if (likes != null) {
             details.setLike(true);
         }
 
@@ -115,8 +118,8 @@ public class BeerServiceImpl implements BeerService {
     @Transactional
     public void addLikes(Long id) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
-        Beer beer = beerRepository.findById(id);
-        likesRepository.saveLikes(Likes.builder()
+        Beer beer = beerRepository.findOneById(id);
+        likesRepository.save(Likes.builder()
                 .user(user)
                 .beer(beer)
                 .build());
@@ -126,9 +129,9 @@ public class BeerServiceImpl implements BeerService {
     @Transactional
     public void removeLikes(Long id) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
-        Beer beer = beerRepository.findById(id);
-        List<Likes> findLikes = likesRepository.findByUserAndBeer(user, beer);
-        likesRepository.deleteLikes(findLikes.get(0));
+        Beer beer = beerRepository.findOneById(id);
+        Likes findLikes = likesRepository.findByUserAndBeer(user, beer);
+        likesRepository.delete(findLikes);
     }
 
     @Override
@@ -152,7 +155,7 @@ public class BeerServiceImpl implements BeerService {
     @Transactional
     public List<BeerDto.LikeBeer> findSearchBeerList(String keyword) {
         User user = userRepository.findById(userService.currentUser()).orElse(null);
-        List<Beer> searchBeerList = beerRepository.findAllByNameContainingOrEngNameContaining(keyword);
+        List<Beer> searchBeerList = beerRepository.findByNameContainingOrEngNameContaining(keyword, keyword);
         Set<Beer> likeBeerSet = new HashSet<>(likesRepository.findBeerByUser(user));
         List<BeerDto.LikeBeer> likeBeerList = new ArrayList<>();
 
@@ -169,6 +172,6 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public List<String> findBeerNameList(String keyword) {
-        return beerRepository.findNameByNameContainingOrEngNameContaining(keyword);
+        return beerRepository.findNameByNameContainingOrEngNameContaining(keyword, keyword);
     }
 }
