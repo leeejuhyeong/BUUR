@@ -39,9 +39,9 @@ def get_item_based_collabor(path, beer_name):
 
 if __name__ == "__main__":
     buur_db = pymysql.connect(
-        user='buur',
-        passwd='buur1014!',
-        host='j6b102.p.ssafy.io',
+        user='user',
+        passwd='passwd',
+        host='domain',
         db='buurtest',
         charset='utf8'
     )

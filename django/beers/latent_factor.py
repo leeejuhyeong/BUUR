@@ -8,9 +8,9 @@ from scipy.sparse.linalg import svds
 
 def connect():
     return pymysql.connect(
-        user='buur',
-        passwd='buur1014!',
-        host='j6b102.p.ssafy.io',
+        user='user',
+        passwd='passwd',
+        host='domain',
         port=3300,
         db='buur',
         charset='utf8'

@@ -10,9 +10,9 @@ def load(path):
 
 if __name__ == "__main__":
     buur_db = pymysql.connect(
-        user='buur',
-        passwd='buur1014!',
-        host='j6b102.p.ssafy.io',
+        user='user',
+        passwd='passwd',
+        host='domain',
         db='buurtest',
         charset='utf8'
     )
@@ -33,9 +33,9 @@ if __name__ == "__main__":
     # 해당하는 맥주와 비슷한 6개 추천
 
     db = pymysql.connect(
-        user='buur',
-        passwd='buur1014!',
-        host='j6b102.p.ssafy.io',
+        user='user',
+        passwd='passwd',
+        host='domain',
         db='buurtest',
         charset='utf8'
     )
