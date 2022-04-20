@@ -104,7 +104,7 @@
 
 | Name   | Role                        | Position         | Git           |
 | ------ | --------------------------- | ---------------- | ------------- |
-| 장성태 | 팀장 / 발표                 | Frontend         |               |
+| 장성태 | 팀장 / 발표                 | Frontend         | @SingleBungIe |
 | 김유정 | React 노력왕 / Model / 추천 | Frontend Django  | @yujeong23    |
 | 오수경 | Director / Front 고수       | Frontend         | @ghkdlxld     |
 | 오은진 | DB Robort / Back 고수       | Backend          | @Oh-EunJin    |
